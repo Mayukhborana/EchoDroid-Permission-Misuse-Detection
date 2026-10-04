@@ -1,0 +1,24 @@
+{
+  "AppName": "com.virtual.go",
+  "Description": "Android app under backdoor detection analysis by EchoDroid",
+  "ApiKey": " ",
+  "TotalMethod": 1,
+  "Tag": "com_virtual_go_LOG",
+  "Model": "gpt-4.1",
+  "BaseUrl": "https://api.openai.com/v1",
+  "PackageName": "com.virtual.go",
+  "ManifestPath": " ",
+  "ManifestPermissions": [
+    "android.permission.ACCESS_NETWORK_STATE",
+    "android.permission.ACCESS_FINE_LOCATION",
+    "android.permission.CAMERA",
+    "android.permission.READ_EXTERNAL_STORAGE",
+    "android.permission.WRITE_EXTERNAL_STORAGE",
+    "android.permission.VIBRATE",
+    "android.permission.INTERNET",
+    "android.permission.WAKE_LOCK",
+    "com.google.android.c2dm.permission.RECEIVE",
+    "android.permission.POST_NOTIFICATIONS"
+  ],
+  "ExportedComponents": []
+}
