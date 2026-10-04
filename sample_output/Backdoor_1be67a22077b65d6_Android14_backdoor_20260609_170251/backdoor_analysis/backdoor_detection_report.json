@@ -1,0 +1,410 @@
+{
+  "pipeline": "LLMDroid-fastbot-custom-more-detection (Backdoor Detection)",
+  "version": "1.0.0",
+  "timestamp": "2026-06-09T09:08:43.140346Z",
+  "app": {
+    "name": "Backdoor_1be67a22077b65d6_Android14",
+    "description": "Android app under backdoor detection analysis by LLMDroid",
+    "package": "at.itagents.ta_setup_mf"
+  },
+  "backdoor_verdict": {
+    "verdict": "SUSPICIOUS",
+    "risk_level": "medium",
+    "confidence": 0.7,
+    "total_patterns_found": 4,
+    "verdict_explanation": "Moderate mismatch signals; warrants further manual investigation."
+  },
+  "backdoor_patterns": [
+    {
+      "backdoor_type": "OVER_DECLARED",
+      "permission_category": "sms",
+      "risk_level": "medium",
+      "ui_claim": "not present in UI",
+      "backend_evidence": [],
+      "explanation": "The manifest declares SMS-related permissions (READ_SMS, RECEIVE_SMS, SEND_SMS, WRITE_SMS), but there is no evidence of SMS-related API usage at runtime and no mention in the UI. This may indicate permissions are planted for future activation or to evade static analysis.",
+      "confidence": 0.7
+    },
+    {
+      "backdoor_type": "OVER_DECLARED",
+      "permission_category": "location",
+      "risk_level": "medium",
+      "ui_claim": "not present in UI",
+      "backend_evidence": [],
+      "explanation": "Location permissions (ACCESS_COARSE_LOCATION, ACCESS_FINE_LOCATION) are declared in the manifest, but there is no runtime evidence of location access and no mention in the UI. This is suspicious for a setup app.",
+      "confidence": 0.7
+    },
+    {
+      "backdoor_type": "OVER_DECLARED",
+      "permission_category": "contacts",
+      "risk_level": "medium",
+      "ui_claim": "not present in UI",
+      "backend_evidence": [],
+      "explanation": "Contacts permissions (READ_CONTACTS, WRITE_CONTACTS) are declared but not used at runtime and not mentioned in the UI, suggesting possible future misuse.",
+      "confidence": 0.7
+    },
+    {
+      "backdoor_type": "OVER_DECLARED",
+      "permission_category": "phone_state",
+      "risk_level": "medium",
+      "ui_claim": "not present in UI",
+      "backend_evidence": [],
+      "explanation": "Phone state permissions (READ_PHONE_STATE, CALL_PHONE) are declared but not used at runtime and not mentioned in the UI.",
+      "confidence": 0.7
+    }
+  ],
+  "mismatch_summary": {
+    "categories_in_ui_not_in_backend": [],
+    "categories_in_backend_not_in_ui": [],
+    "categories_in_manifest_not_used": [
+      "sms",
+      "location",
+      "contacts",
+      "phone_state"
+    ],
+    "categories_used_without_permission": []
+  },
+  "evidence": {
+    "manifest": {
+      "all_permissions": [
+        "android.permission.READ_PHONE_STATE",
+        "android.permission.RECEIVE_BOOT_COMPLETED",
+        "android.permission.ACCESS_COARSE_LOCATION",
+        "android.permission.ACCESS_FINE_LOCATION",
+        "android.permission.ACCESS_NETWORK_STATE",
+        "android.permission.CALL_PHONE",
+        "android.permission.GET_TASKS",
+        "android.permission.PROCESS_OUTGOING_CALLS",
+        "android.permission.READ_CONTACTS",
+        "android.permission.READ_SMS",
+        "android.permission.RECEIVE_SMS",
+        "android.permission.RESTART_PACKAGES",
+        "android.permission.SEND_SMS",
+        "android.permission.WRITE_SMS",
+        "android.permission.WRITE_CONTACTS",
+        "android.permission.SYSTEM_ALERT_WINDOW",
+        "android.permission.INTERNET",
+        "android.permission.WRITE_APN_SETTINGS",
+        "android.permission.WRITE_CALENDAR",
+        "com.android.browser.permission.WRITE_HISTORY_BOOKMARKS",
+        "com.android.browser.permission.READ_HISTORY_BOOKMARKS",
+        "at.itagents.ta.CENTRAL_SERVICE_PERMISSION",
+        "android.permission.KILL_BACKGROUND_PROCESSES",
+        "android.permission.VIBRATE",
+        "android.permission.WRITE_SETTINGS",
+        "android.permission.MOUNT_UNMOUNT_FILESYSTEMS",
+        "android.permission.MOUNT_FORMAT_FILESYSTEMS",
+        "android.permission.WRITE_SECURE_SETTINGS",
+        "android.permission.READ_LOGS",
+        "com.android.vending.BILLING"
+      ],
+      "sensitive_permissions": [
+        "android.permission.READ_PHONE_STATE",
+        "android.permission.ACCESS_COARSE_LOCATION",
+        "android.permission.ACCESS_FINE_LOCATION",
+        "android.permission.ACCESS_NETWORK_STATE",
+        "android.permission.CALL_PHONE",
+        "android.permission.READ_CONTACTS",
+        "android.permission.READ_SMS",
+        "android.permission.RECEIVE_SMS",
+        "android.permission.SEND_SMS",
+        "android.permission.WRITE_CONTACTS",
+        "android.permission.INTERNET"
+      ],
+      "by_category": {
+        "sms": [
+          "android.permission.READ_SMS",
+          "android.permission.RECEIVE_SMS",
+          "android.permission.SEND_SMS"
+        ],
+        "location": [
+          "android.permission.ACCESS_COARSE_LOCATION",
+          "android.permission.ACCESS_FINE_LOCATION"
+        ],
+        "contacts": [
+          "android.permission.READ_CONTACTS",
+          "android.permission.WRITE_CONTACTS"
+        ],
+        "phone_state": [
+          "android.permission.READ_PHONE_STATE",
+          "android.permission.CALL_PHONE"
+        ],
+        "network": [
+          "android.permission.ACCESS_NETWORK_STATE",
+          "android.permission.INTERNET"
+        ],
+        "device_id": [
+          "android.permission.READ_PHONE_STATE"
+        ]
+      },
+      "exported_components": [
+        "at.itagents.ta.StartSetupActivity"
+      ]
+    },
+    "runtime": {
+      "total_unique_methods_called": 40,
+      "sensitive_methods_found": 0,
+      "backend_active_categories": [],
+      "backend_category_details": {},
+      "activities_tested": [
+        "at.itagents.ta.StartSetupActivity"
+      ],
+      "activity_coverage": 14.285715103149414
+    }
+  },
+  "llm_analysis": {
+    "prompt1_ui_analysis": {
+      "app_ui_stated_purpose": "Anti-theft setup and configuration for advanced Android Stealth Mode",
+      "ui_permission_claims": {
+        "sms": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "location": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "contacts": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "camera": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "microphone": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "phone_state": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "storage": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "device_admin": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "accessibility": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "network": {
+          "visible_in_ui": true,
+          "justification_strength": "explicit",
+          "ui_evidence": [
+            "Checking internet connectivity.",
+            "Could not connect to the internet."
+          ]
+        },
+        "device_id": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "process_exec": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        }
+      },
+      "categories_absent_from_ui": [
+        "sms",
+        "location",
+        "contacts",
+        "camera",
+        "microphone",
+        "phone_state",
+        "storage",
+        "device_admin",
+        "accessibility",
+        "device_id",
+        "process_exec"
+      ],
+      "sensitive_flows_detected": [
+        {
+          "flow_name": "Internet connectivity check",
+          "activities": [
+            "at.itagents.ta.StartSetupActivity"
+          ],
+          "description": "The UI explicitly checks for and reports internet connectivity, indicating network access is required for setup or operation."
+        }
+      ],
+      "overall_ui_transparency_score": 0.15
+    },
+    "prompt2_backend_analysis": {
+      "backend_active_capabilities": {},
+      "suspicious_methods": [],
+      "background_sensitive_classes": [],
+      "stealthy_patterns_found": []
+    },
+    "prompt3_backdoor_detection": {
+      "verdict": "SUSPICIOUS",
+      "overall_risk_level": "medium",
+      "confidence": 0.7,
+      "backdoor_patterns": [
+        {
+          "backdoor_type": "OVER_DECLARED",
+          "permission_category": "sms",
+          "risk_level": "medium",
+          "ui_claim": "not present in UI",
+          "backend_evidence": [],
+          "explanation": "The manifest declares SMS-related permissions (READ_SMS, RECEIVE_SMS, SEND_SMS, WRITE_SMS), but there is no evidence of SMS-related API usage at runtime and no mention in the UI. This may indicate permissions are planted for future activation or to evade static analysis.",
+          "confidence": 0.7
+        },
+        {
+          "backdoor_type": "OVER_DECLARED",
+          "permission_category": "location",
+          "risk_level": "medium",
+          "ui_claim": "not present in UI",
+          "backend_evidence": [],
+          "explanation": "Location permissions (ACCESS_COARSE_LOCATION, ACCESS_FINE_LOCATION) are declared in the manifest, but there is no runtime evidence of location access and no mention in the UI. This is suspicious for a setup app.",
+          "confidence": 0.7
+        },
+        {
+          "backdoor_type": "OVER_DECLARED",
+          "permission_category": "contacts",
+          "risk_level": "medium",
+          "ui_claim": "not present in UI",
+          "backend_evidence": [],
+          "explanation": "Contacts permissions (READ_CONTACTS, WRITE_CONTACTS) are declared but not used at runtime and not mentioned in the UI, suggesting possible future misuse.",
+          "confidence": 0.7
+        },
+        {
+          "backdoor_type": "OVER_DECLARED",
+          "permission_category": "phone_state",
+          "risk_level": "medium",
+          "ui_claim": "not present in UI",
+          "backend_evidence": [],
+          "explanation": "Phone state permissions (READ_PHONE_STATE, CALL_PHONE) are declared but not used at runtime and not mentioned in the UI.",
+          "confidence": 0.7
+        }
+      ],
+      "mismatch_summary": {
+        "categories_in_ui_not_in_backend": [],
+        "categories_in_backend_not_in_ui": [],
+        "categories_in_manifest_not_used": [
+          "sms",
+          "location",
+          "contacts",
+          "phone_state"
+        ],
+        "categories_used_without_permission": []
+      },
+      "recommendations": [
+        "Review the necessity of all declared sensitive permissions. Remove any that are not required for the app's stated purpose.",
+        "Monitor future versions for activation of currently unused sensitive permissions.",
+        "Increase transparency in the UI regarding any sensitive capabilities if they are ever used."
+      ],
+      "analyst_notes": "The app declares a large set of sensitive permissions (SMS, location, contacts, phone state) in the manifest, but neither the UI nor the backend analysis shows any use of these capabilities. This is a classic OVER_DECLARED pattern, which is suspicious but not definitive evidence of a backdoor. No evidence of SILENT_EXEC, UI_DECEPTION, or COVERT_COLLECT was found in the current runtime analysis. The app may be designed to activate these capabilities later or in response to external triggers not covered in the current analysis."
+    }
+  },
+  "local_rule_analysis": {
+    "local_verdict": "SUSPICIOUS",
+    "total_flags": 4,
+    "silent_exec_flags": [],
+    "ui_deception_flags": [],
+    "covert_collect_flags": [],
+    "over_declared_flags": [
+      {
+        "backdoor_type": "OVER_DECLARED",
+        "permission_category": "sms",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for sms were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.27,
+        "source": "local_rule"
+      },
+      {
+        "backdoor_type": "OVER_DECLARED",
+        "permission_category": "location",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for location were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.27,
+        "source": "local_rule"
+      },
+      {
+        "backdoor_type": "OVER_DECLARED",
+        "permission_category": "contacts",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for contacts were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.27,
+        "source": "local_rule"
+      },
+      {
+        "backdoor_type": "OVER_DECLARED",
+        "permission_category": "device_id",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for device_id were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.27,
+        "source": "local_rule"
+      }
+    ],
+    "hidden_trigger_flags": [],
+    "all_flags": [
+      {
+        "backdoor_type": "OVER_DECLARED",
+        "permission_category": "sms",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for sms were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.27,
+        "source": "local_rule"
+      },
+      {
+        "backdoor_type": "OVER_DECLARED",
+        "permission_category": "location",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for location were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.27,
+        "source": "local_rule"
+      },
+      {
+        "backdoor_type": "OVER_DECLARED",
+        "permission_category": "contacts",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for contacts were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.27,
+        "source": "local_rule"
+      },
+      {
+        "backdoor_type": "OVER_DECLARED",
+        "permission_category": "device_id",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for device_id were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.27,
+        "source": "local_rule"
+      }
+    ]
+  },
+  "recommendations": [
+    "Review the necessity of all declared sensitive permissions. Remove any that are not required for the app's stated purpose.",
+    "Monitor future versions for activation of currently unused sensitive permissions.",
+    "Increase transparency in the UI regarding any sensitive capabilities if they are ever used."
+  ]
+}

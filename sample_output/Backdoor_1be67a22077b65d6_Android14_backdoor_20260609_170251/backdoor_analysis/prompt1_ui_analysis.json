@@ -1,0 +1,91 @@
+{
+  "app_ui_stated_purpose": "Anti-theft setup and configuration for advanced Android Stealth Mode",
+  "ui_permission_claims": {
+    "sms": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    },
+    "location": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    },
+    "contacts": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    },
+    "camera": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    },
+    "microphone": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    },
+    "phone_state": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    },
+    "storage": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    },
+    "device_admin": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    },
+    "accessibility": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    },
+    "network": {
+      "visible_in_ui": true,
+      "justification_strength": "explicit",
+      "ui_evidence": [
+        "Checking internet connectivity.",
+        "Could not connect to the internet."
+      ]
+    },
+    "device_id": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    },
+    "process_exec": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    }
+  },
+  "categories_absent_from_ui": [
+    "sms",
+    "location",
+    "contacts",
+    "camera",
+    "microphone",
+    "phone_state",
+    "storage",
+    "device_admin",
+    "accessibility",
+    "device_id",
+    "process_exec"
+  ],
+  "sensitive_flows_detected": [
+    {
+      "flow_name": "Internet connectivity check",
+      "activities": [
+        "at.itagents.ta.StartSetupActivity"
+      ],
+      "description": "The UI explicitly checks for and reports internet connectivity, indicating network access is required for setup or operation."
+    }
+  ],
+  "overall_ui_transparency_score": 0.15
+}

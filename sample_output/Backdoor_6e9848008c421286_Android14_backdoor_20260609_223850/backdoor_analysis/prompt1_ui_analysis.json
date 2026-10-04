@@ -1,0 +1,95 @@
+{
+  "app_ui_stated_purpose": "Fan app providing countdown, notifications, cheats, and guides for Heavy Gunner game release.",
+  "ui_permission_claims": {
+    "sms": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    },
+    "location": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    },
+    "contacts": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    },
+    "camera": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    },
+    "microphone": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    },
+    "phone_state": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    },
+    "storage": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    },
+    "device_admin": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    },
+    "accessibility": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    },
+    "network": {
+      "visible_in_ui": true,
+      "justification_strength": "implied",
+      "ui_evidence": [
+        "This app will notify you as soon as the game is available for download.",
+        "Download Heavy Gunner",
+        "Cool Apps",
+        "PushAds",
+        "InAppWebView"
+      ]
+    },
+    "device_id": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    },
+    "process_exec": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    }
+  },
+  "categories_absent_from_ui": [
+    "sms",
+    "location",
+    "contacts",
+    "camera",
+    "microphone",
+    "phone_state",
+    "storage",
+    "device_admin",
+    "accessibility",
+    "device_id",
+    "process_exec"
+  ],
+  "sensitive_flows_detected": [
+    {
+      "flow_name": "Network usage for notifications and downloads",
+      "activities": [
+        "com.zelmamarcelino12.library.A_LaunchActivity",
+        "com.zelmamarcelino12.library.A_TabWidgetActivity"
+      ],
+      "description": "UI references to notifications about game release and a download button imply network access for checking updates and downloading content."
+    }
+  ],
+  "overall_ui_transparency_score": 0.2
+}

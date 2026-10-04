@@ -1,0 +1,814 @@
+--------- beginning of system
+06-10 01:34:14.739 W/PackageManager(  478): Not removing non-existent package com.rxs16a.android
+--------- beginning of main
+06-10 01:34:14.740 I/cmd     (18488): oneway function results will be dropped but finished with status OK and parcel size 4
+06-10 01:34:14.758 I/abb     ( 4324): StartCommandInProcess(73657474696e67730067657400676c6f settings.get.glo [truncated])
+06-10 01:34:14.756 W/Binder:478_12(  478): type=1400 audit(0.0:958): avc: denied { getopt } for scontext=u:r:system_server:s0 tcontext=u:r:shell:s0 tclass=unix_stream_socket permissive=0
+06-10 01:34:14.759 I/abb     ( 4324): oneway function results will be dropped but finished with status OK and parcel size 4
+06-10 01:34:14.756 W/Binder:478_12(  478): type=1400 audit(0.0:959): avc: denied { getopt } for scontext=u:r:system_server:s0 tcontext=u:r:shell:s0 tclass=unix_stream_socket permissive=0
+06-10 01:34:14.756 W/Binder:478_12(  478): type=1400 audit(0.0:960): avc: denied { getopt } for scontext=u:r:system_server:s0 tcontext=u:r:shell:s0 tclass=unix_stream_socket permissive=0
+06-10 01:34:14.762 I/abb     ( 4324): StartCommandInProcess(7061636b61676500696e7374616c6c2d package.install- [truncated])
+06-10 01:34:14.773 I/IncrementalService(  478): createStorage: /data/app/vmdl166013613.tmp | 5
+06-10 01:34:14.776 I/incfs-mounts(  478): [incfs] Loaded incremental-fs mount info: 3 instances, 5 mount points
+06-10 01:34:14.776 W/incfs   (  478): [incfs] couldn't change file mode to 0777: Invalid argument
+06-10 01:34:14.777 I/incfs-mounts(  170): [incfs] Loaded incremental-fs mount info: 3 instances, 5 mount points
+06-10 01:34:14.778 I/incfs-mounts(  478): [incfs] Loaded incremental-fs mount info: 3 instances, 6 mount points
+06-10 01:34:14.778 I/IncrementalService(  478): created storage 48
+06-10 01:34:14.779 I/incfs-dataloaderconnector(  478): DataLoader::create1 cmd: 424|/data/incremental/MT_data_app_vmdl166/mount/.pending_reads (deleted)
+06-10 01:34:14.779 I/incfs-dataloaderconnector(  478): DataLoader::create1 pendingReads: 427|/data/incremental/MT_data_app_vmdl166/mount/.pending_reads (deleted)
+06-10 01:34:14.779 I/incfs-dataloaderconnector(  478): DataLoader::create1 log: 431|/data/incremental/MT_data_app_vmdl166/mount/.log (deleted)
+06-10 01:34:14.779 I/incfs-dataloaderconnector(  478): DataLoader::create2: 2|android|com.android.server.pm.PackageManagerShellCommandDataLoader|shellCommandId=2004111394
+06-10 01:34:14.779 E/PackageManagerShellCommandDataLoader-jni(  478): onPrepareImage: start.
+06-10 01:34:14.779 I/incfs-dataloaderconnector(  478): id(48): already exist, skipping creation.
+06-10 01:34:14.780 E/PackageManagerShellCommandDataLoader-jni(  478): onPrepareImage: done, proceeding to streaming.
+06-10 01:34:14.780 I/PackageManagerShellCommandDataLoader-jni(  478): Started streaming...
+06-10 01:34:14.780 I/incfs-dataloaderconnector(  478): Reported status back to IncrementalService. DataLoaderId=48, status=5
+06-10 01:34:14.780 I/incfs-dataloaderconnector(  478): Reported status back to IncrementalService. DataLoaderId=48, status=3
+06-10 01:34:14.780 I/incfs-dataloaderconnector(  478): Reported status back to IncrementalService. DataLoaderId=48, status=2
+06-10 01:34:14.782 I/PackageManagerShellCommandDataLoader-jni(  478): Stop signal received. Sending exit command (remaining bytes: 0).
+06-10 01:34:14.783 W/incfs   (  478): [incfs] couldn't change file mode to 0777: Invalid argument
+06-10 01:34:14.794 W/PackageParsing(  478): Ignoring duplicate uses-permissions/uses-permissions-sdk-m: android.permission.READ_CONTACTS in package: com.rxs16a.android at: Binary XML file line #63
+06-10 01:34:14.794 W/PackageParsing(  478): Ignoring duplicate uses-permissions/uses-permissions-sdk-m: android.permission.ACCESS_WIFI_STATE in package: com.rxs16a.android at: Binary XML file line #74
+06-10 01:34:14.794 W/PackageParsing(  478): Ignoring duplicate uses-permissions/uses-permissions-sdk-m: android.permission.WRITE_SECURE_SETTINGS in package: com.rxs16a.android at: Binary XML file line #75
+06-10 01:34:14.794 W/PackageParsing(  478): Ignoring duplicate uses-permissions/uses-permissions-sdk-m: android.permission.WRITE_SETTINGS in package: com.rxs16a.android at: Binary XML file line #76
+06-10 01:34:14.794 W/PackageParsing(  478): Ignoring duplicate uses-permissions/uses-permissions-sdk-m: android.permission.WRITE_EXTERNAL_STORAGE in package: com.rxs16a.android at: Binary XML file line #79
+06-10 01:34:14.796 W/RuleEvaluation(  478): Integrity rule files are not available.
+06-10 01:34:14.797 I/PackageManager(  478): Integrity check passed for file:///data/app/vmdl166013613.tmp
+06-10 01:34:14.798 W/PackageParsing(  478): Ignoring duplicate uses-permissions/uses-permissions-sdk-m: android.permission.READ_CONTACTS in package: com.rxs16a.android at: Binary XML file line #63
+06-10 01:34:14.798 W/PackageParsing(  478): Ignoring duplicate uses-permissions/uses-permissions-sdk-m: android.permission.ACCESS_WIFI_STATE in package: com.rxs16a.android at: Binary XML file line #74
+06-10 01:34:14.798 W/PackageParsing(  478): Ignoring duplicate uses-permissions/uses-permissions-sdk-m: android.permission.WRITE_SECURE_SETTINGS in package: com.rxs16a.android at: Binary XML file line #75
+06-10 01:34:14.798 W/PackageParsing(  478): Ignoring duplicate uses-permissions/uses-permissions-sdk-m: android.permission.WRITE_SETTINGS in package: com.rxs16a.android at: Binary XML file line #76
+06-10 01:34:14.798 W/PackageParsing(  478): Ignoring duplicate uses-permissions/uses-permissions-sdk-m: android.permission.WRITE_EXTERNAL_STORAGE in package: com.rxs16a.android at: Binary XML file line #79
+06-10 01:34:14.799 I/incfs-mounts(  170): [incfs] Loaded incremental-fs mount info: 3 instances, 6 mount points
+06-10 01:34:14.800 I/incfs-mounts(  478): [incfs] Loaded incremental-fs mount info: 3 instances, 7 mount points
+06-10 01:34:14.800 I/IncrementalService(  478): Removing bind point /data/app/vmdl166013613.tmp for storage 48
+06-10 01:34:14.800 W/incfs   (  170): IncFs_Unmount: umount(force) failed, detaching '/data/app/vmdl166013613.tmp': Device or resource busy
+06-10 01:34:14.803 D/CompatibilityChangeReporter(  478): Compat change id reported: 135549675; UID 10181; state: DISABLED
+06-10 01:34:14.816 D/PackageManager(  478): Instant App installer not found with android.intent.action.INSTALL_INSTANT_APP_PACKAGE
+06-10 01:34:14.816 D/PackageManager(  478): Clear ephemeral installer activity
+06-10 01:34:14.817 V/StorageManagerService(  478): Package null does not have legacy storage
+06-10 01:34:14.817 I/MediaProvider( 1313): Invalidating LocalCallingIdentity cache for package com.rxs16a.android. Reason: op android:read_external_storage
+06-10 01:34:14.822 V/BackupManagerService(  478): [UserID:0] restoreAtInstall pkg=com.rxs16a.android token=9 restoreSet=0
+06-10 01:34:14.823 V/BackupManagerService(  478): [UserID:0] Finishing install immediately
+06-10 01:34:14.824 V/StorageManagerService(  478): Package null has legacy storage
+06-10 01:34:14.824 I/MediaProvider( 1313): Invalidating LocalCallingIdentity cache for package com.rxs16a.android. Reason: op android:read_external_storage
+06-10 01:34:14.831 I/IncrementalService(  478): Removing bind point /data/app/vmdl166013613.tmp for storage 48
+06-10 01:34:14.832 I/abb     ( 4324): oneway function results will be dropped but finished with status OK and parcel size 4
+06-10 01:34:14.828 W/Binder:478_12(  478): type=1400 audit(0.0:961): avc: denied { getopt } for scontext=u:r:system_server:s0 tcontext=u:r:shell:s0 tclass=unix_stream_socket permissive=0
+06-10 01:34:14.837 I/RoleManagerService(  478): Granting default roles...
+06-10 01:34:14.828 I/chatty  (  478): uid=1000(system) Binder:478_3 identical 1 line
+06-10 01:34:14.828 W/Binder:478_12(  478): type=1400 audit(0.0:963): avc: denied { getopt } for scontext=u:r:system_server:s0 tcontext=u:r:shell:s0 tclass=unix_stream_socket permissive=0
+06-10 01:34:14.837 I/MediaProvider( 1313): Invalidating LocalCallingIdentity cache for package com.rxs16a.android. Reason: package android.intent.action.PACKAGE_ADDED
+06-10 01:34:14.838 I/GsaVoiceInteractionSrv( 1356): O received Intent { act=android.intent.action.PACKAGE_ADDED dat=package:com.rxs16a.android flg=0x4000010 (has extras) }
+06-10 01:34:14.840 V/AvrcpMediaPlayerList(  616): mPackageChangedBroadcastReceiver: action: android.intent.action.PACKAGE_ADDED
+06-10 01:34:14.840 D/AvrcpMediaPlayerList(  616): Name of package changed: com.rxs16a.android
+06-10 01:34:14.842 W/BroadcastQueue(  478): Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_ADDED dat=package:com.rxs16a.android flg=0x4000010 (has extras) } to com.google.android.packageinstaller/com.android.packageinstaller.PackageInstalledReceiver
+06-10 01:34:14.843 W/BroadcastQueue(  478): Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_ADDED dat=package:com.rxs16a.android flg=0x4000010 (has extras) } to com.google.android.gms/.games.chimera.GamesSystemBroadcastReceiverProxy
+06-10 01:34:14.843 W/BroadcastQueue(  478): Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_ADDED dat=package:com.rxs16a.android flg=0x4000010 (has extras) } to com.google.android.gms/.gass.chimera.PackageChangeBroadcastReceiver
+06-10 01:34:14.843 W/BroadcastQueue(  478): Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_ADDED dat=package:com.rxs16a.android flg=0x4000010 (has extras) } to com.google.android.gms/.chimera.GmsIntentOperationService$PersistentTrustedReceiver
+06-10 01:34:14.843 W/BroadcastQueue(  478): Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_ADDED dat=package:com.rxs16a.android flg=0x4000010 (has extras) } to com.google.android.googlequicksearchbox/com.google.android.apps.gsa.googlequicksearchbox.GelStubAppWatcher
+06-10 01:34:14.843 W/BroadcastQueue(  478): Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_ADDED dat=package:com.rxs16a.android flg=0x4000010 (has extras) } to com.google.android.ims/.receivers.RcsAutoStartReceiver
+06-10 01:34:14.861 D/CarrierSvcBindHelper(  803): No carrier app for: 0
+06-10 01:34:14.882 I/InputReader(  478): Reconfiguring input devices, changes=KEYBOARD_LAYOUTS | 
+06-10 01:34:14.891 D/CarrierConfigLoader(  803): mHandler: 9 phoneId: 0
+06-10 01:34:14.904 I/PermissionControllerServiceImpl( 3077): Updating user sensitive for uid 10181
+06-10 01:34:14.923 I/ProvidersCache(10862): Provider returned no roots. Possibly naughty: com.google.android.apps.docs.storage
+06-10 01:34:14.929 I/Telecom (  478): DefaultDialerCache: Refreshing default dialer for user 0: now com.android.dialer: DDC.oR@ANs
+06-10 01:34:14.933 V/BackupManagerConstants(  478): getFullBackupIntervalMilliseconds(...) returns 86400000
+06-10 01:34:14.933 V/BackupManagerConstants(  478): getFullBackupRequiredNetworkType(...) returns 2
+06-10 01:34:14.933 V/BackupManagerConstants(  478): getFullBackupRequireCharging(...) returns true
+06-10 01:34:14.936 W/GCM     ( 1060): Unexpected forwarded intent: Intent { act=android.intent.action.PACKAGE_ADDED dat=package:com.rxs16a.android flg=0x4000010 cmp=com.google.android.gms/.chimera.PersistentIntentOperationService (has extras) }
+06-10 01:34:14.940 W/GCM     ( 1060): Unexpected forwarded intent: Intent { act=android.intent.action.PACKAGE_ADDED dat=package:com.rxs16a.android flg=0x4000010 cmp=com.google.android.gms/.chimera.PersistentIntentOperationService (has extras) }
+06-10 01:34:14.949 I/Auth    ( 1192): [SupervisedAccountIntentOperation] onHandleIntent(): android.intent.action.PACKAGE_ADDED
+06-10 01:34:14.957 I/ChromeSync( 1192): [Sync,SyncIntentOperation] Handling the intent: Intent { act=android.intent.action.PACKAGE_ADDED dat=package:com.rxs16a.android flg=0x4000010 cmp=com.google.android.gms/.chimera.GmsIntentOperationService (has extras) }.
+06-10 01:34:14.958 W/ActivityManager(  478): Unable to start service Intent { act=com.google.android.gms.auth.key.retrieval.service.START pkg=com.google.android.gms } U=0: not found
+06-10 01:34:14.963 I/FontsPackageChangeOp( 1192): Package com.rxs16a.android has no metadata
+06-10 01:34:14.967 W/ActivityManager(  478): Unbind failed: could not find connection for android.os.BinderProxy@9e42dfd
+06-10 01:34:14.969 E/GmsClient( 1192): unable to connect to service: com.google.android.gms.auth.key.retrieval.service.START on com.google.android.gms
+06-10 01:34:14.979 V/AvrcpMediaPlayerList(  616): mPackageChangedBroadcastReceiver: action: android.intent.action.PACKAGE_CHANGED
+06-10 01:34:14.979 D/AvrcpMediaPlayerList(  616): Name of package changed: com.rxs16a.android
+06-10 01:34:14.983 I/ChromeSync( 1192): [Persistence,AffiliationManager] One of affiliation or grouping data for android://V0NzOu42KoGiq0JwwWdb7PjlpD3kDXSRHABC7KAVC4B0K02pdBeSRNMY-dXhZMjfK3vqMDIh9Svi-7BHh4bwhA==@com.rxs16a.android/ was not found. Marking affiliation data as stale...
+06-10 01:34:14.996 D/CarrierSvcBindHelper(  803): No carrier app for: 0
+06-10 01:34:15.020 I/Fitness ( 1060): OnPackageChangedOperation got intent: Intent { act=android.intent.action.PACKAGE_CHANGED dat=package:com.rxs16a.android flg=0x5000010 cmp=com.google.android.gms/.chimera.PersistentIntentOperationService (has extras) } [CONTEXT service_id=17 ]
+06-10 01:34:15.034 I/Fitness ( 1060): FitCleanupIntentOperation received Intent android.intent.action.PACKAGE_CHANGED [CONTEXT service_id=17 ]
+06-10 01:34:15.038 I/ProvidersCache(10862): Provider returned no roots. Possibly naughty: com.google.android.apps.docs.storage
+06-10 01:34:15.039 I/Fitness ( 1060): OnPackageChangedOperation got intent: Intent { act=android.intent.action.PACKAGE_CHANGED dat=package:com.rxs16a.android flg=0x5000010 cmp=com.google.android.gms/.chimera.PersistentIntentOperationService (has extras) } [CONTEXT service_id=17 ]
+06-10 01:34:15.044 I/Icing   ( 1192): IndexChimeraService.getServiceInterface callingPackage=com.google.android.gms componentName=AppsCorpus serviceId=36 [CONTEXT service_id=21 ]
+06-10 01:34:15.053 E/ConfigFileUtils( 1192): Failed to read config file: /data/user_de/0/com.google.android.gms/app_chimera/next_container.pb: open failed: ENOENT (No such file or directory)
+06-10 01:34:15.053 I/Fitness ( 1060): FitCleanupIntentOperation received Intent android.intent.action.PACKAGE_CHANGED [CONTEXT service_id=17 ]
+06-10 01:34:15.062 I/system_server(  478): Background concurrent copying GC freed 263960(11MB) AllocSpace objects, 63(2964KB) LOS objects, 49% free, 19MB/38MB, paused 21us total 235.715ms
+06-10 01:34:15.062 W/JavaBinder(  478): BinderProxy is being destroyed but the application did not call unlinkToDeath to unlink all of its death recipients beforehand.  Releasing leaked death recipient: com.android.server.AlarmManagerService$2
+06-10 01:34:15.062 I/BpBinder(  478): onLastStrongRef automatically unlinking death recipients: <uncached descriptor>
+06-10 01:34:15.062 I/InputReader(  478): Reconfiguring input devices, changes=KEYBOARD_LAYOUTS | 
+06-10 01:34:15.062 W/JavaBinder(  478): BinderProxy is being destroyed but the application did not call unlinkToDeath to unlink all of its death recipients beforehand.  Releasing leaked death recipient: com.android.server.AlarmManagerService$2
+06-10 01:34:15.062 I/BpBinder(  478): onLastStrongRef automatically unlinking death recipients: <uncached descriptor>
+06-10 01:34:15.068 I/PermissionControllerServiceImpl( 3077): Updating user sensitive for uid 10181
+06-10 01:34:15.074 I/Telecom (  478): DefaultDialerCache: Refreshing default dialer for user 0: now com.android.dialer: DDC.oR@ANw
+06-10 01:34:15.090 I/ChmraDebugLogger( 1192): [73] 1801
+06-10 01:34:15.092 I/ChmraDebugLogger( 1192): [30] [Pay.optional:201817020000] permitMetered=true,
+06-10 01:34:15.093 W/ChimeraConfigService( 1192): Retry attempt was throttled.
+06-10 01:34:15.122 I/Icing   ( 1192): IndexChimeraService.getServiceInterface callingPackage=com.google.android.gms componentName=null serviceId=30 [CONTEXT service_id=21 ]
+06-10 01:34:15.136 I/Icing   ( 1192): Usage reports ok 1, Failed Usage reports 0, indexed 0, rejected 0 [CONTEXT service_id=21 ]
+06-10 01:34:15.137 I/Icing   ( 1192): IndexChimeraService.getServiceInterface callingPackage=com.google.android.gms componentName=null serviceId=36 [CONTEXT service_id=21 ]
+06-10 01:34:15.142 I/Icing   ( 1192): Usage reports ok 0, Failed Usage reports 0, indexed 0, rejected 0 [CONTEXT service_id=21 ]
+06-10 01:34:15.147 I/Icing   ( 1192): Usage reports ok 0, Failed Usage reports 0, indexed 0, rejected 0 [CONTEXT service_id=21 ]
+06-10 01:34:15.147 I/Icing   ( 1192): Indexing com.google.android.gms-apps from com.google.android.gms [CONTEXT service_id=21 ]
+06-10 01:34:15.150 I/Icing   ( 1192): Indexing done com.google.android.gms-apps [CONTEXT service_id=21 ]
+06-10 01:34:15.150 I/Icing   ( 1192): Indexing com.google.android.gms-apps from com.google.android.gms [CONTEXT service_id=21 ]
+06-10 01:34:15.150 I/Icing   ( 1192): Indexing done com.google.android.gms-apps [CONTEXT service_id=21 ]
+06-10 01:34:15.151 I/Icing   ( 1192): Indexing com.google.android.gms-apps from com.google.android.gms [CONTEXT service_id=21 ]
+06-10 01:34:15.151 I/Icing   ( 1192): Indexing done com.google.android.gms-apps [CONTEXT service_id=21 ]
+06-10 01:34:15.213 I/MediaProvider( 1313): Deleted 1 items on external_primary due to com.android.shell
+06-10 01:34:15.218 I/MediaProvider( 1313): Deleted 1 items on external_primary due to com.android.shell
+06-10 01:34:15.219 I/MediaProvider( 1313): Deleted 1 items on external_primary due to com.android.shell
+06-10 01:34:15.219 I/MediaProvider( 1313): Deleted 1 items on external_primary due to com.android.shell
+06-10 01:34:15.220 I/MediaProvider( 1313): Deleted 1 items on external_primary due to com.android.shell
+06-10 01:34:15.221 I/MediaProvider( 1313): Deleted 1 items on external_primary due to com.android.shell
+06-10 01:34:15.221 I/MediaProvider( 1313): Deleted 1 items on external_primary due to com.android.shell
+06-10 01:34:15.222 I/MediaProvider( 1313): Deleted 1 items on external_primary due to com.android.shell
+--------- beginning of kernel
+06-10 01:34:15.290 W/audit   (    0): audit_lost=227 audit_rate_limit=5 audit_backlog_limit=64
+06-10 01:34:15.290 E/audit   (    0): rate limit exceeded
+06-10 01:34:15.499 I/MediaProvider( 1313): Deleted 1 items on external_primary due to com.android.shell
+06-10 01:34:15.962 I/MediaProvider( 1313): Deleted 1 items on external_primary due to com.android.shell
+06-10 01:34:15.960 W//apex/com.android.adbd/bin/adbd(  359): type=1400 audit(0.0:973): avc: denied { search } for comm=73796E6320737663203530 name="oem" dev="dm-0" ino=42 scontext=u:r:adbd:s0 tcontext=u:object_r:oemfs:s0 tclass=dir permissive=0
+06-10 01:34:15.993 I/ActivityManager(  478): Force stopping com.rxs16a.android appid=10181 user=0: from pid 18565
+06-10 01:34:15.996 D/CarrierSvcBindHelper(  803): No carrier app for: 0
+06-10 01:34:16.782 I/incfs-mounts(  478): [incfs] Loaded incremental-fs mount info: 3 instances, 6 mount points
+06-10 01:34:17.096 D/AndroidRuntime(18568): >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+06-10 01:34:17.096 W/app_process(18568): type=1400 audit(0.0:974): avc: denied { read } for name="u:object_r:device_config_runtime_native_boot_prop:s0" dev="tmpfs" ino=1556 scontext=u:r:shell:s0 tcontext=u:object_r:device_config_runtime_native_boot_prop:s0 tclass=file permissive=0
+06-10 01:34:17.096 I/chatty  (18568): uid=2000(shell) app_process identical 2 lines
+06-10 01:34:17.096 W/app_process(18568): type=1400 audit(0.0:977): avc: denied { read } for name="u:object_r:device_config_runtime_native_boot_prop:s0" dev="tmpfs" ino=1556 scontext=u:r:shell:s0 tcontext=u:object_r:device_config_runtime_native_boot_prop:s0 tclass=file permissive=0
+06-10 01:34:17.097 E/libc    (18568): Access denied finding property "persist.device_config.runtime_native_boot.profilebootclasspath"
+06-10 01:34:17.097 E/libc    (18568): Access denied finding property "persist.device_config.runtime_native_boot.enable_apex_image"
+06-10 01:34:17.097 I/AndroidRuntime(18568): Using default boot image
+06-10 01:34:17.097 E/libc    (18568): Access denied finding property "persist.device_config.runtime_native_boot.disable_lock_profiling"
+06-10 01:34:17.097 I/AndroidRuntime(18568): Leaving lock profiling enabled
+06-10 01:34:17.097 E/libc    (18568): Access denied finding property "persist.device_config.runtime_native_boot.enable_generational_cc"
+06-10 01:34:17.098 I/app_process(18568): Core platform API reporting enabled, enforcing=false
+06-10 01:34:17.126 D/app_process(18568): Time zone APEX ICU file found: /apex/com.android.tzdata/etc/icu/icu_tzdata.dat
+06-10 01:34:17.126 D/app_process(18568): I18n APEX ICU file found: /apex/com.android.i18n/etc/icu/icudt66l.dat
+06-10 01:34:17.130 I/app_process(18568): The ClassLoaderContext is a special shared library.
+06-10 01:34:17.135 W/app_process(18568): JNI RegisterNativeMethods: attempt to register 0 native methods for android.media.AudioAttributes
+06-10 01:34:17.136 D/AndroidRuntime(18568): Calling main entry com.android.commands.monkey.Monkey
+06-10 01:34:17.136 W/Monkey  (18568): args: [-p, com.rxs16a.android, -c, android.intent.category.LAUNCHER, 1]
+06-10 01:34:17.136 W/Monkey  (18568):  arg: "-p"
+06-10 01:34:17.136 W/Monkey  (18568):  arg: "com.rxs16a.android"
+06-10 01:34:17.136 W/Monkey  (18568):  arg: "-c"
+06-10 01:34:17.136 W/Monkey  (18568):  arg: "android.intent.category.LAUNCHER"
+06-10 01:34:17.136 W/Monkey  (18568):  arg: "1"
+06-10 01:34:17.136 W/Monkey  (18568): data="com.rxs16a.android"
+06-10 01:34:17.136 W/Monkey  (18568): data="android.intent.category.LAUNCHER"
+06-10 01:34:17.155 W/BroadcastQueue(  478): Skipping deliver [background] BroadcastRecord{a2072f8 u-1 android.net.conn.CONNECTIVITY_CHANGE} to ReceiverList{6a8b3d1 18568 (unknown name)/2000/u-1 remote:53d656a}: process gone or crashing
+06-10 01:34:17.156 I/Monkey  (18568): ** No activities found to run, monkey aborted.
+06-10 01:34:17.156 I/app_process(18568): System.exit called, status: -4
+06-10 01:34:17.156 I/AndroidRuntime(18568): VM exiting with result code -4.
+06-10 01:34:21.264 D/logd    (    0): logdr: UID=2000 GID=2000 PID=18585 b tail=0 logMask=99 pid=0 start=0ns timeout=0ns
+06-10 01:34:21.303 D/AndroidRuntime(18588): >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+06-10 01:34:21.304 W/app_process(18588): type=1400 audit(0.0:978): avc: denied { read } for name="u:object_r:device_config_runtime_native_boot_prop:s0" dev="tmpfs" ino=1556 scontext=u:r:shell:s0 tcontext=u:object_r:device_config_runtime_native_boot_prop:s0 tclass=file permissive=0
+06-10 01:34:21.304 E/libc    (18588): Access denied finding property "persist.device_config.runtime_native_boot.profilebootclasspath"
+06-10 01:34:21.304 E/libc    (18588): Access denied finding property "persist.device_config.runtime_native_boot.enable_apex_image"
+06-10 01:34:21.304 I/AndroidRuntime(18588): Using default boot image
+06-10 01:34:21.304 E/libc    (18588): Access denied finding property "persist.device_config.runtime_native_boot.disable_lock_profiling"
+06-10 01:34:21.304 I/AndroidRuntime(18588): Leaving lock profiling enabled
+06-10 01:34:21.304 E/libc    (18588): Access denied finding property "persist.device_config.runtime_native_boot.enable_generational_cc"
+06-10 01:34:21.305 I/app_process(18588): Core platform API reporting enabled, enforcing=false
+06-10 01:34:21.332 D/app_process(18588): Time zone APEX ICU file found: /apex/com.android.tzdata/etc/icu/icu_tzdata.dat
+06-10 01:34:21.332 D/app_process(18588): I18n APEX ICU file found: /apex/com.android.i18n/etc/icu/icudt66l.dat
+06-10 01:34:21.344 W/app_process(18588): JNI RegisterNativeMethods: attempt to register 0 native methods for android.media.AudioAttributes
+06-10 01:34:21.346 D/AndroidRuntime(18588): Calling main entry com.android.commands.monkey.Monkey
+06-10 01:34:21.354 I/[Fastbot](18588):  @Version: 2.3.23.0810.1705-git
+06-10 01:34:21.355 I/[Fastbot](18588): // Monkey: seed=1781125040950 count=1000
+06-10 01:34:21.355 I/[Fastbot](18588): 
+06-10 01:34:21.355 I/[Fastbot](18588): // AllowPackage: com.rxs16a.android
+06-10 01:34:21.355 I/[Fastbot](18588): // IncludeCategory: android.intent.category.LAUNCHER
+06-10 01:34:21.355 I/[Fastbot](18588): // IncludeCategory: android.intent.category.MONKEY
+06-10 01:34:21.357 E/[Fastbot](18588): *** ERROR *** findMethod() error, NoSuchMethodException happened, there is no such method: setActivityController
+06-10 01:34:21.380 W/commands.monkey(18588): type=1400 audit(0.0:982): avc: denied { execute } for name="idmap2" dev="dm-0" ino=381 scontext=u:r:shell:s0 tcontext=u:object_r:idmap_exec:s0 tclass=file permissive=0
+06-10 01:34:21.380 W/app_process(18588): unable to execute idmap2: Permission denied
+06-10 01:34:21.380 W/OverlayConfig(18588): 'idmap2 create-multiple' failed: no mutable="false" overlays targeting "android" will be loaded
+06-10 01:34:21.385 I/[Fastbot](18588): // Selecting main activities from category android.intent.category.LAUNCHER
+06-10 01:34:21.385 I/[Fastbot](18588): //   - NOT USING main activity com.android.camera.CameraLauncher (from package com.android.camera2)
+06-10 01:34:21.385 I/[Fastbot](18588): //   - NOT USING main activity com.google.android.apps.chrome.Main (from package com.android.chrome)
+06-10 01:34:21.385 I/[Fastbot](18588): //   - NOT USING main activity com.android.contacts.activities.PeopleActivity (from package com.android.contacts)
+06-10 01:34:21.385 I/[Fastbot](18588): //   - NOT USING main activity com.android.dialer.main.impl.MainActivity (from package com.android.dialer)
+06-10 01:34:21.385 I/[Fastbot](18588): //   - NOT USING main activity com.android.settings.Settings (from package com.android.settings)
+06-10 01:34:21.385 I/[Fastbot](18588): //   - NOT USING main activity com.google.android.apps.docs.app.NewMainProxyActivity (from package com.google.android.apps.docs)
+06-10 01:34:21.385 I/[Fastbot](18588): //   - NOT USING main activity com.google.android.maps.MapsActivity (from package com.google.android.apps.maps)
+06-10 01:34:21.385 I/[Fastbot](18588): //   - NOT USING main activity com.google.android.apps.messaging.ui.ConversationListActivity (from package com.google.android.apps.messaging)
+06-10 01:34:21.386 I/[Fastbot](18588): //   - NOT USING main activity com.google.android.apps.photos.home.HomeActivity (from package com.google.android.apps.photos)
+06-10 01:34:21.386 I/[Fastbot](18588): //   - NOT USING main activity com.google.android.apps.youtube.music.activities.MusicActivity (from package com.google.android.apps.youtube.music)
+06-10 01:34:21.386 I/[Fastbot](18588): //   - NOT USING main activity com.android.calendar.AllInOneActivity (from package com.google.android.calendar)
+06-10 01:34:21.386 I/[Fastbot](18588): //   - NOT USING main activity com.android.deskclock.DeskClock (from package com.google.android.deskclock)
+06-10 01:34:21.386 I/[Fastbot](18588): //   - NOT USING main activity com.google.android.gm.ConversationListActivityGmail (from package com.google.android.gm)
+06-10 01:34:21.386 I/[Fastbot](18588): //   - NOT USING main activity com.google.android.youtube.app.honeycomb.Shell$HomeActivity (from package com.google.android.youtube)
+06-10 01:34:21.386 I/[Fastbot](18588): //   - NOT USING main activity com.android.documentsui.LauncherActivity (from package com.google.android.documentsui)
+06-10 01:34:21.386 I/[Fastbot](18588): //   - NOT USING main activity com.google.android.googlequicksearchbox.VoiceSearchActivity (from package com.google.android.googlequicksearchbox)
+06-10 01:34:21.386 I/[Fastbot](18588): //   - NOT USING main activity com.google.android.googlequicksearchbox.SearchActivity (from package com.google.android.googlequicksearchbox)
+06-10 01:34:21.386 I/[Fastbot](18588): //   - NOT USING main activity com.anddoes.fancywidget.pro.PreferencesActivity (from package com.anddoes.fancywidget.pro)
+06-10 01:34:21.386 I/[Fastbot](18588): //   - NOT USING main activity mustachebooth.iconosys.eng.FrameIt (from package mustachebooth.iconosys.eng)
+06-10 01:34:21.387 I/[Fastbot](18588): // Selecting main activities from category android.intent.category.MONKEY
+06-10 01:34:21.387 I/[Fastbot](18588): //   - NOT USING main activity com.android.settings.Settings$RunningServicesActivity (from package com.android.settings)
+06-10 01:34:21.388 I/[Fastbot](18588): //   - NOT USING main activity com.android.settings.Settings$StorageUseActivity (from package com.android.settings)
+06-10 01:34:21.388 I/[Fastbot](18588): //   - NOT USING main activity com.google.android.apps.nexuslauncher.NexusLauncherActivity (from package com.google.android.apps.nexuslauncher)
+06-10 01:34:21.388 I/[Fastbot](18588): //   - NOT USING main activity com.google.android.apps.wellbeing.settings.TopLevelSettingsActivity (from package com.google.android.apps.wellbeing)
+06-10 01:34:21.388 I/[Fastbot](18588): //   - NOT USING main activity com.google.android.googlequicksearchbox.SearchActivity (from package com.google.android.googlequicksearchbox)
+06-10 01:34:21.388 W/[Fastbot](18588): *** WARNING *** %s** No activities found to run, monkey aborted.
+06-10 01:34:21.389 I/app_process(18588): System.exit called, status: -4
+06-10 01:34:21.389 I/AndroidRuntime(18588): VM exiting with result code -4.
+06-10 01:34:21.441 D/AndroidRuntime(18602): >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+06-10 01:34:21.442 E/libc    (18602): Access denied finding property "persist.device_config.runtime_native_boot.profilebootclasspath"
+06-10 01:34:21.442 E/libc    (18602): Access denied finding property "persist.device_config.runtime_native_boot.enable_apex_image"
+06-10 01:34:21.442 I/AndroidRuntime(18602): Using default boot image
+06-10 01:34:21.442 E/libc    (18602): Access denied finding property "persist.device_config.runtime_native_boot.disable_lock_profiling"
+06-10 01:34:21.442 I/AndroidRuntime(18602): Leaving lock profiling enabled
+06-10 01:34:21.442 E/libc    (18602): Access denied finding property "persist.device_config.runtime_native_boot.enable_generational_cc"
+06-10 01:34:21.443 I/app_process(18602): Core platform API reporting enabled, enforcing=false
+06-10 01:34:21.444 W/audit   (    0): audit_lost=236 audit_rate_limit=5 audit_backlog_limit=64
+06-10 01:34:21.444 E/audit   (    0): rate limit exceeded
+06-10 01:34:21.468 D/app_process(18602): Time zone APEX ICU file found: /apex/com.android.tzdata/etc/icu/icu_tzdata.dat
+06-10 01:34:21.468 D/app_process(18602): I18n APEX ICU file found: /apex/com.android.i18n/etc/icu/icudt66l.dat
+06-10 01:34:21.470 I/app_process(18602): The ClassLoaderContext is a special shared library.
+06-10 01:34:21.474 W/app_process(18602): JNI RegisterNativeMethods: attempt to register 0 native methods for android.media.AudioAttributes
+06-10 01:34:21.475 D/AndroidRuntime(18602): Calling main entry com.android.commands.monkey.Monkey
+06-10 01:34:21.475 W/Monkey  (18602): args: [-p, com.rxs16a.android, -c, android.intent.category.LAUNCHER, 1]
+06-10 01:34:21.475 W/Monkey  (18602):  arg: "-p"
+06-10 01:34:21.475 W/Monkey  (18602):  arg: "com.rxs16a.android"
+06-10 01:34:21.475 W/Monkey  (18602):  arg: "-c"
+06-10 01:34:21.475 W/Monkey  (18602):  arg: "android.intent.category.LAUNCHER"
+06-10 01:34:21.475 W/Monkey  (18602):  arg: "1"
+06-10 01:34:21.475 W/Monkey  (18602): data="com.rxs16a.android"
+06-10 01:34:21.475 W/Monkey  (18602): data="android.intent.category.LAUNCHER"
+06-10 01:34:21.481 W/BroadcastQueue(  478): Skipping deliver [background] BroadcastRecord{d65c6a4 u-1 android.net.conn.CONNECTIVITY_CHANGE} to ReceiverList{db3bc0d 18602 (unknown name)/2000/u-1 remote:1446e36}: process gone or crashing
+06-10 01:34:21.483 I/Monkey  (18602): ** No activities found to run, monkey aborted.
+06-10 01:34:21.483 I/app_process(18602): System.exit called, status: -4
+06-10 01:34:21.483 I/AndroidRuntime(18602): VM exiting with result code -4.
+06-10 01:34:23.581 D/AndroidRuntime(18616): >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+06-10 01:34:23.580 W/app_process(18616): type=1400 audit(0.0:987): avc: denied { read } for name="u:object_r:device_config_runtime_native_boot_prop:s0" dev="tmpfs" ino=1556 scontext=u:r:shell:s0 tcontext=u:object_r:device_config_runtime_native_boot_prop:s0 tclass=file permissive=0
+06-10 01:34:23.582 E/libc    (18616): Access denied finding property "persist.device_config.runtime_native_boot.profilebootclasspath"
+06-10 01:34:23.582 E/libc    (18616): Access denied finding property "persist.device_config.runtime_native_boot.enable_apex_image"
+06-10 01:34:23.582 I/AndroidRuntime(18616): Using default boot image
+06-10 01:34:23.582 E/libc    (18616): Access denied finding property "persist.device_config.runtime_native_boot.disable_lock_profiling"
+06-10 01:34:23.582 I/AndroidRuntime(18616): Leaving lock profiling enabled
+06-10 01:34:23.582 E/libc    (18616): Access denied finding property "persist.device_config.runtime_native_boot.enable_generational_cc"
+06-10 01:34:23.583 I/app_process(18616): Core platform API reporting enabled, enforcing=false
+06-10 01:34:23.610 D/app_process(18616): Time zone APEX ICU file found: /apex/com.android.tzdata/etc/icu/icu_tzdata.dat
+06-10 01:34:23.610 D/app_process(18616): I18n APEX ICU file found: /apex/com.android.i18n/etc/icu/icudt66l.dat
+06-10 01:34:23.612 I/app_process(18616): The ClassLoaderContext is a special shared library.
+06-10 01:34:23.616 W/app_process(18616): JNI RegisterNativeMethods: attempt to register 0 native methods for android.media.AudioAttributes
+06-10 01:34:23.618 D/AndroidRuntime(18616): Calling main entry com.android.commands.monkey.Monkey
+06-10 01:34:23.618 W/Monkey  (18616): args: [-p, com.rxs16a.android, --throttle, 2000, --ignore-crashes, --ignore-timeouts, --ignore-security-exceptions, -v, 151]
+06-10 01:34:23.618 W/Monkey  (18616):  arg: "-p"
+06-10 01:34:23.618 W/Monkey  (18616):  arg: "com.rxs16a.android"
+06-10 01:34:23.618 W/Monkey  (18616):  arg: "--throttle"
+06-10 01:34:23.618 W/Monkey  (18616):  arg: "2000"
+06-10 01:34:23.618 W/Monkey  (18616):  arg: "--ignore-crashes"
+06-10 01:34:23.618 W/Monkey  (18616):  arg: "--ignore-timeouts"
+06-10 01:34:23.618 W/Monkey  (18616):  arg: "--ignore-security-exceptions"
+06-10 01:34:23.618 W/Monkey  (18616):  arg: "-v"
+06-10 01:34:23.618 W/Monkey  (18616):  arg: "151"
+06-10 01:34:23.618 W/Monkey  (18616): data="com.rxs16a.android"
+06-10 01:34:23.618 W/Monkey  (18616): arg="--throttle" mCurArgData="null" mNextArg=3 argwas="--throttle" nextarg="2000"
+06-10 01:34:23.618 W/Monkey  (18616): data="2000"
+06-10 01:34:23.618 W/Monkey  (18616): arg="--ignore-crashes" mCurArgData="null" mNextArg=5 argwas="--ignore-crashes" nextarg="--ignore-timeouts"
+06-10 01:34:23.618 W/Monkey  (18616): arg="--ignore-timeouts" mCurArgData="null" mNextArg=6 argwas="--ignore-timeouts" nextarg="--ignore-security-exceptions"
+06-10 01:34:23.618 W/Monkey  (18616): arg="--ignore-security-exceptions" mCurArgData="null" mNextArg=7 argwas="--ignore-security-exceptions" nextarg="-v"
+06-10 01:34:23.622 I/Monkey  (18616): :Monkey: seed=1781246846091 count=151
+06-10 01:34:23.622 I/Monkey  (18616): :AllowPackage: com.rxs16a.android
+06-10 01:34:23.622 I/Monkey  (18616): :IncludeCategory: android.intent.category.LAUNCHER
+06-10 01:34:23.622 I/Monkey  (18616): :IncludeCategory: android.intent.category.MONKEY
+06-10 01:34:23.624 W/BroadcastQueue(  478): Skipping deliver [background] BroadcastRecord{78aa910 u-1 android.net.conn.CONNECTIVITY_CHANGE} to ReceiverList{7ed0c09 18616 (unknown name)/2000/u-1 remote:7e137c2}: process gone or crashing
+06-10 01:34:23.626 I/Monkey  (18616): ** No activities found to run, monkey aborted.
+06-10 01:34:23.627 I/app_process(18616): System.exit called, status: -4
+06-10 01:34:23.627 I/AndroidRuntime(18616): VM exiting with result code -4.
+06-10 01:34:26.007 W/UriGrantsManagerService(  478): No permission grants found for com.google.android.apps.photos
+06-10 01:34:26.007 W/UriGrantsManagerService(  478): No permission grants found for com.google.android.apps.photos
+06-10 01:34:26.034 W/UriGrantsManagerService(  478): No permission grants found for com.google.android.apps.photos
+06-10 01:34:26.034 W/UriGrantsManagerService(  478): No permission grants found for com.google.android.apps.photos
+06-10 01:34:26.046 W/UriGrantsManagerService(  478): No permission grants found for com.google.android.apps.photos
+06-10 01:34:28.316 W/Binder:194_2(  194): type=1400 audit(0.0:991): avc: denied { read } for name="wakeup4" dev="sysfs" ino=16424 scontext=u:r:system_suspend:s0 tcontext=u:object_r:sysfs:s0 tclass=dir permissive=0
+06-10 01:34:28.316 W/Binder:194_2(  194): type=1400 audit(0.0:992): avc: denied { read } for name="wakeup2" dev="sysfs" ino=15641 scontext=u:r:system_suspend:s0 tcontext=u:object_r:sysfs:s0 tclass=dir permissive=0
+06-10 01:34:28.317 E/android.system.suspend@1.0-service(  194): Error opening kernel wakelock stats for: wakeup4: Permission denied
+06-10 01:34:28.317 E/android.system.suspend@1.0-service(  194): Error opening kernel wakelock stats for: wakeup2: Permission denied
+06-10 01:34:28.316 W/Binder:194_2(  194): type=1400 audit(0.0:993): avc: denied { read } for name="wakeup0" dev="sysfs" ino=13112 scontext=u:r:system_suspend:s0 tcontext=u:object_r:sysfs:s0 tclass=dir permissive=0
+06-10 01:34:28.318 E/android.system.suspend@1.0-service(  194): Error opening kernel wakelock stats for: wakeup0: Permission denied
+06-10 01:34:28.316 W/Binder:194_2(  194): type=1400 audit(0.0:994): avc: denied { read } for name="wakeup5" dev="sysfs" ino=16487 scontext=u:r:system_suspend:s0 tcontext=u:object_r:sysfs:s0 tclass=dir permissive=0
+06-10 01:34:28.319 E/android.system.suspend@1.0-service(  194): Error opening kernel wakelock stats for: wakeup5: Permission denied
+06-10 01:34:28.316 W/Binder:194_2(  194): type=1400 audit(0.0:995): avc: denied { read } for name="wakeup3" dev="sysfs" ino=15691 scontext=u:r:system_suspend:s0 tcontext=u:object_r:sysfs:s0 tclass=dir permissive=0
+06-10 01:34:28.319 E/android.system.suspend@1.0-service(  194): Error opening kernel wakelock stats for: wakeup3: Permission denied
+06-10 01:34:28.316 W/Binder:194_2(  194): type=1400 audit(0.0:996): avc: denied { read } for name="wakeup1" dev="sysfs" ino=13150 scontext=u:r:system_suspend:s0 tcontext=u:object_r:sysfs:s0 tclass=dir permissive=0
+06-10 01:34:28.319 E/android.system.suspend@1.0-service(  194): Error opening kernel wakelock stats for: wakeup1: Permission denied
+06-10 01:34:26.046 W/UriGrantsManagerService(  478): No permission grants found for com.google.android.apps.photos
+06-10 01:34:28.347 D/KernelCpuUidUserSysTimeReader(  478): Removing uids 99002-99002
+06-10 01:34:29.023 E/WifiScoringParams(  478): Invalid frequency(-1), using 5G as default rssi array
+06-10 01:34:32.805 D/WifiNl80211Manager(  478): Scan result ready event
+06-10 01:34:32.805 D/WifiNative(  478): Scan result ready event
+06-10 01:34:45.249 I/GmscoreIpa( 1192): Starting mediastore instant index
+06-10 01:35:00.011 D/KeyguardClockSwitch(  634): Updating clock: 135
+06-10 01:35:20.635 E/ClipboardService(  478): Denying clipboard access to com.google.android.googlequicksearchbox, application is not in focus nor is it a system service for user 0
+06-10 01:35:20.636 E/ClipboardService(  478): Denying clipboard access to mustachebooth.iconosys.eng, application is not in focus nor is it a system service for user 0
+06-10 01:35:21.388 D/TaplEvents(  987): Main / Touch event: MotionEvent { action=ACTION_DOWN, actionButton=0, id[0]=0, x[0]=964.9512, y[0]=1415.9082, toolType[0]=TOOL_TYPE_FINGER, buttonState=0, classification=NONE, metaState=0, flags=0x1, edgeFlags=0x0, pointerCount=1, historySize=0, eventTime=2787126, downTime=2787126, deviceId=10, source=0x5002, displayId=0 }
+06-10 01:35:21.557 D/TaplEvents(  987): Main / Touch event: MotionEvent { action=ACTION_UP, actionButton=0, id[0]=0, x[0]=1001.9531, y[0]=0.0, toolType[0]=TOOL_TYPE_FINGER, buttonState=0, classification=NONE, metaState=0, flags=0x1, edgeFlags=0x0, pointerCount=1, historySize=0, eventTime=2787296, downTime=2787126, deviceId=10, source=0x5002, displayId=0 }
+06-10 01:35:23.347 D/TaplEvents(  987): Main / Touch event: MotionEvent { action=ACTION_DOWN, actionButton=0, id[0]=0, x[0]=1094.9414, y[0]=1695.8984, toolType[0]=TOOL_TYPE_FINGER, buttonState=0, classification=NONE, metaState=0, flags=0x1, edgeFlags=0x0, pointerCount=1, historySize=0, eventTime=2789084, downTime=2789084, deviceId=10, source=0x5002, displayId=0 }
+06-10 01:35:23.585 D/TaplEvents(  987): Main / Touch event: MotionEvent { action=ACTION_UP, actionButton=0, id[0]=0, x[0]=1094.9414, y[0]=3038.8867, toolType[0]=TOOL_TYPE_FINGER, buttonState=0, classification=NONE, metaState=0, flags=0x1, edgeFlags=0x0, pointerCount=1, historySize=0, eventTime=2789324, downTime=2789084, deviceId=10, source=0x5002, displayId=0 }
+06-10 01:35:23.701 D/RecentsOrientedState(  987): current RecentsOrientedState: [this=RecentsOrientedState@1828750 mOrientationHandler=PortraitPagedViewHandler@1ae2d49 mDisplayRotation=0 mTouchRotation=0 mRecentsActivityRotation=0 isRecentsActivityRotationAllowed=false mSystemRotation=true mFlags=299]
+06-10 01:35:23.701 I/chatty  (  987): uid=10152(com.google.android.apps.nexuslauncher) identical 2 lines
+06-10 01:35:23.701 D/RecentsOrientedState(  987): current RecentsOrientedState: [this=RecentsOrientedState@1828750 mOrientationHandler=PortraitPagedViewHandler@1ae2d49 mDisplayRotation=0 mTouchRotation=0 mRecentsActivityRotation=0 isRecentsActivityRotationAllowed=false mSystemRotation=true mFlags=299]
+06-10 01:35:35.123 I/cmd     (18636): oneway function results will be dropped but finished with status OK and parcel size 4
+06-10 01:35:54.840 I/ActivityManager(  478): Force stopping mustachebooth.iconosys.eng appid=10179 user=-1: deletePackageX
+06-10 01:35:54.840 I/ActivityManager(  478): Killing 13193:mustachebooth.iconosys.eng/u0a179 (adj 905): stop mustachebooth.iconosys.eng due to deletePackageX
+06-10 01:35:54.841 W/ActivityTaskManager(  478): Force removing ActivityRecord{5b757df u0 mustachebooth.iconosys.eng/.ShareImage t123 f}}: app died, no saved state
+06-10 01:35:54.844 W/ActivityTaskManager(  478): Force removing ActivityRecord{60f7e20 u0 mustachebooth.iconosys.eng/.FrameIt t123 f}}: app died, no saved state
+06-10 01:35:54.870 I/Zygote  (  272): Process 13193 exited due to signal 9 (Killed)
+06-10 01:35:54.871 W/ActivityManager(  478): setHasOverlayUi called on unknown pid: 13193
+06-10 01:35:54.889 I/libprocessgroup(  478): Successfully killed process cgroup uid 10179 pid 13193 in 46ms
+06-10 01:35:54.890 I/keystore(  374): clear_uid 10179
+06-10 01:35:54.893 D/PackageManager(  478): Instant App installer not found with android.intent.action.INSTALL_INSTANT_APP_PACKAGE
+06-10 01:35:54.893 D/PackageManager(  478): Clear ephemeral installer activity
+06-10 01:35:54.893 E/PermissionMonitor(  478): unknown permission type: -1for uid: 10179
+06-10 01:35:54.919 I/system_server(  478): Explicit concurrent copying GC freed 262435(12MB) AllocSpace objects, 26(1576KB) LOS objects, 49% free, 16MB/32MB, paused 16us total 25.401ms
+06-10 01:35:54.923 I/incfs-dataloaderconnector(  478): Reported status back to IncrementalService. DataLoaderId=43, status=0
+06-10 01:35:54.923 I/IncrementalService(  478): Unmounting and cleaning up mount 43 with root '/data/incremental/MT_data_app_vmdl684'
+06-10 01:35:54.923 I/IncrementalService(  478):   bind: /data/app/~~oRuHr0se8tmBtBpoxpB3Xw==
+06-10 01:35:54.924 I/IncrementalService(  478):   root: /data/incremental/MT_data_app_vmdl684
+06-10 01:35:54.929 I/ActivityManager(  478): Force stopping mustachebooth.iconosys.eng appid=10179 user=0: pkg removed
+06-10 01:35:54.929 I/cmd     (18641): oneway function results will be dropped but finished with status OK and parcel size 4
+06-10 01:35:54.945 I/MediaProvider( 1313): Invalidating LocalCallingIdentity cache for package mustachebooth.iconosys.eng. Reason: package android.intent.action.PACKAGE_REMOVED
+06-10 01:35:54.945 W/BroadcastQueue(  478): Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_REMOVED dat=package:mustachebooth.iconosys.eng flg=0x4000010 (has extras) } to com.android.musicfx/.Compatibility$Receiver
+06-10 01:35:54.945 W/BroadcastQueue(  478): Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_REMOVED dat=package:mustachebooth.iconosys.eng flg=0x4000010 (has extras) } to com.google.android.apps.maps/com.google.android.libraries.social.peoplekit.thirdparty.viewcontrollers.ThirdPartyReceiver
+06-10 01:35:54.945 W/BroadcastQueue(  478): Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_REMOVED dat=package:mustachebooth.iconosys.eng flg=0x4000010 (has extras) } to com.google.android.apps.photos/com.google.android.libraries.social.peoplekit.thirdparty.viewcontrollers.ThirdPartyReceiver
+06-10 01:35:54.945 W/BroadcastQueue(  478): Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_REMOVED dat=package:mustachebooth.iconosys.eng flg=0x4000010 (has extras) } to com.google.android.gms/.games.chimera.GamesSystemBroadcastReceiverProxy
+06-10 01:35:54.945 W/BroadcastQueue(  478): Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_REMOVED dat=package:mustachebooth.iconosys.eng flg=0x4000010 (has extras) } to com.google.android.gms/.chimera.GmsIntentOperationService$PersistentTrustedReceiver
+06-10 01:35:54.945 W/BroadcastQueue(  478): Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_REMOVED dat=package:mustachebooth.iconosys.eng flg=0x4000010 (has extras) } to com.google.android.googlequicksearchbox/com.google.android.apps.gsa.googlequicksearchbox.GelStubAppWatcher
+06-10 01:35:54.946 I/RollbackManager(  478): broadcast=ACTION_PACKAGE_FULLY_REMOVED pkg=mustachebooth.iconosys.eng
+06-10 01:35:54.946 V/AvrcpMediaPlayerList(  616): mPackageChangedBroadcastReceiver: action: android.intent.action.PACKAGE_REMOVED
+06-10 01:35:54.947 V/StorageManagerService(  478): Package mustachebooth.iconosys.eng does not have legacy storage
+06-10 01:35:54.948 I/GsaVoiceInteractionSrv( 1356): O received Intent { act=android.intent.action.PACKAGE_REMOVED dat=package:mustachebooth.iconosys.eng flg=0x4000010 (has extras) }
+06-10 01:35:54.954 I/RoleManagerService(  478): Granting default roles...
+06-10 01:35:54.957 I/InputReader(  478): Reconfiguring input devices, changes=KEYBOARD_LAYOUTS | 
+06-10 01:35:54.959 I/GeofencerStateMachine( 1060): removeGeofences: removeRequest=RemoveGeofencingRequest[REMOVE_ALL packageName=mustachebooth.iconosys.eng]
+06-10 01:35:54.960 W/WifiService(  478): Couldn't get PackageInfo for package:mustachebooth.iconosys.eng
+06-10 01:35:54.960 D/WifiService(  478): Remove settings for package:mustachebooth.iconosys.eng
+06-10 01:35:54.961 D/WifiConfigManager(  478): Remove all networks for app ApplicationInfo{e71517b mustachebooth.iconosys.eng}
+06-10 01:35:54.970 I/ProvidersCache(10862): Provider returned no roots. Possibly naughty: com.google.android.apps.docs.storage
+06-10 01:35:54.971 D/CarrierSvcBindHelper(  803): No carrier app for: 0
+06-10 01:35:54.973 E/PackageManager(  478): failed to find package mustachebooth.iconosys.eng
+06-10 01:35:54.973 E/OverlayManager(  478): Failed to change enabled overlays for mustachebooth.iconosys.eng user 0
+06-10 01:35:54.976 D/WifiConfigStore(  478): Writing to stores completed in 12 ms.
+06-10 01:35:54.976 I/PasspointManager(  478): No app ops listener found for mustachebooth.iconosys.eng
+06-10 01:35:54.984 W/WifiService(  478): Couldn't get PackageInfo for package:mustachebooth.iconosys.eng
+06-10 01:35:54.984 D/WifiService(  478): Remove settings for package:mustachebooth.iconosys.eng
+06-10 01:35:54.985 D/WifiConfigManager(  478): Remove all networks for app ApplicationInfo{f375be6 mustachebooth.iconosys.eng}
+06-10 01:35:54.992 E/CarrierServices( 2306): [2] ecr.a: Invalid signature found for com.android.contacts: E39B7BFBE0A67D78292F6CC62E06CA27A2EBF255
+06-10 01:35:54.996 D/WifiConfigStore(  478): Writing to stores completed in 11 ms.
+06-10 01:35:54.996 I/PasspointManager(  478): No app ops listener found for mustachebooth.iconosys.eng
+06-10 01:35:54.997 E/CarrierServices( 2306): [2] ecr.a: Invalid signature found for com.android.contacts: E39B7BFBE0A67D78292F6CC62E06CA27A2EBF255
+06-10 01:35:54.999 I/ConditionProviders(  478): Disallowing condition provider mustachebooth.iconosys.eng
+06-10 01:35:55.001 D/AF::TrackHandle(10211): OpPlayAudio: track:59 usage:13 not muted
+06-10 01:35:55.001 I/chatty  (10211): uid=1041(audioserver) Binder:10211_6 identical 3 lines
+06-10 01:35:55.001 D/AF::TrackHandle(10211): OpPlayAudio: track:59 usage:13 not muted
+06-10 01:35:55.002 D/AF::TrackHandle(10211): OpPlayAudio: track:56 usage:13 not muted
+06-10 01:35:55.002 I/chatty  (10211): uid=1041(audioserver) /system/bin/audioserver identical 2 lines
+06-10 01:35:55.002 D/AF::TrackHandle(10211): OpPlayAudio: track:56 usage:13 not muted
+06-10 01:35:55.002 D/AF::TrackHandle(10211): OpPlayAudio: track:59 usage:13 not muted
+06-10 01:35:55.002 I/chatty  (10211): uid=1041(audioserver) Binder:10211_6 identical 5 lines
+06-10 01:35:55.002 D/AF::TrackHandle(10211): OpPlayAudio: track:59 usage:13 not muted
+06-10 01:35:55.002 D/AF::TrackHandle(10211): OpPlayAudio: track:56 usage:13 not muted
+06-10 01:35:55.002 D/AF::TrackHandle(10211): OpPlayAudio: track:59 usage:13 not muted
+06-10 01:35:55.002 I/chatty  (10211): uid=1041(audioserver) Binder:10211_6 identical 2 lines
+06-10 01:35:55.002 D/AF::TrackHandle(10211): OpPlayAudio: track:59 usage:13 not muted
+06-10 01:35:55.002 D/AF::TrackHandle(10211): OpPlayAudio: track:56 usage:13 not muted
+06-10 01:35:55.003 I/chatty  (10211): uid=1041(audioserver) /system/bin/audioserver identical 6 lines
+06-10 01:35:55.003 D/AF::TrackHandle(10211): OpPlayAudio: track:56 usage:13 not muted
+06-10 01:35:55.004 D/AF::TrackHandle(10211): OpPlayAudio: track:55 usage:13 not muted
+06-10 01:35:55.004 D/AF::TrackHandle(10211): OpPlayAudio: track:57 usage:13 not muted
+06-10 01:35:55.006 D/AF::TrackHandle(10211): OpPlayAudio: track:57 usage:13 not muted
+06-10 01:35:55.007 D/AF::TrackHandle(10211): OpPlayAudio: track:55 usage:13 not muted
+06-10 01:35:55.007 D/AF::TrackHandle(10211): OpPlayAudio: track:58 usage:13 not muted
+06-10 01:35:55.009 D/AF::TrackHandle(10211): OpPlayAudio: track:56 usage:13 not muted
+06-10 01:35:55.010 I/chatty  (10211): uid=1041(audioserver) /system/bin/audioserver identical 1 line
+06-10 01:35:55.010 D/AF::TrackHandle(10211): OpPlayAudio: track:56 usage:13 not muted
+06-10 01:35:55.010 D/AF::TrackHandle(10211): OpPlayAudio: track:55 usage:13 not muted
+06-10 01:35:55.011 I/chatty  (10211): uid=1041(audioserver) Binder:10211_2 identical 6 lines
+06-10 01:35:55.011 D/AF::TrackHandle(10211): OpPlayAudio: track:55 usage:13 not muted
+06-10 01:35:55.012 D/AF::TrackHandle(10211): OpPlayAudio: track:58 usage:13 not muted
+06-10 01:35:55.012 D/AF::TrackHandle(10211): OpPlayAudio: track:55 usage:13 not muted
+06-10 01:35:55.012 I/chatty  (10211): uid=1041(audioserver) Binder:10211_2 identical 2 lines
+06-10 01:35:55.012 D/AF::TrackHandle(10211): OpPlayAudio: track:55 usage:13 not muted
+06-10 01:35:55.012 D/AF::TrackHandle(10211): OpPlayAudio: track:58 usage:13 not muted
+06-10 01:35:55.013 I/chatty  (10211): uid=1041(audioserver) Binder:10211_7 identical 2 lines
+06-10 01:35:55.013 D/AF::TrackHandle(10211): OpPlayAudio: track:58 usage:13 not muted
+06-10 01:35:55.013 D/AF::TrackHandle(10211): OpPlayAudio: track:57 usage:13 not muted
+06-10 01:35:55.013 D/AF::TrackHandle(10211): OpPlayAudio: track:58 usage:13 not muted
+06-10 01:35:55.013 D/AF::TrackHandle(10211): OpPlayAudio: track:55 usage:13 not muted
+06-10 01:35:55.013 D/AF::TrackHandle(10211): OpPlayAudio: track:55 usage:13 not muted
+06-10 01:35:55.014 D/AF::TrackHandle(10211): OpPlayAudio: track:57 usage:13 not muted
+06-10 01:35:55.014 I/chatty  (10211): uid=1041(audioserver) Binder:10211_5 identical 2 lines
+06-10 01:35:55.015 D/AF::TrackHandle(10211): OpPlayAudio: track:57 usage:13 not muted
+06-10 01:35:55.015 D/AF::TrackHandle(10211): OpPlayAudio: track:58 usage:13 not muted
+06-10 01:35:55.015 D/AF::TrackHandle(10211): OpPlayAudio: track:57 usage:13 not muted
+06-10 01:35:55.015 D/AF::TrackHandle(10211): OpPlayAudio: track:58 usage:13 not muted
+06-10 01:35:55.015 D/AF::TrackHandle(10211): OpPlayAudio: track:57 usage:13 not muted
+06-10 01:35:55.015 I/chatty  (10211): uid=1041(audioserver) Binder:10211_5 identical 1 line
+06-10 01:35:55.016 D/AF::TrackHandle(10211): OpPlayAudio: track:57 usage:13 not muted
+06-10 01:35:55.016 D/AF::TrackHandle(10211): OpPlayAudio: track:58 usage:13 not muted
+06-10 01:35:55.016 D/AF::TrackHandle(10211): OpPlayAudio: track:58 usage:13 not muted
+06-10 01:35:55.016 I/Fitness ( 1060): FitCleanupIntentOperation received Intent android.intent.action.PACKAGE_REMOVED [CONTEXT service_id=17 ]
+06-10 01:35:55.016 D/AF::TrackHandle(10211): OpPlayAudio: track:58 usage:13 not muted
+06-10 01:35:55.016 I/chatty  (10211): uid=1041(audioserver) Binder:10211_7 identical 3 lines
+06-10 01:35:55.016 D/AF::TrackHandle(10211): OpPlayAudio: track:58 usage:13 not muted
+06-10 01:35:55.017 D/AF::TrackHandle(10211): OpPlayAudio: track:57 usage:13 not muted
+06-10 01:35:55.017 I/chatty  (10211): uid=1041(audioserver) Binder:10211_5 identical 3 lines
+06-10 01:35:55.017 D/AF::TrackHandle(10211): OpPlayAudio: track:57 usage:13 not muted
+06-10 01:35:55.024 W/System  (  987): A resource failed to call release. 
+06-10 01:35:55.024 I/chatty  (  987): uid=10152(com.google.android.apps.nexuslauncher) FinalizerDaemon identical 1 line
+06-10 01:35:55.024 W/System  (  987): A resource failed to call release. 
+06-10 01:35:55.038 I/ContentMaintenance( 1192): Internal cache bytes used: 0; limit: 100000000; download size: 0
+06-10 01:35:55.040 I/gle.android.gm( 1192): Waiting for a blocking GC ProfileSaver
+06-10 01:35:55.040 W/SQLiteLog( 1192): (28) double-quoted string literal: "mustachebooth.iconosys.eng"
+06-10 01:35:55.049 I/RealtimeCacheCleanup( 1192): Beginning Realtime garbage collection.
+06-10 01:35:55.051 I/RealtimeCacheCleanup( 1192): Finished Realtime garbage collection.
+06-10 01:35:55.052 D/HostConnection(  478): HostConnection::get() New Host Connection established 0xb4000078c59dc6d0, tid 6223
+06-10 01:35:55.053 I/Icing   ( 1192): doRemovePackageData mustachebooth.iconosys.eng [CONTEXT service_id=21 ]
+06-10 01:35:55.054 D/HostConnection(  478): HostComposition ext ANDROID_EMU_CHECKSUM_HELPER_v1 ANDROID_EMU_native_sync_v2 ANDROID_EMU_native_sync_v3 ANDROID_EMU_native_sync_v4 ANDROID_EMU_dma_v1 ANDROID_EMU_direct_mem ANDROID_EMU_host_composition_v1 ANDROID_EMU_host_composition_v2 ANDROID_EMU_vulkan ANDROID_EMU_deferred_vulkan_commands ANDROID_EMU_vulkan_null_optional_strings ANDROID_EMU_vulkan_create_resources_with_requirements ANDROID_EMU_YUV_Cache ANDROID_EMU_vulkan_ignored_handles ANDROID_EMU_has_shared_slots_host_memory_allocator ANDROID_EMU_vulkan_free_memory_sync ANDROID_EMU_vulkan_shader_float16_int8 ANDROID_EMU_vulkan_async_queue_submit ANDROID_EMU_sync_buffer_data ANDROID_EMU_vulkan_async_qsri ANDROID_EMU_read_color_buffer_dma ANDROID_EMU_hwc_color_transform GL_OES_EGL_image_external_essl3 GL_OES_vertex_array_object ANDROID_EMU_host_side_tracing ANDROID_EMU_gles_max_version_3_0 
+06-10 01:35:55.054 W/OpenGLRenderer(  478): Failed to choose config with EGL_SWAP_BEHAVIOR_PRESERVED, retrying without...
+06-10 01:35:55.054 D/EGL_emulation(  478): eglCreateContext: 0xb4000078b5a68600: maj 3 min 0 rcv 3
+06-10 01:35:55.055 D/EGL_emulation(  478): eglMakeCurrent: 0xb4000078b5a68600: ver 3 0 (tinfo 0xb400007855a1fea0) (first time)
+06-10 01:35:55.064 D/Launcher.Model(  987): package removed received mustachebooth.iconosys.eng
+06-10 01:35:55.064 D/PackageUpdatedTask(  987): Removing app iconmustachebooth.iconosys.eng
+06-10 01:35:55.065 I/gle.android.gm( 1192): Background concurrent copying GC freed 19942(1193KB) AllocSpace objects, 6(248KB) LOS objects, 49% free, 10MB/20MB, paused 24us total 132.604ms
+06-10 01:35:55.065 I/gle.android.gm( 1192): WaitForGcToComplete blocked ProfileSaver on HeapTrim for 25.177ms
+06-10 01:35:55.069 I/Icing   ( 1192): IndexChimeraService.getServiceInterface callingPackage=com.google.android.gms componentName=AppsCorpus serviceId=36 [CONTEXT service_id=21 ]
+06-10 01:35:55.080 D/ModelWriter(  987): removing items from db 
+06-10 01:35:55.080 D/ModelWriter(  987): java.lang.Exception
+06-10 01:35:55.080 D/ModelWriter(  987): 	at com.android.launcher3.model.ModelWriter.deleteItemsFromDatabase(SourceFile:4)
+06-10 01:35:55.080 D/ModelWriter(  987): 	at com.android.launcher3.model.BaseModelUpdateTask.deleteAndBindComponentsRemoved(SourceFile:2)
+06-10 01:35:55.080 D/ModelWriter(  987): 	at com.android.launcher3.model.PackageUpdatedTask.execute(SourceFile:158)
+06-10 01:35:55.080 D/ModelWriter(  987): 	at com.android.launcher3.model.BaseModelUpdateTask.run(SourceFile:2)
+06-10 01:35:55.080 D/ModelWriter(  987): 	at android.os.Handler.handleCallback(Handler.java:938)
+06-10 01:35:55.080 D/ModelWriter(  987): 	at android.os.Handler.dispatchMessage(Handler.java:99)
+06-10 01:35:55.080 D/ModelWriter(  987): 	at android.os.Looper.loop(Looper.java:223)
+06-10 01:35:55.080 D/ModelWriter(  987): 	at android.os.HandlerThread.run(HandlerThread.java:67)
+06-10 01:35:55.089 I/Icing   ( 1192): Usage reports ok 0, Failed Usage reports 0, indexed 0, rejected 0 [CONTEXT service_id=21 ]
+06-10 01:35:55.098 I/Icing   ( 1192): Indexing com.google.android.gms-apps from com.google.android.gms [CONTEXT service_id=21 ]
+06-10 01:35:55.101 I/Icing   ( 1192): Indexing done com.google.android.gms-apps [CONTEXT service_id=21 ]
+06-10 01:35:55.188 I/MediaProvider( 1313): Begin Intent { act=android.intent.action.PACKAGE_FULLY_REMOVED dat=package:mustachebooth.iconosys.eng flg=0x5000010 cmp=com.google.android.providers.media.module/com.android.providers.media.MediaService (has extras) }
+06-10 01:35:55.189 I/MediaProvider( 1313): Invalidating LocalCallingIdentity cache for package mustachebooth.iconosys.eng. Reason: owner_package_changed:/storage/emulated/0/PhotoLucky/mustache_iconosys.jpg
+06-10 01:35:55.189 I/MediaProvider( 1313): Invalidating LocalCallingIdentity cache for package mustachebooth.iconosys.eng. Reason: owner_package_changed:/storage/emulated/0/Pictures/mustache_iconosys0.jpg
+06-10 01:35:55.190 D/MediaProvider( 1313): Orphaned 2 items belonging to mustachebooth.iconosys.eng on /data/user/0/com.google.android.providers.media.module/databases/external.db
+06-10 01:35:55.190 I/MediaProvider( 1313): End Intent { act=android.intent.action.PACKAGE_FULLY_REMOVED dat=package:mustachebooth.iconosys.eng flg=0x5000010 cmp=com.google.android.providers.media.module/com.android.providers.media.MediaService (has extras) }
+06-10 01:36:00.005 D/KeyguardClockSwitch(  634): Updating clock: 136
+06-10 01:36:02.509 I/ActivityManager(  478): Force stopping com.anddoes.fancywidget.pro appid=10180 user=-1: deletePackageX
+06-10 01:36:02.509 I/ActivityManager(  478): Killing 18053:com.anddoes.fancywidget.pro/u0a180 (adj 900): stop com.anddoes.fancywidget.pro due to deletePackageX
+06-10 01:36:02.517 I/Zygote  (  272): Process 18053 exited due to signal 9 (Killed)
+06-10 01:36:02.517 W/ActivityManager(  478): setHasOverlayUi called on unknown pid: 18053
+06-10 01:36:02.533 I/keystore(  374): clear_uid 10180
+06-10 01:36:02.533 D/PackageManager(  478): Instant App installer not found with android.intent.action.INSTALL_INSTANT_APP_PACKAGE
+06-10 01:36:02.533 D/PackageManager(  478): Clear ephemeral installer activity
+06-10 01:36:02.533 E/PermissionMonitor(  478): unknown permission type: -1for uid: 10180
+06-10 01:36:02.551 I/libprocessgroup(  478): Successfully killed process cgroup uid 10180 pid 18053 in 41ms
+06-10 01:36:02.558 I/system_server(  478): Explicit concurrent copying GC freed 154004(6881KB) AllocSpace objects, 72(4040KB) LOS objects, 49% free, 15MB/31MB, paused 14us total 24.799ms
+06-10 01:36:02.562 I/incfs-dataloaderconnector(  478): Reported status back to IncrementalService. DataLoaderId=46, status=0
+06-10 01:36:02.563 I/IncrementalService(  478): Unmounting and cleaning up mount 46 with root '/data/incremental/MT_data_app_vmdl473'
+06-10 01:36:02.563 I/IncrementalService(  478):   bind: /data/app/~~8ESjfZOupSvK5NXe5F0H8w==
+06-10 01:36:02.563 W/incfs   (  170): IncFs_Unmount: umount(force) failed, detaching '/data/app/~~8ESjfZOupSvK5NXe5F0H8w==': Device or resource busy
+06-10 01:36:02.563 I/IncrementalService(  478):   root: /data/incremental/MT_data_app_vmdl473
+06-10 01:36:02.567 I/cmd     (18683): oneway function results will be dropped but finished with status OK and parcel size 4
+06-10 01:36:02.568 I/ActivityManager(  478): Force stopping com.anddoes.fancywidget.pro appid=10180 user=0: pkg removed
+06-10 01:36:02.584 I/MediaProvider( 1313): Invalidating LocalCallingIdentity cache for package com.anddoes.fancywidget.pro. Reason: package android.intent.action.PACKAGE_REMOVED
+06-10 01:36:02.585 I/RoleManagerService(  478): Granting default roles...
+06-10 01:36:02.585 W/BroadcastQueue(  478): Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_REMOVED dat=package:com.anddoes.fancywidget.pro flg=0x4000010 (has extras) } to com.android.musicfx/.Compatibility$Receiver
+06-10 01:36:02.585 W/BroadcastQueue(  478): Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_REMOVED dat=package:com.anddoes.fancywidget.pro flg=0x4000010 (has extras) } to com.google.android.apps.maps/com.google.android.libraries.social.peoplekit.thirdparty.viewcontrollers.ThirdPartyReceiver
+06-10 01:36:02.585 W/BroadcastQueue(  478): Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_REMOVED dat=package:com.anddoes.fancywidget.pro flg=0x4000010 (has extras) } to com.google.android.apps.photos/com.google.android.libraries.social.peoplekit.thirdparty.viewcontrollers.ThirdPartyReceiver
+06-10 01:36:02.585 W/BroadcastQueue(  478): Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_REMOVED dat=package:com.anddoes.fancywidget.pro flg=0x4000010 (has extras) } to com.google.android.gms/.games.chimera.GamesSystemBroadcastReceiverProxy
+06-10 01:36:02.585 W/BroadcastQueue(  478): Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_REMOVED dat=package:com.anddoes.fancywidget.pro flg=0x4000010 (has extras) } to com.google.android.gms/.chimera.GmsIntentOperationService$PersistentTrustedReceiver
+06-10 01:36:02.585 W/BroadcastQueue(  478): Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_REMOVED dat=package:com.anddoes.fancywidget.pro flg=0x4000010 (has extras) } to com.google.android.googlequicksearchbox/com.google.android.apps.gsa.googlequicksearchbox.GelStubAppWatcher
+06-10 01:36:02.585 V/StorageManagerService(  478): Package com.anddoes.fancywidget.pro does not have legacy storage
+06-10 01:36:02.586 I/GsaVoiceInteractionSrv( 1356): O received Intent { act=android.intent.action.PACKAGE_REMOVED dat=package:com.anddoes.fancywidget.pro flg=0x4000010 (has extras) }
+06-10 01:36:02.586 E/PackageManager(  478): failed to find package com.anddoes.fancywidget.pro
+06-10 01:36:02.586 E/OverlayManager(  478): Failed to change enabled overlays for com.anddoes.fancywidget.pro user 0
+06-10 01:36:02.586 V/AvrcpMediaPlayerList(  616): mPackageChangedBroadcastReceiver: action: android.intent.action.PACKAGE_REMOVED
+06-10 01:36:02.591 I/GeofencerStateMachine( 1060): removeGeofences: removeRequest=RemoveGeofencingRequest[REMOVE_ALL packageName=com.anddoes.fancywidget.pro]
+06-10 01:36:02.596 I/InputReader(  478): Reconfiguring input devices, changes=KEYBOARD_LAYOUTS | 
+06-10 01:36:02.597 W/WifiService(  478): Couldn't get PackageInfo for package:com.anddoes.fancywidget.pro
+06-10 01:36:02.597 D/WifiService(  478): Remove settings for package:com.anddoes.fancywidget.pro
+06-10 01:36:02.597 D/WifiConfigManager(  478): Remove all networks for app ApplicationInfo{40fbf9d com.anddoes.fancywidget.pro}
+06-10 01:36:02.606 I/ConditionProviders(  478): Disallowing condition provider com.anddoes.fancywidget.pro
+06-10 01:36:02.607 D/WifiConfigStore(  478): Writing to stores completed in 8 ms.
+06-10 01:36:02.607 I/PasspointManager(  478): No app ops listener found for com.anddoes.fancywidget.pro
+06-10 01:36:02.607 D/CarrierSvcBindHelper(  803): No carrier app for: 0
+06-10 01:36:02.609 I/RollbackManager(  478): broadcast=ACTION_PACKAGE_FULLY_REMOVED pkg=com.anddoes.fancywidget.pro
+06-10 01:36:02.609 W/WifiService(  478): Couldn't get PackageInfo for package:com.anddoes.fancywidget.pro
+06-10 01:36:02.609 D/WifiService(  478): Remove settings for package:com.anddoes.fancywidget.pro
+06-10 01:36:02.610 D/AF::TrackHandle(10211): OpPlayAudio: track:57 usage:13 not muted
+06-10 01:36:02.610 D/AF::TrackHandle(10211): OpPlayAudio: track:58 usage:13 not muted
+06-10 01:36:02.610 D/AF::TrackHandle(10211): OpPlayAudio: track:57 usage:13 not muted
+06-10 01:36:02.610 D/AF::TrackHandle(10211): OpPlayAudio: track:58 usage:13 not muted
+06-10 01:36:02.610 D/AF::TrackHandle(10211): OpPlayAudio: track:59 usage:13 not muted
+06-10 01:36:02.610 D/AF::TrackHandle(10211): OpPlayAudio: track:57 usage:13 not muted
+06-10 01:36:02.611 D/AF::TrackHandle(10211): OpPlayAudio: track:59 usage:13 not muted
+06-10 01:36:02.611 I/chatty  (10211): uid=1041(audioserver) Binder:10211_7 identical 3 lines
+06-10 01:36:02.611 D/AF::TrackHandle(10211): OpPlayAudio: track:59 usage:13 not muted
+06-10 01:36:02.611 D/AF::TrackHandle(10211): OpPlayAudio: track:55 usage:13 not muted
+06-10 01:36:02.611 D/AF::TrackHandle(10211): OpPlayAudio: track:59 usage:13 not muted
+06-10 01:36:02.611 D/AF::TrackHandle(10211): OpPlayAudio: track:58 usage:13 not muted
+06-10 01:36:02.611 D/AF::TrackHandle(10211): OpPlayAudio: track:59 usage:13 not muted
+06-10 01:36:02.611 I/chatty  (10211): uid=1041(audioserver) Binder:10211_7 identical 3 lines
+06-10 01:36:02.611 D/AF::TrackHandle(10211): OpPlayAudio: track:59 usage:13 not muted
+06-10 01:36:02.611 D/AF::TrackHandle(10211): OpPlayAudio: track:57 usage:13 not muted
+06-10 01:36:02.611 D/WifiConfigManager(  478): Remove all networks for app ApplicationInfo{b1f7779 com.anddoes.fancywidget.pro}
+06-10 01:36:02.611 D/AF::TrackHandle(10211): OpPlayAudio: track:57 usage:13 not muted
+06-10 01:36:02.611 I/chatty  (10211): uid=1041(audioserver) Binder:10211_2 identical 1 line
+06-10 01:36:02.611 D/AF::TrackHandle(10211): OpPlayAudio: track:57 usage:13 not muted
+06-10 01:36:02.611 D/AF::TrackHandle(10211): OpPlayAudio: track:56 usage:13 not muted
+06-10 01:36:02.611 D/AF::TrackHandle(10211): OpPlayAudio: track:57 usage:13 not muted
+06-10 01:36:02.611 D/AF::TrackHandle(10211): OpPlayAudio: track:59 usage:13 not muted
+06-10 01:36:02.612 I/chatty  (10211): uid=1041(audioserver) Binder:10211_7 identical 2 lines
+06-10 01:36:02.612 D/AF::TrackHandle(10211): OpPlayAudio: track:59 usage:13 not muted
+06-10 01:36:02.612 D/AF::TrackHandle(10211): OpPlayAudio: track:58 usage:13 not muted
+06-10 01:36:02.612 D/AF::TrackHandle(10211): OpPlayAudio: track:56 usage:13 not muted
+06-10 01:36:02.612 D/AF::TrackHandle(10211): OpPlayAudio: track:57 usage:13 not muted
+06-10 01:36:02.612 D/AF::TrackHandle(10211): OpPlayAudio: track:55 usage:13 not muted
+06-10 01:36:02.612 D/AF::TrackHandle(10211): OpPlayAudio: track:56 usage:13 not muted
+06-10 01:36:02.613 D/AF::TrackHandle(10211): OpPlayAudio: track:58 usage:13 not muted
+06-10 01:36:02.613 I/chatty  (10211): uid=1041(audioserver) Binder:10211_5 identical 4 lines
+06-10 01:36:02.614 D/AF::TrackHandle(10211): OpPlayAudio: track:58 usage:13 not muted
+06-10 01:36:02.614 D/AF::TrackHandle(10211): OpPlayAudio: track:55 usage:13 not muted
+06-10 01:36:02.614 D/AF::TrackHandle(10211): OpPlayAudio: track:58 usage:13 not muted
+06-10 01:36:02.614 D/AF::TrackHandle(10211): OpPlayAudio: track:58 usage:13 not muted
+06-10 01:36:02.614 D/AF::TrackHandle(10211): OpPlayAudio: track:56 usage:13 not muted
+06-10 01:36:02.614 D/AF::TrackHandle(10211): OpPlayAudio: track:58 usage:13 not muted
+06-10 01:36:02.614 D/AF::TrackHandle(10211): OpPlayAudio: track:56 usage:13 not muted
+06-10 01:36:02.614 D/AF::TrackHandle(10211): OpPlayAudio: track:56 usage:13 not muted
+06-10 01:36:02.615 D/AF::TrackHandle(10211): OpPlayAudio: track:58 usage:13 not muted
+06-10 01:36:02.615 D/AF::TrackHandle(10211): OpPlayAudio: track:58 usage:13 not muted
+06-10 01:36:02.615 D/AF::TrackHandle(10211): OpPlayAudio: track:57 usage:13 not muted
+06-10 01:36:02.615 D/AF::TrackHandle(10211): OpPlayAudio: track:56 usage:13 not muted
+06-10 01:36:02.616 I/chatty  (10211): uid=1041(audioserver) /system/bin/audioserver identical 3 lines
+06-10 01:36:02.616 D/AF::TrackHandle(10211): OpPlayAudio: track:56 usage:13 not muted
+06-10 01:36:02.616 D/AF::TrackHandle(10211): OpPlayAudio: track:57 usage:13 not muted
+06-10 01:36:02.616 D/AF::TrackHandle(10211): OpPlayAudio: track:58 usage:13 not muted
+06-10 01:36:02.616 D/AF::TrackHandle(10211): OpPlayAudio: track:56 usage:13 not muted
+06-10 01:36:02.616 D/AF::TrackHandle(10211): OpPlayAudio: track:57 usage:13 not muted
+06-10 01:36:02.616 D/AF::TrackHandle(10211): OpPlayAudio: track:56 usage:13 not muted
+06-10 01:36:02.616 D/AF::TrackHandle(10211): OpPlayAudio: track:57 usage:13 not muted
+06-10 01:36:02.617 D/AF::TrackHandle(10211): OpPlayAudio: track:56 usage:13 not muted
+06-10 01:36:02.617 D/AF::TrackHandle(10211): OpPlayAudio: track:57 usage:13 not muted
+06-10 01:36:02.617 D/AF::TrackHandle(10211): OpPlayAudio: track:56 usage:13 not muted
+06-10 01:36:02.617 D/AF::TrackHandle(10211): OpPlayAudio: track:57 usage:13 not muted
+06-10 01:36:02.617 D/AF::TrackHandle(10211): OpPlayAudio: track:56 usage:13 not muted
+06-10 01:36:02.617 D/AF::TrackHandle(10211): OpPlayAudio: track:57 usage:13 not muted
+06-10 01:36:02.617 D/WifiConfigStore(  478): Writing to stores completed in 6 ms.
+06-10 01:36:02.617 I/PasspointManager(  478): No app ops listener found for com.anddoes.fancywidget.pro
+06-10 01:36:02.617 D/AF::TrackHandle(10211): OpPlayAudio: track:55 usage:13 not muted
+06-10 01:36:02.618 I/chatty  (10211): uid=1041(audioserver) Binder:10211_6 identical 9 lines
+06-10 01:36:02.618 D/AF::TrackHandle(10211): OpPlayAudio: track:55 usage:13 not muted
+06-10 01:36:02.622 E/CarrierServices( 2306): [2] ecr.a: Invalid signature found for com.android.contacts: E39B7BFBE0A67D78292F6CC62E06CA27A2EBF255
+06-10 01:36:02.626 E/CarrierServices( 2306): [2] ecr.a: Invalid signature found for com.android.contacts: E39B7BFBE0A67D78292F6CC62E06CA27A2EBF255
+06-10 01:36:02.626 D/AF::TrackHandle(10211): OpPlayAudio: track:55 usage:13 not muted
+06-10 01:36:02.626 D/AF::TrackHandle(10211): OpPlayAudio: track:55 usage:13 not muted
+06-10 01:36:02.635 I/ProvidersCache(10862): Provider returned no roots. Possibly naughty: com.google.android.apps.docs.storage
+06-10 01:36:02.641 I/Fitness ( 1060): FitCleanupIntentOperation received Intent android.intent.action.PACKAGE_REMOVED [CONTEXT service_id=17 ]
+06-10 01:36:02.653 W/SQLiteLog( 1192): (28) double-quoted string literal: "com.anddoes.fancywidget.pro"
+06-10 01:36:02.653 I/Icing   ( 1192): doRemovePackageData com.anddoes.fancywidget.pro [CONTEXT service_id=21 ]
+06-10 01:36:02.663 D/Launcher.Model(  987): package removed received com.anddoes.fancywidget.pro
+06-10 01:36:02.663 D/PackageUpdatedTask(  987): Removing app iconcom.anddoes.fancywidget.pro
+06-10 01:36:02.670 D/ModelWriter(  987): removing items from db 
+06-10 01:36:02.670 D/ModelWriter(  987): java.lang.Exception
+06-10 01:36:02.670 D/ModelWriter(  987): 	at com.android.launcher3.model.ModelWriter.deleteItemsFromDatabase(SourceFile:4)
+06-10 01:36:02.670 D/ModelWriter(  987): 	at com.android.launcher3.model.BaseModelUpdateTask.deleteAndBindComponentsRemoved(SourceFile:2)
+06-10 01:36:02.670 D/ModelWriter(  987): 	at com.android.launcher3.model.PackageUpdatedTask.execute(SourceFile:158)
+06-10 01:36:02.670 D/ModelWriter(  987): 	at com.android.launcher3.model.BaseModelUpdateTask.run(SourceFile:2)
+06-10 01:36:02.670 D/ModelWriter(  987): 	at android.os.Handler.handleCallback(Handler.java:938)
+06-10 01:36:02.670 D/ModelWriter(  987): 	at android.os.Handler.dispatchMessage(Handler.java:99)
+06-10 01:36:02.670 D/ModelWriter(  987): 	at android.os.Looper.loop(Looper.java:223)
+06-10 01:36:02.670 D/ModelWriter(  987): 	at android.os.HandlerThread.run(HandlerThread.java:67)
+06-10 01:36:02.671 I/Icing   ( 1192): Indexing com.google.android.gms-apps from com.google.android.gms [CONTEXT service_id=21 ]
+06-10 01:36:02.673 I/Icing   ( 1192): Indexing done com.google.android.gms-apps [CONTEXT service_id=21 ]
+06-10 01:36:02.763 I/MediaProvider( 1313): Begin Intent { act=android.intent.action.PACKAGE_FULLY_REMOVED dat=package:com.anddoes.fancywidget.pro flg=0x5000010 cmp=com.google.android.providers.media.module/com.android.providers.media.MediaService (has extras) }
+06-10 01:36:02.763 I/MediaProvider( 1313): End Intent { act=android.intent.action.PACKAGE_FULLY_REMOVED dat=package:com.anddoes.fancywidget.pro flg=0x5000010 cmp=com.google.android.providers.media.module/com.android.providers.media.MediaService (has extras) }
+06-10 01:36:05.263 W/UriGrantsManagerService(  478): No permission grants found for com.google.android.apps.photos
+06-10 01:36:05.263 W/UriGrantsManagerService(  478): No permission grants found for com.google.android.apps.photos
+06-10 01:36:05.291 W/UriGrantsManagerService(  478): No permission grants found for com.google.android.apps.photos
+06-10 01:36:16.600 W/Binder:194_2(  194): type=1400 audit(0.0:997): avc: denied { read } for name="wakeup4" dev="sysfs" ino=16424 scontext=u:r:system_suspend:s0 tcontext=u:object_r:sysfs:s0 tclass=dir permissive=0
+06-10 01:36:16.600 W/Binder:194_2(  194): type=1400 audit(0.0:998): avc: denied { read } for name="wakeup2" dev="sysfs" ino=15641 scontext=u:r:system_suspend:s0 tcontext=u:object_r:sysfs:s0 tclass=dir permissive=0
+06-10 01:36:16.604 W/Binder:194_2(  194): type=1400 audit(0.0:999): avc: denied { read } for name="wakeup0" dev="sysfs" ino=13112 scontext=u:r:system_suspend:s0 tcontext=u:object_r:sysfs:s0 tclass=dir permissive=0
+06-10 01:36:16.603 E/android.system.suspend@1.0-service(  194): Error opening kernel wakelock stats for: wakeup4: Permission denied
+06-10 01:36:16.603 E/android.system.suspend@1.0-service(  194): Error opening kernel wakelock stats for: wakeup2: Permission denied
+06-10 01:36:16.604 E/android.system.suspend@1.0-service(  194): Error opening kernel wakelock stats for: wakeup0: Permission denied
+06-10 01:36:16.604 W/Binder:194_2(  194): type=1400 audit(0.0:1000): avc: denied { read } for name="wakeup5" dev="sysfs" ino=16487 scontext=u:r:system_suspend:s0 tcontext=u:object_r:sysfs:s0 tclass=dir permissive=0
+06-10 01:36:16.604 E/android.system.suspend@1.0-service(  194): Error opening kernel wakelock stats for: wakeup5: Permission denied
+06-10 01:36:16.604 W/Binder:194_2(  194): type=1400 audit(0.0:1001): avc: denied { read } for name="wakeup3" dev="sysfs" ino=15691 scontext=u:r:system_suspend:s0 tcontext=u:object_r:sysfs:s0 tclass=dir permissive=0
+06-10 01:36:16.605 E/android.system.suspend@1.0-service(  194): Error opening kernel wakelock stats for: wakeup3: Permission denied
+06-10 01:36:16.605 E/android.system.suspend@1.0-service(  194): Error opening kernel wakelock stats for: wakeup1: Permission denied
+06-10 01:36:16.607 W/audit   (    0): audit_lost=240 audit_rate_limit=5 audit_backlog_limit=64
+06-10 01:36:16.607 E/audit   (    0): rate limit exceeded
+06-10 01:36:25.207 I/GmscoreIpa( 1192): Starting mediastore instant index
+06-10 01:36:26.045 I/ContentMaintenance( 1192): Internal cache bytes used: 0; limit: 100000000; download size: 0
+06-10 01:36:26.058 I/RealtimeCacheCleanup( 1192): Beginning Realtime garbage collection.
+06-10 01:36:26.058 I/RealtimeCacheCleanup( 1192): Finished Realtime garbage collection.
+06-10 01:37:00.006 D/KeyguardClockSwitch(  634): Updating clock: 137
+06-10 01:37:09.025 E/WifiScoringParams(  478): Invalid frequency(-1), using 5G as default rssi array
+06-10 01:37:12.785 D/WifiNl80211Manager(  478): Scan result ready event
+06-10 01:37:12.785 D/WifiNative(  478): Scan result ready event
+06-10 01:37:16.500 W/Binder:194_2(  194): type=1400 audit(0.0:1003): avc: denied { read } for name="wakeup4" dev="sysfs" ino=16424 scontext=u:r:system_suspend:s0 tcontext=u:object_r:sysfs:s0 tclass=dir permissive=0
+06-10 01:37:16.503 E/android.system.suspend@1.0-service(  194): Error opening kernel wakelock stats for: wakeup4: Permission denied
+06-10 01:37:16.503 E/android.system.suspend@1.0-service(  194): Error opening kernel wakelock stats for: wakeup2: Permission denied
+06-10 01:37:16.503 E/android.system.suspend@1.0-service(  194): Error opening kernel wakelock stats for: wakeup0: Permission denied
+06-10 01:37:16.506 W/audit   (    0): audit_lost=241 audit_rate_limit=5 audit_backlog_limit=64
+06-10 01:37:16.506 E/audit   (    0): rate limit exceeded
+06-10 01:37:16.504 W/Binder:194_2(  194): type=1400 audit(0.0:1006): avc: denied { read } for name="wakeup5" dev="sysfs" ino=16487 scontext=u:r:system_suspend:s0 tcontext=u:object_r:sysfs:s0 tclass=dir permissive=0
+06-10 01:37:16.504 W/Binder:194_2(  194): type=1400 audit(0.0:1007): avc: denied { read } for name="wakeup3" dev="sysfs" ino=15691 scontext=u:r:system_suspend:s0 tcontext=u:object_r:sysfs:s0 tclass=dir permissive=0
+06-10 01:37:16.504 E/android.system.suspend@1.0-service(  194): Error opening kernel wakelock stats for: wakeup5: Permission denied
+06-10 01:37:16.504 E/android.system.suspend@1.0-service(  194): Error opening kernel wakelock stats for: wakeup3: Permission denied
+06-10 01:37:16.504 E/android.system.suspend@1.0-service(  194): Error opening kernel wakelock stats for: wakeup1: Permission denied
+06-10 01:36:05.305 I/chatty  (  478): uid=1000(system) Binder:478_8 identical 2 lines
+06-10 01:36:05.305 W/UriGrantsManagerService(  478): No permission grants found for com.google.android.apps.photos
+06-10 01:37:16.977 E/ClipboardService(  478): Denying clipboard access to com.google.android.googlequicksearchbox, application is not in focus nor is it a system service for user 0
+06-10 01:37:21.820 W/Conscrypt( 1060): Could not set socket write timeout: java.net.SocketException: Socket closed
+06-10 01:37:21.820 W/Conscrypt( 1060): 	at com.google.android.gms.org.conscrypt.Platform.setSocketWriteTimeout(:com.google.android.gms@201817019@20.18.17 (040400-311416286):2)
+06-10 01:37:21.820 W/Conscrypt( 1060): 	at com.google.android.gms.org.conscrypt.ConscryptFileDescriptorSocket.setSoWriteTimeout(:com.google.android.gms@201817019@20.18.17 (040400-311416286):0)
+06-10 01:37:22.518 W/Conscrypt( 1060): Could not set socket write timeout: java.net.SocketException: Socket closed
+06-10 01:37:22.518 W/Conscrypt( 1060): 	at com.google.android.gms.org.conscrypt.Platform.setSocketWriteTimeout(:com.google.android.gms@201817019@20.18.17 (040400-311416286):2)
+06-10 01:37:22.518 W/Conscrypt( 1060): 	at com.google.android.gms.org.conscrypt.ConscryptFileDescriptorSocket.setSoWriteTimeout(:com.google.android.gms@201817019@20.18.17 (040400-311416286):0)
+06-10 01:37:23.267 E/GmsTaskScheduler( 1060): sendWakeUpEvent called on SchedulerClientBroadcastStrategy
+06-10 01:37:33.400 W/Binder:194_2(  194): type=1400 audit(0.0:1009): avc: denied { read } for name="wakeup4" dev="sysfs" ino=16424 scontext=u:r:system_suspend:s0 tcontext=u:object_r:sysfs:s0 tclass=dir permissive=0
+06-10 01:37:33.401 E/android.system.suspend@1.0-service(  194): Error opening kernel wakelock stats for: wakeup4: Permission denied
+06-10 01:37:33.401 E/android.system.suspend@1.0-service(  194): Error opening kernel wakelock stats for: wakeup2: Permission denied
+06-10 01:37:33.401 E/android.system.suspend@1.0-service(  194): Error opening kernel wakelock stats for: wakeup0: Permission denied
+06-10 01:37:33.402 E/android.system.suspend@1.0-service(  194): Error opening kernel wakelock stats for: wakeup5: Permission denied
+06-10 01:37:33.402 E/android.system.suspend@1.0-service(  194): Error opening kernel wakelock stats for: wakeup3: Permission denied
+06-10 01:37:33.403 E/android.system.suspend@1.0-service(  194): Error opening kernel wakelock stats for: wakeup1: Permission denied
+06-10 01:37:33.404 W/audit   (    0): audit_lost=242 audit_rate_limit=5 audit_backlog_limit=64
+06-10 01:37:33.404 E/audit   (    0): rate limit exceeded
+06-10 01:37:52.344 W/Binder:194_2(  194): type=1400 audit(0.0:1015): avc: denied { read } for name="wakeup4" dev="sysfs" ino=16424 scontext=u:r:system_suspend:s0 tcontext=u:object_r:sysfs:s0 tclass=dir permissive=0
+06-10 01:37:52.348 W/Binder:194_2(  194): type=1400 audit(0.0:1018): avc: denied { read } for name="wakeup5" dev="sysfs" ino=16487 scontext=u:r:system_suspend:s0 tcontext=u:object_r:sysfs:s0 tclass=dir permissive=0
+06-10 01:37:52.350 W/audit   (    0): audit_lost=243 audit_rate_limit=5 audit_backlog_limit=64
+06-10 01:37:52.350 E/audit   (    0): rate limit exceeded
+06-10 01:37:52.346 E/android.system.suspend@1.0-service(  194): Error opening kernel wakelock stats for: wakeup4: Permission denied
+06-10 01:37:52.346 E/android.system.suspend@1.0-service(  194): Error opening kernel wakelock stats for: wakeup2: Permission denied
+06-10 01:37:52.347 E/android.system.suspend@1.0-service(  194): Error opening kernel wakelock stats for: wakeup0: Permission denied
+06-10 01:37:52.348 E/android.system.suspend@1.0-service(  194): Error opening kernel wakelock stats for: wakeup5: Permission denied
+06-10 01:37:52.348 E/android.system.suspend@1.0-service(  194): Error opening kernel wakelock stats for: wakeup3: Permission denied
+06-10 01:37:52.348 E/android.system.suspend@1.0-service(  194): Error opening kernel wakelock stats for: wakeup1: Permission denied
+06-10 01:38:00.009 D/KeyguardClockSwitch(  634): Updating clock: 138
+06-10 01:38:30.492 W/Binder:194_2(  194): type=1400 audit(0.0:1021): avc: denied { read } for name="wakeup4" dev="sysfs" ino=16424 scontext=u:r:system_suspend:s0 tcontext=u:object_r:sysfs:s0 tclass=dir permissive=0
+06-10 01:38:30.492 W/Binder:194_2(  194): type=1400 audit(0.0:1022): avc: denied { read } for name="wakeup2" dev="sysfs" ino=15641 scontext=u:r:system_suspend:s0 tcontext=u:object_r:sysfs:s0 tclass=dir permissive=0
+06-10 01:38:30.496 W/Binder:194_2(  194): type=1400 audit(0.0:1025): avc: denied { read } for name="wakeup3" dev="sysfs" ino=15691 scontext=u:r:system_suspend:s0 tcontext=u:object_r:sysfs:s0 tclass=dir permissive=0
+06-10 01:38:30.494 E/android.system.suspend@1.0-service(  194): Error opening kernel wakelock stats for: wakeup4: Permission denied
+06-10 01:38:30.494 E/android.system.suspend@1.0-service(  194): Error opening kernel wakelock stats for: wakeup2: Permission denied
+06-10 01:38:30.495 E/android.system.suspend@1.0-service(  194): Error opening kernel wakelock stats for: wakeup0: Permission denied
+06-10 01:38:30.495 E/android.system.suspend@1.0-service(  194): Error opening kernel wakelock stats for: wakeup5: Permission denied
+06-10 01:38:30.496 E/android.system.suspend@1.0-service(  194): Error opening kernel wakelock stats for: wakeup3: Permission denied
+06-10 01:38:30.496 E/android.system.suspend@1.0-service(  194): Error opening kernel wakelock stats for: wakeup1: Permission denied
+06-10 01:38:30.498 W/audit   (    0): audit_lost=244 audit_rate_limit=5 audit_backlog_limit=64
+06-10 01:38:30.498 E/audit   (    0): rate limit exceeded
+06-10 01:38:51.224 W/Binder:194_2(  194): type=1400 audit(0.0:1027): avc: denied { read } for name="wakeup4" dev="sysfs" ino=16424 scontext=u:r:system_suspend:s0 tcontext=u:object_r:sysfs:s0 tclass=dir permissive=0
+06-10 01:38:51.228 W/Binder:194_2(  194): type=1400 audit(0.0:1030): avc: denied { read } for name="wakeup5" dev="sysfs" ino=16487 scontext=u:r:system_suspend:s0 tcontext=u:object_r:sysfs:s0 tclass=dir permissive=0
+06-10 01:38:51.228 W/Binder:194_2(  194): type=1400 audit(0.0:1031): avc: denied { read } for name="wakeup3" dev="sysfs" ino=15691 scontext=u:r:system_suspend:s0 tcontext=u:object_r:sysfs:s0 tclass=dir permissive=0
+06-10 01:38:51.232 W/audit   (    0): audit_lost=245 audit_rate_limit=5 audit_backlog_limit=64
+06-10 01:38:51.232 E/audit   (    0): rate limit exceeded
+06-10 01:38:51.225 E/android.system.suspend@1.0-service(  194): Error opening kernel wakelock stats for: wakeup4: Permission denied
+06-10 01:38:51.226 E/android.system.suspend@1.0-service(  194): Error opening kernel wakelock stats for: wakeup2: Permission denied
+06-10 01:38:51.227 E/android.system.suspend@1.0-service(  194): Error opening kernel wakelock stats for: wakeup0: Permission denied
+06-10 01:38:51.229 E/android.system.suspend@1.0-service(  194): Error opening kernel wakelock stats for: wakeup5: Permission denied
+06-10 01:38:51.229 E/android.system.suspend@1.0-service(  194): Error opening kernel wakelock stats for: wakeup3: Permission denied
+06-10 01:38:51.230 E/android.system.suspend@1.0-service(  194): Error opening kernel wakelock stats for: wakeup1: Permission denied
+06-10 01:39:00.010 D/KeyguardClockSwitch(  634): Updating clock: 139
+06-10 01:39:04.830 W/healthd (    0): battery l=100 v=5000 t=25.0 h=2 st=4 c=900000 fc=300000 cc=10 chg=
+06-10 01:39:23.817 D/AndroidRuntime(18739): >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+06-10 01:39:23.816 W/app_process(18739): type=1400 audit(0.0:1033): avc: denied { read } for name="u:object_r:device_config_runtime_native_boot_prop:s0" dev="tmpfs" ino=1556 scontext=u:r:shell:s0 tcontext=u:object_r:device_config_runtime_native_boot_prop:s0 tclass=file permissive=0
+06-10 01:39:23.819 E/libc    (18739): Access denied finding property "persist.device_config.runtime_native_boot.profilebootclasspath"
+06-10 01:39:23.819 E/libc    (18739): Access denied finding property "persist.device_config.runtime_native_boot.enable_apex_image"
+06-10 01:39:23.819 I/AndroidRuntime(18739): Using default boot image
+06-10 01:39:23.819 E/libc    (18739): Access denied finding property "persist.device_config.runtime_native_boot.disable_lock_profiling"
+06-10 01:39:23.819 I/AndroidRuntime(18739): Leaving lock profiling enabled
+06-10 01:39:23.819 E/libc    (18739): Access denied finding property "persist.device_config.runtime_native_boot.enable_generational_cc"
+06-10 01:39:23.820 I/app_process(18739): Core platform API reporting enabled, enforcing=false
+06-10 01:39:23.845 D/app_process(18739): Time zone APEX ICU file found: /apex/com.android.tzdata/etc/icu/icu_tzdata.dat
+06-10 01:39:23.845 D/app_process(18739): I18n APEX ICU file found: /apex/com.android.i18n/etc/icu/icudt66l.dat
+06-10 01:39:23.847 I/app_process(18739): The ClassLoaderContext is a special shared library.
+06-10 01:39:23.848 I/app_process(18739): The ClassLoaderContext is a special shared library.
+06-10 01:39:23.852 W/app_process(18739): JNI RegisterNativeMethods: attempt to register 0 native methods for android.media.AudioAttributes
+06-10 01:39:23.854 D/AndroidRuntime(18739): Calling main entry com.android.commands.uiautomator.Launcher
+06-10 01:39:23.863 V/UiAutomation(18739): Init UiAutomation@510595a[id=51, flags=0]
+06-10 01:39:23.878 E/FrameEvents(  987): updateAcquireFence: Did not find frame.
+06-10 01:39:24.893 I/AccessibilityNodeInfoDumper(18739): Skipping invisible child: android.view.accessibility.AccessibilityNodeInfo@fee2; boundsInParent: Rect(0, 0 - 0, 54); boundsInScreen: Rect(719, 2677 - 719, 2731); packageName: com.google.android.apps.nexuslauncher; className: android.widget.TextView; text: null; error: null; maxTextLength: -1; stateDescription: null; contentDescription: ; tooltipText: null; viewIdResName: com.google.android.apps.nexuslauncher:id/qsb_hint; checkable: false; checked: false; focusable: false; focused: false; selected: false; clickable: false; longClickable: false; contextClickable: false; enabled: true; password: false; scrollable: false; importantForAccessibility: false; visible: false; actions: [AccessibilityAction: ACTION_SELECT - null, AccessibilityAction: ACTION_CLEAR_SELECTION - null, AccessibilityAction: ACTION_ACCESSIBILITY_FOCUS - null, AccessibilityAction: ACTION_SHOW_ON_SCREEN - null]
+06-10 01:39:24.893 I/AccessibilityNodeInfoDumper(18739): Skipping invisible child: android.view.accessibility.AccessibilityNodeInfo@102a3; boundsInParent: Rect(0, 0 - 263, 217); boundsInScreen: Rect(1110, 2697 - 1373, 2914); packageName: com.google.android.apps.nexuslauncher; className: android.widget.TextView; text: null; error: null; maxTextLength: -1; stateDescription: null; contentDescription: null; tooltipText: null; viewIdResName: com.google.android.apps.nexuslauncher:id/fast_scroller_popup; checkable: false; checked: false; focusable: false; focused: false; selected: false; clickable: false; longClickable: false; contextClickable: false; enabled: true; password: false; scrollable: false; importantForAccessibility: false; visible: false; actions: [AccessibilityAction: ACTION_SELECT - null, AccessibilityAction: ACTION_CLEAR_SELECTION - null, AccessibilityAction: ACTION_ACCESSIBILITY_FOCUS - null, AccessibilityAction: ACTION_SHOW_ON_SCREEN - null]
+06-10 01:39:24.894 W/AccessibilityNodeInfoDumper(18739): Fetch time: 14ms
+06-10 01:39:24.894 W/WindowManager(  478): removeWindowToken: Attempted to remove non-existing token: android.os.Binder@bcfb78f
+06-10 01:39:24.895 V/UiAutomation(18739): Init UiAutomation@510595a[id=-1, flags=0]
+06-10 01:39:24.904 D/AndroidRuntime(18739): Shutting down VM
+06-10 01:39:27.471 D/AndroidRuntime(18755): >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+06-10 01:39:27.472 W/app_process(18755): type=1400 audit(0.0:1037): avc: denied { read } for name="u:object_r:device_config_runtime_native_boot_prop:s0" dev="tmpfs" ino=1556 scontext=u:r:shell:s0 tcontext=u:object_r:device_config_runtime_native_boot_prop:s0 tclass=file permissive=0
+06-10 01:39:27.473 E/libc    (18755): Access denied finding property "persist.device_config.runtime_native_boot.profilebootclasspath"
+06-10 01:39:27.473 E/libc    (18755): Access denied finding property "persist.device_config.runtime_native_boot.enable_apex_image"
+06-10 01:39:27.473 I/AndroidRuntime(18755): Using default boot image
+06-10 01:39:27.473 E/libc    (18755): Access denied finding property "persist.device_config.runtime_native_boot.disable_lock_profiling"
+06-10 01:39:27.473 I/AndroidRuntime(18755): Leaving lock profiling enabled
+06-10 01:39:27.473 E/libc    (18755): Access denied finding property "persist.device_config.runtime_native_boot.enable_generational_cc"
+06-10 01:39:27.474 I/app_process(18755): Core platform API reporting enabled, enforcing=false
+06-10 01:39:27.504 D/app_process(18755): Time zone APEX ICU file found: /apex/com.android.tzdata/etc/icu/icu_tzdata.dat
+06-10 01:39:27.505 D/app_process(18755): I18n APEX ICU file found: /apex/com.android.i18n/etc/icu/icudt66l.dat
+06-10 01:39:27.507 I/app_process(18755): The ClassLoaderContext is a special shared library.
+06-10 01:39:27.507 I/app_process(18755): The ClassLoaderContext is a special shared library.
+06-10 01:39:27.511 W/app_process(18755): JNI RegisterNativeMethods: attempt to register 0 native methods for android.media.AudioAttributes
+06-10 01:39:27.513 D/AndroidRuntime(18755): Calling main entry com.android.commands.uiautomator.Launcher
+06-10 01:39:27.520 V/UiAutomation(18755): Init UiAutomation@f9ac2fe[id=52, flags=0]
+06-10 01:39:28.558 I/AccessibilityNodeInfoDumper(18755): Skipping invisible child: android.view.accessibility.AccessibilityNodeInfo@fee9; boundsInParent: Rect(0, 0 - 0, 54); boundsInScreen: Rect(719, 2677 - 719, 2731); packageName: com.google.android.apps.nexuslauncher; className: android.widget.TextView; text: null; error: null; maxTextLength: -1; stateDescription: null; contentDescription: ; tooltipText: null; viewIdResName: com.google.android.apps.nexuslauncher:id/qsb_hint; checkable: false; checked: false; focusable: false; focused: false; selected: false; clickable: false; longClickable: false; contextClickable: false; enabled: true; password: false; scrollable: false; importantForAccessibility: false; visible: false; actions: [AccessibilityAction: ACTION_SELECT - null, AccessibilityAction: ACTION_CLEAR_SELECTION - null, AccessibilityAction: ACTION_ACCESSIBILITY_FOCUS - null, AccessibilityAction: ACTION_SHOW_ON_SCREEN - null]
+06-10 01:39:28.558 I/AccessibilityNodeInfoDumper(18755): Skipping invisible child: android.view.accessibility.AccessibilityNodeInfo@102aa; boundsInParent: Rect(0, 0 - 263, 217); boundsInScreen: Rect(1110, 2697 - 1373, 2914); packageName: com.google.android.apps.nexuslauncher; className: android.widget.TextView; text: null; error: null; maxTextLength: -1; stateDescription: null; contentDescription: null; tooltipText: null; viewIdResName: com.google.android.apps.nexuslauncher:id/fast_scroller_popup; checkable: false; checked: false; focusable: false; focused: false; selected: false; clickable: false; longClickable: false; contextClickable: false; enabled: true; password: false; scrollable: false; importantForAccessibility: false; visible: false; actions: [AccessibilityAction: ACTION_SELECT - null, AccessibilityAction: ACTION_CLEAR_SELECTION - null, AccessibilityAction: ACTION_ACCESSIBILITY_FOCUS - null, AccessibilityAction: ACTION_SHOW_ON_SCREEN - null]
+06-10 01:39:28.559 W/AccessibilityNodeInfoDumper(18755): Fetch time: 17ms
+06-10 01:39:28.562 W/WindowManager(  478): removeWindowToken: Attempted to remove non-existing token: android.os.Binder@6cb8550
+06-10 01:39:28.562 V/UiAutomation(18755): Init UiAutomation@f9ac2fe[id=-1, flags=0]
+06-10 01:39:28.569 D/AndroidRuntime(18755): Shutting down VM
+06-10 01:39:30.021 D/WifiNl80211Manager(  478): Scan result ready event
+06-10 01:39:30.021 D/WifiNative(  478): Scan result ready event
+06-10 01:39:31.124 D/AndroidRuntime(18772): >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+06-10 01:39:31.124 W/app_process(18772): type=1400 audit(0.0:1041): avc: denied { read } for name="u:object_r:device_config_runtime_native_boot_prop:s0" dev="tmpfs" ino=1556 scontext=u:r:shell:s0 tcontext=u:object_r:device_config_runtime_native_boot_prop:s0 tclass=file permissive=0
+06-10 01:39:31.126 E/libc    (18772): Access denied finding property "persist.device_config.runtime_native_boot.profilebootclasspath"
+06-10 01:39:31.126 E/libc    (18772): Access denied finding property "persist.device_config.runtime_native_boot.enable_apex_image"
+06-10 01:39:31.126 I/AndroidRuntime(18772): Using default boot image
+06-10 01:39:31.126 E/libc    (18772): Access denied finding property "persist.device_config.runtime_native_boot.disable_lock_profiling"
+06-10 01:39:31.126 I/AndroidRuntime(18772): Leaving lock profiling enabled
+06-10 01:39:31.126 E/libc    (18772): Access denied finding property "persist.device_config.runtime_native_boot.enable_generational_cc"
+06-10 01:39:31.127 I/app_process(18772): Core platform API reporting enabled, enforcing=false
+06-10 01:39:31.161 D/app_process(18772): Time zone APEX ICU file found: /apex/com.android.tzdata/etc/icu/icu_tzdata.dat
+06-10 01:39:31.161 D/app_process(18772): I18n APEX ICU file found: /apex/com.android.i18n/etc/icu/icudt66l.dat
+06-10 01:39:31.163 I/app_process(18772): The ClassLoaderContext is a special shared library.
+06-10 01:39:31.164 I/app_process(18772): The ClassLoaderContext is a special shared library.
+06-10 01:39:31.167 W/app_process(18772): JNI RegisterNativeMethods: attempt to register 0 native methods for android.media.AudioAttributes
+06-10 01:39:31.169 D/AndroidRuntime(18772): Calling main entry com.android.commands.uiautomator.Launcher
+06-10 01:39:31.175 V/UiAutomation(18772): Init UiAutomation@a252ca2[id=53, flags=0]
+06-10 01:39:32.209 I/AccessibilityNodeInfoDumper(18772): Skipping invisible child: android.view.accessibility.AccessibilityNodeInfo@fef6; boundsInParent: Rect(0, 0 - 0, 54); boundsInScreen: Rect(719, 2677 - 719, 2731); packageName: com.google.android.apps.nexuslauncher; className: android.widget.TextView; text: null; error: null; maxTextLength: -1; stateDescription: null; contentDescription: ; tooltipText: null; viewIdResName: com.google.android.apps.nexuslauncher:id/qsb_hint; checkable: false; checked: false; focusable: false; focused: false; selected: false; clickable: false; longClickable: false; contextClickable: false; enabled: true; password: false; scrollable: false; importantForAccessibility: false; visible: false; actions: [AccessibilityAction: ACTION_SELECT - null, AccessibilityAction: ACTION_CLEAR_SELECTION - null, AccessibilityAction: ACTION_ACCESSIBILITY_FOCUS - null, AccessibilityAction: ACTION_SHOW_ON_SCREEN - null]
+06-10 01:39:32.209 I/AccessibilityNodeInfoDumper(18772): Skipping invisible child: android.view.accessibility.AccessibilityNodeInfo@102b7; boundsInParent: Rect(0, 0 - 263, 217); boundsInScreen: Rect(1110, 2697 - 1373, 2914); packageName: com.google.android.apps.nexuslauncher; className: android.widget.TextView; text: null; error: null; maxTextLength: -1; stateDescription: null; contentDescription: null; tooltipText: null; viewIdResName: com.google.android.apps.nexuslauncher:id/fast_scroller_popup; checkable: false; checked: false; focusable: false; focused: false; selected: false; clickable: false; longClickable: false; contextClickable: false; enabled: true; password: false; scrollable: false; importantForAccessibility: false; visible: false; actions: [AccessibilityAction: ACTION_SELECT - null, AccessibilityAction: ACTION_CLEAR_SELECTION - null, AccessibilityAction: ACTION_ACCESSIBILITY_FOCUS - null, AccessibilityAction: ACTION_SHOW_ON_SCREEN - null]
+06-10 01:39:32.209 W/AccessibilityNodeInfoDumper(18772): Fetch time: 18ms
+06-10 01:39:32.210 W/WindowManager(  478): removeWindowToken: Attempted to remove non-existing token: android.os.Binder@c544c5f
+06-10 01:39:32.212 V/UiAutomation(18772): Init UiAutomation@a252ca2[id=-1, flags=0]
+06-10 01:39:32.225 D/AndroidRuntime(18772): Shutting down VM
+06-10 01:39:34.770 D/AndroidRuntime(18787): >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+06-10 01:39:34.772 W/app_process(18787): type=1400 audit(0.0:1045): avc: denied { read } for name="u:object_r:device_config_runtime_native_boot_prop:s0" dev="tmpfs" ino=1556 scontext=u:r:shell:s0 tcontext=u:object_r:device_config_runtime_native_boot_prop:s0 tclass=file permissive=0
+06-10 01:39:34.772 E/libc    (18787): Access denied finding property "persist.device_config.runtime_native_boot.profilebootclasspath"
+06-10 01:39:34.772 E/libc    (18787): Access denied finding property "persist.device_config.runtime_native_boot.enable_apex_image"
+06-10 01:39:34.772 I/AndroidRuntime(18787): Using default boot image
+06-10 01:39:34.772 E/libc    (18787): Access denied finding property "persist.device_config.runtime_native_boot.disable_lock_profiling"
+06-10 01:39:34.772 I/AndroidRuntime(18787): Leaving lock profiling enabled
+06-10 01:39:34.772 E/libc    (18787): Access denied finding property "persist.device_config.runtime_native_boot.enable_generational_cc"
+06-10 01:39:34.774 I/app_process(18787): Core platform API reporting enabled, enforcing=false
+06-10 01:39:34.803 D/app_process(18787): Time zone APEX ICU file found: /apex/com.android.tzdata/etc/icu/icu_tzdata.dat
+06-10 01:39:34.803 D/app_process(18787): I18n APEX ICU file found: /apex/com.android.i18n/etc/icu/icudt66l.dat
+06-10 01:39:34.805 I/app_process(18787): The ClassLoaderContext is a special shared library.
+06-10 01:39:34.805 I/app_process(18787): The ClassLoaderContext is a special shared library.
+06-10 01:39:34.809 W/app_process(18787): JNI RegisterNativeMethods: attempt to register 0 native methods for android.media.AudioAttributes
+06-10 01:39:34.811 D/AndroidRuntime(18787): Calling main entry com.android.commands.uiautomator.Launcher
+06-10 01:39:34.820 V/UiAutomation(18787): Init UiAutomation@20cfbdd[id=54, flags=0]
+06-10 01:39:35.858 I/AccessibilityNodeInfoDumper(18787): Skipping invisible child: android.view.accessibility.AccessibilityNodeInfo@fefa; boundsInParent: Rect(0, 0 - 0, 54); boundsInScreen: Rect(719, 2677 - 719, 2731); packageName: com.google.android.apps.nexuslauncher; className: android.widget.TextView; text: null; error: null; maxTextLength: -1; stateDescription: null; contentDescription: ; tooltipText: null; viewIdResName: com.google.android.apps.nexuslauncher:id/qsb_hint; checkable: false; checked: false; focusable: false; focused: false; selected: false; clickable: false; longClickable: false; contextClickable: false; enabled: true; password: false; scrollable: false; importantForAccessibility: false; visible: false; actions: [AccessibilityAction: ACTION_SELECT - null, AccessibilityAction: ACTION_CLEAR_SELECTION - null, AccessibilityAction: ACTION_ACCESSIBILITY_FOCUS - null, AccessibilityAction: ACTION_SHOW_ON_SCREEN - null]
+06-10 01:39:35.858 I/AccessibilityNodeInfoDumper(18787): Skipping invisible child: android.view.accessibility.AccessibilityNodeInfo@102bb; boundsInParent: Rect(0, 0 - 263, 217); boundsInScreen: Rect(1110, 2697 - 1373, 2914); packageName: com.google.android.apps.nexuslauncher; className: android.widget.TextView; text: null; error: null; maxTextLength: -1; stateDescription: null; contentDescription: null; tooltipText: null; viewIdResName: com.google.android.apps.nexuslauncher:id/fast_scroller_popup; checkable: false; checked: false; focusable: false; focused: false; selected: false; clickable: false; longClickable: false; contextClickable: false; enabled: true; password: false; scrollable: false; importantForAccessibility: false; visible: false; actions: [AccessibilityAction: ACTION_SELECT - null, AccessibilityAction: ACTION_CLEAR_SELECTION - null, AccessibilityAction: ACTION_ACCESSIBILITY_FOCUS - null, AccessibilityAction: ACTION_SHOW_ON_SCREEN - null]
+06-10 01:39:35.860 W/AccessibilityNodeInfoDumper(18787): Fetch time: 23ms
+06-10 01:39:35.862 W/WindowManager(  478): removeWindowToken: Attempted to remove non-existing token: android.os.Binder@23412dc
+06-10 01:39:35.862 V/UiAutomation(18787): Init UiAutomation@20cfbdd[id=-1, flags=0]
+06-10 01:39:35.868 D/AndroidRuntime(18787): Shutting down VM
+06-10 01:39:38.421 D/AndroidRuntime(18802): >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+06-10 01:39:38.420 W/app_process(18802): type=1400 audit(0.0:1049): avc: denied { read } for name="u:object_r:device_config_runtime_native_boot_prop:s0" dev="tmpfs" ino=1556 scontext=u:r:shell:s0 tcontext=u:object_r:device_config_runtime_native_boot_prop:s0 tclass=file permissive=0
+06-10 01:39:38.422 E/libc    (18802): Access denied finding property "persist.device_config.runtime_native_boot.profilebootclasspath"
+06-10 01:39:38.423 E/libc    (18802): Access denied finding property "persist.device_config.runtime_native_boot.enable_apex_image"
+06-10 01:39:38.423 I/AndroidRuntime(18802): Using default boot image
+06-10 01:39:38.423 E/libc    (18802): Access denied finding property "persist.device_config.runtime_native_boot.disable_lock_profiling"
+06-10 01:39:38.423 I/AndroidRuntime(18802): Leaving lock profiling enabled
+06-10 01:39:38.423 E/libc    (18802): Access denied finding property "persist.device_config.runtime_native_boot.enable_generational_cc"
+06-10 01:39:38.424 I/app_process(18802): Core platform API reporting enabled, enforcing=false
+06-10 01:39:38.457 D/app_process(18802): Time zone APEX ICU file found: /apex/com.android.tzdata/etc/icu/icu_tzdata.dat
+06-10 01:39:38.457 D/app_process(18802): I18n APEX ICU file found: /apex/com.android.i18n/etc/icu/icudt66l.dat
+06-10 01:39:38.459 I/app_process(18802): The ClassLoaderContext is a special shared library.
+06-10 01:39:38.459 I/app_process(18802): The ClassLoaderContext is a special shared library.
+06-10 01:39:38.463 W/app_process(18802): JNI RegisterNativeMethods: attempt to register 0 native methods for android.media.AudioAttributes
+06-10 01:39:38.464 D/AndroidRuntime(18802): Calling main entry com.android.commands.uiautomator.Launcher
+06-10 01:39:38.469 V/UiAutomation(18802): Init UiAutomation@c976581[id=55, flags=0]
+06-10 01:39:39.501 I/AccessibilityNodeInfoDumper(18802): Skipping invisible child: android.view.accessibility.AccessibilityNodeInfo@ff05; boundsInParent: Rect(0, 0 - 0, 54); boundsInScreen: Rect(719, 2677 - 719, 2731); packageName: com.google.android.apps.nexuslauncher; className: android.widget.TextView; text: null; error: null; maxTextLength: -1; stateDescription: null; contentDescription: ; tooltipText: null; viewIdResName: com.google.android.apps.nexuslauncher:id/qsb_hint; checkable: false; checked: false; focusable: false; focused: false; selected: false; clickable: false; longClickable: false; contextClickable: false; enabled: true; password: false; scrollable: false; importantForAccessibility: false; visible: false; actions: [AccessibilityAction: ACTION_SELECT - null, AccessibilityAction: ACTION_CLEAR_SELECTION - null, AccessibilityAction: ACTION_ACCESSIBILITY_FOCUS - null, AccessibilityAction: ACTION_SHOW_ON_SCREEN - null]
+06-10 01:39:39.501 I/AccessibilityNodeInfoDumper(18802): Skipping invisible child: android.view.accessibility.AccessibilityNodeInfo@102c6; boundsInParent: Rect(0, 0 - 263, 217); boundsInScreen: Rect(1110, 2697 - 1373, 2914); packageName: com.google.android.apps.nexuslauncher; className: android.widget.TextView; text: null; error: null; maxTextLength: -1; stateDescription: null; contentDescription: null; tooltipText: null; viewIdResName: com.google.android.apps.nexuslauncher:id/fast_scroller_popup; checkable: false; checked: false; focusable: false; focused: false; selected: false; clickable: false; longClickable: false; contextClickable: false; enabled: true; password: false; scrollable: false; importantForAccessibility: false; visible: false; actions: [AccessibilityAction: ACTION_SELECT - null, AccessibilityAction: ACTION_CLEAR_SELECTION - null, AccessibilityAction: ACTION_ACCESSIBILITY_FOCUS - null, AccessibilityAction: ACTION_SHOW_ON_SCREEN - null]
+06-10 01:39:39.502 W/AccessibilityNodeInfoDumper(18802): Fetch time: 14ms
+06-10 01:39:39.503 W/WindowManager(  478): removeWindowToken: Attempted to remove non-existing token: android.os.Binder@f2cec55
+06-10 01:39:39.504 V/UiAutomation(18802): Init UiAutomation@c976581[id=-1, flags=0]
+06-10 01:39:39.511 D/AndroidRuntime(18802): Shutting down VM
+06-10 01:39:42.029 D/AndroidRuntime(18818): >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+06-10 01:39:42.028 W/app_process(18818): type=1400 audit(0.0:1053): avc: denied { read } for name="u:object_r:device_config_runtime_native_boot_prop:s0" dev="tmpfs" ino=1556 scontext=u:r:shell:s0 tcontext=u:object_r:device_config_runtime_native_boot_prop:s0 tclass=file permissive=0
+06-10 01:39:42.030 E/libc    (18818): Access denied finding property "persist.device_config.runtime_native_boot.profilebootclasspath"
+06-10 01:39:42.030 E/libc    (18818): Access denied finding property "persist.device_config.runtime_native_boot.enable_apex_image"
+06-10 01:39:42.030 I/AndroidRuntime(18818): Using default boot image
+06-10 01:39:42.030 E/libc    (18818): Access denied finding property "persist.device_config.runtime_native_boot.disable_lock_profiling"
+06-10 01:39:42.030 I/AndroidRuntime(18818): Leaving lock profiling enabled
+06-10 01:39:42.030 E/libc    (18818): Access denied finding property "persist.device_config.runtime_native_boot.enable_generational_cc"
+06-10 01:39:42.028 W/app_process(18818): type=1400 audit(0.0:1056): avc: denied { read } for name="u:object_r:device_config_runtime_native_boot_prop:s0" dev="tmpfs" ino=1556 scontext=u:r:shell:s0 tcontext=u:object_r:device_config_runtime_native_boot_prop:s0 tclass=file permissive=0
+06-10 01:39:42.032 I/app_process(18818): Core platform API reporting enabled, enforcing=false
+06-10 01:39:42.069 D/app_process(18818): Time zone APEX ICU file found: /apex/com.android.tzdata/etc/icu/icu_tzdata.dat
+06-10 01:39:42.069 D/app_process(18818): I18n APEX ICU file found: /apex/com.android.i18n/etc/icu/icudt66l.dat
+06-10 01:39:42.071 I/app_process(18818): The ClassLoaderContext is a special shared library.
+06-10 01:39:42.071 I/app_process(18818): The ClassLoaderContext is a special shared library.
+06-10 01:39:42.076 W/app_process(18818): JNI RegisterNativeMethods: attempt to register 0 native methods for android.media.AudioAttributes
+06-10 01:39:42.078 D/AndroidRuntime(18818): Calling main entry com.android.commands.uiautomator.Launcher
+06-10 01:39:42.088 V/UiAutomation(18818): Init UiAutomation@721cf25[id=56, flags=0]
+06-10 01:39:43.121 I/AccessibilityNodeInfoDumper(18818): Skipping invisible child: android.view.accessibility.AccessibilityNodeInfo@ff13; boundsInParent: Rect(0, 0 - 0, 54); boundsInScreen: Rect(719, 2677 - 719, 2731); packageName: com.google.android.apps.nexuslauncher; className: android.widget.TextView; text: null; error: null; maxTextLength: -1; stateDescription: null; contentDescription: ; tooltipText: null; viewIdResName: com.google.android.apps.nexuslauncher:id/qsb_hint; checkable: false; checked: false; focusable: false; focused: false; selected: false; clickable: false; longClickable: false; contextClickable: false; enabled: true; password: false; scrollable: false; importantForAccessibility: false; visible: false; actions: [AccessibilityAction: ACTION_SELECT - null, AccessibilityAction: ACTION_CLEAR_SELECTION - null, AccessibilityAction: ACTION_ACCESSIBILITY_FOCUS - null, AccessibilityAction: ACTION_SHOW_ON_SCREEN - null]
+06-10 01:39:43.121 I/AccessibilityNodeInfoDumper(18818): Skipping invisible child: android.view.accessibility.AccessibilityNodeInfo@102d4; boundsInParent: Rect(0, 0 - 263, 217); boundsInScreen: Rect(1110, 2697 - 1373, 2914); packageName: com.google.android.apps.nexuslauncher; className: android.widget.TextView; text: null; error: null; maxTextLength: -1; stateDescription: null; contentDescription: null; tooltipText: null; viewIdResName: com.google.android.apps.nexuslauncher:id/fast_scroller_popup; checkable: false; checked: false; focusable: false; focused: false; selected: false; clickable: false; longClickable: false; contextClickable: false; enabled: true; password: false; scrollable: false; importantForAccessibility: false; visible: false; actions: [AccessibilityAction: ACTION_SELECT - null, AccessibilityAction: ACTION_CLEAR_SELECTION - null, AccessibilityAction: ACTION_ACCESSIBILITY_FOCUS - null, AccessibilityAction: ACTION_SHOW_ON_SCREEN - null]
+06-10 01:39:43.123 W/AccessibilityNodeInfoDumper(18818): Fetch time: 18ms
+06-10 01:39:43.125 W/WindowManager(  478): removeWindowToken: Attempted to remove non-existing token: android.os.Binder@ccb8e1a
+06-10 01:39:43.126 V/UiAutomation(18818): Init UiAutomation@721cf25[id=-1, flags=0]
+06-10 01:39:43.134 D/AndroidRuntime(18818): Shutting down VM

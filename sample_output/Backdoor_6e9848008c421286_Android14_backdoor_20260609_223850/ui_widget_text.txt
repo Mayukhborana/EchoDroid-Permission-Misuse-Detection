@@ -1,0 +1,27 @@
+Heavy Gunner Free Fan App
+jQuery Countdown
+Unfortunately, the Android version of Heavy Gunner has not been released yet!
+Here is a countdown to the expected release date:
+2
+Days9
+Hours16
+Minutes58
+Seconds
+This app will notify you as soon as the game is available for download.
+
+Also, the button below will be clickable at release time.
+Download Heavy Gunner
+Countdown
+Cheats
+Guides
+Cool Apps
+A_LaunchActivity
+A_TabWidgetActivity
+PushAds
+InAppWebView
+A_CountdownActivity
+A_LoadingActivity
+A_TwitterActivity
+A_YouTubeCheatsActivity
+A_YouTubeGuidesActivity
+MyActivity

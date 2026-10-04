@@ -1,0 +1,413 @@
+{
+  "pipeline": "LLMDroid-fastbot-custom-more-detection (Backdoor Detection)",
+  "version": "1.0.0",
+  "timestamp": "2026-06-09T16:56:20.695127Z",
+  "app": {
+    "name": "Backdoor_7dbedd8e0bf1b1d1_Android14",
+    "description": "Android app under backdoor detection analysis by LLMDroid",
+    "package": "com.chenyx.tiltmazs"
+  },
+  "backdoor_verdict": {
+    "verdict": "SUSPICIOUS",
+    "risk_level": "medium",
+    "confidence": 0.7,
+    "total_patterns_found": 3,
+    "verdict_explanation": "Moderate mismatch signals; warrants further manual investigation."
+  },
+  "backdoor_patterns": [
+    {
+      "backdoor_type": "OVER_DECLARED",
+      "permission_category": "sms",
+      "risk_level": "medium",
+      "ui_claim": "not present in UI",
+      "backend_evidence": [],
+      "explanation": "The app declares RECEIVE_SMS and READ_SMS permissions in the manifest, but there is no evidence of any SMS-related API usage at runtime, nor any UI indication or justification for SMS access. This may indicate zombie permissions for future activation or evasion.",
+      "confidence": 0.7
+    },
+    {
+      "backdoor_type": "OVER_DECLARED",
+      "permission_category": "location",
+      "risk_level": "medium",
+      "ui_claim": "not present in UI",
+      "backend_evidence": [],
+      "explanation": "ACCESS_FINE_LOCATION is declared in the manifest, but no Android location APIs are called at runtime. The only 'getLocation()' method refers to in-game object position, not device geolocation. No UI mention or justification for location access.",
+      "confidence": 0.7
+    },
+    {
+      "backdoor_type": "OVER_DECLARED",
+      "permission_category": "phone_state",
+      "risk_level": "medium",
+      "ui_claim": "not present in UI",
+      "backend_evidence": [],
+      "explanation": "READ_PHONE_STATE is declared (twice) in the manifest, but there is no evidence of phone state API usage at runtime, nor any UI mention or justification.",
+      "confidence": 0.7
+    }
+  ],
+  "mismatch_summary": {
+    "categories_in_ui_not_in_backend": [],
+    "categories_in_backend_not_in_ui": [],
+    "categories_in_manifest_not_used": [
+      "sms",
+      "location",
+      "phone_state"
+    ],
+    "categories_used_without_permission": []
+  },
+  "evidence": {
+    "manifest": {
+      "all_permissions": [
+        "android.permission.INTERNET",
+        "android.permission.READ_PHONE_STATE",
+        "android.permission.WRITE_EXTERNAL_STORAGE",
+        "android.permission.ACCESS_NETWORK_STATE",
+        "android.permission.WRITE_EXTERNAL_STORAGE",
+        "android.permission.ACCESS_FINE_LOCATION",
+        "android.permission.RECEIVE_SMS",
+        "android.permission.READ_SMS",
+        "android.permission.PROCESS_OUTGOING_CALLS",
+        "android.permission.DELETE_PACKAGES",
+        "android.permission.INSTALL_PACKAGES",
+        "android.permission.RECEIVE_BOOT_COMPLETED",
+        "android.permission.INTERNET",
+        "android.permission.READ_PHONE_STATE"
+      ],
+      "sensitive_permissions": [
+        "android.permission.INTERNET",
+        "android.permission.READ_PHONE_STATE",
+        "android.permission.WRITE_EXTERNAL_STORAGE",
+        "android.permission.ACCESS_NETWORK_STATE",
+        "android.permission.WRITE_EXTERNAL_STORAGE",
+        "android.permission.ACCESS_FINE_LOCATION",
+        "android.permission.RECEIVE_SMS",
+        "android.permission.READ_SMS",
+        "android.permission.INTERNET",
+        "android.permission.READ_PHONE_STATE"
+      ],
+      "by_category": {
+        "sms": [
+          "android.permission.RECEIVE_SMS",
+          "android.permission.READ_SMS"
+        ],
+        "location": [
+          "android.permission.ACCESS_FINE_LOCATION"
+        ],
+        "phone_state": [
+          "android.permission.READ_PHONE_STATE",
+          "android.permission.READ_PHONE_STATE"
+        ],
+        "storage": [
+          "android.permission.WRITE_EXTERNAL_STORAGE",
+          "android.permission.WRITE_EXTERNAL_STORAGE"
+        ],
+        "network": [
+          "android.permission.INTERNET",
+          "android.permission.ACCESS_NETWORK_STATE",
+          "android.permission.INTERNET"
+        ],
+        "device_id": [
+          "android.permission.READ_PHONE_STATE",
+          "android.permission.READ_PHONE_STATE"
+        ]
+      },
+      "exported_components": [
+        ".TiltMaze",
+        "com.sjgo.client.zjReceiver"
+      ]
+    },
+    "runtime": {
+      "total_unique_methods_called": 151,
+      "sensitive_methods_found": 1,
+      "backend_active_categories": [
+        "location"
+      ],
+      "backend_category_details": {
+        "location": [
+          "com.chenyx.tiltmazs.GameObject: android.graphics.Point getLocation()"
+        ]
+      },
+      "activities_tested": [
+        "com.chenyx.tiltmazs.TiltMaze"
+      ],
+      "activity_coverage": 11.111111640930176
+    }
+  },
+  "llm_analysis": {
+    "prompt1_ui_analysis": {
+      "app_ui_stated_purpose": "Maze game (TiltMaze), image viewing (HandPics, viewpic), and themed galleries",
+      "ui_permission_claims": {
+        "sms": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "location": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "contacts": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "camera": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "microphone": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "phone_state": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "storage": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "device_admin": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "accessibility": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "network": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "device_id": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "process_exec": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        }
+      },
+      "categories_absent_from_ui": [
+        "sms",
+        "location",
+        "contacts",
+        "camera",
+        "microphone",
+        "phone_state",
+        "storage",
+        "device_admin",
+        "accessibility",
+        "network",
+        "device_id",
+        "process_exec"
+      ],
+      "sensitive_flows_detected": [],
+      "overall_ui_transparency_score": 0.0
+    },
+    "prompt2_backend_analysis": {
+      "backend_active_capabilities": {
+        "location": {
+          "active": false,
+          "confidence": "low",
+          "triggering_methods": [
+            "com.chenyx.tiltmazs.GameObject: android.graphics.Point getLocation()"
+          ],
+          "triggering_classes": [
+            "com.chenyx.tiltmazs.GameObject"
+          ],
+          "is_background_only": false,
+          "notes": "Method name 'getLocation()' refers to a game object's position, not device geolocation. No evidence of Android location API usage at runtime."
+        }
+      },
+      "suspicious_methods": [],
+      "background_sensitive_classes": [],
+      "stealthy_patterns_found": []
+    },
+    "prompt3_backdoor_detection": {
+      "verdict": "SUSPICIOUS",
+      "overall_risk_level": "medium",
+      "confidence": 0.7,
+      "backdoor_patterns": [
+        {
+          "backdoor_type": "OVER_DECLARED",
+          "permission_category": "sms",
+          "risk_level": "medium",
+          "ui_claim": "not present in UI",
+          "backend_evidence": [],
+          "explanation": "The app declares RECEIVE_SMS and READ_SMS permissions in the manifest, but there is no evidence of any SMS-related API usage at runtime, nor any UI indication or justification for SMS access. This may indicate zombie permissions for future activation or evasion.",
+          "confidence": 0.7
+        },
+        {
+          "backdoor_type": "OVER_DECLARED",
+          "permission_category": "location",
+          "risk_level": "medium",
+          "ui_claim": "not present in UI",
+          "backend_evidence": [],
+          "explanation": "ACCESS_FINE_LOCATION is declared in the manifest, but no Android location APIs are called at runtime. The only 'getLocation()' method refers to in-game object position, not device geolocation. No UI mention or justification for location access.",
+          "confidence": 0.7
+        },
+        {
+          "backdoor_type": "OVER_DECLARED",
+          "permission_category": "phone_state",
+          "risk_level": "medium",
+          "ui_claim": "not present in UI",
+          "backend_evidence": [],
+          "explanation": "READ_PHONE_STATE is declared (twice) in the manifest, but there is no evidence of phone state API usage at runtime, nor any UI mention or justification.",
+          "confidence": 0.7
+        }
+      ],
+      "mismatch_summary": {
+        "categories_in_ui_not_in_backend": [],
+        "categories_in_backend_not_in_ui": [],
+        "categories_in_manifest_not_used": [
+          "sms",
+          "location",
+          "phone_state"
+        ],
+        "categories_used_without_permission": []
+      },
+      "recommendations": [
+        "Review the necessity of sensitive permissions (SMS, location, phone state) in the manifest. Remove any that are not required for current app functionality.",
+        "Monitor for future updates or dynamic code loading that might activate these zombie permissions.",
+        "Investigate the exported receiver 'com.sjgo.client.zjReceiver' for potential hidden triggers, as it is not referenced in the UI or backend analysis."
+      ],
+      "analyst_notes": "No evidence of active backdoor behavior (e.g., silent data exfiltration, covert collection, or hidden triggers) in the current runtime analysis. However, the presence of unused sensitive permissions (OVER_DECLARED) is a classic sign of suspicious intent or preparation for future malicious activity. The app's UI is entirely silent about these capabilities, and no runtime use is detected. The exported receiver should be reviewed in depth for hidden trigger potential, but no direct evidence is present in this dataset."
+    }
+  },
+  "local_rule_analysis": {
+    "local_verdict": "HAS_BACKDOOR",
+    "total_flags": 5,
+    "silent_exec_flags": [
+      {
+        "backdoor_type": "SILENT_EXEC",
+        "permission_category": "location",
+        "risk_level": "high",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [
+          "com.chenyx.tiltmazs.GameObject: android.graphics.Point getLocation()"
+        ],
+        "explanation": "The app calls location APIs at runtime but the UI contains no UI elements, labels, or activity names that mention or justify this capability.",
+        "confidence": 0.52,
+        "source": "local_rule"
+      }
+    ],
+    "ui_deception_flags": [
+      {
+        "backdoor_type": "UI_DECEPTION",
+        "permission_category": "location",
+        "risk_level": "high",
+        "ui_claim": "App presents as clock",
+        "backend_evidence": [
+          "com.chenyx.tiltmazs.GameObject: android.graphics.Point getLocation()"
+        ],
+        "explanation": "App UI presents as 'clock' with no reason to access ['location'], but backend executes these sensitive APIs.",
+        "confidence": 0.56,
+        "source": "local_rule"
+      }
+    ],
+    "covert_collect_flags": [],
+    "over_declared_flags": [
+      {
+        "backdoor_type": "OVER_DECLARED",
+        "permission_category": "sms",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for sms were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.39,
+        "source": "local_rule"
+      },
+      {
+        "backdoor_type": "OVER_DECLARED",
+        "permission_category": "network",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for network were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.39,
+        "source": "local_rule"
+      },
+      {
+        "backdoor_type": "OVER_DECLARED",
+        "permission_category": "device_id",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for device_id were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.39,
+        "source": "local_rule"
+      }
+    ],
+    "hidden_trigger_flags": [],
+    "all_flags": [
+      {
+        "backdoor_type": "SILENT_EXEC",
+        "permission_category": "location",
+        "risk_level": "high",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [
+          "com.chenyx.tiltmazs.GameObject: android.graphics.Point getLocation()"
+        ],
+        "explanation": "The app calls location APIs at runtime but the UI contains no UI elements, labels, or activity names that mention or justify this capability.",
+        "confidence": 0.52,
+        "source": "local_rule"
+      },
+      {
+        "backdoor_type": "UI_DECEPTION",
+        "permission_category": "location",
+        "risk_level": "high",
+        "ui_claim": "App presents as clock",
+        "backend_evidence": [
+          "com.chenyx.tiltmazs.GameObject: android.graphics.Point getLocation()"
+        ],
+        "explanation": "App UI presents as 'clock' with no reason to access ['location'], but backend executes these sensitive APIs.",
+        "confidence": 0.56,
+        "source": "local_rule"
+      },
+      {
+        "backdoor_type": "OVER_DECLARED",
+        "permission_category": "sms",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for sms were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.39,
+        "source": "local_rule"
+      },
+      {
+        "backdoor_type": "OVER_DECLARED",
+        "permission_category": "network",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for network were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.39,
+        "source": "local_rule"
+      },
+      {
+        "backdoor_type": "OVER_DECLARED",
+        "permission_category": "device_id",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for device_id were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.39,
+        "source": "local_rule"
+      }
+    ]
+  },
+  "recommendations": [
+    "Review the necessity of sensitive permissions (SMS, location, phone state) in the manifest. Remove any that are not required for current app functionality.",
+    "Monitor for future updates or dynamic code loading that might activate these zombie permissions.",
+    "Investigate the exported receiver 'com.sjgo.client.zjReceiver' for potential hidden triggers, as it is not referenced in the UI or backend analysis."
+  ]
+}

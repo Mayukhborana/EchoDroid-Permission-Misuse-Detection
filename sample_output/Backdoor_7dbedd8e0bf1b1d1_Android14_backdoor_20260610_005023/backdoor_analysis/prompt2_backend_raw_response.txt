@@ -1,0 +1,3 @@
+{
+  "raw": "```json\n{\n  \"backend_active_capabilities\": {\n    \"location\": {\n      \"active\": false,\n      \"confidence\": \"low\",\n      \"triggering_methods\": [\n        \"com.chenyx.tiltmazs.GameObject: android.graphics.Point getLocation()\"\n      ],\n      \"triggering_classes\": [\n        \"com.chenyx.tiltmazs.GameObject\"\n      ],\n      \"is_background_only\": false,\n      \"notes\": \"Method name 'getLocation()' refers to a game object's position, not device geolocation. No evidence of Android location API usage at runtime.\"\n    }\n  },\n  \"suspicious_methods\": [],\n  \"background_sensitive_classes\": [],\n  \"stealthy_patterns_found\": []\n}\n```"
+}

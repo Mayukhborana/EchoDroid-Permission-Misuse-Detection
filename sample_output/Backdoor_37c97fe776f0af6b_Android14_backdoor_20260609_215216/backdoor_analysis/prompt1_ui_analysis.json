@@ -1,0 +1,92 @@
+{
+  "app_ui_stated_purpose": "Activate full version of game via SMS payment",
+  "ui_permission_claims": {
+    "sms": {
+      "visible_in_ui": true,
+      "justification_strength": "explicit",
+      "ui_evidence": [
+        "温馨提示:激活本游戏为完整版需要您花费6元短信费用，您确定要激活吗?",
+        "SMS_Activity"
+      ]
+    },
+    "location": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    },
+    "contacts": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    },
+    "camera": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    },
+    "microphone": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    },
+    "phone_state": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    },
+    "storage": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    },
+    "device_admin": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    },
+    "accessibility": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    },
+    "network": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    },
+    "device_id": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    },
+    "process_exec": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    }
+  },
+  "categories_absent_from_ui": [
+    "location",
+    "contacts",
+    "camera",
+    "microphone",
+    "phone_state",
+    "storage",
+    "device_admin",
+    "accessibility",
+    "network",
+    "device_id",
+    "process_exec"
+  ],
+  "sensitive_flows_detected": [
+    {
+      "flow_name": "SMS payment for game activation",
+      "activities": [
+        "com.androidbox.elsslenovo.AppActivity",
+        "com.network.app.SMS_Activity"
+      ],
+      "description": "User is prompted to activate the full version of the game by paying 6 yuan via SMS."
+    }
+  ],
+  "overall_ui_transparency_score": 0.7
+}

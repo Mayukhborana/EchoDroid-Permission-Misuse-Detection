@@ -1,0 +1,16 @@
+Apps list
+Wednesday, Jun 10
+27°C
+Cloudy, 27°C
+Messages
+Chrome
+Search
+Voice search
+PreferencesActivity
+AppPickerActivity
+ColorPickerActivity
+ForecastActivity
+SetLocationActivity
+SkinBrowserActivity
+SkinListActivity
+TabbedSkinBrowser

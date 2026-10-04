@@ -1,0 +1,23 @@
+
+20260610012924
+crash:
+// CRASH: com.anddoes.fancywidget.pro (pid 14507) (dump time: 2026-06-10 01:29:24
+// Version: 
+// Long Msg: java.lang.LinkageError: Method void com.anddoes.fancywidget.pro.UpdateService.setForeground(boolean) overrides final method in class Landroid/app/Service; (declaration of 'com.anddoes.fancywidget.pro.UpdateService' appears in /data/app/~~8ESjfZOupSvK5NXe5F0H8w==/com.anddoes.fancywidget.pro-_Ro5037q76cbB9DiWir3Vw==/base.apk)
+// 	at java.lang.Class.newInstance(Native Method)
+// 	at android.app.AppComponentFactory.instantiateActivity(AppComponentFactory.java:95)
+// 	at android.app.Instrumentation.newActivity(Instrumentation.java:1253)
+// 	at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:3353)
+// 	at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:3601)
+// 	at android.app.servertransaction.LaunchActivityItem.execute(LaunchActivityItem.java:85)
+// 	at android.app.servertransaction.TransactionExecutor.executeCallbacks(TransactionExecutor.java:135)
+// 	at android.app.servertransaction.TransactionExecutor.execute(TransactionExecutor.java:95)
+// 	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:2066)
+// 	at android.os.Handler.dispatchMessage(Handler.java:106)
+// 	at android.os.Looper.loop(Looper.java:223)
+// 	at android.app.ActivityThread.main(ActivityThread.java:7656)
+// 	at java.lang.reflect.Method.invoke(Native Method)
+// 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:592)
+// 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:947)
+// crash end
+

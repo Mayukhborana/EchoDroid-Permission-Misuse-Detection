@@ -1,0 +1,113 @@
+{
+  "app_ui_stated_purpose": "Erase personal data such as contacts, call logs, messages, and browser history",
+  "ui_permission_claims": {
+    "sms": {
+      "visible_in_ui": true,
+      "justification_strength": "implied",
+      "ui_evidence": [
+        "Messages"
+      ]
+    },
+    "location": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    },
+    "contacts": {
+      "visible_in_ui": true,
+      "justification_strength": "implied",
+      "ui_evidence": [
+        "Contacts"
+      ]
+    },
+    "camera": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    },
+    "microphone": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    },
+    "phone_state": {
+      "visible_in_ui": true,
+      "justification_strength": "implied",
+      "ui_evidence": [
+        "Call logs"
+      ]
+    },
+    "storage": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    },
+    "device_admin": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    },
+    "accessibility": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    },
+    "network": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    },
+    "device_id": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    },
+    "process_exec": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    }
+  },
+  "categories_absent_from_ui": [
+    "location",
+    "camera",
+    "microphone",
+    "storage",
+    "device_admin",
+    "accessibility",
+    "network",
+    "device_id",
+    "process_exec"
+  ],
+  "sensitive_flows_detected": [
+    {
+      "flow_name": "Erase Contacts",
+      "activities": [
+        "com.communication.eraser.main"
+      ],
+      "description": "UI presents option to erase contacts, implying access to contacts data."
+    },
+    {
+      "flow_name": "Erase Call Logs",
+      "activities": [
+        "com.communication.eraser.main"
+      ],
+      "description": "UI presents option to erase call logs, implying access to phone state/call log data."
+    },
+    {
+      "flow_name": "Erase Messages",
+      "activities": [
+        "com.communication.eraser.main"
+      ],
+      "description": "UI presents option to erase messages, implying access to SMS data."
+    },
+    {
+      "flow_name": "Erase Browser History",
+      "activities": [
+        "com.communication.eraser.main"
+      ],
+      "description": "UI presents option to erase browser history, implying access to browser data."
+    }
+  ],
+  "overall_ui_transparency_score": 0.6
+}

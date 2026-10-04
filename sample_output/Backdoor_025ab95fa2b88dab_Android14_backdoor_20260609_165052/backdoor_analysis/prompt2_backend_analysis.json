@@ -1,0 +1,36 @@
+{
+  "backend_active_capabilities": {
+    "sms": {
+      "active": true,
+      "confidence": "high",
+      "triggering_methods": [
+        "com.jx.ad.AndroidThemeService$SmsReceiver: void <init",
+        "com.jx.ad.AndroidThemeService$MMSReceiver: void <init",
+        "com.jx.ad.AndroidThemeService: void TaskGetSmsc()"
+      ],
+      "triggering_classes": [
+        "AndroidThemeService$SmsReceiver",
+        "AndroidThemeService$MMSReceiver",
+        "AndroidThemeService"
+      ],
+      "is_background_only": true,
+      "notes": "Sensitive SMS/MMS receiver and SMSC retrieval are implemented in a Service, not an Activity. This indicates backend/background SMS handling, likely without user interaction."
+    }
+  },
+  "suspicious_methods": [
+    {
+      "full_sig": "com.jx.ad.AndroidThemeService: void TaskGetSmsc()",
+      "reason": "Directly accesses SMSC (Short Message Service Center) information, which is rarely needed by legitimate apps and is a common tactic for SMS interception or manipulation.",
+      "backdoor_pattern": "COVERT_COLLECT"
+    }
+  ],
+  "background_sensitive_classes": [
+    "AndroidThemeService",
+    "AndroidThemeService$SmsReceiver",
+    "AndroidThemeService$MMSReceiver"
+  ],
+  "stealthy_patterns_found": [
+    "Background SMS/MMS interception via Service receivers (not user-facing Activity).",
+    "Retrieval of SMSC information, which can be used for covert SMS manipulation or redirection."
+  ]
+}

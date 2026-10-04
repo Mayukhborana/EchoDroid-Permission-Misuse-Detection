@@ -1,0 +1,70 @@
+{
+  "verdict": "SUSPICIOUS",
+  "overall_risk_level": "medium",
+  "confidence": 0.7,
+  "backdoor_patterns": [
+    {
+      "backdoor_type": "OVER_DECLARED",
+      "permission_category": "sms",
+      "risk_level": "medium",
+      "ui_claim": "not present in UI",
+      "backend_evidence": [],
+      "explanation": "The app declares android.permission.READ_SMS and android.permission.WRITE_SMS in the manifest, but there is no evidence from backend analysis that any SMS-related APIs are called at runtime. The UI never mentions SMS functionality or justification. This may indicate zombie permissions for future activation or to evade static analysis.",
+      "confidence": 0.8
+    },
+    {
+      "backdoor_type": "OVER_DECLARED",
+      "permission_category": "contacts",
+      "risk_level": "medium",
+      "ui_claim": "not present in UI",
+      "backend_evidence": [],
+      "explanation": "The app declares android.permission.READ_CONTACTS, android.permission.WRITE_CONTACTS, and android.permission.GET_ACCOUNTS, but backend analysis shows no runtime use of contacts APIs. The UI does not mention contacts access or provide justification. This is suspicious over-declaration.",
+      "confidence": 0.8
+    },
+    {
+      "backdoor_type": "OVER_DECLARED",
+      "permission_category": "storage",
+      "risk_level": "low",
+      "ui_claim": "not present in UI",
+      "backend_evidence": [],
+      "explanation": "android.permission.WRITE_EXTERNAL_STORAGE is declared, but there is no evidence of storage access in backend analysis, nor is storage mentioned in the UI.",
+      "confidence": 0.7
+    },
+    {
+      "backdoor_type": "OVER_DECLARED",
+      "permission_category": "network",
+      "risk_level": "low",
+      "ui_claim": "not present in UI",
+      "backend_evidence": [],
+      "explanation": "android.permission.INTERNET and android.permission.ACCESS_NETWORK_STATE are declared, but backend analysis does not show network activity and the UI does not mention network features.",
+      "confidence": 0.6
+    },
+    {
+      "backdoor_type": "HIDDEN_TRIGGER",
+      "permission_category": "unknown",
+      "risk_level": "medium",
+      "ui_claim": "not present in UI",
+      "backend_evidence": [],
+      "explanation": "The exported receiver .strategy.core.RebirthReceiver is accessible externally, but there is no evidence from backend analysis about its runtime behavior. Exported receivers can be abused as hidden triggers if they perform sensitive actions when invoked externally.",
+      "confidence": 0.6
+    }
+  ],
+  "mismatch_summary": {
+    "categories_in_ui_not_in_backend": [],
+    "categories_in_backend_not_in_ui": [],
+    "categories_in_manifest_not_used": [
+      "sms",
+      "contacts",
+      "storage",
+      "network"
+    ],
+    "categories_used_without_permission": []
+  },
+  "recommendations": [
+    "Review the necessity of all declared permissions, especially SMS, contacts, storage, and network, as they are not justified by UI or backend activity.",
+    "Investigate the behavior of the exported receiver .strategy.core.RebirthReceiver for potential abuse as a hidden trigger.",
+    "Monitor future app updates for activation of currently unused sensitive permissions.",
+    "Consider restricting or removing unused permissions to reduce attack surface."
+  ],
+  "analyst_notes": "No evidence of active backdoor behavior (e.g., covert data collection or silent execution of sensitive APIs) was found in the backend analysis. However, the app over-declares several sensitive permissions not justified by UI or backend, and exposes an exported receiver whose behavior is unclear. This pattern is suspicious and warrants further monitoring or code review, but does not meet the threshold for a confirmed backdoor in its current state."
+}

@@ -1,0 +1,57 @@
+/Users/Desktop/permission_misuse/LLMDroid-fastbot-android16/Prompt_BackdoorDetection.py:528: DeprecationWarning: Parsing dates involving a day of month without a year specified is ambiguious
+and fails to parse leap day. The default behavior will change in Python 3.15
+to either always raise an exception or to use a different default year (TBD).
+To avoid trouble, add a specific year to the input & format.
+See https://github.com/python/cpython/issues/70647.
+  t0 = datetime.strptime(first_ts, fmt)
+/Users/Desktop/permission_misuse/LLMDroid-fastbot-android16/Prompt_BackdoorDetection.py:220: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  return datetime.utcnow().isoformat() + "Z"
+[CONFIG] Loaded from: /Users/Desktop/permission_misuse/new_output/Backdoor_cd49541429f329a2_Android14_backdoor_20260610_012223/config.json
+======================================================================
+ LLMDroid Backdoor Detection Pipeline
+ App     : Backdoor_cd49541429f329a2_Android14
+ Package : mustachebooth.iconosys.eng
+ Output  : /Users/Desktop/permission_misuse/new_output/Backdoor_cd49541429f329a2_Android14_backdoor_20260610_012223/backdoor_analysis
+======================================================================
+
+[1/6] Loading manifest data...
+      Permissions: 12 declared, 10 sensitive
+      Exported components: 2
+
+[2/6] Loading AndroLog backend methods...
+[DATA] Loaded 122 unique method signatures from AndroLog
+      Active sensitive categories: []
+
+[3/6] Loading activity coverage data...
+      Tested activities: 6
+
+[4/6] Loading UI text...
+[DATA] Loaded 84 chars of UI text
+
+[5/6] Running local rule-based mismatch analysis...
+      Local flags: 8 (verdict: SUSPICIOUS)
+
+[6/6] Running LLM prompts...
+[P1] Running UI Surface Analysis...
+[P2] Running Backend Execution Analysis...
+[P3] Running Backdoor Mismatch Detection...
+
+Assembling final backdoor detection report...
+
+======================================================================
+ BACKDOOR VERDICT : SUSPICIOUS
+ RISK LEVEL       : MEDIUM
+ CONFIDENCE       : 70%
+ PATTERNS FOUND   : 4
+ REPORT SAVED     : /Users/Desktop/permission_misuse/new_output/Backdoor_cd49541429f329a2_Android14_backdoor_20260610_012223/backdoor_analysis/backdoor_detection_report.json
+======================================================================
+
+📍 BACKDOOR PATTERN SUMMARY:
+  [1] OVER_DECLARED        | category=sms             | risk=medium   | conf=70%
+       The app declares SEND_SMS, READ_SMS, and WRITE_SMS permissions in the manifest, 
+  [2] OVER_DECLARED        | category=location        | risk=medium   | conf=70%
+       ACCESS_COARSE_LOCATION and ACCESS_FINE_LOCATION are declared in the manifest, bu
+  [3] OVER_DECLARED        | category=contacts        | risk=medium   | conf=70%
+       GET_ACCOUNTS and READ_CONTACTS are declared, but there is no backend or UI evide
+  [4] OVER_DECLARED        | category=phone_state     | risk=medium   | conf=70%
+       READ_PHONE_STATE is declared, but not used in backend nor justified in UI. This 

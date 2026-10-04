@@ -1,0 +1,29 @@
+Apps list
+Calendar
+Camera
+Chrome
+Clock
+Contacts
+Drive
+Files
+Gmail
+Google
+Maps
+Messages
+Phone
+Photos
+Settings
+YouTube
+YT Music
+立体迷宫
+Search
+Voice search
+TiltMaze
+HandPics
+oa_animal
+oa_dongman
+oa_feizhuliu
+oa_fengjing
+oa_girl
+viewpic
+AdActivity

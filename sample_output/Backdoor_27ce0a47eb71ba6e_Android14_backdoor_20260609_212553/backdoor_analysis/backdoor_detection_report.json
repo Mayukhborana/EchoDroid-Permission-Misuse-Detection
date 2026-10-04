@@ -1,0 +1,520 @@
+{
+  "pipeline": "LLMDroid-fastbot-custom-more-detection (Backdoor Detection)",
+  "version": "1.0.0",
+  "timestamp": "2026-06-09T13:31:53.234826Z",
+  "app": {
+    "name": "Backdoor_27ce0a47eb71ba6e_Android14",
+    "description": "Android app under backdoor detection analysis by LLMDroid",
+    "package": "com.android.lemon.radio"
+  },
+  "backdoor_verdict": {
+    "verdict": "HAS_BACKDOOR",
+    "risk_level": "high",
+    "confidence": 0.95,
+    "total_patterns_found": 2,
+    "verdict_explanation": "High-confidence UI-vs-backend mismatch indicating hidden malicious behaviour."
+  },
+  "backdoor_patterns": [
+    {
+      "backdoor_type": "COVERT_COLLECT",
+      "permission_category": "device_id",
+      "risk_level": "high",
+      "ui_claim": "not present in UI",
+      "backend_evidence": [
+        "com.apperhand.common.dto.ApplicationDetails: java.lang.String getDeviceId()"
+      ],
+      "explanation": "The backend accesses the device ID via getDeviceId() in a non-UI class (ApplicationDetails), with no mention or justification in the UI. This is a classic covert collection of sensitive device fingerprinting data, invisible to the user.",
+      "confidence": 0.95
+    },
+    {
+      "backdoor_type": "SILENT_EXEC",
+      "permission_category": "phone_state",
+      "risk_level": "high",
+      "ui_claim": "not present in UI",
+      "backend_evidence": [
+        "com.apperhand.common.dto.ApplicationDetails: java.lang.String getDeviceId()"
+      ],
+      "explanation": "READ_PHONE_STATE is declared and exercised in the backend to access device ID, but the UI never discloses or justifies this access. The operation is performed in a background context, not tied to any user action.",
+      "confidence": 0.9
+    }
+  ],
+  "mismatch_summary": {
+    "categories_in_ui_not_in_backend": [],
+    "categories_in_backend_not_in_ui": [
+      "device_id",
+      "phone_state"
+    ],
+    "categories_in_manifest_not_used": [
+      "sms",
+      "location"
+    ],
+    "categories_used_without_permission": []
+  },
+  "evidence": {
+    "manifest": {
+      "all_permissions": [
+        "android.permission.READ_PHONE_STATE",
+        "android.permission.INTERNET",
+        "android.permission.ACCESS_NETWORK_STATE",
+        "android.permission.WRITE_SETTINGS",
+        "android.permission.WRITE_EXTERNAL_STORAGE",
+        "android.permission.RECEIVE_SMS",
+        "android.permission.SEND_SMS",
+        "android.permission.SET_WALLPAPER",
+        "android.permission.WAKE_LOCK",
+        "android.permission.ACCESS_FINE_LOCATION"
+      ],
+      "sensitive_permissions": [
+        "android.permission.READ_PHONE_STATE",
+        "android.permission.INTERNET",
+        "android.permission.ACCESS_NETWORK_STATE",
+        "android.permission.WRITE_EXTERNAL_STORAGE",
+        "android.permission.RECEIVE_SMS",
+        "android.permission.SEND_SMS",
+        "android.permission.ACCESS_FINE_LOCATION"
+      ],
+      "by_category": {
+        "sms": [
+          "android.permission.RECEIVE_SMS",
+          "android.permission.SEND_SMS"
+        ],
+        "location": [
+          "android.permission.ACCESS_FINE_LOCATION"
+        ],
+        "phone_state": [
+          "android.permission.READ_PHONE_STATE"
+        ],
+        "storage": [
+          "android.permission.WRITE_EXTERNAL_STORAGE"
+        ],
+        "network": [
+          "android.permission.INTERNET",
+          "android.permission.ACCESS_NETWORK_STATE"
+        ],
+        "device_id": [
+          "android.permission.READ_PHONE_STATE"
+        ]
+      },
+      "exported_components": [
+        ".activity.InitActivity",
+        "com.android.lemon.common.sms.SmsReceived"
+      ]
+    },
+    "runtime": {
+      "total_unique_methods_called": 389,
+      "sensitive_methods_found": 1,
+      "backend_active_categories": [
+        "phone_state",
+        "device_id"
+      ],
+      "backend_category_details": {
+        "phone_state": [
+          "com.apperhand.common.dto.ApplicationDetails: java.lang.String getDeviceId()"
+        ],
+        "device_id": [
+          "com.apperhand.common.dto.ApplicationDetails: java.lang.String getDeviceId()"
+        ]
+      },
+      "activities_tested": [
+        "com.android.lemon.radio.activity.InitActivity",
+        "com.android.lemon.radio.activity.LocalActivity",
+        "com.android.lemon.radio.activity.MediaPlayerActivity",
+        "com.android.lemon.radio.activity.OnlineActivity"
+      ],
+      "activity_coverage": 44.4444465637207
+    }
+  },
+  "llm_analysis": {
+    "prompt1_ui_analysis": {
+      "app_ui_stated_purpose": "Local and online music player",
+      "ui_permission_claims": {
+        "sms": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "location": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "contacts": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "camera": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "microphone": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "phone_state": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "storage": {
+          "visible_in_ui": true,
+          "justification_strength": "implied",
+          "ui_evidence": [
+            "本地音乐",
+            "全部歌曲 >>",
+            "按歌手浏览 >>",
+            "LocalActivity",
+            "DownloadManager",
+            "DownloadManagerActivity",
+            "LocalAddAudiosActivity"
+          ]
+        },
+        "device_admin": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "accessibility": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "network": {
+          "visible_in_ui": true,
+          "justification_strength": "implied",
+          "ui_evidence": [
+            "OnlineActivity"
+          ]
+        },
+        "device_id": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "process_exec": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        }
+      },
+      "categories_absent_from_ui": [
+        "sms",
+        "location",
+        "contacts",
+        "camera",
+        "microphone",
+        "phone_state",
+        "device_admin",
+        "accessibility",
+        "device_id",
+        "process_exec"
+      ],
+      "sensitive_flows_detected": [
+        {
+          "flow_name": "Local music access",
+          "activities": [
+            "com.android.lemon.radio.activity.LocalActivity",
+            "com.android.lemon.radio.activity.LocalAddAudiosActivity"
+          ],
+          "description": "User can browse and add local music files, implying storage access."
+        },
+        {
+          "flow_name": "Online music playback",
+          "activities": [
+            "com.android.lemon.radio.activity.OnlineActivity"
+          ],
+          "description": "User can access online music, implying network access."
+        }
+      ],
+      "overall_ui_transparency_score": 0.3
+    },
+    "prompt2_backend_analysis": {
+      "backend_active_capabilities": {
+        "phone_state": {
+          "active": true,
+          "confidence": "high",
+          "triggering_methods": [
+            "com.apperhand.common.dto.ApplicationDetails: java.lang.String getDeviceId()"
+          ],
+          "triggering_classes": [
+            "ApplicationDetails"
+          ],
+          "is_background_only": true,
+          "notes": "getDeviceId() is called from ApplicationDetails, which is not an Activity. Indicates device ID access in backend context."
+        },
+        "device_id": {
+          "active": true,
+          "confidence": "high",
+          "triggering_methods": [
+            "com.apperhand.common.dto.ApplicationDetails: java.lang.String getDeviceId()"
+          ],
+          "triggering_classes": [
+            "ApplicationDetails"
+          ],
+          "is_background_only": true,
+          "notes": "Device ID access is performed by a non-UI class, likely for backend or stealthy collection."
+        }
+      },
+      "suspicious_methods": [
+        {
+          "full_sig": "com.apperhand.common.dto.ApplicationDetails: java.lang.String getDeviceId()",
+          "reason": "Device ID access from a DTO/helper class, not a UI component. Suggests covert device fingerprinting.",
+          "backdoor_pattern": "COVERT_COLLECT"
+        }
+      ],
+      "background_sensitive_classes": [
+        "ApplicationDetails"
+      ],
+      "stealthy_patterns_found": [
+        "Device fingerprinting: Device ID accessed from non-Activity class (ApplicationDetails), likely without user knowledge.",
+        "Sensitive API (getDeviceId) called in backend context, not directly tied to user action or UI."
+      ]
+    },
+    "prompt3_backdoor_detection": {
+      "verdict": "HAS_BACKDOOR",
+      "overall_risk_level": "high",
+      "confidence": 0.95,
+      "backdoor_patterns": [
+        {
+          "backdoor_type": "COVERT_COLLECT",
+          "permission_category": "device_id",
+          "risk_level": "high",
+          "ui_claim": "not present in UI",
+          "backend_evidence": [
+            "com.apperhand.common.dto.ApplicationDetails: java.lang.String getDeviceId()"
+          ],
+          "explanation": "The backend accesses the device ID via getDeviceId() in a non-UI class (ApplicationDetails), with no mention or justification in the UI. This is a classic covert collection of sensitive device fingerprinting data, invisible to the user.",
+          "confidence": 0.95
+        },
+        {
+          "backdoor_type": "SILENT_EXEC",
+          "permission_category": "phone_state",
+          "risk_level": "high",
+          "ui_claim": "not present in UI",
+          "backend_evidence": [
+            "com.apperhand.common.dto.ApplicationDetails: java.lang.String getDeviceId()"
+          ],
+          "explanation": "READ_PHONE_STATE is declared and exercised in the backend to access device ID, but the UI never discloses or justifies this access. The operation is performed in a background context, not tied to any user action.",
+          "confidence": 0.9
+        }
+      ],
+      "mismatch_summary": {
+        "categories_in_ui_not_in_backend": [],
+        "categories_in_backend_not_in_ui": [
+          "device_id",
+          "phone_state"
+        ],
+        "categories_in_manifest_not_used": [
+          "sms",
+          "location"
+        ],
+        "categories_used_without_permission": []
+      },
+      "recommendations": [
+        "Investigate the purpose and data flow of com.apperhand.common.dto.ApplicationDetails:getDeviceId().",
+        "Require explicit user disclosure and consent for device ID access.",
+        "Remove unused sensitive permissions (e.g., SMS, location) from the manifest to reduce attack surface.",
+        "Audit exported components (e.g., com.android.lemon.common.sms.SmsReceived) for potential hidden triggers."
+      ],
+      "analyst_notes": "The app presents itself as a music player, but covertly collects device ID information in the backend without any UI disclosure or user consent. This is a high-confidence backdoor pattern (COVERT_COLLECT, SILENT_EXEC). The presence of unused sensitive permissions (SMS, location) is also suspicious, but the primary risk is the stealthy device fingerprinting. No evidence of SMS or location access at runtime, but their declaration in the manifest warrants further review."
+    }
+  },
+  "local_rule_analysis": {
+    "local_verdict": "HAS_BACKDOOR",
+    "total_flags": 8,
+    "silent_exec_flags": [
+      {
+        "backdoor_type": "SILENT_EXEC",
+        "permission_category": "phone_state",
+        "risk_level": "high",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [
+          "com.apperhand.common.dto.ApplicationDetails: java.lang.String getDeviceId()"
+        ],
+        "explanation": "The app calls phone_state APIs at runtime but the UI contains no UI elements, labels, or activity names that mention or justify this capability.",
+        "confidence": 0.51,
+        "source": "local_rule"
+      },
+      {
+        "backdoor_type": "SILENT_EXEC",
+        "permission_category": "device_id",
+        "risk_level": "high",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [
+          "com.apperhand.common.dto.ApplicationDetails: java.lang.String getDeviceId()"
+        ],
+        "explanation": "The app calls device_id APIs at runtime but the UI contains no UI elements, labels, or activity names that mention or justify this capability.",
+        "confidence": 0.51,
+        "source": "local_rule"
+      }
+    ],
+    "ui_deception_flags": [],
+    "covert_collect_flags": [
+      {
+        "backdoor_type": "COVERT_COLLECT",
+        "permission_category": "phone_state",
+        "risk_level": "critical",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [
+          "com.apperhand.common.dto.ApplicationDetails: java.lang.String getDeviceId()"
+        ],
+        "explanation": "Device identifier / phone state harvesting (phone_state) detected without any UI disclosure or user consent flow.",
+        "confidence": 0.58,
+        "source": "local_rule"
+      },
+      {
+        "backdoor_type": "COVERT_COLLECT",
+        "permission_category": "device_id",
+        "risk_level": "critical",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [
+          "com.apperhand.common.dto.ApplicationDetails: java.lang.String getDeviceId()"
+        ],
+        "explanation": "Device identifier / phone state harvesting (device_id) detected without any UI disclosure or user consent flow.",
+        "confidence": 0.58,
+        "source": "local_rule"
+      }
+    ],
+    "over_declared_flags": [
+      {
+        "backdoor_type": "OVER_DECLARED",
+        "permission_category": "sms",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for sms were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.37,
+        "source": "local_rule"
+      },
+      {
+        "backdoor_type": "OVER_DECLARED",
+        "permission_category": "location",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for location were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.37,
+        "source": "local_rule"
+      },
+      {
+        "backdoor_type": "OVER_DECLARED",
+        "permission_category": "storage",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for storage were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.37,
+        "source": "local_rule"
+      },
+      {
+        "backdoor_type": "OVER_DECLARED",
+        "permission_category": "network",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for network were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.37,
+        "source": "local_rule"
+      }
+    ],
+    "hidden_trigger_flags": [],
+    "all_flags": [
+      {
+        "backdoor_type": "SILENT_EXEC",
+        "permission_category": "phone_state",
+        "risk_level": "high",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [
+          "com.apperhand.common.dto.ApplicationDetails: java.lang.String getDeviceId()"
+        ],
+        "explanation": "The app calls phone_state APIs at runtime but the UI contains no UI elements, labels, or activity names that mention or justify this capability.",
+        "confidence": 0.51,
+        "source": "local_rule"
+      },
+      {
+        "backdoor_type": "SILENT_EXEC",
+        "permission_category": "device_id",
+        "risk_level": "high",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [
+          "com.apperhand.common.dto.ApplicationDetails: java.lang.String getDeviceId()"
+        ],
+        "explanation": "The app calls device_id APIs at runtime but the UI contains no UI elements, labels, or activity names that mention or justify this capability.",
+        "confidence": 0.51,
+        "source": "local_rule"
+      },
+      {
+        "backdoor_type": "COVERT_COLLECT",
+        "permission_category": "phone_state",
+        "risk_level": "critical",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [
+          "com.apperhand.common.dto.ApplicationDetails: java.lang.String getDeviceId()"
+        ],
+        "explanation": "Device identifier / phone state harvesting (phone_state) detected without any UI disclosure or user consent flow.",
+        "confidence": 0.58,
+        "source": "local_rule"
+      },
+      {
+        "backdoor_type": "COVERT_COLLECT",
+        "permission_category": "device_id",
+        "risk_level": "critical",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [
+          "com.apperhand.common.dto.ApplicationDetails: java.lang.String getDeviceId()"
+        ],
+        "explanation": "Device identifier / phone state harvesting (device_id) detected without any UI disclosure or user consent flow.",
+        "confidence": 0.58,
+        "source": "local_rule"
+      },
+      {
+        "backdoor_type": "OVER_DECLARED",
+        "permission_category": "sms",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for sms were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.37,
+        "source": "local_rule"
+      },
+      {
+        "backdoor_type": "OVER_DECLARED",
+        "permission_category": "location",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for location were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.37,
+        "source": "local_rule"
+      },
+      {
+        "backdoor_type": "OVER_DECLARED",
+        "permission_category": "storage",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for storage were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.37,
+        "source": "local_rule"
+      },
+      {
+        "backdoor_type": "OVER_DECLARED",
+        "permission_category": "network",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for network were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.37,
+        "source": "local_rule"
+      }
+    ]
+  },
+  "recommendations": [
+    "Investigate the purpose and data flow of com.apperhand.common.dto.ApplicationDetails:getDeviceId().",
+    "Require explicit user disclosure and consent for device ID access.",
+    "Remove unused sensitive permissions (e.g., SMS, location) from the manifest to reduce attack surface.",
+    "Audit exported components (e.g., com.android.lemon.common.sms.SmsReceived) for potential hidden triggers."
+  ]
+}

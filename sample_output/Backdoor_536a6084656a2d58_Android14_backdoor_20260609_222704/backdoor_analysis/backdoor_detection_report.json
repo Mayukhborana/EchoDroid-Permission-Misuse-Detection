@@ -1,0 +1,360 @@
+{
+  "pipeline": "MismatchDroid-fastbot-custom-more-detection (Backdoor Detection)",
+  "version": "1.0.0",
+  "timestamp": "2026-06-09T14:32:58.702535Z",
+  "app": {
+    "name": "Backdoor_536a6084656a2d58_Android14",
+    "description": "Android app under backdoor detection analysis by EchoDroid",
+    "package": "vrhnjblm.iabewpt.spsju"
+  },
+  "backdoor_verdict": {
+    "verdict": "SUSPICIOUS",
+    "risk_level": "medium",
+    "confidence": 0.7,
+    "total_patterns_found": 3,
+    "verdict_explanation": "Moderate mismatch signals; warrants further manual investigation."
+  },
+  "backdoor_patterns": [
+    {
+      "backdoor_type": "OVER_DECLARED",
+      "permission_category": "phone_state",
+      "risk_level": "medium",
+      "ui_claim": "not present in UI",
+      "backend_evidence": [],
+      "explanation": "The app declares android.permission.READ_PHONE_STATE in the manifest, but backend analysis shows no evidence of this permission being exercised at runtime and the UI never mentions phone state or device ID access. This may indicate a zombie permission for future activation or to evade static analysis.",
+      "confidence": 0.7
+    },
+    {
+      "backdoor_type": "OVER_DECLARED",
+      "permission_category": "storage",
+      "risk_level": "medium",
+      "ui_claim": "not present in UI",
+      "backend_evidence": [],
+      "explanation": "android.permission.WRITE_EXTERNAL_STORAGE is declared in the manifest, but there is no evidence of storage access in backend analysis and no mention in the UI. This could be a placeholder for future use or an attempt to mask true intent.",
+      "confidence": 0.7
+    },
+    {
+      "backdoor_type": "HIDDEN_TRIGGER",
+      "permission_category": "unknown",
+      "risk_level": "medium",
+      "ui_claim": "not present in UI",
+      "backend_evidence": [
+        "com.sBKMD.ujQQLoKHkeFa (exported)",
+        "com.sBKMD.userPermissionReceiver (exported)"
+      ],
+      "explanation": "Two non-UI exported components (com.sBKMD.ujQQLoKHkeFa and com.sBKMD.userPermissionReceiver) are accessible externally, but their functionality is not described in the UI or backend analysis. Exported components with obfuscated names are a common backdoor pattern, as they may be triggered by other apps or remote commands to execute hidden logic.",
+      "confidence": 0.7
+    }
+  ],
+  "mismatch_summary": {
+    "categories_in_ui_not_in_backend": [],
+    "categories_in_backend_not_in_ui": [],
+    "categories_in_manifest_not_used": [
+      "phone_state",
+      "storage"
+    ],
+    "categories_used_without_permission": []
+  },
+  "evidence": {
+    "manifest": {
+      "all_permissions": [
+        "android.permission.WAKE_LOCK",
+        "android.permission.INTERNET",
+        "android.permission.READ_PHONE_STATE",
+        "android.permission.GET_TASKS",
+        "android.permission.SYSTEM_ALERT_WINDOW",
+        "android.permission.WRITE_EXTERNAL_STORAGE",
+        "com.android.launcher.permission.INSTALL_SHORTCUT"
+      ],
+      "sensitive_permissions": [
+        "android.permission.INTERNET",
+        "android.permission.READ_PHONE_STATE",
+        "android.permission.WRITE_EXTERNAL_STORAGE"
+      ],
+      "by_category": {
+        "phone_state": [
+          "android.permission.READ_PHONE_STATE"
+        ],
+        "storage": [
+          "android.permission.WRITE_EXTERNAL_STORAGE"
+        ],
+        "network": [
+          "android.permission.INTERNET"
+        ],
+        "device_id": [
+          "android.permission.READ_PHONE_STATE"
+        ]
+      },
+      "exported_components": [
+        "com.sBKMD.ujQQLoKHkeFa",
+        "com.sBKMD.userPermissionReceiver",
+        "vrhnjblm.iabewpt.spsju.MenuActivity"
+      ]
+    },
+    "runtime": {
+      "total_unique_methods_called": 143,
+      "sensitive_methods_found": 0,
+      "backend_active_categories": [],
+      "backend_category_details": {},
+      "activities_tested": [
+        "com.sBKMD.IQCLFEHFOSUMb",
+        "com.sBKMD.ujQQLoKHkeFa",
+        "vrhnjblm.iabewpt.spsju.MenuActivity",
+        "vrhnjblm.iabewpt.spsju.RequestActivity",
+        "vrhnjblm.iabewpt.spsju.SelectorActivity"
+      ],
+      "activity_coverage": 71.42857360839844
+    }
+  },
+  "llm_analysis": {
+    "prompt1_ui_analysis": {
+      "app_ui_stated_purpose": "Personalized content discovery and updates",
+      "ui_permission_claims": {
+        "sms": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "location": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "contacts": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "camera": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "microphone": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "phone_state": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "storage": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "device_admin": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "accessibility": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "network": {
+          "visible_in_ui": true,
+          "justification_strength": "implied",
+          "ui_evidence": [
+            "Turn on Discover to get updates on sports, music, movies, and more",
+            "Keep up with your favorite topics",
+            "Updates"
+          ]
+        },
+        "device_id": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "process_exec": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        }
+      },
+      "categories_absent_from_ui": [
+        "sms",
+        "location",
+        "contacts",
+        "camera",
+        "microphone",
+        "phone_state",
+        "storage",
+        "device_admin",
+        "accessibility",
+        "device_id",
+        "process_exec"
+      ],
+      "sensitive_flows_detected": [
+        {
+          "flow_name": "Network-based content updates",
+          "activities": [
+            "vrhnjblm.iabewpt.spsju.MenuActivity",
+            "vrhnjblm.iabewpt.spsju.RequestActivity",
+            "vrhnjblm.iabewpt.spsju.SelectorActivity"
+          ],
+          "description": "UI prompts user to turn on Discover and receive updates, implying network usage for personalized content."
+        }
+      ],
+      "overall_ui_transparency_score": 0.2
+    },
+    "prompt2_backend_analysis": {
+      "backend_active_capabilities": {},
+      "suspicious_methods": [],
+      "background_sensitive_classes": [],
+      "stealthy_patterns_found": []
+    },
+    "prompt3_backdoor_detection": {
+      "verdict": "SUSPICIOUS",
+      "overall_risk_level": "medium",
+      "confidence": 0.7,
+      "backdoor_patterns": [
+        {
+          "backdoor_type": "OVER_DECLARED",
+          "permission_category": "phone_state",
+          "risk_level": "medium",
+          "ui_claim": "not present in UI",
+          "backend_evidence": [],
+          "explanation": "The app declares android.permission.READ_PHONE_STATE in the manifest, but backend analysis shows no evidence of this permission being exercised at runtime and the UI never mentions phone state or device ID access. This may indicate a zombie permission for future activation or to evade static analysis.",
+          "confidence": 0.7
+        },
+        {
+          "backdoor_type": "OVER_DECLARED",
+          "permission_category": "storage",
+          "risk_level": "medium",
+          "ui_claim": "not present in UI",
+          "backend_evidence": [],
+          "explanation": "android.permission.WRITE_EXTERNAL_STORAGE is declared in the manifest, but there is no evidence of storage access in backend analysis and no mention in the UI. This could be a placeholder for future use or an attempt to mask true intent.",
+          "confidence": 0.7
+        },
+        {
+          "backdoor_type": "HIDDEN_TRIGGER",
+          "permission_category": "unknown",
+          "risk_level": "medium",
+          "ui_claim": "not present in UI",
+          "backend_evidence": [
+            "com.sBKMD.ujQQLoKHkeFa (exported)",
+            "com.sBKMD.userPermissionReceiver (exported)"
+          ],
+          "explanation": "Two non-UI exported components (com.sBKMD.ujQQLoKHkeFa and com.sBKMD.userPermissionReceiver) are accessible externally, but their functionality is not described in the UI or backend analysis. Exported components with obfuscated names are a common backdoor pattern, as they may be triggered by other apps or remote commands to execute hidden logic.",
+          "confidence": 0.7
+        }
+      ],
+      "mismatch_summary": {
+        "categories_in_ui_not_in_backend": [],
+        "categories_in_backend_not_in_ui": [],
+        "categories_in_manifest_not_used": [
+          "phone_state",
+          "storage"
+        ],
+        "categories_used_without_permission": []
+      },
+      "recommendations": [
+        "Perform dynamic analysis to monitor if the exported components can be triggered externally to perform sensitive actions.",
+        "Review future app updates for activation of currently unused permissions.",
+        "Alert users and security teams to the presence of zombie permissions and unexplained exported components."
+      ],
+      "analyst_notes": "No direct evidence of sensitive API usage at runtime, but the presence of unused sensitive permissions and unexplained exported components with obfuscated names is suspicious. No SILENT_EXEC or COVERT_COLLECT detected, but the app's manifest and component structure warrant further monitoring."
+    }
+  },
+  "local_rule_analysis": {
+    "local_verdict": "SUSPICIOUS",
+    "total_flags": 4,
+    "silent_exec_flags": [],
+    "ui_deception_flags": [],
+    "covert_collect_flags": [],
+    "over_declared_flags": [
+      {
+        "backdoor_type": "OVER_DECLARED",
+        "permission_category": "phone_state",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for phone_state were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.55,
+        "source": "local_rule"
+      },
+      {
+        "backdoor_type": "OVER_DECLARED",
+        "permission_category": "storage",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for storage were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.55,
+        "source": "local_rule"
+      },
+      {
+        "backdoor_type": "OVER_DECLARED",
+        "permission_category": "network",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for network were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.55,
+        "source": "local_rule"
+      },
+      {
+        "backdoor_type": "OVER_DECLARED",
+        "permission_category": "device_id",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for device_id were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.55,
+        "source": "local_rule"
+      }
+    ],
+    "hidden_trigger_flags": [],
+    "all_flags": [
+      {
+        "backdoor_type": "OVER_DECLARED",
+        "permission_category": "phone_state",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for phone_state were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.55,
+        "source": "local_rule"
+      },
+      {
+        "backdoor_type": "OVER_DECLARED",
+        "permission_category": "storage",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for storage were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.55,
+        "source": "local_rule"
+      },
+      {
+        "backdoor_type": "OVER_DECLARED",
+        "permission_category": "network",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for network were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.55,
+        "source": "local_rule"
+      },
+      {
+        "backdoor_type": "OVER_DECLARED",
+        "permission_category": "device_id",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for device_id were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.55,
+        "source": "local_rule"
+      }
+    ]
+  },
+  "recommendations": [
+    "Perform dynamic analysis to monitor if the exported components can be triggered externally to perform sensitive actions.",
+    "Review future app updates for activation of currently unused permissions.",
+    "Alert users and security teams to the presence of zombie permissions and unexplained exported components."
+  ]
+}

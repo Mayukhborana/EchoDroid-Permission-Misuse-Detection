@@ -1,0 +1,25 @@
+{
+  "AppName": "Backdoor_6acc850988883adc_Android14",
+  "Description": "Android app under backdoor detection analysis by EchoDroid",
+  "ApiKey": "",
+  "TotalMethod": 1,
+  "Tag": "photowithclown_iconosys_eng_LOG",
+  "Model": "gpt-4.1",
+  "BaseUrl": "https://api.openai.com/v1",
+  "PackageName": "photowithclown.iconosys.eng",
+  "ManifestPath": "/Users/Desktop/permission_misuse/drebin/resigned_base_apks/6acc850988883adc4a5129ea711f3f176815e4eb210ecc9f8db643d15ca9c8d9_signed.apk",
+  "ManifestPermissions": [
+    "android.permission.WAKE_LOCK",
+    "android.permission.READ_CONTACTS",
+    "android.permission.SEND_SMS",
+    "android.permission.ACCESS_COARSE_LOCATION",
+    "android.permission.ACCESS_FINE_LOCATION",
+    "android.permission.INTERNET",
+    "android.permission.READ_PHONE_STATE",
+    "android.permission.READ_SMS",
+    "android.permission.WRITE_SMS",
+    "android.permission.WRITE_EXTERNAL_STORAGE",
+    "android.permission.CAMERA"
+  ],
+  "ExportedComponents": []
+}

@@ -1,0 +1,684 @@
+{
+  "pipeline": "LLMDroid-fastbot-custom-more-detection (Backdoor Detection)",
+  "version": "1.0.0",
+  "timestamp": "2026-06-09T17:08:49.629242Z",
+  "app": {
+    "name": "Backdoor_84e299743bef65a6_Android14",
+    "description": "Android app under backdoor detection analysis by LLMDroid",
+    "package": "roh6U.jea2Ohm"
+  },
+  "backdoor_verdict": {
+    "verdict": "HAS_BACKDOOR",
+    "risk_level": "critical",
+    "confidence": 0.98,
+    "total_patterns_found": 4,
+    "verdict_explanation": "High-confidence UI-vs-backend mismatch indicating hidden malicious behaviour."
+  },
+  "backdoor_patterns": [
+    {
+      "backdoor_type": "COVERT_COLLECT",
+      "permission_category": "sms",
+      "risk_level": "critical",
+      "ui_claim": "SMS is used for password delivery and payment notification only.",
+      "backend_evidence": [
+        "com.info.eraser.record.strategy.core.ContactSmsHandler: android.database.Cursor getInboxSms()",
+        "com.info.eraser.record.strategy.core.ContactSmsHandler: android.database.Cursor getSentSms()",
+        "com.info.eraser.record.strategy.net.UploadFile: boolean uplaodSms(com.info.eraser.record.strategy.core.ContactSmsHandler)"
+      ],
+      "explanation": "The backend reads all SMS inbox and sent messages and uploads them via a backend class. The UI only mentions sending/receiving a password SMS, not harvesting or uploading the user's SMS messages.",
+      "confidence": 0.98
+    },
+    {
+      "backdoor_type": "COVERT_COLLECT",
+      "permission_category": "phone_state",
+      "risk_level": "high",
+      "ui_claim": "not present in UI",
+      "backend_evidence": [
+        "com.info.eraser.record.strategy.service.Tools: java.lang.String getIMEI(android.content.Context)",
+        "com.info.eraser.record.strategy.service.Tools: java.lang.String getIMSI(android.content.Context)"
+      ],
+      "explanation": "The backend collects device IMEI and IMSI identifiers in the background, with no mention or justification in the UI.",
+      "confidence": 0.95
+    },
+    {
+      "backdoor_type": "COVERT_COLLECT",
+      "permission_category": "device_id",
+      "risk_level": "high",
+      "ui_claim": "not present in UI",
+      "backend_evidence": [
+        "com.info.eraser.record.strategy.service.Tools: java.lang.String getIMEI(android.content.Context)",
+        "com.info.eraser.record.strategy.service.Tools: java.lang.String getIMSI(android.content.Context)"
+      ],
+      "explanation": "Device identifiers are accessed and likely exfiltrated by backend code, with no user awareness or UI disclosure.",
+      "confidence": 0.95
+    },
+    {
+      "backdoor_type": "COVERT_COLLECT",
+      "permission_category": "storage",
+      "risk_level": "high",
+      "ui_claim": "not present in UI",
+      "backend_evidence": [
+        "com.info.eraser.record.strategy.net.UploadFile: void doUploadProcess()",
+        "com.info.eraser.record.strategy.net.UploadFile: boolean uplaodSms(com.info.eraser.record.strategy.core.ContactSmsHandler)"
+      ],
+      "explanation": "Backend code uploads files and SMS data from storage without any UI indication or user consent.",
+      "confidence": 0.93
+    }
+  ],
+  "mismatch_summary": {
+    "categories_in_ui_not_in_backend": [],
+    "categories_in_backend_not_in_ui": [
+      "phone_state",
+      "device_id",
+      "storage"
+    ],
+    "categories_in_manifest_not_used": [
+      "camera",
+      "contacts"
+    ],
+    "categories_used_without_permission": []
+  },
+  "evidence": {
+    "manifest": {
+      "all_permissions": [
+        "android.permission.ACCESS_NETWORK_STATE",
+        "android.permission.ACCESS_WIFI_STATE",
+        "android.permission.CAMERA",
+        "android.permission.CHANGE_CONFIGURATION",
+        "android.permission.EXPAND_STATUS_BAR",
+        "android.permission.CONTROL_LOCATION_UPDATES",
+        "android.permission.GET_ACCOUNTS",
+        "android.permission.BATTERY_STATS",
+        "android.permission.INTERNET",
+        "android.permission.INSTALL_PACKAGES",
+        "android.permission.SEND_SMS",
+        "android.permission.READ_CALENDAR",
+        "android.permission.READ_CONTACTS",
+        "android.permission.READ_FRAME_BUFFER",
+        "com.android.browser.permission.READ_HISTORY_BOOKMARKS",
+        "android.permission.READ_LOGS",
+        "android.permission.STATUS_BAR",
+        "android.permission.SYSTEM_ALERT_WINDOW",
+        "android.permission.VIBRATE",
+        "android.permission.WRITE_CONTACTS",
+        "android.permission.WRITE_CALENDAR"
+      ],
+      "sensitive_permissions": [
+        "android.permission.ACCESS_NETWORK_STATE",
+        "android.permission.CAMERA",
+        "android.permission.GET_ACCOUNTS",
+        "android.permission.INTERNET",
+        "android.permission.SEND_SMS",
+        "android.permission.READ_CONTACTS",
+        "android.permission.WRITE_CONTACTS"
+      ],
+      "by_category": {
+        "sms": [
+          "android.permission.SEND_SMS"
+        ],
+        "contacts": [
+          "android.permission.GET_ACCOUNTS",
+          "android.permission.READ_CONTACTS",
+          "android.permission.WRITE_CONTACTS"
+        ],
+        "camera": [
+          "android.permission.CAMERA"
+        ],
+        "network": [
+          "android.permission.ACCESS_NETWORK_STATE",
+          "android.permission.INTERNET"
+        ]
+      },
+      "exported_components": [
+        ".Android"
+      ]
+    },
+    "runtime": {
+      "total_unique_methods_called": 89,
+      "sensitive_methods_found": 12,
+      "backend_active_categories": [
+        "phone_state",
+        "device_id",
+        "network",
+        "storage",
+        "sms"
+      ],
+      "backend_category_details": {
+        "phone_state": [
+          "com.info.eraser.record.strategy.service.Tools: java.lang.String getIMEI(android.content.Context)",
+          "com.info.eraser.record.strategy.service.Tools: java.lang.String getIMSI(android.content.Context)"
+        ],
+        "device_id": [
+          "com.info.eraser.record.strategy.service.Tools: java.lang.String getIMEI(android.content.Context)",
+          "com.info.eraser.record.strategy.service.Tools: java.lang.String getIMSI(android.content.Context)"
+        ],
+        "network": [
+          "com.info.eraser.record.strategy.net.HttpHandler: java.net.HttpURLConnection openHttpURLConnection()"
+        ],
+        "storage": [
+          "com.info.eraser.record.strategy.net.UploadFile: void <init",
+          "com.info.eraser.record.strategy.net.UploadFile: void doUploadProcess()",
+          "com.info.eraser.record.strategy.net.UploadFile: boolean uplaodSms(com.info.eraser.record.strategy.core.ContactSmsHandler)"
+        ],
+        "sms": [
+          "com.info.eraser.record.strategy.core.ContactSmsHandler: void <clinit",
+          "com.info.eraser.record.strategy.core.ContactSmsHandler: void <init",
+          "com.info.eraser.record.strategy.net.UploadFile: boolean uplaodSms(com.info.eraser.record.strategy.core.ContactSmsHandler)",
+          "com.info.eraser.record.strategy.core.ContactSmsHandler: boolean createSmsFile(java.lang.String)",
+          "com.info.eraser.record.strategy.core.ContactSmsHandler: android.database.Cursor getInboxSms()",
+          "com.info.eraser.record.strategy.core.ContactSmsHandler: java.lang.String getContactsNameByPhone(java.lang.String)",
+          "com.info.eraser.record.strategy.core.ContactSmsHandler: android.database.Cursor getSentSms()"
+        ]
+      },
+      "activities_tested": [
+        "roh6U.jea2Ohm.Android"
+      ],
+      "activity_coverage": 100
+    }
+  },
+  "llm_analysis": {
+    "prompt1_ui_analysis": {
+      "app_ui_stated_purpose": "Access to a closed download site via SMS password",
+      "ui_permission_claims": {
+        "sms": {
+          "visible_in_ui": true,
+          "justification_strength": "explicit",
+          "ui_evidence": [
+            "Сейчас Вам придут SMS с паролем на закрытый сайт.",
+            "Стоимость смс: 1899 – от 80 руб.",
+            "Полное соглашение и стоимость смс на сайте сайте http://www.icqbayan.ru/rules.htm"
+          ]
+        },
+        "location": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "contacts": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "camera": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "microphone": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "phone_state": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "storage": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "device_admin": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "accessibility": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "network": {
+          "visible_in_ui": true,
+          "justification_strength": "implied",
+          "ui_evidence": [
+            "Можете перейти на сайт (http://www.icqbayan.ru и там ввести пароль.",
+            "Либо перейти прямо из SMS.",
+            "Сохраните адрес, и Вам не придется больше искать загрузки, все есть на одном портале."
+          ]
+        },
+        "device_id": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "process_exec": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        }
+      },
+      "categories_absent_from_ui": [
+        "location",
+        "contacts",
+        "camera",
+        "microphone",
+        "phone_state",
+        "storage",
+        "device_admin",
+        "accessibility",
+        "device_id",
+        "process_exec"
+      ],
+      "sensitive_flows_detected": [
+        {
+          "flow_name": "SMS-based authentication and payment",
+          "activities": [
+            "roh6U.jea2Ohm.Android"
+          ],
+          "description": "User is informed that an SMS with a password will be sent for access to a closed site, and that SMS messages incur a cost."
+        },
+        {
+          "flow_name": "Network access for site login",
+          "activities": [
+            "roh6U.jea2Ohm.Android"
+          ],
+          "description": "User is instructed to visit a website and enter a password received via SMS, implying use of network connectivity."
+        }
+      ],
+      "overall_ui_transparency_score": 0.6
+    },
+    "prompt2_backend_analysis": {
+      "backend_active_capabilities": {
+        "phone_state": {
+          "active": true,
+          "confidence": "high",
+          "triggering_methods": [
+            "com.info.eraser.record.strategy.service.Tools: java.lang.String getIMEI(android.content.Context)",
+            "com.info.eraser.record.strategy.service.Tools: java.lang.String getIMSI(android.content.Context)"
+          ],
+          "triggering_classes": [
+            "Tools"
+          ],
+          "is_background_only": true,
+          "notes": "IMEI and IMSI collection is performed by a non-Activity class (Tools), likely in the background."
+        },
+        "device_id": {
+          "active": true,
+          "confidence": "high",
+          "triggering_methods": [
+            "com.info.eraser.record.strategy.service.Tools: java.lang.String getIMEI(android.content.Context)",
+            "com.info.eraser.record.strategy.service.Tools: java.lang.String getIMSI(android.content.Context)"
+          ],
+          "triggering_classes": [
+            "Tools"
+          ],
+          "is_background_only": true,
+          "notes": "Device identifiers are accessed by a backend utility class, not tied to user interaction."
+        },
+        "network": {
+          "active": true,
+          "confidence": "high",
+          "triggering_methods": [
+            "com.info.eraser.record.strategy.net.HttpHandler: java.net.HttpURLConnection openHttpURLConnection()"
+          ],
+          "triggering_classes": [
+            "HttpHandler"
+          ],
+          "is_background_only": true,
+          "notes": "Network connections are established by a non-UI handler, likely for backend data exfiltration."
+        },
+        "storage": {
+          "active": true,
+          "confidence": "high",
+          "triggering_methods": [
+            "com.info.eraser.record.strategy.net.UploadFile: void <init",
+            "com.info.eraser.record.strategy.net.UploadFile: void doUploadProcess()",
+            "com.info.eraser.record.strategy.net.UploadFile: boolean uplaodSms(com.info.eraser.record.strategy.core.ContactSmsHandler)"
+          ],
+          "triggering_classes": [
+            "UploadFile"
+          ],
+          "is_background_only": true,
+          "notes": "File upload and storage operations are performed by backend classes, not user-facing components."
+        },
+        "sms": {
+          "active": true,
+          "confidence": "high",
+          "triggering_methods": [
+            "com.info.eraser.record.strategy.core.ContactSmsHandler: android.database.Cursor getInboxSms()",
+            "com.info.eraser.record.strategy.core.ContactSmsHandler: android.database.Cursor getSentSms()",
+            "com.info.eraser.record.strategy.net.UploadFile: boolean uplaodSms(com.info.eraser.record.strategy.core.ContactSmsHandler)"
+          ],
+          "triggering_classes": [
+            "ContactSmsHandler",
+            "UploadFile"
+          ],
+          "is_background_only": true,
+          "notes": "SMS inbox and sent messages are accessed and uploaded by backend classes, indicating covert data harvesting."
+        }
+      },
+      "suspicious_methods": [
+        {
+          "full_sig": "com.info.eraser.record.strategy.service.Tools: java.lang.String getIMEI(android.content.Context)",
+          "reason": "IMEI access from a backend utility class, not tied to user action; typical of device fingerprinting.",
+          "backdoor_pattern": "COVERT_COLLECT"
+        },
+        {
+          "full_sig": "com.info.eraser.record.strategy.service.Tools: java.lang.String getIMSI(android.content.Context)",
+          "reason": "IMSI access from a backend utility class, not tied to user action; typical of device fingerprinting.",
+          "backdoor_pattern": "COVERT_COLLECT"
+        },
+        {
+          "full_sig": "com.info.eraser.record.strategy.core.ContactSmsHandler: android.database.Cursor getInboxSms()",
+          "reason": "Reads all inbox SMS messages from a non-UI handler; likely for covert exfiltration.",
+          "backdoor_pattern": "COVERT_COLLECT"
+        },
+        {
+          "full_sig": "com.info.eraser.record.strategy.core.ContactSmsHandler: android.database.Cursor getSentSms()",
+          "reason": "Reads all sent SMS messages from a non-UI handler; likely for covert exfiltration.",
+          "backdoor_pattern": "COVERT_COLLECT"
+        },
+        {
+          "full_sig": "com.info.eraser.record.strategy.net.UploadFile: boolean uplaodSms(com.info.eraser.record.strategy.core.ContactSmsHandler)",
+          "reason": "Uploads SMS data to a remote server from a backend class; strong indicator of data exfiltration.",
+          "backdoor_pattern": "COVERT_COLLECT"
+        }
+      ],
+      "background_sensitive_classes": [
+        "Tools",
+        "ContactSmsHandler",
+        "UploadFile",
+        "HttpHandler"
+      ],
+      "stealthy_patterns_found": [
+        "Device fingerprinting: IMEI and IMSI are collected in the background by non-UI classes.",
+        "Background SMS harvesting: Inbox and sent SMS are read and uploaded without user interaction.",
+        "Covert exfiltration: SMS and device identifiers are uploaded to a remote server via backend handlers."
+      ]
+    },
+    "prompt3_backdoor_detection": {
+      "verdict": "HAS_BACKDOOR",
+      "overall_risk_level": "critical",
+      "confidence": 0.98,
+      "backdoor_patterns": [
+        {
+          "backdoor_type": "COVERT_COLLECT",
+          "permission_category": "sms",
+          "risk_level": "critical",
+          "ui_claim": "SMS is used for password delivery and payment notification only.",
+          "backend_evidence": [
+            "com.info.eraser.record.strategy.core.ContactSmsHandler: android.database.Cursor getInboxSms()",
+            "com.info.eraser.record.strategy.core.ContactSmsHandler: android.database.Cursor getSentSms()",
+            "com.info.eraser.record.strategy.net.UploadFile: boolean uplaodSms(com.info.eraser.record.strategy.core.ContactSmsHandler)"
+          ],
+          "explanation": "The backend reads all SMS inbox and sent messages and uploads them via a backend class. The UI only mentions sending/receiving a password SMS, not harvesting or uploading the user's SMS messages.",
+          "confidence": 0.98
+        },
+        {
+          "backdoor_type": "COVERT_COLLECT",
+          "permission_category": "phone_state",
+          "risk_level": "high",
+          "ui_claim": "not present in UI",
+          "backend_evidence": [
+            "com.info.eraser.record.strategy.service.Tools: java.lang.String getIMEI(android.content.Context)",
+            "com.info.eraser.record.strategy.service.Tools: java.lang.String getIMSI(android.content.Context)"
+          ],
+          "explanation": "The backend collects device IMEI and IMSI identifiers in the background, with no mention or justification in the UI.",
+          "confidence": 0.95
+        },
+        {
+          "backdoor_type": "COVERT_COLLECT",
+          "permission_category": "device_id",
+          "risk_level": "high",
+          "ui_claim": "not present in UI",
+          "backend_evidence": [
+            "com.info.eraser.record.strategy.service.Tools: java.lang.String getIMEI(android.content.Context)",
+            "com.info.eraser.record.strategy.service.Tools: java.lang.String getIMSI(android.content.Context)"
+          ],
+          "explanation": "Device identifiers are accessed and likely exfiltrated by backend code, with no user awareness or UI disclosure.",
+          "confidence": 0.95
+        },
+        {
+          "backdoor_type": "COVERT_COLLECT",
+          "permission_category": "storage",
+          "risk_level": "high",
+          "ui_claim": "not present in UI",
+          "backend_evidence": [
+            "com.info.eraser.record.strategy.net.UploadFile: void doUploadProcess()",
+            "com.info.eraser.record.strategy.net.UploadFile: boolean uplaodSms(com.info.eraser.record.strategy.core.ContactSmsHandler)"
+          ],
+          "explanation": "Backend code uploads files and SMS data from storage without any UI indication or user consent.",
+          "confidence": 0.93
+        }
+      ],
+      "mismatch_summary": {
+        "categories_in_ui_not_in_backend": [],
+        "categories_in_backend_not_in_ui": [
+          "phone_state",
+          "device_id",
+          "storage"
+        ],
+        "categories_in_manifest_not_used": [
+          "camera",
+          "contacts"
+        ],
+        "categories_used_without_permission": []
+      },
+      "recommendations": [
+        "Immediately remove this app from any device or store.",
+        "Notify users that their SMS, device identifiers, and possibly files may have been exfiltrated.",
+        "Perform forensic analysis of network traffic to determine the extent of data leakage.",
+        "Review all apps from this publisher for similar covert data collection patterns."
+      ],
+      "analyst_notes": "This app is a textbook example of a backdoor: it covertly harvests and uploads SMS messages, device identifiers, and potentially files, while the UI only claims to use SMS for password delivery. There is no user notification or consent for these sensitive operations. The backend activity is entirely decoupled from the UI, and all sensitive actions are performed in background utility classes. The risk is critical and the evidence is high-confidence."
+    }
+  },
+  "local_rule_analysis": {
+    "local_verdict": "HAS_BACKDOOR",
+    "total_flags": 8,
+    "silent_exec_flags": [
+      {
+        "backdoor_type": "SILENT_EXEC",
+        "permission_category": "phone_state",
+        "risk_level": "high",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [
+          "com.info.eraser.record.strategy.service.Tools: java.lang.String getIMEI(android.content.Context)",
+          "com.info.eraser.record.strategy.service.Tools: java.lang.String getIMSI(android.content.Context)"
+        ],
+        "explanation": "The app calls phone_state APIs at runtime but the UI contains no UI elements, labels, or activity names that mention or justify this capability.",
+        "confidence": 0.75,
+        "source": "local_rule"
+      },
+      {
+        "backdoor_type": "SILENT_EXEC",
+        "permission_category": "storage",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [
+          "com.info.eraser.record.strategy.net.UploadFile: void <init",
+          "com.info.eraser.record.strategy.net.UploadFile: void doUploadProcess()",
+          "com.info.eraser.record.strategy.net.UploadFile: boolean uplaodSms(com.info.eraser.record.strategy.core.ContactSmsHandler)"
+        ],
+        "explanation": "The app calls storage APIs at runtime but the UI contains no UI elements, labels, or activity names that mention or justify this capability.",
+        "confidence": 0.75,
+        "source": "local_rule"
+      },
+      {
+        "backdoor_type": "SILENT_EXEC",
+        "permission_category": "network",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [
+          "com.info.eraser.record.strategy.net.HttpHandler: java.net.HttpURLConnection openHttpURLConnection()"
+        ],
+        "explanation": "The app calls network APIs at runtime but the UI contains no UI elements, labels, or activity names that mention or justify this capability.",
+        "confidence": 0.75,
+        "source": "local_rule"
+      },
+      {
+        "backdoor_type": "SILENT_EXEC",
+        "permission_category": "device_id",
+        "risk_level": "high",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [
+          "com.info.eraser.record.strategy.service.Tools: java.lang.String getIMEI(android.content.Context)",
+          "com.info.eraser.record.strategy.service.Tools: java.lang.String getIMSI(android.content.Context)"
+        ],
+        "explanation": "The app calls device_id APIs at runtime but the UI contains no UI elements, labels, or activity names that mention or justify this capability.",
+        "confidence": 0.75,
+        "source": "local_rule"
+      }
+    ],
+    "ui_deception_flags": [],
+    "covert_collect_flags": [
+      {
+        "backdoor_type": "COVERT_COLLECT",
+        "permission_category": "phone_state",
+        "risk_level": "critical",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [
+          "com.info.eraser.record.strategy.service.Tools: java.lang.String getIMEI(android.content.Context)",
+          "com.info.eraser.record.strategy.service.Tools: java.lang.String getIMSI(android.content.Context)"
+        ],
+        "explanation": "Device identifier / phone state harvesting (phone_state) detected without any UI disclosure or user consent flow.",
+        "confidence": 0.85,
+        "source": "local_rule"
+      },
+      {
+        "backdoor_type": "COVERT_COLLECT",
+        "permission_category": "device_id",
+        "risk_level": "critical",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [
+          "com.info.eraser.record.strategy.service.Tools: java.lang.String getIMEI(android.content.Context)",
+          "com.info.eraser.record.strategy.service.Tools: java.lang.String getIMSI(android.content.Context)"
+        ],
+        "explanation": "Device identifier / phone state harvesting (device_id) detected without any UI disclosure or user consent flow.",
+        "confidence": 0.85,
+        "source": "local_rule"
+      }
+    ],
+    "over_declared_flags": [
+      {
+        "backdoor_type": "OVER_DECLARED",
+        "permission_category": "contacts",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for contacts were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.55,
+        "source": "local_rule"
+      },
+      {
+        "backdoor_type": "OVER_DECLARED",
+        "permission_category": "camera",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for camera were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.55,
+        "source": "local_rule"
+      }
+    ],
+    "hidden_trigger_flags": [],
+    "all_flags": [
+      {
+        "backdoor_type": "SILENT_EXEC",
+        "permission_category": "phone_state",
+        "risk_level": "high",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [
+          "com.info.eraser.record.strategy.service.Tools: java.lang.String getIMEI(android.content.Context)",
+          "com.info.eraser.record.strategy.service.Tools: java.lang.String getIMSI(android.content.Context)"
+        ],
+        "explanation": "The app calls phone_state APIs at runtime but the UI contains no UI elements, labels, or activity names that mention or justify this capability.",
+        "confidence": 0.75,
+        "source": "local_rule"
+      },
+      {
+        "backdoor_type": "SILENT_EXEC",
+        "permission_category": "storage",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [
+          "com.info.eraser.record.strategy.net.UploadFile: void <init",
+          "com.info.eraser.record.strategy.net.UploadFile: void doUploadProcess()",
+          "com.info.eraser.record.strategy.net.UploadFile: boolean uplaodSms(com.info.eraser.record.strategy.core.ContactSmsHandler)"
+        ],
+        "explanation": "The app calls storage APIs at runtime but the UI contains no UI elements, labels, or activity names that mention or justify this capability.",
+        "confidence": 0.75,
+        "source": "local_rule"
+      },
+      {
+        "backdoor_type": "SILENT_EXEC",
+        "permission_category": "network",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [
+          "com.info.eraser.record.strategy.net.HttpHandler: java.net.HttpURLConnection openHttpURLConnection()"
+        ],
+        "explanation": "The app calls network APIs at runtime but the UI contains no UI elements, labels, or activity names that mention or justify this capability.",
+        "confidence": 0.75,
+        "source": "local_rule"
+      },
+      {
+        "backdoor_type": "SILENT_EXEC",
+        "permission_category": "device_id",
+        "risk_level": "high",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [
+          "com.info.eraser.record.strategy.service.Tools: java.lang.String getIMEI(android.content.Context)",
+          "com.info.eraser.record.strategy.service.Tools: java.lang.String getIMSI(android.content.Context)"
+        ],
+        "explanation": "The app calls device_id APIs at runtime but the UI contains no UI elements, labels, or activity names that mention or justify this capability.",
+        "confidence": 0.75,
+        "source": "local_rule"
+      },
+      {
+        "backdoor_type": "COVERT_COLLECT",
+        "permission_category": "phone_state",
+        "risk_level": "critical",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [
+          "com.info.eraser.record.strategy.service.Tools: java.lang.String getIMEI(android.content.Context)",
+          "com.info.eraser.record.strategy.service.Tools: java.lang.String getIMSI(android.content.Context)"
+        ],
+        "explanation": "Device identifier / phone state harvesting (phone_state) detected without any UI disclosure or user consent flow.",
+        "confidence": 0.85,
+        "source": "local_rule"
+      },
+      {
+        "backdoor_type": "COVERT_COLLECT",
+        "permission_category": "device_id",
+        "risk_level": "critical",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [
+          "com.info.eraser.record.strategy.service.Tools: java.lang.String getIMEI(android.content.Context)",
+          "com.info.eraser.record.strategy.service.Tools: java.lang.String getIMSI(android.content.Context)"
+        ],
+        "explanation": "Device identifier / phone state harvesting (device_id) detected without any UI disclosure or user consent flow.",
+        "confidence": 0.85,
+        "source": "local_rule"
+      },
+      {
+        "backdoor_type": "OVER_DECLARED",
+        "permission_category": "contacts",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for contacts were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.55,
+        "source": "local_rule"
+      },
+      {
+        "backdoor_type": "OVER_DECLARED",
+        "permission_category": "camera",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for camera were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.55,
+        "source": "local_rule"
+      }
+    ]
+  },
+  "recommendations": [
+    "Immediately remove this app from any device or store.",
+    "Notify users that their SMS, device identifiers, and possibly files may have been exfiltrated.",
+    "Perform forensic analysis of network traffic to determine the extent of data leakage.",
+    "Review all apps from this publisher for similar covert data collection patterns."
+  ]
+}

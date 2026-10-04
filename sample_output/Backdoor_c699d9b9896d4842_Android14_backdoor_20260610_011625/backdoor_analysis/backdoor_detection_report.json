@@ -1,0 +1,431 @@
+{
+  "pipeline": "LLMDroid-fastbot-custom-more-detection (Backdoor Detection)",
+  "version": "1.0.0",
+  "timestamp": "2026-06-09T17:22:23.604711Z",
+  "app": {
+    "name": "Backdoor_c699d9b9896d4842_Android14",
+    "description": "Android app under backdoor detection analysis by LLMDroid",
+    "package": "com.communication.eraser"
+  },
+  "backdoor_verdict": {
+    "verdict": "SUSPICIOUS",
+    "risk_level": "medium",
+    "confidence": 0.7,
+    "total_patterns_found": 5,
+    "verdict_explanation": "Moderate mismatch signals; warrants further manual investigation."
+  },
+  "backdoor_patterns": [
+    {
+      "backdoor_type": "OVER_DECLARED",
+      "permission_category": "location",
+      "risk_level": "low",
+      "ui_claim": "not present in UI",
+      "backend_evidence": [],
+      "explanation": "No location-related permissions are declared, so this is not applicable.",
+      "confidence": 0.0
+    },
+    {
+      "backdoor_type": "OVER_DECLARED",
+      "permission_category": "storage",
+      "risk_level": "medium",
+      "ui_claim": "not present in UI",
+      "backend_evidence": [],
+      "explanation": "android.permission.WRITE_EXTERNAL_STORAGE is declared in the manifest, but there is no evidence from backend analysis that any storage-related APIs are called at runtime, nor is storage mentioned in the UI. This may indicate a zombie permission for future use or evasion.",
+      "confidence": 0.7
+    },
+    {
+      "backdoor_type": "OVER_DECLARED",
+      "permission_category": "network",
+      "risk_level": "medium",
+      "ui_claim": "not present in UI",
+      "backend_evidence": [],
+      "explanation": "android.permission.INTERNET and android.permission.ACCESS_NETWORK_STATE are declared, but there is no evidence of network activity in the backend analysis and no network-related features in the UI. This could be a placeholder for future covert data exfiltration.",
+      "confidence": 0.7
+    },
+    {
+      "backdoor_type": "OVER_DECLARED",
+      "permission_category": "device_id",
+      "risk_level": "medium",
+      "ui_claim": "not present in UI",
+      "backend_evidence": [],
+      "explanation": "android.permission.READ_PHONE_STATE is declared, which allows access to device identifiers, but there is no evidence of device ID access in the backend analysis and no mention in the UI.",
+      "confidence": 0.7
+    },
+    {
+      "backdoor_type": "HIDDEN_TRIGGER",
+      "permission_category": "unknown",
+      "risk_level": "medium",
+      "ui_claim": "not present in UI",
+      "backend_evidence": [],
+      "explanation": ".strategy.core.RebirthReceiver is an exported receiver component. While backend analysis does not show sensitive API use, the presence of an exported receiver with a generic name is a potential hidden trigger for future malicious activity.",
+      "confidence": 0.6
+    }
+  ],
+  "mismatch_summary": {
+    "categories_in_ui_not_in_backend": [],
+    "categories_in_backend_not_in_ui": [],
+    "categories_in_manifest_not_used": [
+      "storage",
+      "network",
+      "device_id"
+    ],
+    "categories_used_without_permission": []
+  },
+  "evidence": {
+    "manifest": {
+      "all_permissions": [
+        "android.permission.WRITE_SMS",
+        "android.permission.WRITE_CONTACTS",
+        "android.permission.WRITE_EXTERNAL_STORAGE",
+        "com.android.browser.permission.READ_HISTORY_BOOKMARKS",
+        "com.android.browser.permission.WRITE_HISTORY_BOOKMARKS",
+        "android.permission.INTERNET",
+        "android.permission.ACCESS_NETWORK_STATE",
+        "android.permission.INTERNET",
+        "android.permission.READ_PHONE_STATE",
+        "android.permission.RECEIVE_BOOT_COMPLETED",
+        "android.permission.ACCESS_NETWORK_STATE",
+        "android.permission.READ_CONTACTS",
+        "android.permission.READ_SMS",
+        "android.permission.GET_ACCOUNTS"
+      ],
+      "sensitive_permissions": [
+        "android.permission.WRITE_CONTACTS",
+        "android.permission.WRITE_EXTERNAL_STORAGE",
+        "android.permission.INTERNET",
+        "android.permission.ACCESS_NETWORK_STATE",
+        "android.permission.INTERNET",
+        "android.permission.READ_PHONE_STATE",
+        "android.permission.ACCESS_NETWORK_STATE",
+        "android.permission.READ_CONTACTS",
+        "android.permission.READ_SMS",
+        "android.permission.GET_ACCOUNTS"
+      ],
+      "by_category": {
+        "sms": [
+          "android.permission.READ_SMS"
+        ],
+        "contacts": [
+          "android.permission.WRITE_CONTACTS",
+          "android.permission.READ_CONTACTS",
+          "android.permission.GET_ACCOUNTS"
+        ],
+        "phone_state": [
+          "android.permission.READ_PHONE_STATE"
+        ],
+        "storage": [
+          "android.permission.WRITE_EXTERNAL_STORAGE"
+        ],
+        "network": [
+          "android.permission.INTERNET",
+          "android.permission.ACCESS_NETWORK_STATE",
+          "android.permission.INTERNET",
+          "android.permission.ACCESS_NETWORK_STATE"
+        ],
+        "device_id": [
+          "android.permission.READ_PHONE_STATE"
+        ]
+      },
+      "exported_components": [
+        ".strategy.core.RebirthReceiver",
+        "main"
+      ]
+    },
+    "runtime": {
+      "total_unique_methods_called": 34,
+      "sensitive_methods_found": 0,
+      "backend_active_categories": [],
+      "backend_category_details": {},
+      "activities_tested": [
+        "com.communication.eraser.main"
+      ],
+      "activity_coverage": 50
+    }
+  },
+  "llm_analysis": {
+    "prompt1_ui_analysis": {
+      "app_ui_stated_purpose": "Erase personal data such as contacts, call logs, messages, and browser history",
+      "ui_permission_claims": {
+        "sms": {
+          "visible_in_ui": true,
+          "justification_strength": "implied",
+          "ui_evidence": [
+            "Messages"
+          ]
+        },
+        "location": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "contacts": {
+          "visible_in_ui": true,
+          "justification_strength": "implied",
+          "ui_evidence": [
+            "Contacts"
+          ]
+        },
+        "camera": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "microphone": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "phone_state": {
+          "visible_in_ui": true,
+          "justification_strength": "implied",
+          "ui_evidence": [
+            "Call logs"
+          ]
+        },
+        "storage": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "device_admin": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "accessibility": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "network": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "device_id": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "process_exec": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        }
+      },
+      "categories_absent_from_ui": [
+        "location",
+        "camera",
+        "microphone",
+        "storage",
+        "device_admin",
+        "accessibility",
+        "network",
+        "device_id",
+        "process_exec"
+      ],
+      "sensitive_flows_detected": [
+        {
+          "flow_name": "Erase Contacts",
+          "activities": [
+            "com.communication.eraser.main"
+          ],
+          "description": "UI presents option to erase contacts, implying access to contacts data."
+        },
+        {
+          "flow_name": "Erase Call Logs",
+          "activities": [
+            "com.communication.eraser.main"
+          ],
+          "description": "UI presents option to erase call logs, implying access to phone state/call log data."
+        },
+        {
+          "flow_name": "Erase Messages",
+          "activities": [
+            "com.communication.eraser.main"
+          ],
+          "description": "UI presents option to erase messages, implying access to SMS data."
+        },
+        {
+          "flow_name": "Erase Browser History",
+          "activities": [
+            "com.communication.eraser.main"
+          ],
+          "description": "UI presents option to erase browser history, implying access to browser data."
+        }
+      ],
+      "overall_ui_transparency_score": 0.6
+    },
+    "prompt2_backend_analysis": {
+      "backend_active_capabilities": {},
+      "suspicious_methods": [],
+      "background_sensitive_classes": [],
+      "stealthy_patterns_found": []
+    },
+    "prompt3_backdoor_detection": {
+      "verdict": "SUSPICIOUS",
+      "overall_risk_level": "medium",
+      "confidence": 0.7,
+      "backdoor_patterns": [
+        {
+          "backdoor_type": "OVER_DECLARED",
+          "permission_category": "location",
+          "risk_level": "low",
+          "ui_claim": "not present in UI",
+          "backend_evidence": [],
+          "explanation": "No location-related permissions are declared, so this is not applicable.",
+          "confidence": 0.0
+        },
+        {
+          "backdoor_type": "OVER_DECLARED",
+          "permission_category": "storage",
+          "risk_level": "medium",
+          "ui_claim": "not present in UI",
+          "backend_evidence": [],
+          "explanation": "android.permission.WRITE_EXTERNAL_STORAGE is declared in the manifest, but there is no evidence from backend analysis that any storage-related APIs are called at runtime, nor is storage mentioned in the UI. This may indicate a zombie permission for future use or evasion.",
+          "confidence": 0.7
+        },
+        {
+          "backdoor_type": "OVER_DECLARED",
+          "permission_category": "network",
+          "risk_level": "medium",
+          "ui_claim": "not present in UI",
+          "backend_evidence": [],
+          "explanation": "android.permission.INTERNET and android.permission.ACCESS_NETWORK_STATE are declared, but there is no evidence of network activity in the backend analysis and no network-related features in the UI. This could be a placeholder for future covert data exfiltration.",
+          "confidence": 0.7
+        },
+        {
+          "backdoor_type": "OVER_DECLARED",
+          "permission_category": "device_id",
+          "risk_level": "medium",
+          "ui_claim": "not present in UI",
+          "backend_evidence": [],
+          "explanation": "android.permission.READ_PHONE_STATE is declared, which allows access to device identifiers, but there is no evidence of device ID access in the backend analysis and no mention in the UI.",
+          "confidence": 0.7
+        },
+        {
+          "backdoor_type": "HIDDEN_TRIGGER",
+          "permission_category": "unknown",
+          "risk_level": "medium",
+          "ui_claim": "not present in UI",
+          "backend_evidence": [],
+          "explanation": ".strategy.core.RebirthReceiver is an exported receiver component. While backend analysis does not show sensitive API use, the presence of an exported receiver with a generic name is a potential hidden trigger for future malicious activity.",
+          "confidence": 0.6
+        }
+      ],
+      "mismatch_summary": {
+        "categories_in_ui_not_in_backend": [],
+        "categories_in_backend_not_in_ui": [],
+        "categories_in_manifest_not_used": [
+          "storage",
+          "network",
+          "device_id"
+        ],
+        "categories_used_without_permission": []
+      },
+      "recommendations": [
+        "Review the necessity of declared permissions for storage, network, and device ID. Remove unused permissions to reduce attack surface.",
+        "Audit the exported component .strategy.core.RebirthReceiver for potential abuse as a hidden trigger.",
+        "Monitor for future updates or runtime behaviors that may activate currently dormant permissions."
+      ],
+      "analyst_notes": "No evidence of active backdoor behavior or covert data collection at runtime, but the presence of unused sensitive permissions and an exported receiver component are suspicious. These may be intended for future activation or to evade static analysis. No critical or high-risk mismatches detected, but the app warrants further monitoring."
+    }
+  },
+  "local_rule_analysis": {
+    "local_verdict": "SUSPICIOUS",
+    "total_flags": 4,
+    "silent_exec_flags": [],
+    "ui_deception_flags": [],
+    "covert_collect_flags": [],
+    "over_declared_flags": [
+      {
+        "backdoor_type": "OVER_DECLARED",
+        "permission_category": "sms",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for sms were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.31,
+        "source": "local_rule"
+      },
+      {
+        "backdoor_type": "OVER_DECLARED",
+        "permission_category": "storage",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for storage were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.31,
+        "source": "local_rule"
+      },
+      {
+        "backdoor_type": "OVER_DECLARED",
+        "permission_category": "network",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for network were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.31,
+        "source": "local_rule"
+      },
+      {
+        "backdoor_type": "OVER_DECLARED",
+        "permission_category": "device_id",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for device_id were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.31,
+        "source": "local_rule"
+      }
+    ],
+    "hidden_trigger_flags": [],
+    "all_flags": [
+      {
+        "backdoor_type": "OVER_DECLARED",
+        "permission_category": "sms",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for sms were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.31,
+        "source": "local_rule"
+      },
+      {
+        "backdoor_type": "OVER_DECLARED",
+        "permission_category": "storage",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for storage were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.31,
+        "source": "local_rule"
+      },
+      {
+        "backdoor_type": "OVER_DECLARED",
+        "permission_category": "network",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for network were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.31,
+        "source": "local_rule"
+      },
+      {
+        "backdoor_type": "OVER_DECLARED",
+        "permission_category": "device_id",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for device_id were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.31,
+        "source": "local_rule"
+      }
+    ]
+  },
+  "recommendations": [
+    "Review the necessity of declared permissions for storage, network, and device ID. Remove unused permissions to reduce attack surface.",
+    "Audit the exported component .strategy.core.RebirthReceiver for potential abuse as a hidden trigger.",
+    "Monitor for future updates or runtime behaviors that may activate currently dormant permissions."
+  ]
+}

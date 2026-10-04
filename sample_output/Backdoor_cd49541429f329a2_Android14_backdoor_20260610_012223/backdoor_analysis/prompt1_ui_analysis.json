@@ -1,0 +1,106 @@
+{
+  "app_ui_stated_purpose": "Photo editing and sharing with frames and mustache effects",
+  "ui_permission_claims": {
+    "sms": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    },
+    "location": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    },
+    "contacts": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    },
+    "camera": {
+      "visible_in_ui": true,
+      "justification_strength": "implied",
+      "ui_evidence": [
+        "PhotoView",
+        "FrameIt"
+      ]
+    },
+    "microphone": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    },
+    "phone_state": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    },
+    "storage": {
+      "visible_in_ui": true,
+      "justification_strength": "implied",
+      "ui_evidence": [
+        "ShareImage",
+        "PhotoView",
+        "FrameIt"
+      ]
+    },
+    "device_admin": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    },
+    "accessibility": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    },
+    "network": {
+      "visible_in_ui": true,
+      "justification_strength": "implied",
+      "ui_evidence": [
+        "AdView",
+        "ShareImage",
+        "OtherApps"
+      ]
+    },
+    "device_id": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    },
+    "process_exec": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    }
+  },
+  "categories_absent_from_ui": [
+    "sms",
+    "location",
+    "contacts",
+    "microphone",
+    "phone_state",
+    "device_admin",
+    "accessibility",
+    "device_id",
+    "process_exec"
+  ],
+  "sensitive_flows_detected": [
+    {
+      "flow_name": "Photo capture/edit and sharing",
+      "activities": [
+        "FrameIt",
+        "PhotoView",
+        "ShareImage"
+      ],
+      "description": "User can edit or frame photos and share them, implying use of camera and storage."
+    },
+    {
+      "flow_name": "Advertisement display",
+      "activities": [
+        "AdView"
+      ],
+      "description": "App displays ads, implying network access."
+    }
+  ],
+  "overall_ui_transparency_score": 0.3
+}

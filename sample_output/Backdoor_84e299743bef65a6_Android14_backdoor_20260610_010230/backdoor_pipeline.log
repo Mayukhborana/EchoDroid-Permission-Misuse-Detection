@@ -1,0 +1,57 @@
+/Users/Desktop/permission_misuse/LLMDroid-fastbot-android16/Prompt_BackdoorDetection.py:528: DeprecationWarning: Parsing dates involving a day of month without a year specified is ambiguious
+and fails to parse leap day. The default behavior will change in Python 3.15
+to either always raise an exception or to use a different default year (TBD).
+To avoid trouble, add a specific year to the input & format.
+See https://github.com/python/cpython/issues/70647.
+  t0 = datetime.strptime(first_ts, fmt)
+/Users/Desktop/permission_misuse/LLMDroid-fastbot-android16/Prompt_BackdoorDetection.py:220: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  return datetime.utcnow().isoformat() + "Z"
+[CONFIG] Loaded from: /Users/Desktop/permission_misuse/new_output/Backdoor_84e299743bef65a6_Android14_backdoor_20260610_010230/config.json
+======================================================================
+ LLMDroid Backdoor Detection Pipeline
+ App     : Backdoor_84e299743bef65a6_Android14
+ Package : roh6U.jea2Ohm
+ Output  : /Users/Desktop/permission_misuse/new_output/Backdoor_84e299743bef65a6_Android14_backdoor_20260610_010230/backdoor_analysis
+======================================================================
+
+[1/6] Loading manifest data...
+      Permissions: 21 declared, 7 sensitive
+      Exported components: 1
+
+[2/6] Loading AndroLog backend methods...
+[DATA] Loaded 89 unique method signatures from AndroLog
+      Active sensitive categories: ['phone_state', 'device_id', 'network', 'storage', 'sms']
+
+[3/6] Loading activity coverage data...
+      Tested activities: 1
+
+[4/6] Loading UI text...
+[DATA] Loaded 4060 chars of UI text
+
+[5/6] Running local rule-based mismatch analysis...
+      Local flags: 8 (verdict: HAS_BACKDOOR)
+
+[6/6] Running LLM prompts...
+[P1] Running UI Surface Analysis...
+[P2] Running Backend Execution Analysis...
+[P3] Running Backdoor Mismatch Detection...
+
+Assembling final backdoor detection report...
+
+======================================================================
+ BACKDOOR VERDICT : HAS_BACKDOOR
+ RISK LEVEL       : CRITICAL
+ CONFIDENCE       : 98%
+ PATTERNS FOUND   : 4
+ REPORT SAVED     : /Users/Desktop/permission_misuse/new_output/Backdoor_84e299743bef65a6_Android14_backdoor_20260610_010230/backdoor_analysis/backdoor_detection_report.json
+======================================================================
+
+📍 BACKDOOR PATTERN SUMMARY:
+  [1] COVERT_COLLECT       | category=sms             | risk=critical | conf=98%
+       The backend reads all SMS inbox and sent messages and uploads them via a backend
+  [2] COVERT_COLLECT       | category=phone_state     | risk=high     | conf=95%
+       The backend collects device IMEI and IMSI identifiers in the background, with no
+  [3] COVERT_COLLECT       | category=device_id       | risk=high     | conf=95%
+       Device identifiers are accessed and likely exfiltrated by backend code, with no 
+  [4] COVERT_COLLECT       | category=storage         | risk=high     | conf=93%
+       Backend code uploads files and SMS data from storage without any UI indication o

@@ -1,0 +1,4 @@
+Call Logs Eraser
+Erase Call Logs
+main
+AdActivity

@@ -1,0 +1,94 @@
+{
+  "app_ui_stated_purpose": "Personalized content discovery and updates",
+  "ui_permission_claims": {
+    "sms": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    },
+    "location": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    },
+    "contacts": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    },
+    "camera": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    },
+    "microphone": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    },
+    "phone_state": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    },
+    "storage": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    },
+    "device_admin": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    },
+    "accessibility": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    },
+    "network": {
+      "visible_in_ui": true,
+      "justification_strength": "implied",
+      "ui_evidence": [
+        "Turn on Discover to get updates on sports, music, movies, and more",
+        "Keep up with your favorite topics",
+        "Updates"
+      ]
+    },
+    "device_id": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    },
+    "process_exec": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    }
+  },
+  "categories_absent_from_ui": [
+    "sms",
+    "location",
+    "contacts",
+    "camera",
+    "microphone",
+    "phone_state",
+    "storage",
+    "device_admin",
+    "accessibility",
+    "device_id",
+    "process_exec"
+  ],
+  "sensitive_flows_detected": [
+    {
+      "flow_name": "Network-based content updates",
+      "activities": [
+        "vrhnjblm.iabewpt.spsju.MenuActivity",
+        "vrhnjblm.iabewpt.spsju.RequestActivity",
+        "vrhnjblm.iabewpt.spsju.SelectorActivity"
+      ],
+      "description": "UI prompts user to turn on Discover and receive updates, implying network usage for personalized content."
+    }
+  ],
+  "overall_ui_transparency_score": 0.2
+}

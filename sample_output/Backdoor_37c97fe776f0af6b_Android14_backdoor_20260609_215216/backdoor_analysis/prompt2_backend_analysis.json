@@ -1,0 +1,63 @@
+{
+  "backend_active_capabilities": {
+    "sms": {
+      "active": true,
+      "confidence": "high",
+      "triggering_methods": [
+        "com.network.app.util.SMS_Handle: void aP()",
+        "com.network.app.util.SMS_Handle: void a(com.network.app.data.Database)",
+        "com.network.app.util.SMS_Handle: void aR()",
+        "com.network.app.util.SMS_Receiver: void <init",
+        "com.network.app.SMS_Activity: void aC()"
+      ],
+      "triggering_classes": [
+        "com.network.app.util.SMS_Handle",
+        "com.network.app.util.SMS_Receiver",
+        "com.network.app.SMS_Activity"
+      ],
+      "is_background_only": false,
+      "notes": "Multiple SMS-related methods are called at runtime, including from utility and receiver classes, indicating active SMS handling and likely sending/receiving. The presence of SMS_Handle and SMS_Receiver classes suggests backend SMS operations beyond UI."
+    },
+    "location": {
+      "active": true,
+      "confidence": "medium",
+      "triggering_methods": [
+        "com.guohead.sdk.util.GuoheAdUtil: java.lang.String getLocation(android.content.Context)",
+        "com.guohead.sdk.LocationProvider: java.lang.String getLocation()"
+      ],
+      "triggering_classes": [
+        "com.guohead.sdk.util.GuoheAdUtil",
+        "com.guohead.sdk.LocationProvider"
+      ],
+      "is_background_only": true,
+      "notes": "Location access is triggered from SDK utility/provider classes, not from activities. This suggests background location harvesting, likely for ad or tracking purposes."
+    }
+  },
+  "suspicious_methods": [
+    {
+      "full_sig": "com.network.app.util.SMS_Handle: void a(com.network.app.data.Database)",
+      "reason": "SMS handling method interacts with a database, suggesting automated or bulk SMS operations, possibly for exfiltration or silent sending.",
+      "backdoor_pattern": "SILENT_EXEC"
+    },
+    {
+      "full_sig": "com.guohead.sdk.util.GuoheAdUtil: java.lang.String getLocation(android.content.Context)",
+      "reason": "Location is accessed via ad SDK utility, likely without explicit user interaction or awareness.",
+      "backdoor_pattern": "COVERT_COLLECT"
+    },
+    {
+      "full_sig": "com.network.app.util.SMS_Handle: void aP()",
+      "reason": "Obfuscated method name in SMS utility class, likely to evade detection and perform covert SMS operations.",
+      "backdoor_pattern": "SILENT_EXEC"
+    }
+  ],
+  "background_sensitive_classes": [
+    "com.network.app.util.SMS_Handle",
+    "com.network.app.util.SMS_Receiver",
+    "com.guohead.sdk.util.GuoheAdUtil",
+    "com.guohead.sdk.LocationProvider"
+  ],
+  "stealthy_patterns_found": [
+    "Background SMS handling and possible silent SMS sending via utility and receiver classes (not just UI activity).",
+    "Background location harvesting via ad SDK utility/provider classes, likely without user knowledge."
+  ]
+}

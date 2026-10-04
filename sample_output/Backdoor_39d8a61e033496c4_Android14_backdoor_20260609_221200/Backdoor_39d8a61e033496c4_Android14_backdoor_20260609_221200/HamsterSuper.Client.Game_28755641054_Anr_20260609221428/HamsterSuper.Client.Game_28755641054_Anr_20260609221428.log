@@ -1,0 +1,85 @@
+
+20260609221428
+anr:
+// ANR: HamsterSuper.Client.Game (pid 5415) (dump time: 2026-06-09 22:14:28
+// Version: 
+// NOT RESPONDING: HamsterSuper.Client.Game (pid 5415) (stat ANR in HamsterSuper.Client.Game (HamsterSuper.Client.Game/.Hamster)
+PID: 5415
+Reason: Input dispatching timed out (ActivityRecord{b775db4 u0 HamsterSuper.Client.Game/.Hamster t18} does not have a focused window)
+Parent: HamsterSuper.Client.Game/.Hamster
+Load: 1.34 / 0.82 / 0.33
+----- Output from /proc/pressure/memory -----
+some avg10=0.00 avg60=0.00 avg300=0.00 total=0
+full avg10=0.00 avg60=0.00 avg300=0.00 total=0
+----- End output from /proc/pressure/memory -----
+
+CPU usage from 6266ms to 0ms ago (2026-06-09 22:14:21.283 to 2026-06-09 22:14:27.549):
+  16% 504/system_server: 9.8% user + 6.5% kernel / faults: 47541 minor
+  2.1% 330/surfaceflinger: 0.3% user + 1.7% kernel / faults: 673 minor
+  8.1% 2374/com.google.android.apps.messaging: 3.6% user + 4.4% kernel / faults: 2375 minor
+  6.8% 384/adbd: 0.6% user + 6.2% kernel / faults: 2 minor
+  6.3% 982/com.google.android.apps.nexuslauncher: 1.5% user + 4.7% kernel / faults: 1348 minor
+  6.2% 181/logd: 0.9% user + 5.2% kernel / faults: 24 minor
+  1.1% 297/android.hardware.audio.service.ranchu: 0% user + 1.1% kernel / faults: 26 minor
+  3.8% 668/com.android.systemui: 0.9% user + 2.8% kernel / faults: 392 minor
+  3.3% 308/android.hardware.graphics.composer@2.3-service: 0.1% user + 3.1% kernel / faults: 153 minor
+  3.1% 9/ksoftirqd/0: 0% user + 3.1% kernel
+  3.1% 393/audioserver: 0.9% user + 2.2% kernel / faults: 63 minor
+  2.3% 409/dhcpclient: 0% user + 2.3% kernel
+  2.3% 2147/android.process.media: 1.1% user + 1.2% kernel / faults: 122 minor
+  2% 10/rcu_preempt: 0% user + 2% kernel
+  2% 299/android.hardware.bluetooth@1.1-service.sim: 0.7% user + 1.2% kernel
+  1.9% 12/kworker/0:1-events: 0% user + 1.9% kernel
+  1.2% 1159/com.google.android.gms.persistent: 0.7% user + 0.4% kernel / faults: 1384 minor
+  1.2% 1678/com.google.android.googlequicksearchbox:search: 0.6% user + 0.6% kernel / faults: 338 minor
+  1.1% 350/logcat: 0% user + 1.1% kernel
+  1.1% 4492/logcat: 0% user + 1.1% kernel
+  1.1% 5415/HamsterSuper.Client.Game: 0.4% user + 0.6% kernel / faults: 271 minor
+  0.7% 213/jbd2/dm-4-8: 0% user + 0.7% kernel
+  0.7% 2329/com.google.android.gms: 0.4% user + 0.3% kernel / faults: 447 minor
+  0.7% 4498/com.android.commands.monkey: 0.4% user + 0.3% kernel / faults: 1020 minor
+  0.6% 648/com.android.bluetooth: 0.1% user + 0.4% kernel / faults: 15 minor
+  0.6% 4518/logcat: 0% user + 0.6% kernel
+  0.4% 316/android.hardware.sensors@2.1-service.multihal: 0.3% user + 0.1% kernel
+  0.3% 7/kworker/u8:0-events_unbound: 0% user + 0.3% kernel
+  0.3% 16/ksoftirqd/1: 0% user + 0.3% kernel
+  0.3% 293/statsd: 0.3% user + 0% kernel / faults: 8 minor
+  0% 390/traced_probes: 0% user + 0% kernel / faults: 5 minor
+  0.3% 904/com.android.phone: 0.1% user + 0.1% kernel / faults: 3 minor
+  0.3% 1424/com.google.android.providers.media.module: 0.1% user + 0.1% kernel / faults: 94 minor
+  0% 127/sugov:0: 0% user + 0% kernel
+  0.1% 130/sugov:2: 0% user + 0.1% kernel
+  0% 140/kworker/3:1H-kblockd: 0% user + 0% kernel
+  0.1% 141/kworker/0:1H-kblockd: 0% user + 0.1% kernel
+  0.1% 182/lmkd: 0.1% user + 0% kernel
+  0% 307/android.hardware.graphics.allocator@3.0-service: 0% user + 0% kernel
+  0% 425/iorapd: 0% user + 0% kernel / faults: 74 minor
+  0.1% 765/android.hardware.gnss@2.0-service.ranchu: 0% user + 0.1% kernel
+  0.1% 1379/com.google.android.inputmethod.latin: 0% user + 0.1% kernel / faults: 26 minor
+  0.1% 1448/com.google.process.gservices: 0% user + 0.1% kernel
+18% TOTAL: 4.7% user + 9.7% kernel + 0.2% iowait + 2.2% irq + 1.2% softirq
+CPU usage from 5ms to 230ms later (2026-06-09 22:14:27.554 to 2026-06-09 22:14:27.779):
+  22% 384/adbd: 0% user + 22% kernel
+    9.1% 384/adbd: 0% user + 9.1% kernel
+    4.5% 1858/adbd: 0% user + 4.5% kernel
+    4.5% 1859/adbd: 0% user + 4.5% kernel
+    4.5% 4493/shell svc 4492: 0% user + 4.5% kernel
+    4.5% 4499/shell svc 4498: 0% user + 4.5% kernel
+  18% 504/system_server: 9.2% user + 9.2% kernel / faults: 380 minor
+    9.2% 7328/AnrConsumer: 4.6% user + 4.6% kernel
+    4.6% 870/Binder:504_7: 4.6% user + 0% kernel
+  13% 181/logd: 0% user + 13% kernel
+    4.5% 189/logd.writer: 0% user + 4.5% kernel
+    4.5% 4519/logd.reader.per: 0% user + 4.5% kernel
+  9.6% 2374/com.google.android.apps.messaging: 4.8% user + 4.8% kernel / faults: 191 minor
+    4.8% 2389/Jit thread pool: 0% user + 4.8% kernel
+    4.8% 4486/OkHttp Dispatch: 4.8% user + 0% kernel
+  9.7% 4498/com.android.commands.monkey: 9.7% user + 0% kernel / faults: 165 minor
+    4.8% 4498/commands.monkey: 4.8% user + 0% kernel
+  4.4% 10/rcu_preempt: 0% user + 4.4% kernel
+  4.4% 12/kworker/0:1-events: 0% user + 4.4% kernel
+  4.6% 409/dhcpclient: 0% user + 4.6% kernel
+  4.7% 2147/android.process.media: 4.7% user + 0% kernel
+18% TOTAL: 5.5% user + 11% kernel + 1.1% irq + 1.1% softirq
+anr end
+

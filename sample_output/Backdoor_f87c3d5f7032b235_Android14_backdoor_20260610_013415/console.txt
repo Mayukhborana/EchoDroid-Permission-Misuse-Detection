@@ -1,0 +1,76 @@
+▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄   ▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄▄ 
+▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░▌ ▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌
+▐░█▀▀▀▀▀▀▀▀▀ ▐░█▀▀▀▀▀▀▀█░▌▐░█▀▀▀▀▀▀▀▀▀  ▀▀▀▀█░█▀▀▀▀ ▐░█▀▀▀▀▀▀▀█░▌▐░█▀▀▀▀▀▀▀█░▌ ▀▀▀▀█░█▀▀▀▀ 
+▐░▌          ▐░▌       ▐░▌▐░▌               ▐░▌     ▐░▌       ▐░▌▐░▌       ▐░▌     ▐░▌     
+▐░█▄▄▄▄▄▄▄▄▄ ▐░█▄▄▄▄▄▄▄█░▌▐░█▄▄▄▄▄▄▄▄▄      ▐░▌     ▐░█▄▄▄▄▄▄▄█░▌▐░▌       ▐░▌     ▐░▌     
+▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌     ▐░▌     ▐░░░░░░░░░░▌ ▐░▌       ▐░▌     ▐░▌     
+▐░█▀▀▀▀▀▀▀▀▀ ▐░█▀▀▀▀▀▀▀█░▌ ▀▀▀▀▀▀▀▀▀█░▌     ▐░▌     ▐░█▀▀▀▀▀▀▀█░▌▐░▌       ▐░▌     ▐░▌     
+▐░▌          ▐░▌       ▐░▌          ▐░▌     ▐░▌     ▐░▌       ▐░▌▐░▌       ▐░▌     ▐░▌     
+▐░▌          ▐░▌       ▐░▌ ▄▄▄▄▄▄▄▄▄█░▌     ▐░▌     ▐░█▄▄▄▄▄▄▄█░▌▐░█▄▄▄▄▄▄▄█░▌     ▐░▌     
+▐░▌          ▐░▌       ▐░▌▐░░░░░░░░░░░▌     ▐░▌     ▐░░░░░░░░░░▌ ▐░░░░░░░░░░░▌     ▐░▌     
+ ▀            ▀         ▀  ▀▀▀▀▀▀▀▀▀▀▀       ▀       ▀▀▀▀▀▀▀▀▀▀   ▀▀▀▀▀▀▀▀▀▀▀       ▀
+[Fastbot][2026-06-10 01:34:21.352]  @Version: 2.3.23.0810.1705-git
+[Fastbot][2026-06-10 01:34:21.355] // Monkey: seed=1781125040950 count=1000
+
+
+[Fastbot][2026-06-10 01:34:21.355] // AllowPackage: com.rxs16a.android
+[Fastbot][2026-06-10 01:34:21.355] // IncludeCategory: android.intent.category.LAUNCHER
+[Fastbot][2026-06-10 01:34:21.355] // IncludeCategory: android.intent.category.MONKEY
+[Fastbot]*** ERROR *** findMethod() error, NoSuchMethodException happened, there is no such method: setActivityController
+[Fastbot][2026-06-10 01:34:21.385] // Selecting main activities from category android.intent.category.LAUNCHER
+[Fastbot][2026-06-10 01:34:21.385] //   - NOT USING main activity com.android.camera.CameraLauncher (from package com.android.camera2)
+[Fastbot][2026-06-10 01:34:21.385] //   - NOT USING main activity com.google.android.apps.chrome.Main (from package com.android.chrome)
+[Fastbot][2026-06-10 01:34:21.385] //   - NOT USING main activity com.android.contacts.activities.PeopleActivity (from package com.android.contacts)
+[Fastbot][2026-06-10 01:34:21.385] //   - NOT USING main activity com.android.dialer.main.impl.MainActivity (from package com.android.dialer)
+[Fastbot][2026-06-10 01:34:21.385] //   - NOT USING main activity com.android.settings.Settings (from package com.android.settings)
+[Fastbot][2026-06-10 01:34:21.385] //   - NOT USING main activity com.google.android.apps.docs.app.NewMainProxyActivity (from package com.google.android.apps.docs)
+[Fastbot][2026-06-10 01:34:21.385] //   - NOT USING main activity com.google.android.maps.MapsActivity (from package com.google.android.apps.maps)
+[Fastbot][2026-06-10 01:34:21.385] //   - NOT USING main activity com.google.android.apps.messaging.ui.ConversationListActivity (from package com.google.android.apps.messaging)
+[Fastbot][2026-06-10 01:34:21.385] //   - NOT USING main activity com.google.android.apps.photos.home.HomeActivity (from package com.google.android.apps.photos)
+[Fastbot][2026-06-10 01:34:21.386] //   - NOT USING main activity com.google.android.apps.youtube.music.activities.MusicActivity (from package com.google.android.apps.youtube.music)
+[Fastbot][2026-06-10 01:34:21.386] //   - NOT USING main activity com.android.calendar.AllInOneActivity (from package com.google.android.calendar)
+[Fastbot][2026-06-10 01:34:21.386] //   - NOT USING main activity com.android.deskclock.DeskClock (from package com.google.android.deskclock)
+[Fastbot][2026-06-10 01:34:21.386] //   - NOT USING main activity com.google.android.gm.ConversationListActivityGmail (from package com.google.android.gm)
+[Fastbot][2026-06-10 01:34:21.386] //   - NOT USING main activity com.google.android.youtube.app.honeycomb.Shell$HomeActivity (from package com.google.android.youtube)
+[Fastbot][2026-06-10 01:34:21.386] //   - NOT USING main activity com.android.documentsui.LauncherActivity (from package com.google.android.documentsui)
+[Fastbot][2026-06-10 01:34:21.386] //   - NOT USING main activity com.google.android.googlequicksearchbox.VoiceSearchActivity (from package com.google.android.googlequicksearchbox)
+[Fastbot][2026-06-10 01:34:21.386] //   - NOT USING main activity com.google.android.googlequicksearchbox.SearchActivity (from package com.google.android.googlequicksearchbox)
+[Fastbot][2026-06-10 01:34:21.386] //   - NOT USING main activity com.anddoes.fancywidget.pro.PreferencesActivity (from package com.anddoes.fancywidget.pro)
+[Fastbot][2026-06-10 01:34:21.386] //   - NOT USING main activity mustachebooth.iconosys.eng.FrameIt (from package mustachebooth.iconosys.eng)
+[Fastbot][2026-06-10 01:34:21.387] // Selecting main activities from category android.intent.category.MONKEY
+[Fastbot][2026-06-10 01:34:21.387] //   - NOT USING main activity com.android.settings.Settings$RunningServicesActivity (from package com.android.settings)
+[Fastbot][2026-06-10 01:34:21.387] //   - NOT USING main activity com.android.settings.Settings$StorageUseActivity (from package com.android.settings)
+[Fastbot][2026-06-10 01:34:21.388] //   - NOT USING main activity com.google.android.apps.nexuslauncher.NexusLauncherActivity (from package com.google.android.apps.nexuslauncher)
+[Fastbot][2026-06-10 01:34:21.388] //   - NOT USING main activity com.google.android.apps.wellbeing.settings.TopLevelSettingsActivity (from package com.google.android.apps.wellbeing)
+[Fastbot][2026-06-10 01:34:21.388] //   - NOT USING main activity com.google.android.googlequicksearchbox.SearchActivity (from package com.google.android.googlequicksearchbox)
+[Fastbot]*** WARNING *** ** No activities found to run, monkey aborted.
+  bash arg: -p
+  bash arg: com.rxs16a.android
+  bash arg: --throttle
+  bash arg: 2000
+  bash arg: --ignore-crashes
+  bash arg: --ignore-timeouts
+  bash arg: --ignore-security-exceptions
+  bash arg: -v
+  bash arg: 151
+args: [-p, com.rxs16a.android, --throttle, 2000, --ignore-crashes, --ignore-timeouts, --ignore-security-exceptions, -v, 151]
+ arg: "-p"
+ arg: "com.rxs16a.android"
+ arg: "--throttle"
+ arg: "2000"
+ arg: "--ignore-crashes"
+ arg: "--ignore-timeouts"
+ arg: "--ignore-security-exceptions"
+ arg: "-v"
+ arg: "151"
+data="com.rxs16a.android"
+arg="--throttle" mCurArgData="null" mNextArg=3 argwas="--throttle" nextarg="2000"
+data="2000"
+arg="--ignore-crashes" mCurArgData="null" mNextArg=5 argwas="--ignore-crashes" nextarg="--ignore-timeouts"
+arg="--ignore-timeouts" mCurArgData="null" mNextArg=6 argwas="--ignore-timeouts" nextarg="--ignore-security-exceptions"
+arg="--ignore-security-exceptions" mCurArgData="null" mNextArg=7 argwas="--ignore-security-exceptions" nextarg="-v"
+:Monkey: seed=1781246846091 count=151
+:AllowPackage: com.rxs16a.android
+:IncludeCategory: android.intent.category.LAUNCHER
+:IncludeCategory: android.intent.category.MONKEY
+** No activities found to run, monkey aborted.

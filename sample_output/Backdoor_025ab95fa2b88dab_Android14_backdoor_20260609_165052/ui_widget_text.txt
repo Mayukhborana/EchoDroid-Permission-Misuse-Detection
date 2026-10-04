@@ -1,0 +1,7 @@
+安装提示
+程序出错啦！(005)
+确定
+MainActivity
+AdwoAdBrowserActivity
+SettingActivity
+WelcomeActivity

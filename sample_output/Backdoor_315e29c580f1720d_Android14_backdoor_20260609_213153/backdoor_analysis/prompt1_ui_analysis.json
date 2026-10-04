@@ -1,0 +1,92 @@
+{
+  "app_ui_stated_purpose": "APK installer for 1_monster_cups.apk",
+  "ui_permission_claims": {
+    "sms": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    },
+    "location": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    },
+    "contacts": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    },
+    "camera": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    },
+    "microphone": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    },
+    "phone_state": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    },
+    "storage": {
+      "visible_in_ui": true,
+      "justification_strength": "implied",
+      "ui_evidence": [
+        "Установка",
+        "Вы согласны с условиями загрузки 1_monster_cups.apk.",
+        "Нажмите кнопку Далее"
+      ]
+    },
+    "device_admin": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    },
+    "accessibility": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    },
+    "network": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    },
+    "device_id": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    },
+    "process_exec": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    }
+  },
+  "categories_absent_from_ui": [
+    "sms",
+    "location",
+    "contacts",
+    "camera",
+    "microphone",
+    "phone_state",
+    "device_admin",
+    "accessibility",
+    "network",
+    "device_id",
+    "process_exec"
+  ],
+  "sensitive_flows_detected": [
+    {
+      "flow_name": "APK installation",
+      "activities": [
+        "xgqkjm.bfveeopo.sjpxqpc"
+      ],
+      "description": "The UI presents an APK installer for 1_monster_cups.apk, implying file storage access for downloading or installing the APK."
+    }
+  ],
+  "overall_ui_transparency_score": 0.2
+}

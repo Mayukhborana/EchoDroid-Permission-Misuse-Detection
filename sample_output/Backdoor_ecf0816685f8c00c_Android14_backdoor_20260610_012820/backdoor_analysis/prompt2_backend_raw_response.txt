@@ -1,0 +1,3 @@
+{
+  "raw": "{\n  \"backend_active_capabilities\": {},\n  \"suspicious_methods\": [],\n  \"background_sensitive_classes\": [],\n  \"stealthy_patterns_found\": []\n}"
+}

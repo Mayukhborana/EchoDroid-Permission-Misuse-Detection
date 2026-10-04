@@ -1,0 +1,105 @@
+{
+  "app_ui_stated_purpose": "Local and online music player",
+  "ui_permission_claims": {
+    "sms": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    },
+    "location": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    },
+    "contacts": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    },
+    "camera": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    },
+    "microphone": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    },
+    "phone_state": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    },
+    "storage": {
+      "visible_in_ui": true,
+      "justification_strength": "implied",
+      "ui_evidence": [
+        "本地音乐",
+        "全部歌曲 >>",
+        "按歌手浏览 >>",
+        "LocalActivity",
+        "DownloadManager",
+        "DownloadManagerActivity",
+        "LocalAddAudiosActivity"
+      ]
+    },
+    "device_admin": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    },
+    "accessibility": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    },
+    "network": {
+      "visible_in_ui": true,
+      "justification_strength": "implied",
+      "ui_evidence": [
+        "OnlineActivity"
+      ]
+    },
+    "device_id": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    },
+    "process_exec": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    }
+  },
+  "categories_absent_from_ui": [
+    "sms",
+    "location",
+    "contacts",
+    "camera",
+    "microphone",
+    "phone_state",
+    "device_admin",
+    "accessibility",
+    "device_id",
+    "process_exec"
+  ],
+  "sensitive_flows_detected": [
+    {
+      "flow_name": "Local music access",
+      "activities": [
+        "com.android.lemon.radio.activity.LocalActivity",
+        "com.android.lemon.radio.activity.LocalAddAudiosActivity"
+      ],
+      "description": "User can browse and add local music files, implying storage access."
+    },
+    {
+      "flow_name": "Online music playback",
+      "activities": [
+        "com.android.lemon.radio.activity.OnlineActivity"
+      ],
+      "description": "User can access online music, implying network access."
+    }
+  ],
+  "overall_ui_transparency_score": 0.3
+}

@@ -1,0 +1,9 @@
+Conf Lite
+Login :
+Password :
+Log in
+ChooseAccountActivity
+MainActivity
+UseExistingAccountActivity
+ConfigClient
+OpenNewAccountActivity

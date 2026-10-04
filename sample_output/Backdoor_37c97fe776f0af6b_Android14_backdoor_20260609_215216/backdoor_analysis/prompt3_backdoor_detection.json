@@ -1,0 +1,48 @@
+{
+  "verdict": "HAS_BACKDOOR",
+  "overall_risk_level": "high",
+  "confidence": 0.95,
+  "backdoor_patterns": [
+    {
+      "backdoor_type": "COVERT_COLLECT",
+      "permission_category": "location",
+      "risk_level": "high",
+      "ui_claim": "not present in UI",
+      "backend_evidence": [
+        "com.guohead.sdk.util.GuoheAdUtil: java.lang.String getLocation(android.content.Context)",
+        "com.guohead.sdk.LocationProvider: java.lang.String getLocation()"
+      ],
+      "explanation": "The app accesses device location in the background via ad SDK utility/provider classes, but the UI never mentions location access or requests user consent. This is classic covert collection of sensitive data unrelated to the stated SMS payment/game activation purpose.",
+      "confidence": 0.95
+    },
+    {
+      "backdoor_type": "SILENT_EXEC",
+      "permission_category": "sms",
+      "risk_level": "medium",
+      "ui_claim": "User is prompted for SMS payment to activate the game",
+      "backend_evidence": [
+        "com.network.app.util.SMS_Handle: void aP()",
+        "com.network.app.util.SMS_Handle: void a(com.network.app.data.Database)",
+        "com.network.app.util.SMS_Handle: void aR()",
+        "com.network.app.util.SMS_Receiver: void <init>"
+      ],
+      "explanation": "While the UI explicitly mentions SMS payment, the backend contains utility and receiver classes that handle SMS in the background, including methods interacting with a database. This suggests possible automated or bulk SMS operations beyond the user's explicit action, raising the risk of silent or unauthorized SMS sending.",
+      "confidence": 0.8
+    }
+  ],
+  "mismatch_summary": {
+    "categories_in_ui_not_in_backend": [],
+    "categories_in_backend_not_in_ui": [
+      "location"
+    ],
+    "categories_in_manifest_not_used": [],
+    "categories_used_without_permission": []
+  },
+  "recommendations": [
+    "Investigate the ad SDK's use of location data and whether it transmits user location externally.",
+    "Audit all SMS-related backend methods for evidence of silent or automated SMS sending beyond user-initiated actions.",
+    "Disclose all sensitive data access (especially location) to users and obtain explicit consent.",
+    "Consider removal or replacement of ad SDKs that harvest sensitive data without user awareness."
+  ],
+  "analyst_notes": "The most severe issue is covert background location access by the ad SDK, which is never disclosed to the user and unrelated to the app's stated purpose. SMS handling is mostly justified by the UI, but backend patterns suggest possible silent or automated SMS operations, which should be further investigated. No evidence of hidden triggers or over-declared permissions. The app is high risk due to covert data collection and possible silent SMS execution."
+}

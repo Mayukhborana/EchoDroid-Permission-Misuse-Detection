@@ -1,0 +1,21 @@
+
+20260609223920
+crash:
+// CRASH: com.zelmamarcelino12.heavygunner (pid 25121) (dump time: 2026-06-09 22:39:20
+// Version: 
+// Long Msg: android.content.ActivityNotFoundException: No Activity found to handle Intent { act=android.intent.action.VIEW dat=market://details?id=com.zelmamarcelino12.heavygunner }
+// 	at android.app.Instrumentation.checkStartActivityResult(Instrumentation.java:2067)
+// 	at android.app.Instrumentation.execStartActivity(Instrumentation.java:1727)
+// 	at android.app.Activity.startActivityForResult(Activity.java:5314)
+// 	at android.app.Activity.startActivityForResult(Activity.java:5272)
+// 	at com.zelmamarcelino12.library.A_LaunchActivity.rateApp(Unknown Source:52)
+// 	at com.zelmamarcelino12.library.A_LaunchActivity$3.onClick(Unknown Source:9)
+// 	at com.android.internal.app.AlertController$ButtonHandler.handleMessage(AlertController.java:174)
+// 	at android.os.Handler.dispatchMessage(Handler.java:106)
+// 	at android.os.Looper.loop(Looper.java:223)
+// 	at android.app.ActivityThread.main(ActivityThread.java:7656)
+// 	at java.lang.reflect.Method.invoke(Native Method)
+// 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:592)
+// 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:947)
+// crash end
+

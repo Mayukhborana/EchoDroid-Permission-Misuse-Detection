@@ -1,0 +1,102 @@
+{
+  "app_ui_stated_purpose": "Access to a closed download site via SMS password",
+  "ui_permission_claims": {
+    "sms": {
+      "visible_in_ui": true,
+      "justification_strength": "explicit",
+      "ui_evidence": [
+        "Сейчас Вам придут SMS с паролем на закрытый сайт.",
+        "Стоимость смс: 1899 – от 80 руб.",
+        "Полное соглашение и стоимость смс на сайте сайте http://www.icqbayan.ru/rules.htm"
+      ]
+    },
+    "location": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    },
+    "contacts": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    },
+    "camera": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    },
+    "microphone": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    },
+    "phone_state": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    },
+    "storage": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    },
+    "device_admin": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    },
+    "accessibility": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    },
+    "network": {
+      "visible_in_ui": true,
+      "justification_strength": "implied",
+      "ui_evidence": [
+        "Можете перейти на сайт (http://www.icqbayan.ru и там ввести пароль.",
+        "Либо перейти прямо из SMS.",
+        "Сохраните адрес, и Вам не придется больше искать загрузки, все есть на одном портале."
+      ]
+    },
+    "device_id": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    },
+    "process_exec": {
+      "visible_in_ui": false,
+      "justification_strength": "absent",
+      "ui_evidence": []
+    }
+  },
+  "categories_absent_from_ui": [
+    "location",
+    "contacts",
+    "camera",
+    "microphone",
+    "phone_state",
+    "storage",
+    "device_admin",
+    "accessibility",
+    "device_id",
+    "process_exec"
+  ],
+  "sensitive_flows_detected": [
+    {
+      "flow_name": "SMS-based authentication and payment",
+      "activities": [
+        "roh6U.jea2Ohm.Android"
+      ],
+      "description": "User is informed that an SMS with a password will be sent for access to a closed site, and that SMS messages incur a cost."
+    },
+    {
+      "flow_name": "Network access for site login",
+      "activities": [
+        "roh6U.jea2Ohm.Android"
+      ],
+      "description": "User is instructed to visit a website and enter a password received via SMS, implying use of network connectivity."
+    }
+  ],
+  "overall_ui_transparency_score": 0.6
+}

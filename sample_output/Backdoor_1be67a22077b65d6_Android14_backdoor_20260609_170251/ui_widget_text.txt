@@ -1,0 +1,16 @@
+Theft Aware setup wizard.
+Theft Aware will now check for system dependencies that your phone needs to fulfill in order to use our advanced Android Stealth Mode technology.
+Checking internet connectivity.
+Retry
+Cancel
+Check this box if
+your phone is rooted
+© 2005-2010 by ITAgents interactive software solutions
+Could not connect to the internet.
+StartSetupActivity
+ChooseNameActivity
+DescriptionActivity
+DownloadActivity
+LicenseActivity
+RootMethodSelectionActivity
+RootSelectionActivity

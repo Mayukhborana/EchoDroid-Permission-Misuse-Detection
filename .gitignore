@@ -1,0 +1,48 @@
+# Python
+__pycache__/
+*.pyc
+
+# Gradle / Android
+.gradle/
+build/
+**/build/
+**/.cxx/
+local.properties
+
+# Maven / Java
+target/
+*.class
+
+# Native build outputs
+*.o
+*.so
+*.a
+*.bin
+
+# IDE / OS
+.DS_Store
+.vscode/
+.idea/
+
+# Secrets / local config
+*.keystore
+*.jks
+*.pem
+*.key
+.env
+# Large local tools
+tools/jdk8/
+tools/frida/frida-server
+*.tar.gz
+
+# CMake generated files
+CMakeCache.txt
+cmake_install.cmake
+CMakeFiles/
+Makefile
+
+# Fuzzing image corpora
+*.ppm
+*.pgm
+*.pbm
+*.pnm

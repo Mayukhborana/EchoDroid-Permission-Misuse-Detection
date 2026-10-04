@@ -1,0 +1,33 @@
+{
+  "backend_active_capabilities": {
+    "network": {
+      "active": true,
+      "confidence": "high",
+      "triggering_methods": [
+        "com.nicky.lyyws.xmall.SocketService: void onCreate()",
+        "com.nicky.lyyws.xmall.SocketService$2: void run()"
+      ],
+      "triggering_classes": [
+        "SocketService",
+        "SocketService$2"
+      ],
+      "is_background_only": true,
+      "notes": "Sensitive network activity is initiated from SocketService, which is a background Service and also exported. Multiple inner classes suggest persistent or complex socket communication, likely for command-and-control or data exfiltration."
+    }
+  },
+  "suspicious_methods": [
+    {
+      "full_sig": "com.nicky.lyyws.xmall.SocketService$2: void run()",
+      "reason": "Socket communication is handled in a background thread (run method), likely enabling persistent background connections without user awareness.",
+      "backdoor_pattern": "SILENT_EXEC"
+    }
+  ],
+  "background_sensitive_classes": [
+    "SocketService",
+    "SocketService$2"
+  ],
+  "stealthy_patterns_found": [
+    "Exported SocketService enables remote triggering of background network communication, a common backdoor pattern.",
+    "Network capability exercised exclusively from a background Service, not from user-facing Activity."
+  ]
+}

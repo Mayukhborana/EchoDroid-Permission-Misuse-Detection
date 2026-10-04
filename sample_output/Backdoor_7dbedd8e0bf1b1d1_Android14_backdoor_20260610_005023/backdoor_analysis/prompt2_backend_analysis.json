@@ -1,0 +1,19 @@
+{
+  "backend_active_capabilities": {
+    "location": {
+      "active": false,
+      "confidence": "low",
+      "triggering_methods": [
+        "com.chenyx.tiltmazs.GameObject: android.graphics.Point getLocation()"
+      ],
+      "triggering_classes": [
+        "com.chenyx.tiltmazs.GameObject"
+      ],
+      "is_background_only": false,
+      "notes": "Method name 'getLocation()' refers to a game object's position, not device geolocation. No evidence of Android location API usage at runtime."
+    }
+  },
+  "suspicious_methods": [],
+  "background_sensitive_classes": [],
+  "stealthy_patterns_found": []
+}

@@ -1,0 +1,21 @@
+
+20260610014126
+crash:
+// CRASH: com.nicky.lyyws.xmall (pid 19615) (dump time: 2026-06-10 01:41:26
+// Version: 
+// Long Msg: java.lang.RuntimeException: Unable to create service com.nicky.lyyws.xmall.SocketService: java.lang.NullPointerException: Attempt to invoke virtual method 'char[] java.lang.String.toCharArray()' on a null object reference
+// 	at android.app.ActivityThread.handleCreateService(ActivityThread.java:4204)
+// 	at android.app.ActivityThread.access$1500(ActivityThread.java:237)
+// 	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1932)
+// 	at android.os.Handler.dispatchMessage(Handler.java:106)
+// 	at android.os.Looper.loop(Looper.java:223)
+// 	at android.app.ActivityThread.main(ActivityThread.java:7656)
+// 	at java.lang.reflect.Method.invoke(Native Method)
+// 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:592)
+// 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:947)
+// Caused by: java.lang.NullPointerException: Attempt to invoke virtual method 'char[] java.lang.String.toCharArray()' on a null object reference
+// 	at com.nicky.lyyws.xmall.SocketService.onCreate(Unknown Source:161)
+// 	at android.app.ActivityThread.handleCreateService(ActivityThread.java:4192)
+// 	... 8 more
+// crash end
+

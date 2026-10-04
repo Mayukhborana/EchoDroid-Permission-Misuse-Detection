@@ -1,0 +1,10 @@
+Caution
+温馨提示:激活本游戏为完整版需要您花费6元短信费用，您确定要激活吗?
+Confirm
+Reject
+AppActivity
+AdActivity
+GuoheAdActivity
+MMAdViewOverlayActivity
+VideoPlayer
+SMS_Activity
