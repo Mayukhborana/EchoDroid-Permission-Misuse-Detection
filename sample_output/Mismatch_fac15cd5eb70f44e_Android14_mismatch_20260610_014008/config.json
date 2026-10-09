@@ -1,0 +1,32 @@
+{
+  "AppName": "Mismatch_fac15cd5eb70f44e_Android14",
+  "Description": "Android app under mismatch detection analysis by LLMDroid",
+  "ApiKey": "",
+  "TotalMethod": 1,
+  "Tag": "com_nicky_lyyws_xmall_LOG",
+  "Model": "gpt-4.1",
+  "BaseUrl": "https://api.openai.com/v1",
+  "PackageName": "com.nicky.lyyws.xmall",
+  "ManifestPath": "/Users/Desktop/permission_misuse/drebin/resigned_base_apks/fac15cd5eb70f44e2d6e2031b4fba108ba27ca00492d6f45f5c5058294690a5d_signed.apk",
+  "ManifestPermissions": [
+    "android.permission.CALL_PHONE",
+    "android.permission.PROCESS_OUTGOING_CALLS",
+    "android.permission.INTERNET",
+    "android.permission.ACCESS_GPS",
+    "android.permission.ACCESS_COARSE_LOCATION",
+    "android.permission.ACCESS_COARSE_UPDATES",
+    "android.permission.ACCESS_FINE_LOCATION",
+    "android.permission.READ_PHONE_STATE",
+    "android.permission.READ_CONTACTS",
+    "android.permission.WRITE_CONTACTS",
+    "android.permission.ACCESS_WIFI_STATE",
+    "android.permission.PERMISSION_NAME",
+    "android.permission.READ_SMS",
+    "android.permission.WRITE_SMS",
+    "android.permission.WAKE_LOCK",
+    "android.permission.RECORD_AUDIO",
+    "android.permission.WRITE_EXTERNAL_STORAGE",
+    "android.permission.DEVICE_POWER"
+  ],
+  "ExportedComponents": []
+}

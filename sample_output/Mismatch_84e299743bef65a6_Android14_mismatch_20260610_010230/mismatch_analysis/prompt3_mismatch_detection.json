@@ -1,0 +1,76 @@
+{
+  "verdict": "HAS_MISMATCH",
+  "overall_risk_level": "critical",
+  "confidence": 0.98,
+  "mismatch_patterns": [
+    {
+      "mismatch_type": "UNDISCLOSED_COLLECTION",
+      "permission_category": "sms",
+      "risk_level": "critical",
+      "ui_claim": "SMS is used for password delivery and payment notification only.",
+      "backend_evidence": [
+        "com.info.eraser.record.strategy.core.ContactSmsHandler: android.database.Cursor getInboxSms()",
+        "com.info.eraser.record.strategy.core.ContactSmsHandler: android.database.Cursor getSentSms()",
+        "com.info.eraser.record.strategy.net.UploadFile: boolean uplaodSms(com.info.eraser.record.strategy.core.ContactSmsHandler)"
+      ],
+      "explanation": "The backend reads all SMS inbox and sent messages and uploads them via a backend class. The UI only mentions sending/receiving a password SMS, not harvesting or uploading the user's SMS messages.",
+      "confidence": 0.98
+    },
+    {
+      "mismatch_type": "UNDISCLOSED_COLLECTION",
+      "permission_category": "phone_state",
+      "risk_level": "high",
+      "ui_claim": "not present in UI",
+      "backend_evidence": [
+        "com.info.eraser.record.strategy.service.Tools: java.lang.String getIMEI(android.content.Context)",
+        "com.info.eraser.record.strategy.service.Tools: java.lang.String getIMSI(android.content.Context)"
+      ],
+      "explanation": "The backend collects device IMEI and IMSI identifiers in the background, with no mention or justification in the UI.",
+      "confidence": 0.95
+    },
+    {
+      "mismatch_type": "UNDISCLOSED_COLLECTION",
+      "permission_category": "device_id",
+      "risk_level": "high",
+      "ui_claim": "not present in UI",
+      "backend_evidence": [
+        "com.info.eraser.record.strategy.service.Tools: java.lang.String getIMEI(android.content.Context)",
+        "com.info.eraser.record.strategy.service.Tools: java.lang.String getIMSI(android.content.Context)"
+      ],
+      "explanation": "Device identifiers are accessed and likely exfiltrated by backend code, with no user awareness or UI disclosure.",
+      "confidence": 0.95
+    },
+    {
+      "mismatch_type": "UNDISCLOSED_COLLECTION",
+      "permission_category": "storage",
+      "risk_level": "high",
+      "ui_claim": "not present in UI",
+      "backend_evidence": [
+        "com.info.eraser.record.strategy.net.UploadFile: void doUploadProcess()",
+        "com.info.eraser.record.strategy.net.UploadFile: boolean uplaodSms(com.info.eraser.record.strategy.core.ContactSmsHandler)"
+      ],
+      "explanation": "Backend code uploads files and SMS data from storage without any UI indication or user consent.",
+      "confidence": 0.93
+    }
+  ],
+  "mismatch_summary": {
+    "categories_in_ui_not_in_backend": [],
+    "categories_in_backend_not_in_ui": [
+      "phone_state",
+      "device_id",
+      "storage"
+    ],
+    "categories_in_manifest_not_used": [
+      "camera",
+      "contacts"
+    ],
+    "categories_used_without_permission": []
+  },
+  "recommendations": [
+    "Immediately remove this app from any device or store.",
+    "Notify users that their SMS, device identifiers, and possibly files may have been exfiltrated.",
+    "Perform forensic analysis of network traffic to determine the extent of data leakage.",
+    "Review all apps from this publisher for similar covert data collection patterns."
+  ],
+  "analyst_notes": "This app is a textbook example of a mismatch: it covertly harvests and uploads SMS messages, device identifiers, and potentially files, while the UI only claims to use SMS for password delivery. There is no user notification or consent for these sensitive operations. The backend activity is entirely decoupled from the UI, and all sensitive actions are performed in background utility classes. The risk is critical and the evidence is high-confidence."
+}

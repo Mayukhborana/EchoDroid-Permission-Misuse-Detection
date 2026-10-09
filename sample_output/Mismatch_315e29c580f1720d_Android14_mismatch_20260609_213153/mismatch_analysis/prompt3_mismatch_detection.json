@@ -1,0 +1,51 @@
+{
+  "verdict": "SUSPICIOUS",
+  "overall_risk_level": "medium",
+  "confidence": 0.7,
+  "mismatch_patterns": [
+    {
+      "mismatch_type": "UNOBSERVED_DECLARED",
+      "permission_category": "sms",
+      "risk_level": "high",
+      "ui_claim": "not present in UI",
+      "backend_evidence": [],
+      "explanation": "The app declares SMS-related permissions (READ_SMS, SEND_SMS, RECEIVE_SMS) in the manifest, but there is no evidence of SMS API usage in the backend analysis and no mention or justification in the UI. This is a classic over-declaration pattern, possibly for future malicious activation or to evade static analysis.",
+      "confidence": 0.85
+    },
+    {
+      "mismatch_type": "UNOBSERVED_DECLARED",
+      "permission_category": "contacts",
+      "risk_level": "medium",
+      "ui_claim": "not present in UI",
+      "backend_evidence": [],
+      "explanation": "The app declares READ_CONTACTS permission in the manifest, but there is no evidence of contacts access in the backend and no mention in the UI. This is suspicious for an APK installer.",
+      "confidence": 0.8
+    },
+    {
+      "mismatch_type": "UNOBSERVED_DECLARED",
+      "permission_category": "phone_state",
+      "risk_level": "medium",
+      "ui_claim": "not present in UI",
+      "backend_evidence": [],
+      "explanation": "The app declares READ_PHONE_STATE, which allows access to device identifiers and phone status, but there is no backend usage or UI mention. This is unnecessary for an APK installer.",
+      "confidence": 0.8
+    }
+  ],
+  "mismatch_summary": {
+    "categories_in_ui_not_in_backend": [],
+    "categories_in_backend_not_in_ui": [],
+    "categories_in_manifest_not_used": [
+      "sms",
+      "contacts",
+      "phone_state"
+    ],
+    "categories_used_without_permission": []
+  },
+  "recommendations": [
+    "Review why SMS, contacts, and phone state permissions are declared for an APK installer app.",
+    "Monitor for future updates or dynamic code loading that may activate these permissions.",
+    "Restrict installation or use on sensitive devices until the purpose of these permissions is clarified.",
+    "Perform dynamic analysis to check for runtime code loading or permission activation."
+  ],
+  "analyst_notes": "No evidence of active mismatch behavior in the current backend, but the over-declaration of highly sensitive permissions (SMS, contacts, phone state) with no UI justification is a strong red flag. This is a common precursor to malicious behavior, especially in APK installers, which are often used as droppers. No SILENT_EXEC or UI_DECEPTION detected at this time, but the risk is elevated due to the potential for future abuse."
+}

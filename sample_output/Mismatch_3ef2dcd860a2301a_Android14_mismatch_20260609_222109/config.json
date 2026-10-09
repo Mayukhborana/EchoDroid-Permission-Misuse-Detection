@@ -1,0 +1,24 @@
+{
+  "AppName": "Mismatch_3ef2dcd860a2301a_Android14",
+  "Description": "Android app under mismatch detection analysis by LLMDroid",
+  "ApiKey": "",
+  "TotalMethod": 1,
+  "Tag": "com_app_downloader_LOG",
+  "Model": "gpt-4.1",
+  "BaseUrl": "https://api.openai.com/v1",
+  "PackageName": "com.app.downloader",
+  "ManifestPath": "/Users/Desktop/permission_misuse/drebin/resigned_base_apks/3ef2dcd860a2301ab7baf260feeb22bd0b430f243fbb4268ee952ea44445b64b_signed.apk",
+  "ManifestPermissions": [
+    "android.permission.INTERNET",
+    "android.permission.WRITE_SMS",
+    "android.permission.READ_SMS",
+    "android.permission.SEND_SMS",
+    "android.permission.RECEIVE_SMS",
+    "android.permission.WRITE_EXTERNAL_STORAGE",
+    "android.permission.WAKE_LOCK",
+    "android.permission.READ_PHONE_STATE",
+    "android.permission.READ_EXTERNAL_STORAGE",
+    "android.permission.CHANGE_COMPONENT_ENABLED_STATE"
+  ],
+  "ExportedComponents": []
+}

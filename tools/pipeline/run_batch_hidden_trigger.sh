@@ -9,13 +9,13 @@ if [[ -z "$SAMPLES_DIR" || ! -d "$SAMPLES_DIR" ]]; then
   echo "Usage: $0 <samples_dir> [count=5] [duration=300]" >&2
   exit 1
 fi
-ROOT="$HOME/Desktop/backdoor_permission"
+ROOT="$HOME/Desktop/mismatch_permission"
 OUTBASE="$ROOT/new_output"
 WORKBASE="$ROOT/pipeline_work"
 PLATFORMS="$HOME/Android/Sdk/platforms"
 ANDROLOG_JAR="$ROOT/tools/AndroLog/target/androlog-0.1-jar-with-dependencies.jar"
 APKSIGNER="$HOME/Android/Sdk/build-tools/36.1.0/apksigner"
-LLM_RUN="$ROOT/MismatchDroid-fastbot-custom-more-detection/run_backdoor_detection.sh"
+LLM_RUN="$ROOT/MismatchDroid-fastbot-custom-more-detection/run_mismatch_detection.sh"
 AAPT_BIN="aapt"
 MANIFEST_CSV="$SAMPLES_DIR/manifest.csv"
 
@@ -48,7 +48,7 @@ for row in "${FILES[@]}"; do
   fi
   APPNAME=$(basename "$APK_PATH" .apk)
   TS=$(date +%Y%m%d_%H%M%S)
-  OUTDIR="$OUTBASE/${APPNAME}_backdoor_${TS}"
+  OUTDIR="$OUTBASE/${APPNAME}_mismatch_${TS}"
   WORKDIR="$WORKBASE/${APPNAME}_$TS"
   mkdir -p "$OUTDIR" "$WORKDIR/androlog_out"
 

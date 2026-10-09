@@ -1,0 +1,50 @@
+{
+  "verdict": "SUSPICIOUS",
+  "overall_risk_level": "medium",
+  "confidence": 0.7,
+  "mismatch_patterns": [
+    {
+      "mismatch_type": "UNOBSERVED_DECLARED",
+      "permission_category": "sms",
+      "risk_level": "medium",
+      "ui_claim": "not present in UI",
+      "backend_evidence": [],
+      "explanation": "The app declares RECEIVE_SMS and READ_SMS permissions in the manifest, but there is no evidence of any SMS-related API usage at runtime, nor any UI indication or justification for SMS access. This may indicate zombie permissions for future activation or evasion.",
+      "confidence": 0.7
+    },
+    {
+      "mismatch_type": "UNOBSERVED_DECLARED",
+      "permission_category": "location",
+      "risk_level": "medium",
+      "ui_claim": "not present in UI",
+      "backend_evidence": [],
+      "explanation": "ACCESS_FINE_LOCATION is declared in the manifest, but no Android location APIs are called at runtime. The only 'getLocation()' method refers to in-game object position, not device geolocation. No UI mention or justification for location access.",
+      "confidence": 0.7
+    },
+    {
+      "mismatch_type": "UNOBSERVED_DECLARED",
+      "permission_category": "phone_state",
+      "risk_level": "medium",
+      "ui_claim": "not present in UI",
+      "backend_evidence": [],
+      "explanation": "READ_PHONE_STATE is declared (twice) in the manifest, but there is no evidence of phone state API usage at runtime, nor any UI mention or justification.",
+      "confidence": 0.7
+    }
+  ],
+  "mismatch_summary": {
+    "categories_in_ui_not_in_backend": [],
+    "categories_in_backend_not_in_ui": [],
+    "categories_in_manifest_not_used": [
+      "sms",
+      "location",
+      "phone_state"
+    ],
+    "categories_used_without_permission": []
+  },
+  "recommendations": [
+    "Review the necessity of sensitive permissions (SMS, location, phone state) in the manifest. Remove any that are not required for current app functionality.",
+    "Monitor for future updates or dynamic code loading that might activate these zombie permissions.",
+    "Investigate the exported receiver 'com.sjgo.client.zjReceiver' for potential hidden triggers, as it is not referenced in the UI or backend analysis."
+  ],
+  "analyst_notes": "No evidence of active mismatch behavior (e.g., silent data exfiltration, covert collection, or hidden triggers) in the current runtime analysis. However, the presence of unused sensitive permissions (UNOBSERVED_DECLARED) is a classic sign of suspicious intent or preparation for future malicious activity. The app's UI is entirely silent about these capabilities, and no runtime use is detected. The exported receiver should be reviewed in depth for hidden trigger potential, but no direct evidence is present in this dataset."
+}

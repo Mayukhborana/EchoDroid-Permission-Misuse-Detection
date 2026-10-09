@@ -1,0 +1,44 @@
+{
+  "verdict": "HAS_MISMATCH",
+  "overall_risk_level": "critical",
+  "confidence": 0.95,
+  "mismatch_patterns": [
+    {
+      "mismatch_type": "SILENT_EXEC",
+      "permission_category": "sms",
+      "risk_level": "critical",
+      "ui_claim": "not present in UI",
+      "backend_evidence": [
+        "com.app.downloader.AppDownloaderActivity: void sendSMS(java.lang.String,java.lang.String)"
+      ],
+      "explanation": "The app exercises SMS sending functionality in the backend, including from non-UI contexts, but never discloses or justifies SMS access or sending in the UI. This enables silent SMS operations without user knowledge.",
+      "confidence": 0.95
+    },
+    {
+      "mismatch_type": "HIDDEN_TRIGGER",
+      "permission_category": "sms",
+      "risk_level": "critical",
+      "ui_claim": "not present in UI",
+      "backend_evidence": [
+        "com.app.downloader.SmsReceiver: void <clinit"
+      ],
+      "explanation": "An exported BroadcastReceiver (SmsReceiver) is present and contains SMS-related logic in its static initializer, allowing external or background triggering of SMS operations without user interaction or awareness.",
+      "confidence": 0.9
+    }
+  ],
+  "mismatch_summary": {
+    "categories_in_ui_not_in_backend": [],
+    "categories_in_backend_not_in_ui": [
+      "sms"
+    ],
+    "categories_in_manifest_not_used": [],
+    "categories_used_without_permission": []
+  },
+  "recommendations": [
+    "Immediately remove this app from any device or app store due to critical mismatch risk.",
+    "Perform forensic analysis of sent SMS logs to detect potential abuse.",
+    "Alert users and administrators to the risk of silent SMS operations and possible financial or privacy impact.",
+    "Block or monitor network and SMS activity from this package."
+  ],
+  "analyst_notes": "This app claims to be an 'Online MMS Base / Downloader' but never mentions SMS capabilities in its UI. However, it exercises SMS sending in the backend, including from an exported BroadcastReceiver, enabling silent and potentially remote-triggered SMS operations. This is a textbook mismatch pattern with critical risk. No legitimate downloader app should require or silently use SMS permissions in this manner."
+}

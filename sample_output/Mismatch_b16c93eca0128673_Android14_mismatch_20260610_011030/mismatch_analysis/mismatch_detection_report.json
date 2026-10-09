@@ -1,0 +1,449 @@
+{
+  "pipeline": "LLMDroid-fastbot-custom-more-detection (Mismatch Detection)",
+  "version": "1.0.0",
+  "timestamp": "2026-06-09T17:16:25.016301Z",
+  "app": {
+    "name": "Mismatch_b16c93eca0128673_Android14",
+    "description": "Android app under mismatch detection analysis by LLMDroid",
+    "package": "com.extend.battery"
+  },
+  "mismatch_verdict": {
+    "verdict": "SUSPICIOUS",
+    "risk_level": "medium",
+    "confidence": 0.7,
+    "total_patterns_found": 5,
+    "verdict_explanation": "Moderate mismatch signals; warrants further manual investigation."
+  },
+  "mismatch_patterns": [
+    {
+      "mismatch_type": "UNOBSERVED_DECLARED",
+      "permission_category": "sms",
+      "risk_level": "medium",
+      "ui_claim": "not present in UI",
+      "backend_evidence": [],
+      "explanation": "The app declares multiple SMS-related permissions (READ_SMS, RECEIVE_SMS, SEND_SMS) in the manifest, but there is no evidence of SMS-related API usage in the backend analysis and no mention or justification in the UI. This may indicate zombie permissions for future activation or to evade static analysis.",
+      "confidence": 0.7
+    },
+    {
+      "mismatch_type": "UNOBSERVED_DECLARED",
+      "permission_category": "location",
+      "risk_level": "medium",
+      "ui_claim": "not present in UI",
+      "backend_evidence": [],
+      "explanation": "The app declares both coarse and fine location permissions, but there is no evidence of location access in the backend or any mention in the UI. This is suspicious for a battery management app.",
+      "confidence": 0.7
+    },
+    {
+      "mismatch_type": "UNOBSERVED_DECLARED",
+      "permission_category": "phone_state",
+      "risk_level": "medium",
+      "ui_claim": "not present in UI",
+      "backend_evidence": [],
+      "explanation": "The app requests READ_PHONE_STATE, which can expose device identifiers and call state, but there is no backend usage or UI justification. This is not expected for a battery management app.",
+      "confidence": 0.7
+    },
+    {
+      "mismatch_type": "UNOBSERVED_DECLARED",
+      "permission_category": "storage",
+      "risk_level": "medium",
+      "ui_claim": "not present in UI",
+      "backend_evidence": [],
+      "explanation": "WRITE_EXTERNAL_STORAGE is declared but not used in backend or mentioned in UI. This could be a placeholder for future data exfiltration.",
+      "confidence": 0.6
+    },
+    {
+      "mismatch_type": "HIDDEN_TRIGGER",
+      "permission_category": "sms",
+      "risk_level": "medium",
+      "ui_claim": "not present in UI",
+      "backend_evidence": [],
+      "explanation": "The exported receiver com.zanalytics.sms.SmsReceiver is accessible externally. While no backend evidence of SMS handling is present, the combination of exported SMS receiver and declared SMS permissions is a known mismatch pattern, as it could be activated by external triggers in the future.",
+      "confidence": 0.7
+    }
+  ],
+  "mismatch_summary": {
+    "categories_in_ui_not_in_backend": [],
+    "categories_in_backend_not_in_ui": [],
+    "categories_in_manifest_not_used": [
+      "sms",
+      "location",
+      "phone_state",
+      "storage"
+    ],
+    "categories_used_without_permission": []
+  },
+  "evidence": {
+    "manifest": {
+      "all_permissions": [
+        "android.permission.GET_TASKS",
+        "android.permission.RESTART_PACKAGES",
+        "android.permission.ACCESS_WIFI_STATE",
+        "android.permission.BLUETOOTH",
+        "android.permission.CHANGE_WIFI_STATE",
+        "android.permission.BLUETOOTH_ADMIN",
+        "android.permission.READ_PHONE_STATE",
+        "android.permission.WRITE_SETTINGS",
+        "android.permission.WRITE_EXTERNAL_STORAGE",
+        "android.permission.INTERNET",
+        "android.permission.ACCESS_NETWORK_STATE",
+        "android.permission.RECEIVE_BOOT_COMPLETED",
+        "android.permission.VIBRATE",
+        "android.permission.READ_SMS",
+        "android.permission.RECEIVE_SMS",
+        "android.permission.WRITE_SMS",
+        "android.permission.SEND_SMS",
+        "android.permission.DISABLE_KEYGUARD",
+        "android.permission.WAKE_LOCK",
+        "android.permission.ACCESS_COARSE_LOCATION",
+        "android.permission.ACCESS_FINE_LOCATION"
+      ],
+      "sensitive_permissions": [
+        "android.permission.READ_PHONE_STATE",
+        "android.permission.WRITE_EXTERNAL_STORAGE",
+        "android.permission.INTERNET",
+        "android.permission.ACCESS_NETWORK_STATE",
+        "android.permission.READ_SMS",
+        "android.permission.RECEIVE_SMS",
+        "android.permission.SEND_SMS",
+        "android.permission.ACCESS_COARSE_LOCATION",
+        "android.permission.ACCESS_FINE_LOCATION"
+      ],
+      "by_category": {
+        "sms": [
+          "android.permission.READ_SMS",
+          "android.permission.RECEIVE_SMS",
+          "android.permission.SEND_SMS"
+        ],
+        "location": [
+          "android.permission.ACCESS_COARSE_LOCATION",
+          "android.permission.ACCESS_FINE_LOCATION"
+        ],
+        "phone_state": [
+          "android.permission.READ_PHONE_STATE"
+        ],
+        "storage": [
+          "android.permission.WRITE_EXTERNAL_STORAGE"
+        ],
+        "network": [
+          "android.permission.INTERNET",
+          "android.permission.ACCESS_NETWORK_STATE"
+        ],
+        "device_id": [
+          "android.permission.READ_PHONE_STATE"
+        ]
+      },
+      "exported_components": [
+        ".Splash",
+        "com.tapjoy.TapjoyReferralTracker",
+        "com.zanalytics.sms.SmsReceiver"
+      ]
+    },
+    "runtime": {
+      "total_unique_methods_called": 166,
+      "sensitive_methods_found": 0,
+      "backend_active_categories": [],
+      "backend_category_details": {},
+      "activities_tested": [
+        "com.extend.battery.RatingActivity",
+        "com.extend.battery.Splash",
+        "com.extend.battery.TabHandler"
+      ],
+      "activity_coverage": 30.000001907348633
+    }
+  },
+  "llm_analysis": {
+    "prompt1_ui_analysis": {
+      "app_ui_stated_purpose": "Battery management and optimization",
+      "ui_permission_claims": {
+        "sms": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "location": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "contacts": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "camera": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "microphone": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "phone_state": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "storage": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "device_admin": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "accessibility": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "network": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "device_id": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "process_exec": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        }
+      },
+      "categories_absent_from_ui": [
+        "sms",
+        "location",
+        "contacts",
+        "camera",
+        "microphone",
+        "phone_state",
+        "storage",
+        "device_admin",
+        "accessibility",
+        "network",
+        "device_id",
+        "process_exec"
+      ],
+      "sensitive_flows_detected": [],
+      "overall_ui_transparency_score": 0.0
+    },
+    "prompt2_backend_analysis": {
+      "backend_active_capabilities": {},
+      "suspicious_methods": [],
+      "background_sensitive_classes": [],
+      "stealthy_patterns_found": []
+    },
+    "prompt3_mismatch_detection": {
+      "verdict": "SUSPICIOUS",
+      "overall_risk_level": "medium",
+      "confidence": 0.7,
+      "mismatch_patterns": [
+        {
+          "mismatch_type": "UNOBSERVED_DECLARED",
+          "permission_category": "sms",
+          "risk_level": "medium",
+          "ui_claim": "not present in UI",
+          "backend_evidence": [],
+          "explanation": "The app declares multiple SMS-related permissions (READ_SMS, RECEIVE_SMS, SEND_SMS) in the manifest, but there is no evidence of SMS-related API usage in the backend analysis and no mention or justification in the UI. This may indicate zombie permissions for future activation or to evade static analysis.",
+          "confidence": 0.7
+        },
+        {
+          "mismatch_type": "UNOBSERVED_DECLARED",
+          "permission_category": "location",
+          "risk_level": "medium",
+          "ui_claim": "not present in UI",
+          "backend_evidence": [],
+          "explanation": "The app declares both coarse and fine location permissions, but there is no evidence of location access in the backend or any mention in the UI. This is suspicious for a battery management app.",
+          "confidence": 0.7
+        },
+        {
+          "mismatch_type": "UNOBSERVED_DECLARED",
+          "permission_category": "phone_state",
+          "risk_level": "medium",
+          "ui_claim": "not present in UI",
+          "backend_evidence": [],
+          "explanation": "The app requests READ_PHONE_STATE, which can expose device identifiers and call state, but there is no backend usage or UI justification. This is not expected for a battery management app.",
+          "confidence": 0.7
+        },
+        {
+          "mismatch_type": "UNOBSERVED_DECLARED",
+          "permission_category": "storage",
+          "risk_level": "medium",
+          "ui_claim": "not present in UI",
+          "backend_evidence": [],
+          "explanation": "WRITE_EXTERNAL_STORAGE is declared but not used in backend or mentioned in UI. This could be a placeholder for future data exfiltration.",
+          "confidence": 0.6
+        },
+        {
+          "mismatch_type": "HIDDEN_TRIGGER",
+          "permission_category": "sms",
+          "risk_level": "medium",
+          "ui_claim": "not present in UI",
+          "backend_evidence": [],
+          "explanation": "The exported receiver com.zanalytics.sms.SmsReceiver is accessible externally. While no backend evidence of SMS handling is present, the combination of exported SMS receiver and declared SMS permissions is a known mismatch pattern, as it could be activated by external triggers in the future.",
+          "confidence": 0.7
+        }
+      ],
+      "mismatch_summary": {
+        "categories_in_ui_not_in_backend": [],
+        "categories_in_backend_not_in_ui": [],
+        "categories_in_manifest_not_used": [
+          "sms",
+          "location",
+          "phone_state",
+          "storage"
+        ],
+        "categories_used_without_permission": []
+      },
+      "recommendations": [
+        "Request a dynamic runtime analysis to observe if any of the over-declared permissions are exercised under specific conditions or after external triggers.",
+        "Review the code and monitor the exported com.zanalytics.sms.SmsReceiver for any future updates or suspicious activity.",
+        "Advise users and security teams to treat apps with over-declared sensitive permissions and exported receivers with caution, especially when the UI provides no justification."
+      ],
+      "analyst_notes": "No direct evidence of sensitive API usage at runtime, but the combination of over-declared permissions (especially SMS and location), lack of UI transparency, and the presence of an exported SMS receiver is a classic setup for a latent mismatch. The app is not currently exfiltrating data or abusing permissions, but the groundwork is laid for future malicious activity. This warrants a 'SUSPICIOUS' verdict and close monitoring."
+    }
+  },
+  "local_rule_analysis": {
+    "local_verdict": "SUSPICIOUS",
+    "total_flags": 6,
+    "silent_exec_flags": [],
+    "ui_deception_flags": [],
+    "covert_collect_flags": [],
+    "over_declared_flags": [
+      {
+        "mismatch_type": "UNOBSERVED_DECLARED",
+        "permission_category": "sms",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for sms were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.47,
+        "source": "local_rule"
+      },
+      {
+        "mismatch_type": "UNOBSERVED_DECLARED",
+        "permission_category": "location",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for location were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.47,
+        "source": "local_rule"
+      },
+      {
+        "mismatch_type": "UNOBSERVED_DECLARED",
+        "permission_category": "phone_state",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for phone_state were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.47,
+        "source": "local_rule"
+      },
+      {
+        "mismatch_type": "UNOBSERVED_DECLARED",
+        "permission_category": "storage",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for storage were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.47,
+        "source": "local_rule"
+      },
+      {
+        "mismatch_type": "UNOBSERVED_DECLARED",
+        "permission_category": "network",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for network were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.47,
+        "source": "local_rule"
+      },
+      {
+        "mismatch_type": "UNOBSERVED_DECLARED",
+        "permission_category": "device_id",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for device_id were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.47,
+        "source": "local_rule"
+      }
+    ],
+    "hidden_trigger_flags": [],
+    "all_flags": [
+      {
+        "mismatch_type": "UNOBSERVED_DECLARED",
+        "permission_category": "sms",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for sms were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.47,
+        "source": "local_rule"
+      },
+      {
+        "mismatch_type": "UNOBSERVED_DECLARED",
+        "permission_category": "location",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for location were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.47,
+        "source": "local_rule"
+      },
+      {
+        "mismatch_type": "UNOBSERVED_DECLARED",
+        "permission_category": "phone_state",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for phone_state were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.47,
+        "source": "local_rule"
+      },
+      {
+        "mismatch_type": "UNOBSERVED_DECLARED",
+        "permission_category": "storage",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for storage were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.47,
+        "source": "local_rule"
+      },
+      {
+        "mismatch_type": "UNOBSERVED_DECLARED",
+        "permission_category": "network",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for network were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.47,
+        "source": "local_rule"
+      },
+      {
+        "mismatch_type": "UNOBSERVED_DECLARED",
+        "permission_category": "device_id",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for device_id were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.47,
+        "source": "local_rule"
+      }
+    ]
+  },
+  "recommendations": [
+    "Request a dynamic runtime analysis to observe if any of the over-declared permissions are exercised under specific conditions or after external triggers.",
+    "Review the code and monitor the exported com.zanalytics.sms.SmsReceiver for any future updates or suspicious activity.",
+    "Advise users and security teams to treat apps with over-declared sensitive permissions and exported receivers with caution, especially when the UI provides no justification."
+  ]
+}

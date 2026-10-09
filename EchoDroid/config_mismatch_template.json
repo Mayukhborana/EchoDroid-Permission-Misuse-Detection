@@ -1,0 +1,36 @@
+{
+  "_comment": "config_mismatch_template.json — Copy this to config.json and fill in your app's details.",
+
+  "AppName": "YOUR_APP_NAME",
+  "Description": "Brief description of what the app claims to do (e.g., 'a flashlight app')",
+  "ApiKey": "YOUR_OPENAI_API_KEY_HERE",
+  "TotalMethod": 0,
+  "Tag": "YOUR_ANDROLOG_TAG",
+  "Model": "gpt-4.1",
+  "BaseUrl": "https://api.openai.com/v1",
+  "PackageName": "com.example.yourapp",
+
+  "_comment_ManifestPath": "Path to the APK file. If set, aapt auto-extracts ManifestPermissions and ExportedComponents. Leave empty to supply those lists manually below.",
+  "ManifestPath": "/path/to/your_instrumented_app.apk",
+
+  "_comment_ManifestPermissions": "Declared Android permissions from AndroidManifest.xml. Auto-populated if ManifestPath is set. Otherwise fill manually.",
+  "ManifestPermissions": [
+    "android.permission.INTERNET",
+    "android.permission.ACCESS_FINE_LOCATION",
+    "android.permission.READ_CONTACTS",
+    "android.permission.READ_PHONE_STATE",
+    "android.permission.SEND_SMS",
+    "android.permission.CAMERA",
+    "android.permission.READ_EXTERNAL_STORAGE",
+    "android.permission.WRITE_EXTERNAL_STORAGE"
+  ],
+
+  "_comment_ExportedComponents": "Components with android:exported=true. These can be triggered externally (mismatch vector). Auto-populated from APK if ManifestPath is set.",
+  "ExportedComponents": [
+    "com.example.yourapp.DeepLinkActivity",
+    "com.example.yourapp.ShareReceiver",
+    "com.example.yourapp.BackgroundSyncService"
+  ],
+
+  "_comment_analysis": "The run_mismatch_detection.sh script populates TotalMethod and Tag automatically from the AndroLog-instrumented APK. You do not need to set them manually."
+}

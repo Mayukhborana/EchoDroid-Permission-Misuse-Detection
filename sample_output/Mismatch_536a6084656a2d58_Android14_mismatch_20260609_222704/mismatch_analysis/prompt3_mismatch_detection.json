@@ -1,0 +1,52 @@
+{
+  "verdict": "SUSPICIOUS",
+  "overall_risk_level": "medium",
+  "confidence": 0.7,
+  "mismatch_patterns": [
+    {
+      "mismatch_type": "UNOBSERVED_DECLARED",
+      "permission_category": "phone_state",
+      "risk_level": "medium",
+      "ui_claim": "not present in UI",
+      "backend_evidence": [],
+      "explanation": "The app declares android.permission.READ_PHONE_STATE in the manifest, but backend analysis shows no evidence of this permission being exercised at runtime and the UI never mentions phone state or device ID access. This may indicate a zombie permission for future activation or to evade static analysis.",
+      "confidence": 0.7
+    },
+    {
+      "mismatch_type": "UNOBSERVED_DECLARED",
+      "permission_category": "storage",
+      "risk_level": "medium",
+      "ui_claim": "not present in UI",
+      "backend_evidence": [],
+      "explanation": "android.permission.WRITE_EXTERNAL_STORAGE is declared in the manifest, but there is no evidence of storage access in backend analysis and no mention in the UI. This could be a placeholder for future use or an attempt to mask true intent.",
+      "confidence": 0.7
+    },
+    {
+      "mismatch_type": "HIDDEN_TRIGGER",
+      "permission_category": "unknown",
+      "risk_level": "medium",
+      "ui_claim": "not present in UI",
+      "backend_evidence": [
+        "com.sBKMD.ujQQLoKHkeFa (exported)",
+        "com.sBKMD.userPermissionReceiver (exported)"
+      ],
+      "explanation": "Two non-UI exported components (com.sBKMD.ujQQLoKHkeFa and com.sBKMD.userPermissionReceiver) are accessible externally, but their functionality is not described in the UI or backend analysis. Exported components with obfuscated names are a common mismatch pattern, as they may be triggered by other apps or remote commands to execute hidden logic.",
+      "confidence": 0.7
+    }
+  ],
+  "mismatch_summary": {
+    "categories_in_ui_not_in_backend": [],
+    "categories_in_backend_not_in_ui": [],
+    "categories_in_manifest_not_used": [
+      "phone_state",
+      "storage"
+    ],
+    "categories_used_without_permission": []
+  },
+  "recommendations": [
+    "Perform dynamic analysis to monitor if the exported components can be triggered externally to perform sensitive actions.",
+    "Review future app updates for activation of currently unused permissions.",
+    "Alert users and security teams to the presence of zombie permissions and unexplained exported components."
+  ],
+  "analyst_notes": "No direct evidence of sensitive API usage at runtime, but the presence of unused sensitive permissions and unexplained exported components with obfuscated names is suspicious. No SILENT_EXEC or UNDISCLOSED_COLLECTION detected, but the app's manifest and component structure warrant further monitoring."
+}

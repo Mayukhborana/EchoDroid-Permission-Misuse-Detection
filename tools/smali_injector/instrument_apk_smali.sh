@@ -18,7 +18,7 @@
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-ROOT="$HOME/Desktop/backdoor_permission"
+ROOT="$HOME/Desktop/mismatch_permission"
 APKSIGNER="$HOME/Android/Sdk/build-tools/36.1.0/apksigner"
 KEYSTORE="$HOME/.android/debug.keystore"
 INSTR_DIR="$ROOT/instrumented_app"
@@ -156,5 +156,5 @@ echo "  Next steps:"
 echo "  1. Install:  adb install -r \"$OUT_APK\""
 echo "  2. Run pipeline:"
 echo "     cd $ROOT/MismatchDroid-fastbot-custom-more-detection"
-echo "     ./run_backdoor_detection.sh \"$OUT_APK\" \"$APP_NAME\" 300"
+echo "     ./run_mismatch_detection.sh \"$OUT_APK\" \"$APP_NAME\" 300"
 echo "════════════════════════════════════════════════════════"

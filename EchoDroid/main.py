@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """
-Prompt_BackdoorDetection.py  ─  UI-vs-Backend Backdoor Detection Pipeline
+Prompt_MismatchDetection.py  ─  UI-vs-Backend Mismatch Detection Pipeline
 ==========================================================================
 EchoDroid-fastbot-custom-more-detection
 
 THEORY
 ------
-A backdoor in an Android app exists when the app performs sensitive operations
+A mismatch in an Android app exists when the app performs sensitive operations
 (accessing SMS, location, contacts, device identifiers, etc.) WITHOUT ever
 disclosing or justifying that behaviour to the user through the UI.
 
@@ -17,18 +17,18 @@ We detect this by crossing three data sources collected during a Fastbot run:
   2. Backend Data  – AndroLog method call log (what the app *actually* executes)
   3. Manifest      – Declared permissions (what the app is *allowed* to do)
 
-BACKDOOR PATTERNS
+MISMATCH PATTERNS
 -----------------
   SILENT_EXEC    – Backend uses a sensitive API that the UI never mentions
-  COVERT_COLLECT – Sensitive data (location, contacts, SMS) harvested silently
-  OVER_DECLARED  – Permission declared but never used anywhere (zombie / steganographic)
+    UNDISCLOSED_COLLECTION – Sensitive data (location, contacts, SMS) harvested silently
+    UNOBSERVED_DECLARED  – Permission declared but never used anywhere (zombie / steganographic)
   HIDDEN_TRIGGER – Exported component triggers sensitive API with no UI entry point
 
 PIPELINE (3 LLM Prompts)
 ------------------------
   Prompt 1  : UI Surface Analysis   → what capabilities/permissions the UI presents
   Prompt 2  : Backend Analysis      → what sensitive APIs the backend actually calls
-  Prompt 3  : Mismatch Detection    → cross-reference to find backdoor indicators
+  Prompt 3  : Mismatch Detection    → cross-reference to find mismatch indicators
 
 DATA SOURCES (resolved via env-vars or config, all optional with graceful fallback)
 -------------------
@@ -57,7 +57,7 @@ except ImportError:
 # ---------------------------------------------------------------------------
 # CONFIG
 # ---------------------------------------------------------------------------
-# Per-run config path (set by run_backdoor_detection.sh to avoid concurrent-run races)
+# Per-run config path (set by run_mismatch_detection.sh to avoid concurrent-run races)
 _ENV_CONFIG = os.environ.get("ECHODROID_CONFIG_FILE", "").strip()
 _CONFIG_SEARCH_PATHS = (
     [_ENV_CONFIG] if _ENV_CONFIG else []
@@ -90,7 +90,7 @@ _OUT_DIR_ENV = os.environ.get("ECHODROID_PROMPT_OUTPUT_DIR", "").strip()
 if _OUT_DIR_ENV:
     OUTPUT_DIR = _OUT_DIR_ENV
 else:
-    OUTPUT_DIR = os.path.join(os.getcwd(), "backdoor-detection-outputs")
+    OUTPUT_DIR = os.path.join(os.getcwd(), "mismatch-detection-outputs")
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 # LLM client
@@ -683,7 +683,7 @@ def build_class_summary(methods: list) -> list:
 # What capabilities does the app present / justify through its UI?
 # ---------------------------------------------------------------------------
 PROMPT1_SYSTEM = """
-You are a mobile-security analyst specialising in Android app backdoor detection.
+You are a mobile-security analyst specialising in Android app mismatch detection.
 
 Your task: analyse the USER-VISIBLE side of an Android app (activity names visited +
 on-screen text captured during automated UI testing) and determine:
@@ -771,7 +771,7 @@ Your task:
      (not just a library method, test utility, or benign usage).
   2. Flag any methods that are UNUSUAL, SUSPICIOUS, or indicative of MALICIOUS intent.
   3. Identify if any sensitive capability is exercised from a NON-ACTIVITY class
-     (e.g., a background Service or BroadcastReceiver) — this is a strong backdoor signal.
+     (e.g., a background Service or BroadcastReceiver) — this is a strong mismatch signal.
   4. Identify any STEALTHY patterns:
      - Device fingerprinting (IMEI/IMSI/Android ID without user knowledge)
      - Silent SMS sending
@@ -795,7 +795,7 @@ Return ONLY valid JSON:
     {
       "full_sig": "...",
       "reason": "why suspicious",
-            "backdoor_pattern": "SILENT_EXEC|COVERT_COLLECT|HIDDEN_TRIGGER|NONE"
+            "mismatch_pattern": "SILENT_EXEC|UNDISCLOSED_COLLECTION|HIDDEN_TRIGGER|NONE"
     }
   ],
   "background_sensitive_classes": ["classes that are NOT activities but call sensitive APIs"],
@@ -844,11 +844,11 @@ Analyse the backend runtime behaviour for sensitive/malicious activity.
 
 
 # ---------------------------------------------------------------------------
-# PROMPT 3 — Backdoor Mismatch Detection (the key insight)
+# PROMPT 3 — Mismatch Mismatch Detection (the key insight)
 # Cross-reference UI claims vs backend reality
 # ---------------------------------------------------------------------------
 PROMPT3_SYSTEM = """
-You are a senior Android malware analyst performing BACKDOOR DETECTION.
+You are a senior Android malware analyst performing MISMATCH DETECTION.
 
 You will receive:
   • UI Analysis  (Prompt 1): what the app claims / shows to the user
@@ -856,17 +856,17 @@ You will receive:
   • Manifest: declared permissions
   • Exported components: components accessible from outside the app
 
-YOUR MISSION: Find UI-vs-Backend MISMATCHES that indicate a BACKDOOR.
+YOUR MISSION: Find UI-vs-Backend MISMATCHES that indicate a MISMATCH.
 
-BACKDOOR PATTERNS TO DETECT
+MISMATCH PATTERNS TO DETECT
 ────────────────────────────
   SILENT_EXEC     Backend uses sensitive capability X, but UI NEVER mentions X.
                   → The user has no idea the app is accessing X.
 
-  COVERT_COLLECT  Sensitive personal data (location, contacts, SMS, device ID) is
+    UNDISCLOSED_COLLECTION  Sensitive personal data (location, contacts, SMS, device ID) is
                   harvested silently with no user notification or justification.
 
-  OVER_DECLARED   Permission is declared in manifest but NEVER exercised at runtime
+    UNOBSERVED_DECLARED   Permission is declared in manifest but NEVER exercised at runtime
                   AND never mentioned in the UI. Could be a zombie permission planted
                   for future activation or to evade static permission analysis.
 
@@ -875,7 +875,7 @@ BACKDOOR PATTERNS TO DETECT
                   from the normal UI flow.
 
 For each mismatch you find, provide:
-    • backdoor_type: one of the types above
+    • mismatch_type: one of the types above
   • permission_category: e.g. "sms", "location", "phone_state"
   • risk_level: "critical" | "high" | "medium" | "low"
   • ui_claim: what the UI said (or "not present in UI")
@@ -884,19 +884,19 @@ For each mismatch you find, provide:
   • confidence: 0.0–1.0
 
 OVERALL VERDICT (choose one):
-    "HAS_BACKDOOR"   – high confidence (≥1 critical/high SILENT_EXEC or COVERT_COLLECT)
-  "SUSPICIOUS"     – medium confidence (OVER_DECLARED or HIDDEN_TRIGGER, or low-confidence patterns)
+        "HAS_MISMATCH"   – high confidence (≥1 critical/high SILENT_EXEC or UNDISCLOSED_COLLECTION)
+    "SUSPICIOUS"     – medium confidence (UNOBSERVED_DECLARED or HIDDEN_TRIGGER, or low-confidence patterns)
   "LIKELY_CLEAN"   – no meaningful mismatches found
   "INSUFFICIENT_DATA" – not enough runtime data to make a determination
 
 Return ONLY valid JSON:
 {
-  "verdict": "HAS_BACKDOOR|SUSPICIOUS|LIKELY_CLEAN|INSUFFICIENT_DATA",
+    "verdict": "HAS_MISMATCH|SUSPICIOUS|LIKELY_CLEAN|INSUFFICIENT_DATA",
   "overall_risk_level": "critical|high|medium|low|none",
   "confidence": 0.0,
-  "backdoor_patterns": [
+  "mismatch_patterns": [
     {
-      "backdoor_type": "SILENT_EXEC",
+      "mismatch_type": "SILENT_EXEC",
       "permission_category": "sms",
       "risk_level": "critical",
       "ui_claim": "not present in UI",
@@ -917,12 +917,12 @@ Return ONLY valid JSON:
 """.strip()
 
 
-def run_prompt3_backdoor_detection(
+def run_prompt3_mismatch_detection(
     prompt1_result: dict,
     prompt2_result: dict,
     manifest_data:  dict,
 ) -> dict:
-    """Prompt 3: cross-reference UI vs backend to detect backdoor patterns."""
+    """Prompt 3: cross-reference UI vs backend to detect mismatch patterns."""
     user_msg = f"""APP: {APP_NAME}
 PACKAGE: {PKG_NAME}
 
@@ -940,12 +940,12 @@ By category:  {json.dumps(manifest_data['by_category'])}
 ═══ EXPORTED COMPONENTS ═══
 {json.dumps(manifest_data['exported_components'])}
 
-Now perform the BACKDOOR MISMATCH DETECTION. Be thorough but accurate.
+Now perform the MISMATCH MISMATCH DETECTION. Be thorough but accurate.
 Focus on HIGH-CONFIDENCE mismatches. Avoid false positives for standard app patterns.
 """
-    print("[P3] Running Backdoor Mismatch Detection...")
-    result = _call_llm(PROMPT3_SYSTEM, user_msg, "prompt3_backdoor")
-    _save_json("prompt3_backdoor_detection.json", result)
+    print("[P3] Running Mismatch Mismatch Detection...")
+    result = _call_llm(PROMPT3_SYSTEM, user_msg, "prompt3_mismatch")
+    _save_json("prompt3_mismatch_detection.json", result)
     return result
 
 
@@ -963,7 +963,7 @@ def local_mismatch_analysis(
     ui_text: str,
 ) -> dict:
     """
-    Rule-based backdoor indicator analysis without LLM.
+    Rule-based mismatch indicator analysis without LLM.
     Returns structured mismatch indicators to supplement / validate LLM output.
     """
     tested_activities  = [a.lower() for a in activity_data.get("TestedActivity", [])]
@@ -984,7 +984,7 @@ def local_mismatch_analysis(
         # SILENT_EXEC: backend uses it, UI doesn't mention it
         if has_backend and not has_ui:
             silent_exec_flags.append({
-                "backdoor_type":      "SILENT_EXEC",
+                "mismatch_type":      "SILENT_EXEC",
                 "permission_category": cat,
                 "risk_level":          "high" if cat in {"sms", "phone_state", "device_id",
                                                           "location", "contacts"} else "medium",
@@ -999,10 +999,10 @@ def local_mismatch_analysis(
                 "source": "local_rule",
             })
 
-        # OVER_DECLARED: manifest has it, backend never uses it, UI never mentions it
+        # UNOBSERVED_DECLARED: manifest has it, backend never uses it, UI never mentions it
         if has_manifest and not has_backend and not has_ui:
             over_declared_flags.append({
-                "backdoor_type":      "OVER_DECLARED",
+            "mismatch_type":      "UNOBSERVED_DECLARED",
                 "permission_category": cat,
                 "risk_level":          "medium",
                 "ui_claim":            "not present in UI",
@@ -1016,10 +1016,10 @@ def local_mismatch_analysis(
                 "source": "local_rule",
             })
 
-        # COVERT_COLLECT: device-ID / location / contacts used, but app claims to be simple utility
+        # UNDISCLOSED_COLLECTION: device-ID / location / contacts used, but app claims to be simple utility
         if has_backend and cat in {"device_id", "phone_state"} and not has_ui:
             covert_collect_flags.append({
-                "backdoor_type":      "COVERT_COLLECT",
+            "mismatch_type":      "UNDISCLOSED_COLLECTION",
                 "permission_category": cat,
                 "risk_level":          "critical",
                 "ui_claim":            "not present in UI",
@@ -1052,7 +1052,7 @@ def local_mismatch_analysis(
         is_activity  = any(x in class_lower for x in ["activity", "fragment", "mainactivity"])  # UI entry patterns
         if is_exported and not is_activity:
             hidden_trigger_flags.append({
-                "backdoor_type":      "HIDDEN_TRIGGER",
+                "mismatch_type":      "HIDDEN_TRIGGER",
                 "permission_category": ", ".join(m.get("matched_categories", [])) or "",
                 "risk_level":          "high",
                 "ui_claim":            "exported component – triggerable externally",
@@ -1078,9 +1078,9 @@ def local_mismatch_analysis(
 
     # Compute local verdict
     critical_or_high = [f for f in all_flags if f["risk_level"] in {"critical", "high"}]
-    if any(f["backdoor_type"] in {"SILENT_EXEC", "COVERT_COLLECT"}
+    if any(f["mismatch_type"] in {"SILENT_EXEC", "UNDISCLOSED_COLLECTION"}
            and f["risk_level"] in {"critical", "high"} for f in all_flags):
-        local_verdict = "HAS_BACKDOOR"
+        local_verdict = "HAS_MISMATCH"
     elif critical_or_high:
         local_verdict = "SUSPICIOUS"
     elif all_flags:
@@ -1113,7 +1113,7 @@ def assemble_report(
     prompt2_result:   dict,
     prompt3_result:   dict,
 ) -> dict:
-    """Combine all pipeline outputs into a single structured backdoor report."""
+    """Combine all pipeline outputs into a single structured mismatch report."""
 
     # Decide final verdict (LLM overrides local if available and not dry-run)
     llm_verdict = prompt3_result.get("verdict", "")
@@ -1121,7 +1121,7 @@ def assemble_report(
         final_verdict    = llm_verdict
         final_risk_level = prompt3_result.get("overall_risk_level", "unknown")
         final_confidence = prompt3_result.get("confidence", 0.0)
-        llm_patterns     = prompt3_result.get("backdoor_patterns", [])
+        llm_patterns     = prompt3_result.get("mismatch_patterns", [])
     else:
         final_verdict    = local_analysis["local_verdict"]
         final_risk_level = ("critical" if any(f["risk_level"] == "critical"
@@ -1140,7 +1140,7 @@ def assemble_report(
         all_patterns = list(local_analysis["all_flags"])  # fallback only
 
     report = {
-        "pipeline": "EchoDroid-fastbot-custom-more-detection (Backdoor Detection)",
+        "pipeline": "EchoDroid-fastbot-custom-more-detection (Mismatch Detection)",
         "version":  "1.0.0",
         "timestamp": _utc_now(),
         "app": {
@@ -1150,21 +1150,21 @@ def assemble_report(
         },
 
         # ── VERDICT ────────────────────────────────────────────────────────
-        "backdoor_verdict": {
+        "mismatch_verdict": {
             "verdict":       final_verdict,
             "risk_level":    final_risk_level,
             "confidence":    final_confidence,
             "total_patterns_found": len(all_patterns),
             "verdict_explanation": {
-                "HAS_BACKDOOR":      "High-confidence UI-vs-backend mismatch indicating hidden malicious behaviour.",
+                "HAS_MISMATCH":      "High-confidence UI-vs-backend mismatch indicating hidden malicious behaviour.",
                 "SUSPICIOUS":        "Moderate mismatch signals; warrants further manual investigation.",
                 "LIKELY_CLEAN":      "No significant UI-backend mismatches detected.",
                 "INSUFFICIENT_DATA": "Insufficient runtime data to make a reliable determination.",
             }.get(final_verdict, ""),
         },
 
-        # ── BACKDOOR PATTERNS ──────────────────────────────────────────────
-        "backdoor_patterns": all_patterns,
+        # ── MISMATCH PATTERNS ──────────────────────────────────────────────
+        "mismatch_patterns": all_patterns,
 
         # ── MISMATCH SUMMARY ──────────────────────────────────────────────
         "mismatch_summary": prompt3_result.get("mismatch_summary", local_analysis.get("mismatch_summary", {})),
@@ -1191,7 +1191,7 @@ def assemble_report(
         "llm_analysis": {
             "prompt1_ui_analysis":        prompt1_result,
             "prompt2_backend_analysis":   prompt2_result,
-            "prompt3_backdoor_detection": prompt3_result,
+            "prompt3_mismatch_detection": prompt3_result,
         },
 
         # ── LOCAL RULE ANALYSIS ────────────────────────────────────────────
@@ -1222,14 +1222,14 @@ def assemble_report(
                         s = line.strip()
                         if s:
                             feats[s] = 1
-            our_patterns = {p.get("backdoor_type", "") for p in report.get("backdoor_patterns", [])}
+            our_patterns = {p.get("mismatch_type", "") for p in report.get("mismatch_patterns", [])}
             drebin_sms  = any("sendTextMessage" in k or "SmsManager" in k or "SEND_SMS" in k for k in feats)
             drebin_boot = any("RECEIVE_BOOT_COMPLETED" in k for k in feats)
             val = {
                 "drebin_family": drebin_fam,
                 "drebin_sms": drebin_sms,
                 "drebin_boot": drebin_boot,
-                "our_verdict": report["backdoor_verdict"]["verdict"],
+                "our_verdict": report["mismatch_verdict"]["verdict"],
                 "our_patterns": list(our_patterns),
                 "ground_truth_match": {},
             }
@@ -1253,7 +1253,7 @@ def assemble_report(
 # ---------------------------------------------------------------------------
 
 def main():
-    # Allow direct APK invocation: python Prompt_BackdoorDetection.py /path/app.apk
+    # Allow direct APK invocation: python Prompt_MismatchDetection.py /path/app.apk
     if len(sys.argv) > 1 and os.path.isfile(sys.argv[1]) and sys.argv[1].lower().endswith('.apk'):
         apk_path = os.path.abspath(sys.argv[1])
         # Set manifest path for aapt-based parsing
@@ -1268,10 +1268,10 @@ def main():
         except Exception:
             pass
         # Force Overall_output path format
-        base_out = "/home/Desktop/backdoor_permission/Overall_output"
+        base_out = "/home/Desktop/mismatch_permission/Overall_output"
         ts = datetime.now().strftime("%Y%m%d_%H%M%S")
         base_name = os.path.splitext(os.path.basename(apk_path))[0]
-        out_dir = os.path.join(base_out, f"{base_name}_backdoor_{ts}")
+        out_dir = os.path.join(base_out, f"{base_name}_mismatch_{ts}")
         try:
             os.makedirs(out_dir, exist_ok=True)
             global OUTPUT_DIR
@@ -1280,7 +1280,7 @@ def main():
             pass
 
     print("=" * 70)
-    print(" EchoDroid Backdoor Detection Pipeline")
+    print(" EchoDroid Mismatch Detection Pipeline")
     print(f" App     : {APP_NAME}")
     print(f" Package : {PKG_NAME}")
     print(f" Output  : {OUTPUT_DIR}")
@@ -1322,35 +1322,35 @@ def main():
     print("\n[6/6] Running LLM prompts...")
     prompt1 = run_prompt1_ui_analysis(activity_data, ui_text, manifest_data)
     prompt2 = run_prompt2_backend_analysis(methods, backend_summary, manifest_data)
-    prompt3 = run_prompt3_backdoor_detection(prompt1, prompt2, manifest_data)
+    prompt3 = run_prompt3_mismatch_detection(prompt1, prompt2, manifest_data)
 
     # 7. Assemble final report
-    print("\nAssembling final backdoor detection report...")
+    print("\nAssembling final mismatch detection report...")
     report = assemble_report(
         manifest_data, activity_data, methods, backend_summary,
         local_analysis, prompt1, prompt2, prompt3
     )
 
-    report_path = _save_json("backdoor_detection_report.json", report)
+    report_path = _save_json("mismatch_detection_report.json", report)
     print(f"\n{'=' * 70}")
-    print(f" BACKDOOR VERDICT : {report['backdoor_verdict']['verdict']}")
-    print(f" RISK LEVEL       : {report['backdoor_verdict']['risk_level'].upper()}")
-    print(f" CONFIDENCE       : {report['backdoor_verdict']['confidence']:.0%}")
-    print(f" PATTERNS FOUND   : {report['backdoor_verdict']['total_patterns_found']}")
+    print(f" MISMATCH VERDICT : {report['mismatch_verdict']['verdict']}")
+    print(f" RISK LEVEL       : {report['mismatch_verdict']['risk_level'].upper()}")
+    print(f" CONFIDENCE       : {report['mismatch_verdict']['confidence']:.0%}")
+    print(f" PATTERNS FOUND   : {report['mismatch_verdict']['total_patterns_found']}")
     print(f" REPORT SAVED     : {report_path}")
     print("=" * 70)
 
     # Print summary of patterns
-    if report["backdoor_patterns"]:
-        print("\n📍 BACKDOOR PATTERN SUMMARY:")
-        for i, p in enumerate(report["backdoor_patterns"], 1):
-            print(f"  [{i}] {p.get('backdoor_type','?'):20s} | "
+    if report["mismatch_patterns"]:
+        print("\n📍 MISMATCH PATTERN SUMMARY:")
+        for i, p in enumerate(report["mismatch_patterns"], 1):
+            print(f"  [{i}] {p.get('mismatch_type','?'):20s} | "
                   f"category={p.get('permission_category','?'):15s} | "
                   f"risk={p.get('risk_level','?'):8s} | "
                   f"conf={p.get('confidence', 0):.0%}")
             print(f"       {p.get('explanation','')[:80]}")
 
-    return 0 if report["backdoor_verdict"]["verdict"] != "HAS_BACKDOOR" else 1
+    return 0 if report["mismatch_verdict"]["verdict"] != "HAS_MISMATCH" else 1
 
 
 if __name__ == "__main__":

@@ -1,0 +1,40 @@
+{
+  "verdict": "SUSPICIOUS",
+  "overall_risk_level": "medium",
+  "confidence": 0.7,
+  "mismatch_patterns": [
+    {
+      "mismatch_type": "UNOBSERVED_DECLARED",
+      "permission_category": "phone_state",
+      "risk_level": "medium",
+      "ui_claim": "not present in UI",
+      "backend_evidence": [],
+      "explanation": "The app declares android.permission.READ_PHONE_STATE and android.permission.MODIFY_PHONE_STATE in the manifest, but there is no evidence from backend analysis that these permissions are exercised at runtime, nor are they mentioned or justified in the UI. This may indicate zombie permissions for future activation or evasion.",
+      "confidence": 0.7
+    },
+    {
+      "mismatch_type": "UNOBSERVED_DECLARED",
+      "permission_category": "storage",
+      "risk_level": "low",
+      "ui_claim": "not present in UI",
+      "backend_evidence": [],
+      "explanation": "android.permission.WRITE_EXTERNAL_STORAGE is declared (twice) in the manifest, but there is no evidence of storage access in backend analysis or any UI justification. This could be a leftover or planned for future use.",
+      "confidence": 0.6
+    }
+  ],
+  "mismatch_summary": {
+    "categories_in_ui_not_in_backend": [],
+    "categories_in_backend_not_in_ui": [],
+    "categories_in_manifest_not_used": [
+      "phone_state",
+      "storage"
+    ],
+    "categories_used_without_permission": []
+  },
+  "recommendations": [
+    "Review the necessity of declaring READ_PHONE_STATE, MODIFY_PHONE_STATE, and WRITE_EXTERNAL_STORAGE permissions. Remove if not required.",
+    "Monitor for future updates that might activate currently unused sensitive permissions.",
+    "Ensure that any sensitive permission declared is both justified in the UI and actually used in the backend."
+  ],
+  "analyst_notes": "No evidence of active mismatch behavior (e.g., silent execution, covert collection, or hidden triggers) was found in the backend analysis. However, the presence of unused sensitive permissions (especially phone state) without UI justification is a suspicious pattern, as it may indicate preparation for future malicious activity or an attempt to evade static analysis. No exported component was found to be abusing sensitive APIs. The app's use of location and network is consistent with its stated weather widget purpose."
+}

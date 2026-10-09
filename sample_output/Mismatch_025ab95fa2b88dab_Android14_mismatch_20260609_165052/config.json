@@ -1,0 +1,29 @@
+{
+  "AppName": "Mismatch_025ab95fa2b88dab_Android14",
+  "Description": "Android app under mismatch detection analysis by EchoDroid",
+  "ApiKey": "",
+  "TotalMethod": 1,
+  "Tag": "com_jx_theme_n1368240560_LOG",
+  "Model": "gpt-4.1",
+  "BaseUrl": "https://api.openai.com/v1",
+  "PackageName": "com.jx.theme.n1368240560",
+  "ManifestPath": "/Users/Desktop/permission_misuse/drebin/resigned_base_apks/025ab95fa2b88dabc0894d575ae0b961f1b22c2da2adf1569c35ba1a7e776970_signed.apk",
+  "ManifestPermissions": [
+    "android.permission.WRITE_SETTINGS",
+    "android.permission.SEND_SMS",
+    "android.permission.WRITE_EXTERNAL_STORAGE",
+    "android.permission.INTERNET",
+    "android.permission.ACCESS_NETWORK_STATE",
+    "android.permission.READ_PHONE_STATE",
+    "android.permission.WRITE_APN_SETTINGS",
+    "android.permission.RECEIVE_SMS",
+    "android.permission.SET_WALLPAPER",
+    "android.permission.RECEIVE_MMS",
+    "android.permission.WAKE_LOCK",
+    "android.permission.CHANGE_NETWORK_STATE",
+    "android.permission.RECEIVE_BOOT_COMPLETED",
+    "com.android.browser.permission.READ_HISTORY_BOOKMARKS",
+    "com.android.browser.permission.WRITE_HISTORY_BOOKMARKS"
+  ],
+  "ExportedComponents": []
+}

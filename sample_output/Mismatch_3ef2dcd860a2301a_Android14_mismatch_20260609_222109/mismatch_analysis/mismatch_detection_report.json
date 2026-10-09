@@ -1,0 +1,410 @@
+{
+  "pipeline": "LLMDroid-fastbot-custom-more-detection (Mismatch Detection)",
+  "version": "1.0.0",
+  "timestamp": "2026-06-09T14:27:04.182629Z",
+  "app": {
+    "name": "Mismatch_3ef2dcd860a2301a_Android14",
+    "description": "Android app under mismatch detection analysis by LLMDroid",
+    "package": "com.app.downloader"
+  },
+  "mismatch_verdict": {
+    "verdict": "HAS_MISMATCH",
+    "risk_level": "critical",
+    "confidence": 0.95,
+    "total_patterns_found": 2,
+    "verdict_explanation": "High-confidence UI-vs-backend mismatch indicating hidden malicious behaviour."
+  },
+  "mismatch_patterns": [
+    {
+      "mismatch_type": "SILENT_EXEC",
+      "permission_category": "sms",
+      "risk_level": "critical",
+      "ui_claim": "not present in UI",
+      "backend_evidence": [
+        "com.app.downloader.AppDownloaderActivity: void sendSMS(java.lang.String,java.lang.String)"
+      ],
+      "explanation": "The app exercises SMS sending functionality in the backend, including from non-UI contexts, but never discloses or justifies SMS access or sending in the UI. This enables silent SMS operations without user knowledge.",
+      "confidence": 0.95
+    },
+    {
+      "mismatch_type": "HIDDEN_TRIGGER",
+      "permission_category": "sms",
+      "risk_level": "critical",
+      "ui_claim": "not present in UI",
+      "backend_evidence": [
+        "com.app.downloader.SmsReceiver: void <clinit"
+      ],
+      "explanation": "An exported BroadcastReceiver (SmsReceiver) is present and contains SMS-related logic in its static initializer, allowing external or background triggering of SMS operations without user interaction or awareness.",
+      "confidence": 0.9
+    }
+  ],
+  "mismatch_summary": {
+    "categories_in_ui_not_in_backend": [],
+    "categories_in_backend_not_in_ui": [
+      "sms"
+    ],
+    "categories_in_manifest_not_used": [],
+    "categories_used_without_permission": []
+  },
+  "evidence": {
+    "manifest": {
+      "all_permissions": [
+        "android.permission.INTERNET",
+        "android.permission.WRITE_SMS",
+        "android.permission.READ_SMS",
+        "android.permission.SEND_SMS",
+        "android.permission.RECEIVE_SMS",
+        "android.permission.WRITE_EXTERNAL_STORAGE",
+        "android.permission.WAKE_LOCK",
+        "android.permission.READ_PHONE_STATE",
+        "android.permission.READ_EXTERNAL_STORAGE",
+        "android.permission.CHANGE_COMPONENT_ENABLED_STATE"
+      ],
+      "sensitive_permissions": [
+        "android.permission.INTERNET",
+        "android.permission.READ_SMS",
+        "android.permission.SEND_SMS",
+        "android.permission.RECEIVE_SMS",
+        "android.permission.WRITE_EXTERNAL_STORAGE",
+        "android.permission.READ_PHONE_STATE",
+        "android.permission.READ_EXTERNAL_STORAGE"
+      ],
+      "by_category": {
+        "sms": [
+          "android.permission.READ_SMS",
+          "android.permission.SEND_SMS",
+          "android.permission.RECEIVE_SMS"
+        ],
+        "phone_state": [
+          "android.permission.READ_PHONE_STATE"
+        ],
+        "storage": [
+          "android.permission.WRITE_EXTERNAL_STORAGE",
+          "android.permission.READ_EXTERNAL_STORAGE"
+        ],
+        "network": [
+          "android.permission.INTERNET"
+        ],
+        "device_id": [
+          "android.permission.READ_PHONE_STATE"
+        ]
+      },
+      "exported_components": [
+        ".AppDownloaderActivity",
+        ".BootReceiver",
+        ".SmsReceiver"
+      ]
+    },
+    "runtime": {
+      "total_unique_methods_called": 34,
+      "sensitive_methods_found": 2,
+      "backend_active_categories": [
+        "sms"
+      ],
+      "backend_category_details": {
+        "sms": [
+          "com.app.downloader.SmsReceiver: void <clinit",
+          "com.app.downloader.AppDownloaderActivity: void sendSMS(java.lang.String,java.lang.String)"
+        ]
+      },
+      "activities_tested": [
+        "com.app.downloader.AppDownloaderActivity",
+        "com.app.downloader.FinalActivity"
+      ],
+      "activity_coverage": 100
+    }
+  },
+  "llm_analysis": {
+    "prompt1_ui_analysis": {
+      "app_ui_stated_purpose": "Online MMS Base / Downloader",
+      "ui_permission_claims": {
+        "sms": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "location": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "contacts": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "camera": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "microphone": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "phone_state": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "storage": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "device_admin": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "accessibility": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "network": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "device_id": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "process_exec": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        }
+      },
+      "categories_absent_from_ui": [
+        "sms",
+        "location",
+        "contacts",
+        "camera",
+        "microphone",
+        "phone_state",
+        "storage",
+        "device_admin",
+        "accessibility",
+        "network",
+        "device_id",
+        "process_exec"
+      ],
+      "sensitive_flows_detected": [],
+      "overall_ui_transparency_score": 0.0
+    },
+    "prompt2_backend_analysis": {
+      "backend_active_capabilities": {
+        "sms": {
+          "active": true,
+          "confidence": "high",
+          "triggering_methods": [
+            "com.app.downloader.SmsReceiver: void <clinit",
+            "com.app.downloader.AppDownloaderActivity: void sendSMS(java.lang.String,java.lang.String)"
+          ],
+          "triggering_classes": [
+            "SmsReceiver",
+            "AppDownloaderActivity"
+          ],
+          "is_background_only": true,
+          "notes": "Sensitive SMS methods are called from both an Activity and a BroadcastReceiver. SmsReceiver is a non-Activity class, and is also exported, indicating potential for background or externally-triggered SMS operations."
+        }
+      },
+      "suspicious_methods": [
+        {
+          "full_sig": "com.app.downloader.SmsReceiver: void <clinit",
+          "reason": "Static initializer in a BroadcastReceiver class, which may be used to register or trigger SMS-related logic as soon as the class is loaded, potentially before user interaction.",
+          "mismatch_pattern": "HIDDEN_TRIGGER"
+        },
+        {
+          "full_sig": "com.app.downloader.AppDownloaderActivity: void sendSMS(java.lang.String,java.lang.String)",
+          "reason": "Direct SMS sending method in main Activity, but also called from background context. If invoked without user interaction, this is suspicious.",
+          "mismatch_pattern": "SILENT_EXEC"
+        }
+      ],
+      "background_sensitive_classes": [
+        "SmsReceiver"
+      ],
+      "stealthy_patterns_found": [
+        "SMS sending capability exercised from exported BroadcastReceiver (SmsReceiver), enabling silent or remote-triggered SMS sending without user knowledge."
+      ]
+    },
+    "prompt3_mismatch_detection": {
+      "verdict": "HAS_MISMATCH",
+      "overall_risk_level": "critical",
+      "confidence": 0.95,
+      "mismatch_patterns": [
+        {
+          "mismatch_type": "SILENT_EXEC",
+          "permission_category": "sms",
+          "risk_level": "critical",
+          "ui_claim": "not present in UI",
+          "backend_evidence": [
+            "com.app.downloader.AppDownloaderActivity: void sendSMS(java.lang.String,java.lang.String)"
+          ],
+          "explanation": "The app exercises SMS sending functionality in the backend, including from non-UI contexts, but never discloses or justifies SMS access or sending in the UI. This enables silent SMS operations without user knowledge.",
+          "confidence": 0.95
+        },
+        {
+          "mismatch_type": "HIDDEN_TRIGGER",
+          "permission_category": "sms",
+          "risk_level": "critical",
+          "ui_claim": "not present in UI",
+          "backend_evidence": [
+            "com.app.downloader.SmsReceiver: void <clinit"
+          ],
+          "explanation": "An exported BroadcastReceiver (SmsReceiver) is present and contains SMS-related logic in its static initializer, allowing external or background triggering of SMS operations without user interaction or awareness.",
+          "confidence": 0.9
+        }
+      ],
+      "mismatch_summary": {
+        "categories_in_ui_not_in_backend": [],
+        "categories_in_backend_not_in_ui": [
+          "sms"
+        ],
+        "categories_in_manifest_not_used": [],
+        "categories_used_without_permission": []
+      },
+      "recommendations": [
+        "Immediately remove this app from any device or app store due to critical mismatch risk.",
+        "Perform forensic analysis of sent SMS logs to detect potential abuse.",
+        "Alert users and administrators to the risk of silent SMS operations and possible financial or privacy impact.",
+        "Block or monitor network and SMS activity from this package."
+      ],
+      "analyst_notes": "This app claims to be an 'Online MMS Base / Downloader' but never mentions SMS capabilities in its UI. However, it exercises SMS sending in the backend, including from an exported BroadcastReceiver, enabling silent and potentially remote-triggered SMS operations. This is a textbook mismatch pattern with critical risk. No legitimate downloader app should require or silently use SMS permissions in this manner."
+    }
+  },
+  "local_rule_analysis": {
+    "local_verdict": "HAS_MISMATCH",
+    "total_flags": 5,
+    "silent_exec_flags": [
+      {
+        "mismatch_type": "SILENT_EXEC",
+        "permission_category": "sms",
+        "risk_level": "high",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [
+          "com.app.downloader.SmsReceiver: void <clinit",
+          "com.app.downloader.AppDownloaderActivity: void sendSMS(java.lang.String,java.lang.String)"
+        ],
+        "explanation": "The app calls sms APIs at runtime but the UI contains no UI elements, labels, or activity names that mention or justify this capability.",
+        "confidence": 0.42,
+        "source": "local_rule"
+      }
+    ],
+    "ui_deception_flags": [],
+    "covert_collect_flags": [],
+    "over_declared_flags": [
+      {
+        "mismatch_type": "UNOBSERVED_DECLARED",
+        "permission_category": "phone_state",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for phone_state were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.31,
+        "source": "local_rule"
+      },
+      {
+        "mismatch_type": "UNOBSERVED_DECLARED",
+        "permission_category": "storage",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for storage were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.31,
+        "source": "local_rule"
+      },
+      {
+        "mismatch_type": "UNOBSERVED_DECLARED",
+        "permission_category": "device_id",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for device_id were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.31,
+        "source": "local_rule"
+      }
+    ],
+    "hidden_trigger_flags": [
+      {
+        "mismatch_type": "HIDDEN_TRIGGER",
+        "permission_category": "sms",
+        "risk_level": "high",
+        "ui_claim": "exported component – triggerable externally",
+        "backend_evidence": [
+          "com.app.downloader.SmsReceiver: void <clinit"
+        ],
+        "explanation": "Exported component smsreceiver calls sensitive method(s) and can be triggered externally without normal UI entry.",
+        "confidence": 0.45,
+        "source": "local_rule"
+      }
+    ],
+    "all_flags": [
+      {
+        "mismatch_type": "SILENT_EXEC",
+        "permission_category": "sms",
+        "risk_level": "high",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [
+          "com.app.downloader.SmsReceiver: void <clinit",
+          "com.app.downloader.AppDownloaderActivity: void sendSMS(java.lang.String,java.lang.String)"
+        ],
+        "explanation": "The app calls sms APIs at runtime but the UI contains no UI elements, labels, or activity names that mention or justify this capability.",
+        "confidence": 0.42,
+        "source": "local_rule"
+      },
+      {
+        "mismatch_type": "UNOBSERVED_DECLARED",
+        "permission_category": "phone_state",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for phone_state were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.31,
+        "source": "local_rule"
+      },
+      {
+        "mismatch_type": "UNOBSERVED_DECLARED",
+        "permission_category": "storage",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for storage were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.31,
+        "source": "local_rule"
+      },
+      {
+        "mismatch_type": "UNOBSERVED_DECLARED",
+        "permission_category": "device_id",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for device_id were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.31,
+        "source": "local_rule"
+      },
+      {
+        "mismatch_type": "HIDDEN_TRIGGER",
+        "permission_category": "sms",
+        "risk_level": "high",
+        "ui_claim": "exported component – triggerable externally",
+        "backend_evidence": [
+          "com.app.downloader.SmsReceiver: void <clinit"
+        ],
+        "explanation": "Exported component smsreceiver calls sensitive method(s) and can be triggered externally without normal UI entry.",
+        "confidence": 0.45,
+        "source": "local_rule"
+      }
+    ]
+  },
+  "recommendations": [
+    "Immediately remove this app from any device or app store due to critical mismatch risk.",
+    "Perform forensic analysis of sent SMS logs to detect potential abuse.",
+    "Alert users and administrators to the risk of silent SMS operations and possible financial or privacy impact.",
+    "Block or monitor network and SMS activity from this package."
+  ]
+}

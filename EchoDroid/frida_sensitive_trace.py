@@ -6,7 +6,7 @@ Dynamic tracer (Frida) to capture sensitive Android API calls.
 It writes log lines in this format:
 	METHOD=<Class: returnType method(argTypes...)>
 
-so the existing `Prompt_BackdoorDetection.py` backend parser can consume them.
+so the existing `Prompt_MismatchDetection.py` backend parser can consume them.
 
 Usage:
 	python3 frida_sensitive_trace.py <package> <out_file> [duration_seconds]

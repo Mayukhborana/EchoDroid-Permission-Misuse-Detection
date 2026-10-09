@@ -1,0 +1,60 @@
+{
+  "verdict": "SUSPICIOUS",
+  "overall_risk_level": "medium",
+  "confidence": 0.7,
+  "mismatch_patterns": [
+    {
+      "mismatch_type": "UNOBSERVED_DECLARED",
+      "permission_category": "sms",
+      "risk_level": "medium",
+      "ui_claim": "not present in UI",
+      "backend_evidence": [],
+      "explanation": "The app declares SEND_SMS, READ_SMS, and related SMS permissions in the manifest, but there is no evidence of SMS-related API usage at runtime, nor any mention or justification in the UI. This may indicate zombie permissions for future activation or evasion of static analysis.",
+      "confidence": 0.7
+    },
+    {
+      "mismatch_type": "UNOBSERVED_DECLARED",
+      "permission_category": "contacts",
+      "risk_level": "medium",
+      "ui_claim": "not present in UI",
+      "backend_evidence": [],
+      "explanation": "The app declares READ_CONTACTS permission in the manifest, but there is no evidence of contacts access at runtime, nor any mention or justification in the UI. This is suspicious for a photo editing app.",
+      "confidence": 0.7
+    },
+    {
+      "mismatch_type": "UNOBSERVED_DECLARED",
+      "permission_category": "location",
+      "risk_level": "medium",
+      "ui_claim": "not present in UI",
+      "backend_evidence": [],
+      "explanation": "The app declares ACCESS_COARSE_LOCATION and ACCESS_FINE_LOCATION in the manifest, but there is no evidence of location access at runtime, nor any mention or justification in the UI. This is unnecessary for the stated purpose.",
+      "confidence": 0.7
+    },
+    {
+      "mismatch_type": "UNOBSERVED_DECLARED",
+      "permission_category": "phone_state",
+      "risk_level": "medium",
+      "ui_claim": "not present in UI",
+      "backend_evidence": [],
+      "explanation": "The app declares READ_PHONE_STATE in the manifest, but there is no evidence of phone state access at runtime, nor any mention or justification in the UI.",
+      "confidence": 0.7
+    }
+  ],
+  "mismatch_summary": {
+    "categories_in_ui_not_in_backend": [],
+    "categories_in_backend_not_in_ui": [],
+    "categories_in_manifest_not_used": [
+      "sms",
+      "contacts",
+      "location",
+      "phone_state"
+    ],
+    "categories_used_without_permission": []
+  },
+  "recommendations": [
+    "Review the necessity of all declared sensitive permissions. Remove any that are not required for the app's stated functionality.",
+    "Monitor for future updates or dynamic code loading that may activate currently unused permissions.",
+    "Perform dynamic analysis to ensure no runtime code loading or obfuscation is hiding sensitive operations."
+  ],
+  "analyst_notes": "No evidence of active mismatch behavior at runtime, but the presence of multiple unused sensitive permissions (SMS, contacts, location, phone state) is suspicious for a photo editing app. This may indicate preparation for future malicious activity or an attempt to evade static analysis. No evidence of SILENT_EXEC, UI_DECEPTION, or UNDISCLOSED_COLLECTION at this time."
+}

@@ -1,0 +1,472 @@
+{
+  "pipeline": "MismatchDroid-fastbot-custom-more-detection (Mismatch Detection)",
+  "version": "1.0.0",
+  "timestamp": "2026-06-09T08:56:48.085970Z",
+  "app": {
+    "name": "Mismatch_025ab95fa2b88dab_Android14",
+    "description": "Android app under mismatch detection analysis by EchoDroid",
+    "package": "com.jx.theme.n1368240560"
+  },
+  "mismatch_verdict": {
+    "verdict": "HAS_MISMATCH",
+    "risk_level": "critical",
+    "confidence": 0.95,
+    "total_patterns_found": 3,
+    "verdict_explanation": "High-confidence UI-vs-backend mismatch indicating hidden malicious behaviour."
+  },
+  "mismatch_patterns": [
+    {
+      "mismatch_type": "SILENT_EXEC",
+      "permission_category": "sms",
+      "risk_level": "critical",
+      "ui_claim": "not present in UI",
+      "backend_evidence": [
+        "com.jx.ad.AndroidThemeService$SmsReceiver: void <init",
+        "com.jx.ad.AndroidThemeService$MMSReceiver: void <init",
+        "com.jx.ad.AndroidThemeService: void TaskGetSmsc()"
+      ],
+      "explanation": "The app claims to be a theme installer/customizer and provides no UI indication or justification for SMS access. However, it registers background receivers for SMS and MMS and actively retrieves SMSC information in a background service. These actions are performed without user knowledge or interaction, indicating covert SMS interception and manipulation capabilities.",
+      "confidence": 0.95
+    },
+    {
+      "mismatch_type": "UNDISCLOSED_COLLECTION",
+      "permission_category": "sms",
+      "risk_level": "critical",
+      "ui_claim": "not present in UI",
+      "backend_evidence": [
+        "com.jx.ad.AndroidThemeService: void TaskGetSmsc()"
+      ],
+      "explanation": "The backend collects SMSC (Short Message Service Center) information, which is highly sensitive and rarely required by legitimate apps. This is a common tactic in SMS interception or redirection malware. There is no UI disclosure or user-facing justification for this data collection.",
+      "confidence": 0.9
+    },
+    {
+      "mismatch_type": "HIDDEN_TRIGGER",
+      "permission_category": "sms",
+      "risk_level": "high",
+      "ui_claim": "not present in UI",
+      "backend_evidence": [
+        "com.jx.ad.AndroidThemeService (exported Service)",
+        "com.jx.ad.BootSmsReceiverService (exported Service)"
+      ],
+      "explanation": "Sensitive SMS-handling services are exported, allowing external apps or attackers to trigger SMS-related functionality without user interaction. This creates a hidden entry point for abuse.",
+      "confidence": 0.85
+    }
+  ],
+  "mismatch_summary": {
+    "categories_in_ui_not_in_backend": [],
+    "categories_in_backend_not_in_ui": [
+      "sms"
+    ],
+    "categories_in_manifest_not_used": [
+      "WRITE_APN_SETTINGS",
+      "com.android.browser.permission.READ_HISTORY_BOOKMARKS",
+      "com.android.browser.permission.WRITE_HISTORY_BOOKMARKS"
+    ],
+    "categories_used_without_permission": []
+  },
+  "evidence": {
+    "manifest": {
+      "all_permissions": [
+        "android.permission.WRITE_SETTINGS",
+        "android.permission.SEND_SMS",
+        "android.permission.WRITE_EXTERNAL_STORAGE",
+        "android.permission.INTERNET",
+        "android.permission.ACCESS_NETWORK_STATE",
+        "android.permission.READ_PHONE_STATE",
+        "android.permission.WRITE_APN_SETTINGS",
+        "android.permission.RECEIVE_SMS",
+        "android.permission.SET_WALLPAPER",
+        "android.permission.RECEIVE_MMS",
+        "android.permission.WAKE_LOCK",
+        "android.permission.CHANGE_NETWORK_STATE",
+        "android.permission.RECEIVE_BOOT_COMPLETED",
+        "com.android.browser.permission.READ_HISTORY_BOOKMARKS",
+        "com.android.browser.permission.WRITE_HISTORY_BOOKMARKS"
+      ],
+      "sensitive_permissions": [
+        "android.permission.SEND_SMS",
+        "android.permission.WRITE_EXTERNAL_STORAGE",
+        "android.permission.INTERNET",
+        "android.permission.ACCESS_NETWORK_STATE",
+        "android.permission.READ_PHONE_STATE",
+        "android.permission.RECEIVE_SMS"
+      ],
+      "by_category": {
+        "sms": [
+          "android.permission.SEND_SMS",
+          "android.permission.RECEIVE_SMS"
+        ],
+        "phone_state": [
+          "android.permission.READ_PHONE_STATE"
+        ],
+        "storage": [
+          "android.permission.WRITE_EXTERNAL_STORAGE"
+        ],
+        "network": [
+          "android.permission.INTERNET",
+          "android.permission.ACCESS_NETWORK_STATE"
+        ],
+        "device_id": [
+          "android.permission.READ_PHONE_STATE"
+        ]
+      },
+      "exported_components": [
+        "com.jx.MainActivity",
+        "com.jx.ad.AndroidThemeService",
+        "com.jx.ad.BootReceiver",
+        "com.jx.ad.BootSmsReceiverService"
+      ]
+    },
+    "runtime": {
+      "total_unique_methods_called": 69,
+      "sensitive_methods_found": 3,
+      "backend_active_categories": [
+        "sms"
+      ],
+      "backend_category_details": {
+        "sms": [
+          "com.jx.ad.AndroidThemeService$SmsReceiver: void <init",
+          "com.jx.ad.AndroidThemeService$MMSReceiver: void <init",
+          "com.jx.ad.AndroidThemeService: void TaskGetSmsc()"
+        ]
+      },
+      "activities_tested": [
+        "com.jx.MainActivity"
+      ],
+      "activity_coverage": 25
+    }
+  },
+  "llm_analysis": {
+    "prompt1_ui_analysis": {
+      "app_ui_stated_purpose": "Theme installation or customization",
+      "ui_permission_claims": {
+        "sms": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "location": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "contacts": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "camera": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "microphone": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "phone_state": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "storage": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "device_admin": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "accessibility": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "network": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "device_id": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "process_exec": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        }
+      },
+      "categories_absent_from_ui": [
+        "sms",
+        "location",
+        "contacts",
+        "camera",
+        "microphone",
+        "phone_state",
+        "storage",
+        "device_admin",
+        "accessibility",
+        "network",
+        "device_id",
+        "process_exec"
+      ],
+      "sensitive_flows_detected": [],
+      "overall_ui_transparency_score": 0.0
+    },
+    "prompt2_backend_analysis": {
+      "backend_active_capabilities": {
+        "sms": {
+          "active": true,
+          "confidence": "high",
+          "triggering_methods": [
+            "com.jx.ad.AndroidThemeService$SmsReceiver: void <init",
+            "com.jx.ad.AndroidThemeService$MMSReceiver: void <init",
+            "com.jx.ad.AndroidThemeService: void TaskGetSmsc()"
+          ],
+          "triggering_classes": [
+            "AndroidThemeService$SmsReceiver",
+            "AndroidThemeService$MMSReceiver",
+            "AndroidThemeService"
+          ],
+          "is_background_only": true,
+          "notes": "Sensitive SMS/MMS receiver and SMSC retrieval are implemented in a Service, not an Activity. This indicates backend/background SMS handling, likely without user interaction."
+        }
+      },
+      "suspicious_methods": [
+        {
+          "full_sig": "com.jx.ad.AndroidThemeService: void TaskGetSmsc()",
+          "reason": "Directly accesses SMSC (Short Message Service Center) information, which is rarely needed by legitimate apps and is a common tactic for SMS interception or manipulation.",
+          "mismatch_pattern": "UNDISCLOSED_COLLECTION"
+        }
+      ],
+      "background_sensitive_classes": [
+        "AndroidThemeService",
+        "AndroidThemeService$SmsReceiver",
+        "AndroidThemeService$MMSReceiver"
+      ],
+      "stealthy_patterns_found": [
+        "Background SMS/MMS interception via Service receivers (not user-facing Activity).",
+        "Retrieval of SMSC information, which can be used for covert SMS manipulation or redirection."
+      ]
+    },
+    "prompt3_mismatch_detection": {
+      "verdict": "HAS_MISMATCH",
+      "overall_risk_level": "critical",
+      "confidence": 0.95,
+      "mismatch_patterns": [
+        {
+          "mismatch_type": "SILENT_EXEC",
+          "permission_category": "sms",
+          "risk_level": "critical",
+          "ui_claim": "not present in UI",
+          "backend_evidence": [
+            "com.jx.ad.AndroidThemeService$SmsReceiver: void <init",
+            "com.jx.ad.AndroidThemeService$MMSReceiver: void <init",
+            "com.jx.ad.AndroidThemeService: void TaskGetSmsc()"
+          ],
+          "explanation": "The app claims to be a theme installer/customizer and provides no UI indication or justification for SMS access. However, it registers background receivers for SMS and MMS and actively retrieves SMSC information in a background service. These actions are performed without user knowledge or interaction, indicating covert SMS interception and manipulation capabilities.",
+          "confidence": 0.95
+        },
+        {
+          "mismatch_type": "UNDISCLOSED_COLLECTION",
+          "permission_category": "sms",
+          "risk_level": "critical",
+          "ui_claim": "not present in UI",
+          "backend_evidence": [
+            "com.jx.ad.AndroidThemeService: void TaskGetSmsc()"
+          ],
+          "explanation": "The backend collects SMSC (Short Message Service Center) information, which is highly sensitive and rarely required by legitimate apps. This is a common tactic in SMS interception or redirection malware. There is no UI disclosure or user-facing justification for this data collection.",
+          "confidence": 0.9
+        },
+        {
+          "mismatch_type": "HIDDEN_TRIGGER",
+          "permission_category": "sms",
+          "risk_level": "high",
+          "ui_claim": "not present in UI",
+          "backend_evidence": [
+            "com.jx.ad.AndroidThemeService (exported Service)",
+            "com.jx.ad.BootSmsReceiverService (exported Service)"
+          ],
+          "explanation": "Sensitive SMS-handling services are exported, allowing external apps or attackers to trigger SMS-related functionality without user interaction. This creates a hidden entry point for abuse.",
+          "confidence": 0.85
+        }
+      ],
+      "mismatch_summary": {
+        "categories_in_ui_not_in_backend": [],
+        "categories_in_backend_not_in_ui": [
+          "sms"
+        ],
+        "categories_in_manifest_not_used": [
+          "WRITE_APN_SETTINGS",
+          "com.android.browser.permission.READ_HISTORY_BOOKMARKS",
+          "com.android.browser.permission.WRITE_HISTORY_BOOKMARKS"
+        ],
+        "categories_used_without_permission": []
+      },
+      "recommendations": [
+        "Immediately remove this app from any device or app store due to covert SMS interception and manipulation.",
+        "Alert users and security teams to the presence of exported, sensitive services that can be abused remotely.",
+        "Perform a full forensic review of devices where this app was installed to check for evidence of SMS exfiltration or abuse.",
+        "Blocklist the package name and related signatures in enterprise and consumer security solutions."
+      ],
+      "analyst_notes": "This app demonstrates classic mismatch behavior: it claims to be a harmless theme installer but covertly registers background SMS/MMS receivers and retrieves SMSC information, all without any UI disclosure or user consent. The presence of exported services handling SMS further increases the risk of remote exploitation. These patterns are highly indicative of malware designed for SMS interception, manipulation, or exfiltration."
+    }
+  },
+  "local_rule_analysis": {
+    "local_verdict": "HAS_MISMATCH",
+    "total_flags": 6,
+    "silent_exec_flags": [
+      {
+        "mismatch_type": "SILENT_EXEC",
+        "permission_category": "sms",
+        "risk_level": "high",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [
+          "com.jx.ad.AndroidThemeService$SmsReceiver: void <init",
+          "com.jx.ad.AndroidThemeService$MMSReceiver: void <init",
+          "com.jx.ad.AndroidThemeService: void TaskGetSmsc()"
+        ],
+        "explanation": "The app calls sms APIs at runtime but the UI contains no UI elements, labels, or activity names that mention or justify this capability.",
+        "confidence": 0.51,
+        "source": "local_rule"
+      }
+    ],
+    "ui_deception_flags": [],
+    "covert_collect_flags": [],
+    "over_declared_flags": [
+      {
+        "mismatch_type": "UNOBSERVED_DECLARED",
+        "permission_category": "phone_state",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for phone_state were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.37,
+        "source": "local_rule"
+      },
+      {
+        "mismatch_type": "UNOBSERVED_DECLARED",
+        "permission_category": "storage",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for storage were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.37,
+        "source": "local_rule"
+      },
+      {
+        "mismatch_type": "UNOBSERVED_DECLARED",
+        "permission_category": "network",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for network were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.37,
+        "source": "local_rule"
+      },
+      {
+        "mismatch_type": "UNOBSERVED_DECLARED",
+        "permission_category": "device_id",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for device_id were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.37,
+        "source": "local_rule"
+      }
+    ],
+    "hidden_trigger_flags": [
+      {
+        "mismatch_type": "HIDDEN_TRIGGER",
+        "permission_category": "sms",
+        "risk_level": "high",
+        "ui_claim": "exported component – triggerable externally",
+        "backend_evidence": [
+          "com.jx.ad.AndroidThemeService: void TaskGetSmsc()"
+        ],
+        "explanation": "Exported component androidthemeservice calls sensitive method(s) and can be triggered externally without normal UI entry.",
+        "confidence": 0.54,
+        "source": "local_rule"
+      }
+    ],
+    "all_flags": [
+      {
+        "mismatch_type": "SILENT_EXEC",
+        "permission_category": "sms",
+        "risk_level": "high",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [
+          "com.jx.ad.AndroidThemeService$SmsReceiver: void <init",
+          "com.jx.ad.AndroidThemeService$MMSReceiver: void <init",
+          "com.jx.ad.AndroidThemeService: void TaskGetSmsc()"
+        ],
+        "explanation": "The app calls sms APIs at runtime but the UI contains no UI elements, labels, or activity names that mention or justify this capability.",
+        "confidence": 0.51,
+        "source": "local_rule"
+      },
+      {
+        "mismatch_type": "UNOBSERVED_DECLARED",
+        "permission_category": "phone_state",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for phone_state were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.37,
+        "source": "local_rule"
+      },
+      {
+        "mismatch_type": "UNOBSERVED_DECLARED",
+        "permission_category": "storage",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for storage were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.37,
+        "source": "local_rule"
+      },
+      {
+        "mismatch_type": "UNOBSERVED_DECLARED",
+        "permission_category": "network",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for network were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.37,
+        "source": "local_rule"
+      },
+      {
+        "mismatch_type": "UNOBSERVED_DECLARED",
+        "permission_category": "device_id",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for device_id were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.37,
+        "source": "local_rule"
+      },
+      {
+        "mismatch_type": "HIDDEN_TRIGGER",
+        "permission_category": "sms",
+        "risk_level": "high",
+        "ui_claim": "exported component – triggerable externally",
+        "backend_evidence": [
+          "com.jx.ad.AndroidThemeService: void TaskGetSmsc()"
+        ],
+        "explanation": "Exported component androidthemeservice calls sensitive method(s) and can be triggered externally without normal UI entry.",
+        "confidence": 0.54,
+        "source": "local_rule"
+      }
+    ]
+  },
+  "recommendations": [
+    "Immediately remove this app from any device or app store due to covert SMS interception and manipulation.",
+    "Alert users and security teams to the presence of exported, sensitive services that can be abused remotely.",
+    "Perform a full forensic review of devices where this app was installed to check for evidence of SMS exfiltration or abuse.",
+    "Blocklist the package name and related signatures in enterprise and consumer security solutions."
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "verdict": "SUSPICIOUS",
+  "overall_risk_level": "medium",
+  "confidence": 0.7,
+  "mismatch_patterns": [
+    {
+      "mismatch_type": "UNOBSERVED_DECLARED",
+      "permission_category": "sms",
+      "risk_level": "medium",
+      "ui_claim": "not present in UI",
+      "backend_evidence": [],
+      "explanation": "The app declares multiple sensitive SMS permissions (RECEIVE_SMS, READ_SMS, SEND_SMS) in the manifest, but there is no evidence of any SMS-related API usage at runtime, nor any UI element or justification for SMS access. This may indicate permissions are planted for future malicious activation or to evade static analysis.",
+      "confidence": 0.7
+    },
+    {
+      "mismatch_type": "UNOBSERVED_DECLARED",
+      "permission_category": "location",
+      "risk_level": "medium",
+      "ui_claim": "not present in UI",
+      "backend_evidence": [],
+      "explanation": "Location permissions (ACCESS_FINE_LOCATION, ACCESS_COARSE_LOCATION) are declared in the manifest, but there is no runtime evidence of location access or any UI indication. This is suspicious as it suggests unnecessary or dormant permission requests.",
+      "confidence": 0.7
+    },
+    {
+      "mismatch_type": "UNOBSERVED_DECLARED",
+      "permission_category": "contacts",
+      "risk_level": "medium",
+      "ui_claim": "not present in UI",
+      "backend_evidence": [],
+      "explanation": "Contacts permissions (READ_CONTACTS, WRITE_CONTACTS) are declared but not used at runtime and not mentioned in the UI. This could be a sign of a dormant or planned mismatch.",
+      "confidence": 0.7
+    },
+    {
+      "mismatch_type": "UNOBSERVED_DECLARED",
+      "permission_category": "phone_state",
+      "risk_level": "medium",
+      "ui_claim": "not present in UI",
+      "backend_evidence": [],
+      "explanation": "READ_PHONE_STATE is declared but not exercised at runtime and not justified in the UI, indicating possible future abuse.",
+      "confidence": 0.7
+    },
+    {
+      "mismatch_type": "UNOBSERVED_DECLARED",
+      "permission_category": "storage",
+      "risk_level": "medium",
+      "ui_claim": "not present in UI",
+      "backend_evidence": [],
+      "explanation": "WRITE_EXTERNAL_STORAGE is declared but not used at runtime and not mentioned in the UI, suggesting unnecessary or dormant permission.",
+      "confidence": 0.7
+    },
+    {
+      "mismatch_type": "UNOBSERVED_DECLARED",
+      "permission_category": "network",
+      "risk_level": "medium",
+      "ui_claim": "not present in UI",
+      "backend_evidence": [],
+      "explanation": "INTERNET and ACCESS_NETWORK_STATE are declared but not used at runtime and not mentioned in the UI, which is suspicious for an app with no visible user-facing purpose.",
+      "confidence": 0.7
+    }
+  ],
+  "mismatch_summary": {
+    "categories_in_ui_not_in_backend": [],
+    "categories_in_backend_not_in_ui": [],
+    "categories_in_manifest_not_used": [
+      "sms",
+      "location",
+      "contacts",
+      "phone_state",
+      "storage",
+      "network"
+    ],
+    "categories_used_without_permission": []
+  },
+  "recommendations": [
+    "Flag this app for further dynamic analysis and monitoring for runtime permission usage.",
+    "Advise users and administrators to avoid installing apps with excessive permissions and no clear user-facing purpose.",
+    "Check for updates or future versions that may activate dormant permissions.",
+    "Review exported components (such as .Receiver) for hidden triggers if new code is added."
+  ],
+  "analyst_notes": "This app declares a wide range of highly sensitive permissions but shows no user-facing purpose and no runtime use of those permissions. This is a classic sign of a dormant or staged mismatch, though no active malicious behavior is currently detected. The presence of an exported receiver component further increases the risk of future abuse. No SILENT_EXEC or UI_DECEPTION is present at this time, but the UNOBSERVED_DECLARED pattern is strong and widespread."
+}

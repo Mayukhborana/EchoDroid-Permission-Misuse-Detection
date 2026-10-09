@@ -1,0 +1,540 @@
+{
+  "pipeline": "LLMDroid-fastbot-custom-more-detection (Mismatch Detection)",
+  "version": "1.0.0",
+  "timestamp": "2026-06-09T17:46:03.440871Z",
+  "app": {
+    "name": "Mismatch_fac15cd5eb70f44e_Android14",
+    "description": "Android app under mismatch detection analysis by LLMDroid",
+    "package": "com.nicky.lyyws.xmall"
+  },
+  "mismatch_verdict": {
+    "verdict": "HAS_MISMATCH",
+    "risk_level": "critical",
+    "confidence": 0.95,
+    "total_patterns_found": 2,
+    "verdict_explanation": "High-confidence UI-vs-backend mismatch indicating hidden malicious behaviour."
+  },
+  "mismatch_patterns": [
+    {
+      "mismatch_type": "SILENT_EXEC",
+      "permission_category": "network",
+      "risk_level": "critical",
+      "ui_claim": "not present in UI",
+      "backend_evidence": [
+        "com.nicky.lyyws.xmall.SocketService: void onCreate()",
+        "com.nicky.lyyws.xmall.SocketService$2: void run()"
+      ],
+      "explanation": "The app initiates persistent background socket communication via an exported Service (SocketService) without any UI indication or user-facing justification. This network activity is not triggered by user actions and is handled entirely in the background, enabling covert command-and-control or data exfiltration. The exported nature of the Service allows remote entities to trigger this behavior, which is a classic mismatch pattern.",
+      "confidence": 0.95
+    },
+    {
+      "mismatch_type": "HIDDEN_TRIGGER",
+      "permission_category": "network",
+      "risk_level": "high",
+      "ui_claim": "not present in UI",
+      "backend_evidence": [
+        "Exported SocketService component",
+        "SocketService$2: void run()"
+      ],
+      "explanation": "SocketService is exported and can be triggered externally, enabling background network communication without user interaction or awareness. This allows remote activation of sensitive functionality, which is a hallmark of mismatch mechanisms.",
+      "confidence": 0.9
+    }
+  ],
+  "mismatch_summary": {
+    "categories_in_ui_not_in_backend": [],
+    "categories_in_backend_not_in_ui": [
+      "network"
+    ],
+    "categories_in_manifest_not_used": [
+      "sms",
+      "location",
+      "contacts",
+      "microphone",
+      "phone_state",
+      "storage",
+      "device_id"
+    ],
+    "categories_used_without_permission": []
+  },
+  "evidence": {
+    "manifest": {
+      "all_permissions": [
+        "android.permission.CALL_PHONE",
+        "android.permission.PROCESS_OUTGOING_CALLS",
+        "android.permission.INTERNET",
+        "android.permission.ACCESS_GPS",
+        "android.permission.ACCESS_COARSE_LOCATION",
+        "android.permission.ACCESS_COARSE_UPDATES",
+        "android.permission.ACCESS_FINE_LOCATION",
+        "android.permission.READ_PHONE_STATE",
+        "android.permission.READ_CONTACTS",
+        "android.permission.WRITE_CONTACTS",
+        "android.permission.ACCESS_WIFI_STATE",
+        "android.permission.PERMISSION_NAME",
+        "android.permission.READ_SMS",
+        "android.permission.WRITE_SMS",
+        "android.permission.WAKE_LOCK",
+        "android.permission.RECORD_AUDIO",
+        "android.permission.WRITE_EXTERNAL_STORAGE",
+        "android.permission.DEVICE_POWER"
+      ],
+      "sensitive_permissions": [
+        "android.permission.CALL_PHONE",
+        "android.permission.INTERNET",
+        "android.permission.ACCESS_COARSE_LOCATION",
+        "android.permission.ACCESS_FINE_LOCATION",
+        "android.permission.READ_PHONE_STATE",
+        "android.permission.READ_CONTACTS",
+        "android.permission.WRITE_CONTACTS",
+        "android.permission.READ_SMS",
+        "android.permission.RECORD_AUDIO",
+        "android.permission.WRITE_EXTERNAL_STORAGE"
+      ],
+      "by_category": {
+        "sms": [
+          "android.permission.READ_SMS"
+        ],
+        "location": [
+          "android.permission.ACCESS_COARSE_LOCATION",
+          "android.permission.ACCESS_FINE_LOCATION"
+        ],
+        "contacts": [
+          "android.permission.READ_CONTACTS",
+          "android.permission.WRITE_CONTACTS"
+        ],
+        "microphone": [
+          "android.permission.RECORD_AUDIO"
+        ],
+        "phone_state": [
+          "android.permission.CALL_PHONE",
+          "android.permission.READ_PHONE_STATE"
+        ],
+        "storage": [
+          "android.permission.WRITE_EXTERNAL_STORAGE"
+        ],
+        "network": [
+          "android.permission.INTERNET"
+        ],
+        "device_id": [
+          "android.permission.READ_PHONE_STATE"
+        ]
+      },
+      "exported_components": [
+        ".GpsService",
+        ".MainService",
+        ".SocketService",
+        "BootReceiver",
+        "MainActivity"
+      ]
+    },
+    "runtime": {
+      "total_unique_methods_called": 21,
+      "sensitive_methods_found": 8,
+      "backend_active_categories": [
+        "network"
+      ],
+      "backend_category_details": {
+        "network": [
+          "com.nicky.lyyws.xmall.SocketService: void <init",
+          "com.nicky.lyyws.xmall.SocketService$1: void <init",
+          "com.nicky.lyyws.xmall.SocketService$2: void <init",
+          "com.nicky.lyyws.xmall.SocketService$3: void <init",
+          "com.nicky.lyyws.xmall.SocketService$4: void <init",
+          "com.nicky.lyyws.xmall.SocketService$5: void <init",
+          "com.nicky.lyyws.xmall.SocketService: void onCreate()",
+          "com.nicky.lyyws.xmall.SocketService$2: void run()"
+        ]
+      },
+      "activities_tested": [],
+      "activity_coverage": 0
+    }
+  },
+  "llm_analysis": {
+    "prompt1_ui_analysis": {
+      "app_ui_stated_purpose": "absent",
+      "ui_permission_claims": {
+        "sms": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "location": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "contacts": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "camera": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "microphone": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "phone_state": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "storage": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "device_admin": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "accessibility": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "network": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "device_id": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "process_exec": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        }
+      },
+      "categories_absent_from_ui": [
+        "sms",
+        "location",
+        "contacts",
+        "camera",
+        "microphone",
+        "phone_state",
+        "storage",
+        "device_admin",
+        "accessibility",
+        "network",
+        "device_id",
+        "process_exec"
+      ],
+      "sensitive_flows_detected": [],
+      "overall_ui_transparency_score": 0.0
+    },
+    "prompt2_backend_analysis": {
+      "backend_active_capabilities": {
+        "network": {
+          "active": true,
+          "confidence": "high",
+          "triggering_methods": [
+            "com.nicky.lyyws.xmall.SocketService: void onCreate()",
+            "com.nicky.lyyws.xmall.SocketService$2: void run()"
+          ],
+          "triggering_classes": [
+            "SocketService",
+            "SocketService$2"
+          ],
+          "is_background_only": true,
+          "notes": "Sensitive network activity is initiated from SocketService, which is a background Service and also exported. Multiple inner classes suggest persistent or complex socket communication, likely for command-and-control or data exfiltration."
+        }
+      },
+      "suspicious_methods": [
+        {
+          "full_sig": "com.nicky.lyyws.xmall.SocketService$2: void run()",
+          "reason": "Socket communication is handled in a background thread (run method), likely enabling persistent background connections without user awareness.",
+          "mismatch_pattern": "SILENT_EXEC"
+        }
+      ],
+      "background_sensitive_classes": [
+        "SocketService",
+        "SocketService$2"
+      ],
+      "stealthy_patterns_found": [
+        "Exported SocketService enables remote triggering of background network communication, a common mismatch pattern.",
+        "Network capability exercised exclusively from a background Service, not from user-facing Activity."
+      ]
+    },
+    "prompt3_mismatch_detection": {
+      "verdict": "HAS_MISMATCH",
+      "overall_risk_level": "critical",
+      "confidence": 0.95,
+      "mismatch_patterns": [
+        {
+          "mismatch_type": "SILENT_EXEC",
+          "permission_category": "network",
+          "risk_level": "critical",
+          "ui_claim": "not present in UI",
+          "backend_evidence": [
+            "com.nicky.lyyws.xmall.SocketService: void onCreate()",
+            "com.nicky.lyyws.xmall.SocketService$2: void run()"
+          ],
+          "explanation": "The app initiates persistent background socket communication via an exported Service (SocketService) without any UI indication or user-facing justification. This network activity is not triggered by user actions and is handled entirely in the background, enabling covert command-and-control or data exfiltration. The exported nature of the Service allows remote entities to trigger this behavior, which is a classic mismatch pattern.",
+          "confidence": 0.95
+        },
+        {
+          "mismatch_type": "HIDDEN_TRIGGER",
+          "permission_category": "network",
+          "risk_level": "high",
+          "ui_claim": "not present in UI",
+          "backend_evidence": [
+            "Exported SocketService component",
+            "SocketService$2: void run()"
+          ],
+          "explanation": "SocketService is exported and can be triggered externally, enabling background network communication without user interaction or awareness. This allows remote activation of sensitive functionality, which is a hallmark of mismatch mechanisms.",
+          "confidence": 0.9
+        }
+      ],
+      "mismatch_summary": {
+        "categories_in_ui_not_in_backend": [],
+        "categories_in_backend_not_in_ui": [
+          "network"
+        ],
+        "categories_in_manifest_not_used": [
+          "sms",
+          "location",
+          "contacts",
+          "microphone",
+          "phone_state",
+          "storage",
+          "device_id"
+        ],
+        "categories_used_without_permission": []
+      },
+      "recommendations": [
+        "Immediately investigate and quarantine this app. The presence of an exported background Service performing silent network communication is a critical security risk.",
+        "Review network traffic generated by the app for signs of data exfiltration or command-and-control activity.",
+        "Audit the app for additional hidden triggers or dormant code that could activate other sensitive permissions declared in the manifest."
+      ],
+      "analyst_notes": "This app exhibits a textbook mismatch pattern: an exported Service (SocketService) initiates persistent background socket connections without any UI disclosure or user interaction. The Service can be triggered externally, and the app's UI provides no indication of network activity or justification for such behavior. The manifest declares a wide range of sensitive permissions, but only network is actively used at runtime, suggesting possible future activation of other capabilities. The risk is critical and confidence is high."
+    }
+  },
+  "local_rule_analysis": {
+    "local_verdict": "SUSPICIOUS",
+    "total_flags": 9,
+    "silent_exec_flags": [
+      {
+        "mismatch_type": "SILENT_EXEC",
+        "permission_category": "network",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [
+          "com.nicky.lyyws.xmall.SocketService: void <init",
+          "com.nicky.lyyws.xmall.SocketService$1: void <init",
+          "com.nicky.lyyws.xmall.SocketService$2: void <init",
+          "com.nicky.lyyws.xmall.SocketService$3: void <init",
+          "com.nicky.lyyws.xmall.SocketService$4: void <init"
+        ],
+        "explanation": "The app calls network APIs at runtime but the UI contains no UI elements, labels, or activity names that mention or justify this capability.",
+        "confidence": 0.21,
+        "source": "local_rule"
+      }
+    ],
+    "ui_deception_flags": [],
+    "covert_collect_flags": [],
+    "over_declared_flags": [
+      {
+        "mismatch_type": "UNOBSERVED_DECLARED",
+        "permission_category": "sms",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for sms were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.15,
+        "source": "local_rule"
+      },
+      {
+        "mismatch_type": "UNOBSERVED_DECLARED",
+        "permission_category": "location",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for location were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.15,
+        "source": "local_rule"
+      },
+      {
+        "mismatch_type": "UNOBSERVED_DECLARED",
+        "permission_category": "contacts",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for contacts were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.15,
+        "source": "local_rule"
+      },
+      {
+        "mismatch_type": "UNOBSERVED_DECLARED",
+        "permission_category": "phone_state",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for phone_state were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.15,
+        "source": "local_rule"
+      },
+      {
+        "mismatch_type": "UNOBSERVED_DECLARED",
+        "permission_category": "storage",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for storage were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.15,
+        "source": "local_rule"
+      },
+      {
+        "mismatch_type": "UNOBSERVED_DECLARED",
+        "permission_category": "device_id",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for device_id were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.15,
+        "source": "local_rule"
+      }
+    ],
+    "hidden_trigger_flags": [
+      {
+        "mismatch_type": "HIDDEN_TRIGGER",
+        "permission_category": "network",
+        "risk_level": "high",
+        "ui_claim": "exported component – triggerable externally",
+        "backend_evidence": [
+          "com.nicky.lyyws.xmall.SocketService: void <init"
+        ],
+        "explanation": "Exported component socketservice calls sensitive method(s) and can be triggered externally without normal UI entry.",
+        "confidence": 0.22,
+        "source": "local_rule"
+      },
+      {
+        "mismatch_type": "HIDDEN_TRIGGER",
+        "permission_category": "network",
+        "risk_level": "high",
+        "ui_claim": "exported component – triggerable externally",
+        "backend_evidence": [
+          "com.nicky.lyyws.xmall.SocketService: void onCreate()"
+        ],
+        "explanation": "Exported component socketservice calls sensitive method(s) and can be triggered externally without normal UI entry.",
+        "confidence": 0.22,
+        "source": "local_rule"
+      }
+    ],
+    "all_flags": [
+      {
+        "mismatch_type": "SILENT_EXEC",
+        "permission_category": "network",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [
+          "com.nicky.lyyws.xmall.SocketService: void <init",
+          "com.nicky.lyyws.xmall.SocketService$1: void <init",
+          "com.nicky.lyyws.xmall.SocketService$2: void <init",
+          "com.nicky.lyyws.xmall.SocketService$3: void <init",
+          "com.nicky.lyyws.xmall.SocketService$4: void <init"
+        ],
+        "explanation": "The app calls network APIs at runtime but the UI contains no UI elements, labels, or activity names that mention or justify this capability.",
+        "confidence": 0.21,
+        "source": "local_rule"
+      },
+      {
+        "mismatch_type": "UNOBSERVED_DECLARED",
+        "permission_category": "sms",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for sms were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.15,
+        "source": "local_rule"
+      },
+      {
+        "mismatch_type": "UNOBSERVED_DECLARED",
+        "permission_category": "location",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for location were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.15,
+        "source": "local_rule"
+      },
+      {
+        "mismatch_type": "UNOBSERVED_DECLARED",
+        "permission_category": "contacts",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for contacts were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.15,
+        "source": "local_rule"
+      },
+      {
+        "mismatch_type": "UNOBSERVED_DECLARED",
+        "permission_category": "phone_state",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for phone_state were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.15,
+        "source": "local_rule"
+      },
+      {
+        "mismatch_type": "UNOBSERVED_DECLARED",
+        "permission_category": "storage",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for storage were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.15,
+        "source": "local_rule"
+      },
+      {
+        "mismatch_type": "UNOBSERVED_DECLARED",
+        "permission_category": "device_id",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for device_id were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.15,
+        "source": "local_rule"
+      },
+      {
+        "mismatch_type": "HIDDEN_TRIGGER",
+        "permission_category": "network",
+        "risk_level": "high",
+        "ui_claim": "exported component – triggerable externally",
+        "backend_evidence": [
+          "com.nicky.lyyws.xmall.SocketService: void <init"
+        ],
+        "explanation": "Exported component socketservice calls sensitive method(s) and can be triggered externally without normal UI entry.",
+        "confidence": 0.22,
+        "source": "local_rule"
+      },
+      {
+        "mismatch_type": "HIDDEN_TRIGGER",
+        "permission_category": "network",
+        "risk_level": "high",
+        "ui_claim": "exported component – triggerable externally",
+        "backend_evidence": [
+          "com.nicky.lyyws.xmall.SocketService: void onCreate()"
+        ],
+        "explanation": "Exported component socketservice calls sensitive method(s) and can be triggered externally without normal UI entry.",
+        "confidence": 0.22,
+        "source": "local_rule"
+      }
+    ]
+  },
+  "recommendations": [
+    "Immediately investigate and quarantine this app. The presence of an exported background Service performing silent network communication is a critical security risk.",
+    "Review network traffic generated by the app for signs of data exfiltration or command-and-control activity.",
+    "Audit the app for additional hidden triggers or dormant code that could activate other sensitive permissions declared in the manifest."
+  ]
+}

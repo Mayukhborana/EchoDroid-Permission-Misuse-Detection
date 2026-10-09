@@ -18,14 +18,14 @@ DUR=${3:-300}
 TRIGGER_CMD=${4:-"adb shell am broadcast -a android.intent.action.MAIN"}
 TRIGGER_IVL=${5:-1}
 
-ROOT="/home/Desktop/backdoor_permission"
+ROOT="/home/Desktop/mismatch_permission"
 PLATFORMS="/home/Android/Sdk/platforms"
 ANDROLOG_JAR="$ROOT/tools/AndroLog/target/androlog-0.1-jar-with-dependencies.jar"
 APKSIGNER="/home/Android/Sdk/build-tools/36.1.0/apksigner"
-LLM_RUN="$ROOT/EchoDroid-fastbot-custom-more-detection/run_backdoor_detection.sh"
+LLM_RUN="$ROOT/EchoDroid-fastbot-custom-more-detection/run_mismatch_detection.sh"
 INSTR_DIR="$ROOT/instrumented_app"
 WORKDIR="$ROOT/pipeline_work/${APP_NAME}_$$"
-OUTBASE="$ROOT/hidden_backdoor_output"
+OUTBASE="$ROOT/hidden_mismatch_output"
 
 mkdir -p "$INSTR_DIR" "$WORKDIR/androlog_out" "$OUTBASE"
 
@@ -94,7 +94,7 @@ done
 
 # Prepare output run folder
 TS=$(date +%Y%m%d_%H%M%S)
-RUN_OUT="$OUTBASE/${APP_NAME}_backdoor_${TS}"
+RUN_OUT="$OUTBASE/${APP_NAME}_mismatch_${TS}"
 mkdir -p "$RUN_OUT"
 
 # Start EchoDroid
@@ -120,4 +120,4 @@ echo $TRIG_PID >"$RUN_OUT/trigger.pid"
 
 echo "[OK] Started run"
 echo "RUN_OUT=$RUN_OUT"
-echo "  - pipeline.log, trigger_log.txt, backdoor-detection-outputs/ (on completion)"
+echo "  - pipeline.log, trigger_log.txt, mismatch-detection-outputs/ (on completion)"

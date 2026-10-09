@@ -1,6 +1,6 @@
 {
   "AppName": "com.virtual.go",
-  "Description": "Android app under backdoor detection analysis by EchoDroid",
+  "Description": "Android app under mismatch detection analysis by EchoDroid",
   "ApiKey": " ",
   "TotalMethod": 1,
   "Tag": "com_virtual_go_LOG",

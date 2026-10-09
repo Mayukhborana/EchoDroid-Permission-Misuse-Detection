@@ -6,15 +6,17 @@ EchoDroid is an LLM-assisted framework for detecting suspicious Android applicat
 - What it actually executes at runtime
 - What permissions it declares in its manifest
 
-The framework combines automated UI exploration, runtime behavior collection, manifest analysis, rule-based reasoning, and large language models to identify potential backdoors, covert data collection, hidden triggers, and other permission misuse patterns. The design is motivated by the observation that malicious or privacy-invasive applications often perform sensitive operations that are not disclosed through their user interface.  
+The framework combines automated UI exploration, runtime behavior collection, manifest analysis, rule-based reasoning, and large language models to identify potential mismatches, covert data collection, hidden triggers, and other permission misuse patterns. The design is motivated by the observation that malicious or privacy-invasive applications often perform sensitive operations that are not disclosed through their user interface.
 
 ## Overview
 
 EchoDroid automatically explores Android applications using Fastbot/Monkey, collects runtime evidence through instrumentation and dynamic tracing, extracts UI content using UIAutomator, and analyzes Android manifests.
 
+![EchoDroid Evidence Collection and Analysis](fig1.png)
+
 The collected evidence is then processed through a three-stage reasoning pipeline:
 
-![EchoDroid Pipeline](image.png)
+![EchoDroid Pipeline](fig2.png)
 
 ## Key Features
 
@@ -79,23 +81,23 @@ for collecting runtime evidence from Android applications.
 | Pattern | Description | Risk |
 |----------|-------------|------|
 | `SILENT_EXEC` | Sensitive backend execution not disclosed in the UI | High |
-| `COVERT_COLLECT` | Silent collection of device identifiers, location, SMS, or other sensitive data without user disclosure | Critical |
+| `UNDISCLOSED_COLLECTION` | Silent collection of device identifiers, location, SMS, or other sensitive data without user disclosure | Critical |
 | `HIDDEN_TRIGGER` | Sensitive functionality activated through hidden triggers that are not reachable through normal UI interaction | High |
-| `OVER_DECLARED` | Permissions declared in the manifest but not reflected in observed UI behavior or runtime usage | Medium |
+| `UNOBSERVED_DECLARED` | Permissions declared in the manifest but not reflected in observed UI behavior or runtime usage | Medium |
 
 ## Repository Structure
 ```text
 EchoDroid/
 │
 ├── LEchoDroid/
-│   ├── Prompt_BackdoorDetection.py
-│   ├── run_backdoor_detection.sh
+│   ├── Prompt_MismatchDetection.py
+│   ├── run_mismatch_detection.sh
 │   ├── Hidden_trigger_run.sh
 │   ├── monkey/
 │   ├── native/
 │   ├── libs/
 │   ├── data/
-│   └── config_backdoor_template.json
+│   └── config_mismatch_template.json
 │
 ├── tools/
 │   ├── AndroLog/
@@ -110,7 +112,7 @@ EchoDroid/
 └── README.md
 ```
 
-## Backdoor Detection Pipeline
+## Mismatch Detection Pipeline
 
 ### Stage 1: UI Analysis
 
@@ -201,14 +203,14 @@ cd tools/androlog_pipeline
 Analyze the instrumented APK using the main detection pipeline:
 ```bash
 cd EchoDroid
-./run_backdoor_detection.sh \
+./run_mismatch_detection.sh \
     /path/to/instrumented.apk \
     "AppName" \
     300
 ```
 Example:
 ```bash
-./run_backdoor_detection.sh \
+./run_mismatch_detection.sh \
     suspicious_apks/sample_androlog_instr/base.apk \
     "SampleApp" \
     300
@@ -222,7 +224,7 @@ The third parameter specifies the exploration duration in seconds. We recommend 
 The primary output of EchoDroid is:
 
 ```text
-backdoor_analysis/backdoor_detection_report.json
+mismatch_analysis/mismatch_detection_report.json
 ```
 
 This report summarizes the complete analysis and contains:
@@ -252,7 +254,7 @@ androlog_methods.txt
 frida_methods.txt
 logcat_with_methods.log
 console.txt
-backdoor_pipeline.log
+mismatch_pipeline.log
 ```
 
 These artifacts may contain:
@@ -333,7 +335,7 @@ Generated files:
 ```text
 prompt1_ui_analysis.json
 prompt2_backend_analysis.json
-prompt3_backdoor_detection.json
+prompt3_mismatch_detection.json
 ```
 
 ### Example Verdict
@@ -351,7 +353,7 @@ Possible verdicts:
 
 | Verdict | Meaning |
 |----------|----------|
-| HAS_BACKDOOR | Strong evidence of hidden or suspicious behavior |
+| HAS_MISMATCH | Strong evidence of hidden or suspicious behavior |
 | SUSPICIOUS | Mismatch signals detected; manual review recommended |
 | LIKELY_CLEAN | No significant mismatches observed |
 | INSUFFICIENT_DATA | Exploration coverage was insufficient |
@@ -360,20 +362,20 @@ Possible verdicts:
 
 ```text
 sample_output/
-└── Backdoor_<app_name>/
+└── Mismatch_<app_name>/
     ├── config.json
     ├── console.txt
     ├── ui_widget_text.txt
     ├── androlog_methods.txt
     ├── frida_methods.txt
     ├── logcat_with_methods.log
-    ├── backdoor_pipeline.log
+    ├── mismatch_pipeline.log
     │
-    └── backdoor_analysis/
-        ├── backdoor_detection_report.json
+    └── mismatch_analysis/
+        ├── mismatch_detection_report.json
         ├── prompt1_ui_analysis.json
         ├── prompt2_backend_analysis.json
-        └── prompt3_backdoor_detection.json
+        └── prompt3_mismatch_detection.json
 ```
 
 ## Results

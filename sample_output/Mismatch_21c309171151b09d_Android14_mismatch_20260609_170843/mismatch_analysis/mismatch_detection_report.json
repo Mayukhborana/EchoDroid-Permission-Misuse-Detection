@@ -1,0 +1,421 @@
+{
+  "pipeline": "LLMDroid-fastbot-custom-more-detection (Mismatch Detection)",
+  "version": "1.0.0",
+  "timestamp": "2026-06-09T09:14:35.690799Z",
+  "app": {
+    "name": "Mismatch_21c309171151b09d_Android14",
+    "description": "Android app under mismatch detection analysis by LLMDroid",
+    "package": "com.androidapp.pdaspy"
+  },
+  "mismatch_verdict": {
+    "verdict": "SUSPICIOUS",
+    "risk_level": "medium",
+    "confidence": 0.6,
+    "total_patterns_found": 4,
+    "verdict_explanation": "Moderate mismatch signals; warrants further manual investigation."
+  },
+  "mismatch_patterns": [
+    {
+      "mismatch_type": "UNOBSERVED_DECLARED",
+      "permission_category": "sms",
+      "risk_level": "medium",
+      "ui_claim": "not present in UI",
+      "backend_evidence": [],
+      "explanation": "The app declares android.permission.READ_SMS in the manifest, but backend analysis shows no evidence of SMS access at runtime and the UI never mentions SMS access or provides justification. This may indicate a zombie permission for future activation or to evade static analysis.",
+      "confidence": 0.7
+    },
+    {
+      "mismatch_type": "UNOBSERVED_DECLARED",
+      "permission_category": "location",
+      "risk_level": "medium",
+      "ui_claim": "not present in UI",
+      "backend_evidence": [],
+      "explanation": "Both ACCESS_FINE_LOCATION and ACCESS_COARSE_LOCATION are declared, but there is no evidence of location access in backend runtime analysis and no mention in the UI. This could be a dormant or planned capability.",
+      "confidence": 0.7
+    },
+    {
+      "mismatch_type": "UNOBSERVED_DECLARED",
+      "permission_category": "contacts",
+      "risk_level": "medium",
+      "ui_claim": "not present in UI",
+      "backend_evidence": [],
+      "explanation": "android.permission.READ_CONTACTS is declared in the manifest, but there is no backend evidence of contacts access and the UI does not mention or justify this permission.",
+      "confidence": 0.7
+    },
+    {
+      "mismatch_type": "UNOBSERVED_DECLARED",
+      "permission_category": "phone_state",
+      "risk_level": "medium",
+      "ui_claim": "not present in UI",
+      "backend_evidence": [],
+      "explanation": "android.permission.READ_PHONE_STATE is declared, but not used at runtime and not mentioned in the UI. This could be a placeholder for future use or to evade static analysis.",
+      "confidence": 0.7
+    }
+  ],
+  "mismatch_summary": {
+    "categories_in_ui_not_in_backend": [],
+    "categories_in_backend_not_in_ui": [],
+    "categories_in_manifest_not_used": [
+      "sms",
+      "location",
+      "contacts",
+      "phone_state"
+    ],
+    "categories_used_without_permission": []
+  },
+  "evidence": {
+    "manifest": {
+      "all_permissions": [
+        "android.permission.INTERNET",
+        "android.permission.READ_PHONE_STATE",
+        "android.permission.READ_CONTACTS",
+        "android.permission.READ_SMS",
+        "android.permission.ACCESS_FINE_LOCATION",
+        "android.permission.ACCESS_COARSE_LOCATION",
+        "android.permission.RECEIVE_BOOT_COMPLETED",
+        "android.permission.WAKE_LOCK"
+      ],
+      "sensitive_permissions": [
+        "android.permission.INTERNET",
+        "android.permission.READ_PHONE_STATE",
+        "android.permission.READ_CONTACTS",
+        "android.permission.READ_SMS",
+        "android.permission.ACCESS_FINE_LOCATION",
+        "android.permission.ACCESS_COARSE_LOCATION"
+      ],
+      "by_category": {
+        "sms": [
+          "android.permission.READ_SMS"
+        ],
+        "location": [
+          "android.permission.ACCESS_FINE_LOCATION",
+          "android.permission.ACCESS_COARSE_LOCATION"
+        ],
+        "contacts": [
+          "android.permission.READ_CONTACTS"
+        ],
+        "phone_state": [
+          "android.permission.READ_PHONE_STATE"
+        ],
+        "network": [
+          "android.permission.INTERNET"
+        ],
+        "device_id": [
+          "android.permission.READ_PHONE_STATE"
+        ]
+      },
+      "exported_components": [
+        ".MainActivity",
+        "com.androidapp.pdaspy.LogServiceManager"
+      ]
+    },
+    "runtime": {
+      "total_unique_methods_called": 12,
+      "sensitive_methods_found": 0,
+      "backend_active_categories": [],
+      "backend_category_details": {},
+      "activities_tested": [
+        "com.androidapp.pdaspy.ChooseAccountActivity",
+        "com.androidapp.pdaspy.MainActivity",
+        "com.androidapp.pdaspy.UseExistingAccountActivity"
+      ],
+      "activity_coverage": 60.000003814697266
+    }
+  },
+  "llm_analysis": {
+    "prompt1_ui_analysis": {
+      "app_ui_stated_purpose": "Account login and management",
+      "ui_permission_claims": {
+        "sms": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "location": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "contacts": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "camera": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "microphone": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "phone_state": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "storage": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "device_admin": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "accessibility": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "network": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "device_id": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        },
+        "process_exec": {
+          "visible_in_ui": false,
+          "justification_strength": "absent",
+          "ui_evidence": []
+        }
+      },
+      "categories_absent_from_ui": [
+        "sms",
+        "location",
+        "contacts",
+        "camera",
+        "microphone",
+        "phone_state",
+        "storage",
+        "device_admin",
+        "accessibility",
+        "network",
+        "device_id",
+        "process_exec"
+      ],
+      "sensitive_flows_detected": [
+        {
+          "flow_name": "Account login",
+          "activities": [
+            "com.androidapp.pdaspy.ChooseAccountActivity",
+            "com.androidapp.pdaspy.MainActivity",
+            "com.androidapp.pdaspy.UseExistingAccountActivity"
+          ],
+          "description": "User is prompted to log in or choose an account, but no sensitive permission usage is explained or presented in the UI."
+        }
+      ],
+      "overall_ui_transparency_score": 0.0
+    },
+    "prompt2_backend_analysis": {
+      "backend_active_capabilities": {},
+      "suspicious_methods": [],
+      "background_sensitive_classes": [],
+      "stealthy_patterns_found": []
+    },
+    "prompt3_mismatch_detection": {
+      "verdict": "SUSPICIOUS",
+      "overall_risk_level": "medium",
+      "confidence": 0.6,
+      "mismatch_patterns": [
+        {
+          "mismatch_type": "UNOBSERVED_DECLARED",
+          "permission_category": "sms",
+          "risk_level": "medium",
+          "ui_claim": "not present in UI",
+          "backend_evidence": [],
+          "explanation": "The app declares android.permission.READ_SMS in the manifest, but backend analysis shows no evidence of SMS access at runtime and the UI never mentions SMS access or provides justification. This may indicate a zombie permission for future activation or to evade static analysis.",
+          "confidence": 0.7
+        },
+        {
+          "mismatch_type": "UNOBSERVED_DECLARED",
+          "permission_category": "location",
+          "risk_level": "medium",
+          "ui_claim": "not present in UI",
+          "backend_evidence": [],
+          "explanation": "Both ACCESS_FINE_LOCATION and ACCESS_COARSE_LOCATION are declared, but there is no evidence of location access in backend runtime analysis and no mention in the UI. This could be a dormant or planned capability.",
+          "confidence": 0.7
+        },
+        {
+          "mismatch_type": "UNOBSERVED_DECLARED",
+          "permission_category": "contacts",
+          "risk_level": "medium",
+          "ui_claim": "not present in UI",
+          "backend_evidence": [],
+          "explanation": "android.permission.READ_CONTACTS is declared in the manifest, but there is no backend evidence of contacts access and the UI does not mention or justify this permission.",
+          "confidence": 0.7
+        },
+        {
+          "mismatch_type": "UNOBSERVED_DECLARED",
+          "permission_category": "phone_state",
+          "risk_level": "medium",
+          "ui_claim": "not present in UI",
+          "backend_evidence": [],
+          "explanation": "android.permission.READ_PHONE_STATE is declared, but not used at runtime and not mentioned in the UI. This could be a placeholder for future use or to evade static analysis.",
+          "confidence": 0.7
+        }
+      ],
+      "mismatch_summary": {
+        "categories_in_ui_not_in_backend": [],
+        "categories_in_backend_not_in_ui": [],
+        "categories_in_manifest_not_used": [
+          "sms",
+          "location",
+          "contacts",
+          "phone_state"
+        ],
+        "categories_used_without_permission": []
+      },
+      "recommendations": [
+        "Investigate why sensitive permissions (SMS, location, contacts, phone state) are declared but not used or justified in the UI or backend.",
+        "Monitor for future updates or dynamic code loading that may activate these permissions.",
+        "Consider restricting or flagging the app due to over-declaration of sensitive permissions without transparency."
+      ],
+      "analyst_notes": "No evidence of active mismatch behavior at runtime, but the app over-declares several sensitive permissions without UI disclosure or backend usage. This is a common pattern for apps preparing for future malicious updates or attempting to evade static analysis. No evidence of SILENT_EXEC, UI_DECEPTION, or UNDISCLOSED_COLLECTION at this time. Exported LogServiceManager should be monitored for future abuse, but no current evidence of hidden triggers."
+    }
+  },
+  "local_rule_analysis": {
+    "local_verdict": "SUSPICIOUS",
+    "total_flags": 6,
+    "silent_exec_flags": [],
+    "ui_deception_flags": [],
+    "covert_collect_flags": [],
+    "over_declared_flags": [
+      {
+        "mismatch_type": "UNOBSERVED_DECLARED",
+        "permission_category": "sms",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for sms were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.31,
+        "source": "local_rule"
+      },
+      {
+        "mismatch_type": "UNOBSERVED_DECLARED",
+        "permission_category": "location",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for location were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.31,
+        "source": "local_rule"
+      },
+      {
+        "mismatch_type": "UNOBSERVED_DECLARED",
+        "permission_category": "contacts",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for contacts were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.31,
+        "source": "local_rule"
+      },
+      {
+        "mismatch_type": "UNOBSERVED_DECLARED",
+        "permission_category": "phone_state",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for phone_state were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.31,
+        "source": "local_rule"
+      },
+      {
+        "mismatch_type": "UNOBSERVED_DECLARED",
+        "permission_category": "network",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for network were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.31,
+        "source": "local_rule"
+      },
+      {
+        "mismatch_type": "UNOBSERVED_DECLARED",
+        "permission_category": "device_id",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for device_id were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.31,
+        "source": "local_rule"
+      }
+    ],
+    "hidden_trigger_flags": [],
+    "all_flags": [
+      {
+        "mismatch_type": "UNOBSERVED_DECLARED",
+        "permission_category": "sms",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for sms were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.31,
+        "source": "local_rule"
+      },
+      {
+        "mismatch_type": "UNOBSERVED_DECLARED",
+        "permission_category": "location",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for location were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.31,
+        "source": "local_rule"
+      },
+      {
+        "mismatch_type": "UNOBSERVED_DECLARED",
+        "permission_category": "contacts",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for contacts were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.31,
+        "source": "local_rule"
+      },
+      {
+        "mismatch_type": "UNOBSERVED_DECLARED",
+        "permission_category": "phone_state",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for phone_state were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.31,
+        "source": "local_rule"
+      },
+      {
+        "mismatch_type": "UNOBSERVED_DECLARED",
+        "permission_category": "network",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for network were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.31,
+        "source": "local_rule"
+      },
+      {
+        "mismatch_type": "UNOBSERVED_DECLARED",
+        "permission_category": "device_id",
+        "risk_level": "medium",
+        "ui_claim": "not present in UI",
+        "backend_evidence": [],
+        "explanation": "Permission declared in AndroidManifest but no runtime method calls or UI evidence for device_id were found. This may be a zombie permission or a permission awaiting remote activation.",
+        "confidence": 0.31,
+        "source": "local_rule"
+      }
+    ]
+  },
+  "recommendations": [
+    "Investigate why sensitive permissions (SMS, location, contacts, phone state) are declared but not used or justified in the UI or backend.",
+    "Monitor for future updates or dynamic code loading that may activate these permissions.",
+    "Consider restricting or flagging the app due to over-declaration of sensitive permissions without transparency."
+  ]
+}
