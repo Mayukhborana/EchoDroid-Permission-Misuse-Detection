@@ -6,7 +6,7 @@ EchoDroid is an LLM-assisted framework for detecting suspicious Android applicat
 - What it actually executes at runtime
 - What permissions it declares in its manifest
 
-The framework combines automated UI exploration, runtime behavior collection, manifest analysis, rule-based reasoning, and large language models to identify potential mismatches, covert data collection, hidden triggers, and other permission misuse patterns. The design is motivated by the observation that malicious or privacy-invasive applications often perform sensitive operations that are not disclosed through their user interface.
+The framework combines automated UI exploration, runtime behavior collection, manifest analysis, rule-based reasoning, and large language models to identify UI-backend permission mismatches, undisclosed sensitive operations, and other permission misuse patterns.
 
 ## Overview
 
@@ -378,66 +378,32 @@ sample_output/
         └── prompt3_mismatch_detection.json
 ```
 
-## Results
+## Evaluation Results
 
-We evaluated EchoDroid using VirusTotal labels as ground truth. Apps flagged by 9 or more VirusTotal engines were treated as malicious, while apps flagged by fewer than 9 engines were treated as benign.
+EchoDroid was evaluated on a manually labeled benchmark of 100 Android applications. The benchmark contains 54 applications with at least one observed UI-backend mismatch and 46 applications whose observed sensitive behavior was consistent with the user interface.
 
-**Dataset Comparison**
+| System | Precision | Recall | F1 | False Positive Rate | ROC-AUC |
+|--------|----------:|-------:|---:|--------------------:|--------:|
+| EchoDroid | 82.3% | 94.4% | 87.9% | 23.9% | 0.85 |
 
-| Dataset | Precision | Recall | F1 | Balance | Threshold | Status |
-|----------|----------:|--------:|--------:|----------|----------|----------|
-| 215 apps | 97.01% | 92.91% | 86.75% | 66/34% | Tuned | Imbalanced |
-| 421 apps | 98.45% | 63.05% | 76.65% | 51/49% | Tuned | Low Recall |
-| 390 apps | 89.95% | 88.54% | 89.24% | 50/50% | Fixed 0.5 | Best Overall |
+The benchmark produced 51 true positives, 11 false positives, 3 false negatives, and 35 true negatives. A positive prediction is an EchoDroid verdict of `HAS_MISMATCH` or `SUSPICIOUS`; `LIKELY_CLEAN` is treated as a negative prediction.
 
-**Final Results (390 Apps)**
+### Finding-Level Validation
 
-| Metric | Result |
-|----------|----------:|
-| Total Apps | 390 |
-| VT Benign | 198 |
-| VT Malicious | 192 |
-| Accuracy | 89.49% |
-| Precision | 89.95% |
-| Recall | 88.54% |
-| F1 Score | 89.24% |
-| ROC-AUC | 0.974 |
-| PR-AUC | 0.987 |
+The reported findings were also manually reviewed across 10 app-store applications. Of 13 findings, 9 were supported by the collected runtime evidence and manual validation.
 
-**Confusion Matrix**
-
-|  | Predicted Benign | Predicted Malicious | Total |
-|---|---:|---:|---:|
-| Actual Benign | 179 TN | 19 FP | 198 |
-| Actual Malicious | 22 FN | 170 TP | 192 |
-| **Total** | **201** | **189** | **390** |
-
-
-**Model Features**
-
-The best-performing classifier uses confidence-scaled LLM signals:
-
-```text
-verdict_weighted = verdict_score × confidence
-risk_weighted    = risk_score × confidence
-conf_score       = confidence
-```
-
-| Feature | Formula | Range |
-|----------|----------|----------|
-| `verdict_weighted` | `verdict_score × confidence` | 0.00–2.85 |
-| `risk_weighted` | `risk_score × confidence` | 0.00–3.80 |
-| `conf_score` | Raw confidence | 0.30–1.00 |
-
-**Classifier:** Logistic Regression (`class_weight=balanced`)  
-**Validation:** 5-Fold Stratified Cross-Validation  
-**Decision Threshold:** Fixed at `0.5`
+| Validation Outcome | Applications | Findings |
+|--------------------|-------------:|---------:|
+| Fully validated | 6 | 6 |
+| Partially validated | 3 | 3 supported, 3 unsupported interpretations |
+| Invalidated | 1 | 1 unsupported |
+| **Total** | **10** | **13** |
 
 ## Research Motivation
 
 EchoDroid is designed around the following hypothesis:
 
-> Android applications exhibiting significant discrepancies between UI-disclosed functionality and backend runtime behavior may contain hidden, malicious, or privacy-invasive functionality.
+> Android applications exhibiting significant discrepancies between UI-disclosed functionality and backend runtime behavior may contain hidden or privacy-invasive functionality.
 
 > The framework provides a practical way to operationalize and evaluate this hypothesis through automated evidence collection and LLM-assisted reasoning.  
 
